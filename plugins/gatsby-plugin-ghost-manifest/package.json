@@ -1,0 +1,39 @@
+{
+    "name": "gatsby-plugin-ghost-manifest",
+    "description": "Gatsby plugin which adds a manifest.webmanifest to make sites progressive web apps",
+    "version": "0.0.1",
+    "author": "Ghost Foundation",
+    "dependencies": {
+        "@babel/runtime": "7.18.3",
+        "bluebird": "3.7.2",
+        "sharp": "0.30.6"
+    },
+    "devDependencies": {
+        "@babel/cli": "7.17.10",
+        "@babel/core": "7.18.2",
+        "babel-preset-gatsby-package": "2.15.0",
+        "cross-env": "7.0.3"
+    },
+    "keywords": [
+        "gatsby",
+        "gatsby-plugin",
+        "favicon",
+        "icons",
+        "manifest.webmanifest",
+        "progressive-web-app",
+        "pwa"
+    ],
+    "resolutions": {
+        "sharp": "0.30.6"
+    },
+    "license": "MIT",
+    "main": "index.js",
+    "peerDependencies": {
+        "gatsby": ">2.0.0-alpha"
+    },
+    "scripts": {
+        "build": "babel src --out-dir . --ignore **/__tests__",
+        "prepare": "cross-env NODE_ENV=production npm run build",
+        "watch": "babel -w src --out-dir . --ignore **/__tests__"
+    }
+}
