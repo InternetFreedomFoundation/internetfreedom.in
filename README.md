@@ -10,7 +10,6 @@ A starter template to build lightning fast websites with [Ghost](https://ghost.o
 
 &nbsp;
 
-
 # Installing
 
 ```bash
@@ -53,19 +52,21 @@ To use this starter without issues, your Ghost installation needs to be at least
 The default Ghost version that is used for this starter is `5.x`. If your Ghost installation is on a lower version, you will need to pass in a `version` property in your `.ghost.json` settings:
 
 **Ghost >=2.10.0 <5.0.0**
+
 ```json
 {
-    "apiUrl": "https://gatsby.ghost.io",
-    "contentApiKey": "9cc5c67c358edfdd81455149d0",
-    "version": "v4.0"
+  "apiUrl": "https://gatsby.ghost.io",
+  "contentApiKey": "9cc5c67c358edfdd81455149d0",
+  "version": "v4.0"
 }
 ```
 
 **Ghost >=5.0.0**
+
 ```json
 {
-    "apiUrl": "https://gatsby.ghost.io",
-    "contentApiKey": "9cc5c67c358edfdd81455149d0"
+  "apiUrl": "https://gatsby.ghost.io",
+  "contentApiKey": "9cc5c67c358edfdd81455149d0"
 }
 ```
 

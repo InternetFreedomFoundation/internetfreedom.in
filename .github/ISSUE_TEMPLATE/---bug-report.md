@@ -1,7 +1,6 @@
 ---
 name: "\U0001F41B Bug report"
 about: Report reproducible software issues so we can improve
-
 ---
 
 Welcome to the Gatsby Starter Ghost GitHub repo! 👋🎉
@@ -30,7 +29,7 @@ Any other info e.g. Why do you consider this to be a bug? What did you expect to
 
 ### Technical details:
 
-* Ghost Version:
-* Gatsby Version:
-* Node Version:
-* OS:
+- Ghost Version:
+- Gatsby Version:
+- Node Version:
+- OS:

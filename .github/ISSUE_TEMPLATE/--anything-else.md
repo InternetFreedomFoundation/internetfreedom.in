@@ -1,7 +1,6 @@
 ---
 name: "\U0001F4A1Anything else"
 about: "For help, support, features & ideas - please use https://forum.ghost.org \U0001F46B "
-
 ---
 
 --------------^ Click "Preview" for a nicer view!
