@@ -1,51 +1,111 @@
-# Site Architecture Proposal
+# Gatsby Starter Ghost
 
-This document will be treated as a draft for website architecture and is subject to change. Note that the opinions and recommendations stated may not be best practices but rather arise from the need and requirements of the IFF staff. Open to suggestions and feedback.
+A starter template to build lightning fast websites with [Ghost](https://ghost.org/) & [Gatsby](https://gatsbyjs.org)
 
-## Goals:
+**Demo:** https://gatsby.ghost.org/
 
-- Ease of use
-- Secure
-- Retain Data Ownership
-- No vendor lock-in
-- Fast (as Static as possible)
-- Highly Scalable and Reliable
+&nbsp;
 
-## Proposed Arch:
+![gatsby-starter-ghost](https://user-images.githubusercontent.com/120485/50913567-8ab8e380-142c-11e9-9e78-de02ded12fc6.jpg)
 
-![](/Iff-JamStack.png)
+&nbsp;
 
-## Advantages:
+# Installing
 
-- No changes to existing infra on AWS
-- Decoupled Frontend. Framework agnostic
-- Ghost for CMS, newsletters and memberships
-- No downtime (CDN level uptime guaranteed)
-- Ghost downtime does not affect the frontend
-- Native webhook and content API from ghost
-- Highly Scalable
-- Fast (directly loaded from CDN)
-- No vendor lock-ins
-- Easily portable hosting (i.e from cloudflare pages to EC2, firebase, vercel, etc)
-- Absolute data ownership
-- Estimated costs for the stack < `~10 USD/month`
-- Ghost webhooks can be extended to other use cases like email automation, etc.
+```bash
+# With Gatsby CLI
+gatsby new gatsby-starter-ghost https://github.com/TryGhost/gatsby-starter-ghost.git
+```
 
-## Recommended stack:
+```bash
+# From Source
+git clone https://github.com/TryGhost/gatsby-starter-ghost.git
+cd gatsby-starter-ghost
+```
 
-- Nuxt.js as frontend static site generator (or simlar like one's like Gatsby, Gridsome)
-- Cloudflare pages for hosting
-- Cloudflare workers for serverless functions and dynamic routing
-- Ghost on T4.Micro or higher
+Then install dependencies
 
-## Outlook:
+```bash
+yarn
+```
 
-- Multi tenancy on ghost isn't supported yet, which means having to host a new instance of ghost for each website/domain
-- [Strapi](https://strapi.io) and [Hasura](https://hasura.io) are other self-hosted options that can help achieve multi tenancy, but the ease of use is not nearly as good as ghost
-- Need to offload static content from ghost to S3, R2, CDN or similar, on site rebuild. This'll eliminate the dependency for uptime of Ghost instance and also reduce latency.
+&nbsp;
 
-## Resources:
+# Running
 
-- Cloudflare [pages](https://pages.cloudflare.com/)
-- Ghost [Jamstack](https://ghost.org/docs/jamstack/) and [more](https://ghost.org/changelog/jamstack/)
-- Cloudflare [Jamstack](https://www.cloudflare.com/learning/performance/what-is-jamstack/)
+Start the development server. You now have a Gatsby site pulling content from headless Ghost.
+
+```bash
+gatsby develop
+```
+
+By default, the starter will populate content from a default Ghost install located at https://gatsby.ghost.io.
+
+To use your own install, you will need to edit the `.ghost.json` config file with your credentials. Change the `apiUrl` value to the URL of your Ghost site. For Ghost(Pro) customers, this is the Ghost URL ending in `.ghost.io`, and for people using the self-hosted version of Ghost, it's the same URL used to access your site.
+
+Next, update the `contentApiKey` value to a key associated with the Ghost site. A key can be provided by creating an integration within Ghost Admin. Navigate to Integrations and click "Add new integration". Name the integration appropriately and click create.
+
+Finally, configure your desired URL in `siteConfig.js`, so links (e. g. canonical links) are generated correctly. You can also update other default values, such as `postsPerPage` in this file.
+
+To use this starter without issues, your Ghost installation needs to be at least on version `2.10.0`.
+
+The default Ghost version that is used for this starter is `5.x`. If your Ghost installation is on a lower version, you will need to pass in a `version` property in your `.ghost.json` settings:
+
+**Ghost >=2.10.0 <5.0.0**
+
+```json
+{
+  "apiUrl": "https://gatsby.ghost.io",
+  "contentApiKey": "9cc5c67c358edfdd81455149d0",
+  "version": "v4.0"
+}
+```
+
+**Ghost >=5.0.0**
+
+```json
+{
+  "apiUrl": "https://gatsby.ghost.io",
+  "contentApiKey": "9cc5c67c358edfdd81455149d0"
+}
+```
+
+&nbsp;
+
+# Deploying with Netlify
+
+The starter contains three config files specifically for deploying with Netlify. A `netlify.toml` file for build settings, a `/static/_headers` file with default security headers set for all routes, and `/static/_redirects` to set Netlify custom domain redirects.
+
+To deploy to your Netlify account, hit the button below.
+
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/TryGhost/gatsby-starter-ghost)
+
+Content API Keys are generally not considered to be sensitive information, they exist so that they can be changed in the event of abuse; so most people commit it directly to their `.ghost.json` config file. If you prefer to keep this information out of your repository you can remove this config and set [Netlify ENV variables](https://www.netlify.com/docs/continuous-deployment/#build-environment-variables) for production builds instead.
+
+Once deployed, you can set up a [Ghost + Netlify Integration](https://ghost.org/integrations/netlify/) to use deploy hooks from Ghost to trigger Netlify rebuilds. That way, any time data changes in Ghost, your site will rebuild on Netlify.
+
+&nbsp;
+
+# Optimising
+
+You can disable the default Ghost Handlebars Theme front-end by enabling the `Make this site private` flag within your Ghost settings. This enables password protection in front of the Ghost install and sets `<meta name="robots" content="noindex" />` so your Gatsby front-end becomes the source of truth for SEO.
+
+&nbsp;
+
+# Extra options
+
+```bash
+# Run a production build, locally
+gatsby build
+
+# Serve a production build, locally
+gatsby serve
+```
+
+Gatsby `develop` uses the `development` config in `.ghost.json` - while Gatsby `build` uses the `production` config.
+
+&nbsp;
+
+# Copyright & License
+
+Copyright (c) 2013-2022 Ghost Foundation - Released under the [MIT license](LICENSE).
