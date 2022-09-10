@@ -63,7 +63,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                   <nav id="site-nav" className="flex items-center justify-between mx-0 mb-0 mt-4 pr-48">
                     <div className="site-nav-left">
                       {/* The navigation items as setup in Ghost */}
-                      <Navigation data={site.navigation} navClass="inline-block py-1 px-8 text-body-grey hover:opacity-100 hover:no-underline" />
+                      <Navigation data={localData.navigation} navClass="inline-block py-1 px-8 text-body-grey hover:opacity-100 hover:no-underline" />
                     </div>
                   </nav>
                 </div>

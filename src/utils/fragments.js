@@ -250,6 +250,10 @@ fragment LocalSettingsFields on Site {
     subDescription
     title
     siteUrl
+    navigation {
+      label
+      url
+    }
     description
     cta
   }

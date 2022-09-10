@@ -53,7 +53,30 @@ module.exports = {
     title: `Internet Freedom Foundation`,
     description: `Internet Freedom Foundation defends online freedom, privacy and innovation in India.`,
     subDescription: `Born out of the SaveTheInternet.in movement for net neutrality, IFF works on a range of issues including net neutrality, free expression, privacy and innovation.`,
-    cta: `Support and help us sustain our work and join our list to receive timely updates about our work.`
+    cta: `Support and help us sustain our work and join our list to receive timely updates about our work.`,
+    navigation: [
+      {
+        "label": "About Us",
+        "url": "/about-us"
+      },
+      {
+        "label": "Our work",
+        "url": "#"
+      },
+      {
+        "label": "Join us",
+        "url": "#"
+      },
+      {
+        "label": "Blogposts",
+        "url": "/posts"
+      },
+      {
+        "label": "Donate",
+        "url": "#donate"
+      }
+
+    ]
   },
   trailingSlash: "always",
   plugins: [
