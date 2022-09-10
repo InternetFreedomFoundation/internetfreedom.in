@@ -47,16 +47,13 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
               <div className="flex items-center justify-between" id="site-mast">
                 <div id="site-mast-left">
                   <Link to="/">
-                    {site.logo ? (
+                    {isHome ? (
+                      null
+                    ) : (
                       <img
                         id="site-logo"
                         className="h-12"
                         src="/images/logo.svg"
-                        alt={site.title}
-                      />
-                    ) : (
-                      <GatsbyImage
-                        image={data.file.childImageSharp.gatsbyImageData}
                         alt={site.title}
                       />
                     )}
@@ -107,6 +104,12 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                 >
                   Ghost
                 </a>
+              </div>
+              <div className="site-foot-nav-right">
+                <Navigation
+                  data={site.navigation}
+                  navClass="site-foot-nav-item"
+                />
               </div>
             </div>
           </footer>
