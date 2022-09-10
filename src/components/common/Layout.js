@@ -8,7 +8,7 @@ import { Navigation } from ".";
 import config from "../../utils/siteConfig";
 
 // Styles
-import "../../styles/app.css";
+//import "../../styles/app.css";
 
 /**
  * Main layout component
@@ -36,25 +36,22 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
         <body className={bodyClass} />
       </Helmet>
 
-      <div className="viewport">
+      <div className="flex flex-col justify-between">
         <div className="viewport-top">
           {/* The main header section on top of the screen */}
           <header
-            className="site-head"
-            style={{
-              ...(site.cover_image && {
-                backgroundImage: `url(${site.cover_image})`,
-              }),
-            }}
+            className="bg-black bg-center bg-cover py-5 text-white bg-bg-black"
+            
           >
-            <div className="container">
-              <div className="site-mast">
-                <div className="site-mast-left">
+            <div id="container" className="my-0 mx-auto px-3.5">
+              <div className="flex items-center justify-between" id="site-mast">
+                <div id="site-mast-left">
                   <Link to="/">
                     {site.logo ? (
                       <img
-                        className="site-logo"
-                        src={site.logo}
+                        id="site-logo"
+                        className="h-12"
+                        src="/images/logo.svg"
                         alt={site.title}
                       />
                     ) : (
@@ -65,73 +62,34 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                     )}
                   </Link>
                 </div>
-                <div className="site-mast-right">
-                  {site.twitter && (
-                    <a
-                      href={twitterUrl}
-                      className="site-nav-item"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <img
-                        className="site-nav-icon"
-                        src="/images/icons/twitter.svg"
-                        alt="Twitter"
-                      />
-                    </a>
-                  )}
-                  {site.facebook && (
-                    <a
-                      href={facebookUrl}
-                      className="site-nav-item"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <img
-                        className="site-nav-icon"
-                        src="/images/icons/facebook.svg"
-                        alt="Facebook"
-                      />
-                    </a>
-                  )}
-                  <a
-                    className="site-nav-item"
-                    href={`https://feedly.com/i/subscription/feed/${config.siteUrl}/rss/`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <img
-                      className="site-nav-icon"
-                      src="/images/icons/rss.svg"
-                      alt="RSS Feed"
-                    />
-                  </a>
+                <div id="site-mast-right" className="flex items-center last:pr-0">
+                  <nav id="site-nav" className="flex items-center justify-between mx-0 mb-0 mt-4 pr-48">
+                    <div className="site-nav-left">
+                      {/* The navigation items as setup in Ghost */}
+                      <Navigation data={site.navigation} navClass="inline-block py-1 px-8 text-body-grey hover:opacity-100 hover:no-underline" />
+                    </div>
+                  </nav>
                 </div>
               </div>
               {isHome ? (
-                <div className="site-banner">
-                  <h1 className=" site-banner-title">{localData.description}</h1>
-                  <p className="site-banner-desc">{localData.subDescription}</p>
-                  <p className="text-xl">{localData.cta}</p>
+                <div id="site-banner" className="my-0 ml-48 mx-auto">
+                  <img src="/images/logo.svg" className="h-28 mt-28"/>
+                  <h1 id=" site-banner-title" className="mt-12 font-bold text-2xl leading-7 not-italic max-w-lg">{localData.description}</h1>
+                  <p id="site-banner-desc" className="my-4 max-w-lg font-normal text-xl leading-6 not-italic">{localData.subDescription}</p>
+                  <p id="site-banner-desc" className="my-4 max-w-lg font-body text-xl leading-6 not-italic mb-14">{localData.cta}</p>
+                  <div id="action" className="mb-40">
+                    <button class="bg-iff-orange hover:bg-iff-orange-700 text-white font-normal text-xl leading-6 not-italic py-2 px-4 rounded w-36 h-14">Donate</button>
+                    <button class="border-2 border-iff-orange hover:bg-iff-orange text-white font-normal text-xl leading-6 not-italic py-2 ml-8 rounded w-36 h-14">Subscribe</button>
+                  </div>
+
                 </div>
               ) : null}
-              <nav className="site-nav">
-                <div className="site-nav-left">
-                  {/* The navigation items as setup in Ghost */}
-                  <Navigation data={site.navigation} navClass="site-nav-item" />
-                </div>
-                <div className="site-nav-right">
-                  <Link className="site-nav-button" to="/about">
-                    About
-                  </Link>
-                </div>
-              </nav>
             </div>
           </header>
 
           <main className="site-main">
             {/* All the main content gets inserted here, index.js, post.js */}
-            {children}
+            {/* {children}  */}
           </main>
         </div>
 
@@ -149,12 +107,6 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                 >
                   Ghost
                 </a>
-              </div>
-              <div className="site-foot-nav-right">
-                <Navigation
-                  data={site.navigation}
-                  navClass="site-foot-nav-item"
-                />
               </div>
             </div>
           </footer>
