@@ -243,3 +243,15 @@ export const ghostSettingsFields = graphql`
     }
   }
 `;
+
+export const LocalSettingsFields = graphql`
+fragment LocalSettingsFields on Site {
+  siteMetadata {
+    subDescription
+    title
+    siteUrl
+    description
+    cta
+  }
+}
+`;

@@ -20,6 +20,7 @@ import "../../styles/app.css";
  */
 const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
   const site = data.allGhostSettings.edges[0].node;
+  const localData = data.site.siteMetadata;
   const twitterUrl = site.twitter
     ? `https://twitter.com/${site.twitter.replace(/^@/, ``)}`
     : null;
@@ -109,8 +110,9 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
               </div>
               {isHome ? (
                 <div className="site-banner">
-                  <h1 className="site-banner-title">{site.title}</h1>
-                  <p className="site-banner-desc">{site.description}</p>
+                  <h1 className=" site-banner-title">{localData.description}</h1>
+                  <p className="site-banner-desc">{localData.subDescription}</p>
+                  <p className="text-xl">{localData.cta}</p>
                 </div>
               ) : null}
               <nav className="site-nav">
@@ -182,6 +184,9 @@ const DefaultLayoutSettingsQuery = (props) => (
               ...GhostSettingsFields
             }
           }
+        }
+        site {
+          ...LocalSettingsFields                                                          
         }
         file(relativePath: { eq: "ghost-icon.png" }) {
           childImageSharp {
