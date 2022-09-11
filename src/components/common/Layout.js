@@ -76,7 +76,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                   <p id="site-banner-desc" className="my-4 max-w-lg font-body text-xl leading-6 not-italic mb-14">{localData.cta}</p>
                   <div id="action" className="mb-40">
                     <button class="bg-iff-orange hover:bg-iff-orange-700 text-white font-normal text-xl leading-6 not-italic py-2 px-4 rounded w-36 h-14">Donate</button>
-                    <button class="border-2 border-iff-orange hover:bg-iff-orange text-white font-normal text-xl leading-6 not-italic py-2 ml-8 rounded w-36 h-14">Subscribe</button>
+                    <button class="border border-iff-orange hover:bg-iff-orange hover:text-white text-iff-orange font-normal text-xl leading-6 not-italic py-2 ml-8 rounded w-36 h-14">Subscribe</button>
                   </div>
 
                 </div>
@@ -104,12 +104,6 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                 >
                   Ghost
                 </a>
-              </div>
-              <div className="site-foot-nav-right">
-                <Navigation
-                  data={site.navigation}
-                  navClass="site-foot-nav-item"
-                />
               </div>
             </div>
           </footer>
