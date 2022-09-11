@@ -4,55 +4,33 @@ import { Link } from "gatsby";
 import { Tags } from "@tryghost/helpers-gatsby";
 import { readingTime as readingTimeHelper } from "@tryghost/helpers";
 
-const PostCard = ({ post }) => {
+const PostCard = ({ post, number }) => {
   const url = `/${post.slug}/`;
   const readingTime = readingTimeHelper(post);
 
   return (
-    <Link to={url} className="post-card">
-      <header className="post-card-header">
-        {post.feature_image && (
-          <div
-            className="post-card-image"
-            style={{
-              backgroundImage: `url(${post.feature_image})`,
-            }}
-          ></div>
-        )}
-        {post.tags && (
-          <div className="post-card-tags">
-            {" "}
-            <Tags post={post} visibility="public" autolink={false} />
-          </div>
-        )}
-        {post.featured && <span>Featured</span>}
-        <h2 className="post-card-title">{post.title}</h2>
-      </header>
-      <section className="post-card-excerpt">{post.excerpt}</section>
-      <footer className="post-card-footer">
-        <div className="post-card-footer-left">
-          <div className="post-card-avatar">
-            {post.primary_author.profile_image ? (
-              <img
-                className="author-profile-image"
-                src={post.primary_author.profile_image}
-                alt={post.primary_author.name}
-              />
-            ) : (
-              <img
-                className="default-avatar"
-                src="/images/icons/avatar.svg"
-                alt={post.primary_author.name}
-              />
-            )}
-          </div>
-          <span>{post.primary_author.name}</span>
+    <>
+      <Link to={url} id="post-card" className="mb-16 flex items-start">
+        <h1 id="number" className="text-6xl text-number-grey">{number}</h1>
+        <div id="post-features" className="ml-6">
+          <header className="post-card-header">
+            {post.featured && <span>Featured</span>}
+            <h2 id="post-card-title" className="text-xl mb-3 text-heading-black font-bold">
+              {post.title}
+            </h2>
+          </header>
+          <section id="post-card-excerpt" className="mb-3 text-body-grey">{post.excerpt}</section>
+          <footer id="post-card-footer" className="flex mb-3">
+            <div id="post-card-footer-left" className="mr-3 text-iff-orange">
+              <span>{post.published_at_pretty}</span>
+            </div>
+            <div id="post-card-footer-right" className="ml-3 text-iff-orange">
+              <div>{readingTime}</div>
+            </div>
+          </footer>
         </div>
-        <div className="post-card-footer-right">
-          <div>{readingTime}</div>
-        </div>
-      </footer>
-    </Link>
+      </Link>
+    </>
   );
 };
 
@@ -76,3 +54,4 @@ PostCard.propTypes = {
 };
 
 export default PostCard;
+

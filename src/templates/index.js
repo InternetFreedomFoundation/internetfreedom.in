@@ -15,19 +15,24 @@ import { MetaData } from "../components/common/meta";
  */
 const Index = ({ data, location, pageContext }) => {
   const posts = data.allGhostPost.edges;
-
+  console.log(posts)
   return (
     <>
       <MetaData location={location} />
       <Layout isHome={true}>
-        <div className="container">
+        <div id="container" className="mt-20 my-0 ml-48 mx-auto max-w-4xl">
+          <h1 className="text-3xl mb-6">Blogposts</h1>
           <section className="post-feed">
-            {posts.map(({ node }) => (
+            {posts.map(({ node }, index) => (
               // The tag below includes the markup for each post - components/common/PostCard.js
-              <PostCard key={node.id} post={node} />
+              <PostCard key={node.id} post={node} number={index+1}/>
             ))}
           </section>
-          <Pagination pageContext={pageContext} />
+
+          {/* <Pagination pageContext={pageContext} /> */}
+          <p className="ml-14 text-body-grey">Read more blogs on numerous other topics</p>
+          <button class="ml-14 mt-6 bg-iff-orange hover:bg-iff-orange-700 text-white font-normal text-xl leading-6 not-italic py-2 px-4 rounded w-36 h-14">Read more</button>
+
         </div>
       </Layout>
     </>
