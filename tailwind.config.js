@@ -14,7 +14,8 @@ module.exports = {
         "bg-light-grey": "#2E2E2E",
         "heading-black": "#171717",
         "number-grey": "#E7E7E7",
-        'white': '#ffffff'
+        'white': '#ffffff',
+        "search": 'AAAAAA'
       }
     },
   },

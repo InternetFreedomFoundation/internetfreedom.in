@@ -61,7 +61,7 @@ module.exports = {
       },
       {
         "label": "Our work",
-        "url": "#"
+        "url": "/author/ghost/"
       },
       {
         "label": "Join us",
