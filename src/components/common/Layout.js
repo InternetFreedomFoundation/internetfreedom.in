@@ -5,6 +5,7 @@ import { Link, StaticQuery, graphql } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 
 import { Navigation } from ".";
+import { Footer } from ".";
 import config from "../../utils/siteConfig";
 
 // Styles
