@@ -70,11 +70,11 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                 </div>
               </div>
               {isHome ? (
-                <div id="site-banner" className="my-0 ml-48 mx-auto">
+                <div id="site-banner" className="my-0 ml-5 md:ml-48 mx-auto">
                   <img src="/images/logo.svg" className="h-28 mt-28"/>
                   <h1 id=" site-banner-title" className="mt-12 font-bold text-2xl leading-7 not-italic max-w-lg">{localData.description}</h1>
-                  <p id="site-banner-desc" className="my-4 max-w-lg font-normal text-xl leading-6 not-italic">{localData.subDescription}</p>
-                  <p id="site-banner-desc" className="my-4 max-w-lg font-body text-xl leading-6 not-italic mb-14">{localData.cta}</p>
+                  <p id="site-banner-desc" className="my-4 max-w-lg text-body-grey text-xl leading-6 not-italic">{localData.subDescription}</p>
+                  <p id="site-banner-desc" className="my-4 max-w-lg text-body-grey text-xl leading-6 not-italic mb-14">{localData.cta}</p>
                   <div id="action" className="mb-40">
                     <button class="bg-iff-orange hover:bg-iff-orange-700 text-white font-normal text-xl leading-6 not-italic py-2 px-4 rounded w-36 h-14">Donate</button>
                     <button class="border border-iff-orange hover:bg-iff-orange hover:text-white text-iff-orange font-normal text-xl leading-6 not-italic py-2 ml-8 rounded w-36 h-14">Subscribe</button>

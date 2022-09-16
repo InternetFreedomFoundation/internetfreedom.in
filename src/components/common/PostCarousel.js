@@ -10,7 +10,7 @@ const PostCarousel = ({ post, number }) => {
 
   return (
     <>
-      <Link to={url} id="post-card" className="mb-16 flex  basis-0 grow items-start">
+      <Link to={url} id="post-card" className="mb-16 flex basis-0 grow items-start mr-4">
         <h1 id="number" className="text-6xl text-number-grey">{number}</h1>
         <div id="post-features" className="ml-6">
           <header className="post-card-header">

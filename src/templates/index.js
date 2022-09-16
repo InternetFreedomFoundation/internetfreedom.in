@@ -20,7 +20,7 @@ const Index = ({ data, location, pageContext }) => {
     <>
       <MetaData location={location} />
       <Layout isHome={true}>
-        <div id="container" className="mt-20 my-0 ml-48 mx-auto max-w-4xl">
+        <div id="container" className="mt-20 my-0 ml-5 md:ml-48 mx-auto max-w-4xl">
           <h1 className="text-3xl mb-6">Blogposts</h1>
           <section id="post-feed">
             {posts.map(({ node }, index) => (
@@ -34,7 +34,7 @@ const Index = ({ data, location, pageContext }) => {
           <button class="ml-14 mt-6 mb-20 bg-iff-orange hover:bg-iff-orange-700 text-white font-normal text-xl leading-6 not-italic py-2 px-4 rounded w-36 h-14">Read more</button>
           <hr></hr>
           <h1 className="text-3xl mt-20 mb-6">Our latest work</h1>
-          <section id="post-feed" className="flex flex-row">
+          <section id="post-feed" className="flex flex-col md:flex-row">
             {posts.map(({ node }, index) => (
               // The tag below includes the markup for each post - components/common/PostCard.js
               <PostCarousel key={node.id} post={node} number={index+1}/>
@@ -43,9 +43,9 @@ const Index = ({ data, location, pageContext }) => {
           <hr></hr>
           <h1 className="text-3xl mt-20">Campaigns & Projects</h1>
           <p className="text-base text-body-grey mt-6 mb-6">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-          <section id="post-feed" className="flex flex-row">
+          <section id="post-feed" className="flex flex-col md:flex-row">
             {posts.map(({ node }, index) => (
-              // The tag below includes the markup for each post - components/common/PostCard.js
+              // The tag below includes the markup for each post - components/common/ProjectCarousel.js
               <ProjectCarousel key={node.id} post={node} number={index+1}/>
             ))}
           </section>

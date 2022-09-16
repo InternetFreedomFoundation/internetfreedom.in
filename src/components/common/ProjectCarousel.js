@@ -18,7 +18,7 @@ const ProjectCarousel = ({ post, number }) => {
           </header>
           <section id="post-card-excerpt" className="mb-3 mt-12 mx-8 text-heading-black mb-2">
             <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            <p  >Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
           </section>
           <footer id="post-card-footer" className="flex mb-3 ml-8">
             <div id="post-card-footer-left" className="mr-3 text-iff-orange">
