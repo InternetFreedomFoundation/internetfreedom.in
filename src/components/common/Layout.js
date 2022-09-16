@@ -90,25 +90,9 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
             {children} 
           </main>
         </div>
+        <Footer />
 
-        <div className="viewport-bottom">
-          {/* The footer at the very bottom of the screen */}
-          <footer className="site-foot">
-            <div className="site-foot-nav container">
-              <div className="site-foot-nav-left">
-                <Link to="/">{site.title}</Link> © 2021 &mdash; Published with{" "}
-                <a
-                  className="site-foot-nav-item"
-                  href="https://ghost.org"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Ghost
-                </a>
-              </div>
-            </div>
-          </footer>
-        </div>
+        
       </div>
     </>
   );
