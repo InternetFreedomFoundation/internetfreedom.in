@@ -2,7 +2,7 @@ import * as React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "gatsby";
 
-import { Layout, PostCard, Pagination, PostCarousel } from "../components/common";
+import { Layout, PostCard, Pagination, PostCarousel, ProjectCarousel } from "../components/common";
 import { MetaData } from "../components/common/meta";
 
 /**
@@ -38,6 +38,15 @@ const Index = ({ data, location, pageContext }) => {
             {posts.map(({ node }, index) => (
               // The tag below includes the markup for each post - components/common/PostCard.js
               <PostCarousel key={node.id} post={node} number={index+1}/>
+            ))}
+          </section>
+          <hr></hr>
+          <h1 className="text-3xl mt-20">Campaigns & Projects</h1>
+          <p className="text-base text-body-grey mt-6 mb-6">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+          <section id="post-feed" className="flex flex-row">
+            {posts.map(({ node }, index) => (
+              // The tag below includes the markup for each post - components/common/PostCard.js
+              <ProjectCarousel key={node.id} post={node} number={index+1}/>
             ))}
           </section>
 
