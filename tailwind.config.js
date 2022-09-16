@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        body: ['Lato']
+        sans: ['Lato']
       },
       colors: {
         "bg-black": "#171717",
