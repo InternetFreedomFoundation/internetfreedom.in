@@ -22,46 +22,63 @@ const Post = ({ data, location }) => {
         <style type="text/css">{`${post.codeinjection_styles}`}</style>
       </Helmet>
       <Layout>
-        <div className="px-4 py-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
-          <p className="mx-auto text-center prose prose-sm">
-            {post.published_at_pretty}
-          </p>
-          <div className="md:mx-auto text-center lg:max-w-2xl">
+        <div className="">
 
-            <div
-              className="m-4 block text-4xl text-center font-extrabold text-gray-900"
-            >
-              {post.title}
+          <div className="bg-bg-black text-white">
+            <div className="px-4 py-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:pt-16">
 
+              <div className="md:mx-auto text-left lg:max-w-4xl">
+
+                <div>
+                  {post.tags.map(tag => <p className="uppercase text-iff-orange font-bold mr-4">{tag.name}</p>)}
+                </div>
+
+                <div className="max-w-2xl">
+                  <div
+                    className="my-4 block text-4xl text-left font-extrabold text-white"
+                  >
+                    {post.title}
+                  </div>
+                  <p className="text-left text-gray-400">{post.excerpt}</p>
+                </div>
+
+                <div className="mb-4 mt-8 flex items-center -translate-x-1">
+                  <Link
+                    to={`/author/${post.primary_author.slug}`}
+                    aria-label="Author" className="inline-block mb-1">
+                    <img
+                      alt="avatar"
+                      src={post.authors[0].profile_image}
+                      className="object-cover w-10 h-10 rounded-full shadow-sm"
+                    />
+                  </Link>
+                  <div className="text-center">
+                    <Link
+                      to={`/author/${post.primary_author.slug}`}
+                      aria-label="Author"
+                      className="font-medium text-iff-orange ml-3"
+                    >
+                      {post.authors[0].name}
+                    </Link>
+                  </div>
+                  <p className="ml-auto font-light text-iff-orange">
+                    - {post.published_at_pretty}
+                  </p>
+
+                </div>
+
+              </div>
             </div>
-            <p className="mx-auto prose prose-slate">{post.excerpt}</p>
           </div>
-          <div className="p-4 flex justify-center flex-col items-center">
-            <Link
-              to={`/author/${post.primary_author.slug}`}
-              aria-label="Author" className="inline-block mb-1">
-              <img
-                alt="avatar"
-                src={post.authors[0].profile_image}
-                className="object-cover w-10 h-10 rounded-full shadow-sm"
-              />
-            </Link>
-            <div className="text-center">
-              <Link
-                to={`/author/${post.primary_author.slug}`}
-                aria-label="Author"
-                className="font-semibold text-gray-800"
-              >
-                {post.authors[0].name}
-              </Link>
-              <p className="text-sm font-medium leading-4 text-gray-400">
-                Primary Author
-              </p>
+
+          <div className="relative blog-feature_image">
+            <div className={"w-full p-4 md:p-0 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8"}>
+              <img src={post.feature_image} className=" rounded-md w-full lg:max-w-4xl mx-auto" alt="" />
             </div>
           </div>
-          <hr className="my-8" />
+
           <article
-            className="mt-4 prose prose-img:rounded-xl prose-img:shadow-xl mx-auto"
+            className="mt-16 prose prose-img:rounded-xl prose-img:shadow-xl mx-auto p-4"
             dangerouslySetInnerHTML={{ __html: post.html }}
           ></article>
         </div>
