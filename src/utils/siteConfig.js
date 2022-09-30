@@ -1,8 +1,8 @@
-const config = require(`../../.ghost.json`).production;
+
 module.exports = {
   siteUrl:
     process.env.NODE_ENV === `production`
-      ? process.env.SITE_URL || config.siteUrl || `https://internetfreedom-in.pages.dev`
+      ? process.env.SITE_URL || `https://internetfreedom-in.pages.dev`
       : `https://internetfreedom-in.pages.dev`, // Site domain. Do not include a trailing slash!
 
   postsPerPage: 3, // Number of posts shown on paginated pages (changes this requires sometimes to delete the cache)
