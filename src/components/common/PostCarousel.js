@@ -21,11 +21,8 @@ const PostCarousel = ({ post, number }) => {
           </header>
           <section id="post-card-excerpt" className="mb-3 text-body-grey">{post.excerpt}</section>
           <footer id="post-card-footer" className="flex mb-3">
-            <div id="post-card-footer-left" className="mr-3 text-iff-orange">
-              <span>category</span>
-            </div>
-            <div id="post-card-footer-right" className="ml-3 text-iff-orange">
-              <div>tags</div>
+            <div id="post-card-footer-left" className="mr-3 underline text-iff-orange">
+              <span>Explore</span>
             </div>
           </footer>
         </div>
