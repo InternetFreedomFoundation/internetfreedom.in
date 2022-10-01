@@ -23,7 +23,6 @@ const Index = ({ data, location, pageContext }) => {
   const posts = data.allGhostPost.edges;
   const scrollElement = useRef();
   const scroll = (scrollOffset) => {
-    console.log(scrollElement);
     scrollElement.current.scrollLeft += scrollOffset;
   };
   return (
@@ -34,7 +33,7 @@ const Index = ({ data, location, pageContext }) => {
           id="container"
           className="mt-20 my-0 ml-5 md:ml-48 mx-auto max-w-4xl"
         >
-          <h1 className="text-3xl mb-6">Blogposts</h1>
+          <h1 className="text-3xl mb-6 font-bold">Blogposts</h1>
           <section id="post-feed">
             {posts.map(({ node }, index) => (
               // The tag below includes the markup for each post - components/common/PostCard.js
@@ -50,7 +49,7 @@ const Index = ({ data, location, pageContext }) => {
             Read more
           </button>
           <hr></hr>
-          <h1 className="text-3xl mt-20 mb-6">Our latest work</h1>
+          <h1 className="text-3xl mt-20 mb-6 font-bold">Our latest work</h1>
           <section id="post-feed" className="flex flex-col w-1/3 md:flex-row">
             {posts.map(({ node }, index) => (
               // The tag below includes the markup for each post - components/common/PostCard.js
@@ -58,7 +57,7 @@ const Index = ({ data, location, pageContext }) => {
             ))}
           </section>
           <hr></hr>
-          <h1 className="text-3xl mt-20">Campaigns & Projects</h1>
+          <h1 className="text-3xl mt-20 font-bold">Campaigns & Projects</h1>
           <p className="text-base text-body-grey mt-6 mb-6">
             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
             nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
