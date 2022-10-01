@@ -10,7 +10,7 @@ const ProjectCarousel = ({ post, number }) => {
 
   return (
     <>
-      <Link to={url} id="post-card" className="mb-16 flex  basis-0 grow items-start min-h-[414px] bg-project-bg mx-2">
+      <Link to={url} id="post-card" className="mb-16 flex  basis-0 grow items-start min-h-[414px] min-w-[300px] bg-project-bg mx-2">
         <div id="post-features" className="">
           <header className="post-card-header">
             <img src="/images/project_sample.png"/>
