@@ -22,17 +22,17 @@ const Page = ({ data, location }) => {
         <style type="text/css">{`${page.codeinjection_styles}`}</style>
       </Helmet>
       <Layout>
-        <div className="container">
-          <article className="content">
-            <h1 className="content-title">{page.title}</h1>
+        <div className="mt-16 prose md:prose-lg lg:prose-xl prose-img:rounded-xl prose-img:shadow-xl mx-auto p-4">
 
-            {/* The main page content */}
-            <section
-              className="content-body load-external-scripts"
-              dangerouslySetInnerHTML={{ __html: page.html }}
-            />
-          </article>
+          <h1>{page.title}</h1>
+
+          {/* The main page content */}
+          <section
+            dangerouslySetInnerHTML={{ __html: page.html }}
+          />
+
         </div>
+
       </Layout>
     </>
   );
