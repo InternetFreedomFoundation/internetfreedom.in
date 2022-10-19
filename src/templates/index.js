@@ -67,7 +67,7 @@ const Index = ({ data, location, pageContext }) => {
           <section
             id="post-feed"
             ref={scrollElement}
-            className="flex flex-col md:flex-row overflow-x-scroll scrolling-touch"
+            className="flex flex-col md:flex-row scrolling-touch overflow-x-hidden"
           >
             {posts.map(({ node }, index) => (
               // The tag below includes the markup for each post - components/common/ProjectCarousel.js
