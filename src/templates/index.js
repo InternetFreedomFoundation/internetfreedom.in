@@ -31,7 +31,7 @@ const Index = ({ data, location, pageContext }) => {
       <Layout isHome={true}>
         <div
           id="container"
-          className="mt-20 my-0 ml-5 md:ml-48 mx-auto max-w-4xl"
+          className="mt-20 my-0 ml-5 md:mx-auto text-left lg:max-w-4xl"
         >
           <h1 className="text-3xl mb-6 font-bold">Blogposts</h1>
           <section id="post-feed">
