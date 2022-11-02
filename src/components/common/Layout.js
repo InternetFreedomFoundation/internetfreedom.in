@@ -41,7 +41,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
         <div className="viewport-top">
           {/* The main header section on top of the screen */}
           <header
-            className="bg-black bg-center bg-cover py-5 text-white bg-bg-black"
+            className="bg-center bg-cover py-5 text-white bg-bg-black"
             
           >
             <div id="container" className="my-0 mx-auto px-3.5">
