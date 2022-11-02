@@ -6,23 +6,22 @@ import { Layout, PostCardBlog, Pagination } from "../components/common";
 import { MetaData } from "../components/common/meta";
 
 /**
- * Tag page (/tag/:slug)
+ * Author page (/author/:slug)
  *
- * Loads all posts for the requested tag incl. pagination.
+ * Loads all posts for the requested author incl. pagination.
  *
  */
-const Tag = ({ data, location, pageContext }) => {
-  const tag = data.ghostTag;
+const Blogs = ({ data, location, pageContext }) => {
   const posts = data.allGhostPost.edges;
 
   return (
     <>
-      <MetaData data={data} location={location} type="series" />
+      <MetaData data={data} location={location} type="blogs" />
       <Layout>
-      <div>
+        <div>
           <div className=" bg-bg-black py-8 text-white mx-auto">
             <h1 className="text-4xl md:text-5xl ml-4 font-semibold md:mx-auto max-w-3xl">
-              <h1>{tag.name} Blogs</h1> 
+              Blogposts
             </h1>
           </div>
 
@@ -49,12 +48,8 @@ const Tag = ({ data, location, pageContext }) => {
   );
 };
 
-Tag.propTypes = {
+Blogs.propTypes = {
   data: PropTypes.shape({
-    ghostTag: PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      description: PropTypes.string,
-    }),
     allGhostPost: PropTypes.object.isRequired,
   }).isRequired,
   location: PropTypes.shape({
@@ -63,16 +58,12 @@ Tag.propTypes = {
   pageContext: PropTypes.object,
 };
 
-export default Tag;
+export default Blogs;
 
 export const pageQuery = graphql`
-  query GhostTagQuery($slug: String!, $limit: Int!, $skip: Int!) {
-    ghostTag(slug: { eq: $slug }) {
-      ...GhostTagFields
-    }
+  query GhostBlogsQuery($limit: Int!, $skip: Int!) {
     allGhostPost(
       sort: { order: DESC, fields: [published_at] }
-      filter: { tags: { elemMatch: { slug: { eq: $slug } } } }
       limit: $limit
       skip: $skip
     ) {
@@ -84,3 +75,4 @@ export const pageQuery = graphql`
     }
   }
 `;
+
