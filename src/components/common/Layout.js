@@ -6,6 +6,7 @@ import { GatsbyImage } from "gatsby-plugin-image";
 
 import { Navigation } from ".";
 import { Footer } from ".";
+import { DonateCard } from ".";
 import config from "../../utils/siteConfig";
 
 // Styles
@@ -89,6 +90,9 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
             {/* All the main content gets inserted here, index.js, post.js */}
             {children} 
           </main>
+          <div className="flex items-center justify-center">
+              <DonateCard />
+          </div>
         </div>
         <Footer />
 
