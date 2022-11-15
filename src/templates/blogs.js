@@ -19,8 +19,8 @@ const Blogs = ({ data, location, pageContext }) => {
       <MetaData data={data} location={location} type="blogs" />
       <Layout>
         <div>
-          <div className=" bg-bg-black py-8 text-white mx-auto">
-            <h1 className="text-4xl md:text-5xl ml-4 font-semibold md:mx-auto max-w-3xl">
+          <div className="bg-bg-black py-8 text-white mx-auto">
+            <h1 className="text-4xl md:text-5xl ml-4 font-semibold md:mx-auto max-w-screen-md 2xl:max-w-screen-lg p-4">
               Blogposts
             </h1>
           </div>
@@ -33,8 +33,8 @@ const Blogs = ({ data, location, pageContext }) => {
             </div> */}
           </div>
 
-          <div className="post-container">
-            <section className="post-feed max-w-3xl mx-auto">
+          <div className="m-4 mt-16">
+            <section className="post-feed max-w-3xl p-4 2xl:max-w-screen-lg mx-auto">
               {posts.map(({ node }) => (
                 // The tag below includes the markup for each post - components/common/PostCard.js
                 <PostCardBlog key={node.id} post={node} />
