@@ -62,10 +62,10 @@ exports.createPages = async ({ graphql, actions }) => {
   const indexTemplate = path.resolve(`./src/templates/index.js`);
   const blogsTemplate = path.resolve(`./src/templates/blogs.js`);
   const tagsTemplate = path.resolve(`./src/templates/tag.js`);
-  const authorTemplate = path.resolve(`./src/templates/author.js`);
+  // const authorTemplate = path.resolve(`./src/templates/author.js`);
   const pageTemplate = path.resolve(`./src/templates/page.js`);
   const postTemplate = path.resolve(`./src/templates/post.js`);
-
+  
   // Create tag pages
   tags.forEach(({ node }) => {
     const totalPosts = node.postCount !== null ? node.postCount : 0;
