@@ -36,9 +36,13 @@ const Post = ({ data, location }) => {
               <div className="md:mx-auto text-left">
                 <div>
                   {post.tags.map((tag) => (
-                    <span className="uppercase text-sm text-iff-orange font-bold mr-4">
+                    <Link
+                      to={`/tag/${tag.slug}`}
+                      aria-label="Author"
+                      className="text-sm p-2 inline-block bg-slate-800 rounded-lg text-slate-300 mr-2 mb-2">
                       {tag.name}
-                    </span>
+                    </Link>
+
                   ))}
                 </div>
 
@@ -67,7 +71,7 @@ const Post = ({ data, location }) => {
                         </Link>
                         <div className="text-center mb-[0.2rem]">
                           <Link
-                            to={`/author/${post.primary_author.slug}`}
+                            to={`/author/${author.slug}`}
                             aria-label="Author"
                             className="font-medium text-iff-orange ml-2 mr-8"
                           >
