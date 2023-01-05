@@ -15,7 +15,7 @@ const PostCardBlog = ({ post, number }) => {
           <img
             src={post.og_image}
             className={
-              "aspect-video w-full object-cover max-w-xl"
+              "aspect-video w-full rounded object-cover max-w-xl"
             }
             alt=""
           />
@@ -49,11 +49,11 @@ const PostCardBlog = ({ post, number }) => {
             </span>
           )}
           </div>
-          <footer className="flex text-sm">
+          <footer className="flex text-sm font-light">
             <div className="mr-3 text-iff-orange">
               <span>{post.published_at_pretty}</span>
             </div>
-            <div className="ml-3 text-iff-orange">
+            <div className="ml-3 text-iff-orange font-light">
               <div>{readingTime}</div>
             </div>
           </footer>
