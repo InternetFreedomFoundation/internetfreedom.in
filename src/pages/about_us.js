@@ -4,11 +4,11 @@ import { Layout } from "../components/common";
 
 const Index = () => {
   return (
-    <Layout>
+    <>
       <TopSection />
       <ImpactsAndProgress />
       <PeopleAtIff />
-    </Layout>
+    </>
   );
 };
 
