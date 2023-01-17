@@ -22,7 +22,7 @@ const Tag = ({ data, location, pageContext }) => {
       <div>
           <div className=" bg-bg-black py-8 text-white mx-auto">
             <h1 className="text-4xl md:text-5xl ml-4 font-semibold md:mx-auto max-w-3xl">
-              <h1>{tag.name} Blogs</h1> 
+              <h1>{tag.name}</h1> 
             </h1>
           </div>
 

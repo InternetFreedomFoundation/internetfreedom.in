@@ -10,42 +10,42 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
 
   const result = await graphql(`
-    {
-      allGhostPost(sort: { order: ASC, fields: published_at }) {
-        edges {
-          node {
-            slug
-          }
+        {
+            allGhostPost(sort: { order: ASC, fields: published_at }) {
+                edges {
+                    node {
+                        slug
+                    }
+                }
+            }
+            allGhostTag(sort: { order: ASC, fields: name }) {
+                edges {
+                    node {
+                        slug
+                        url
+                        postCount
+                    }
+                }
+            }
+            allGhostAuthor(sort: { order: ASC, fields: name }) {
+                edges {
+                    node {
+                        slug
+                        url
+                        postCount
+                    }
+                }
+            }
+            allGhostPage(sort: { order: ASC, fields: published_at }) {
+                edges {
+                    node {
+                        slug
+                        url
+                    }
+                }
+            }
         }
-      }
-      allGhostTag(sort: { order: ASC, fields: name }) {
-        edges {
-          node {
-            slug
-            url
-            postCount
-          }
-        }
-      }
-      allGhostAuthor(sort: { order: ASC, fields: name }) {
-        edges {
-          node {
-            slug
-            url
-            postCount
-          }
-        }
-      }
-      allGhostPage(sort: { order: ASC, fields: published_at }) {
-        edges {
-          node {
-            slug
-            url
-          }
-        }
-      }
-    }
-  `);
+    `);
 
   // Check for any errors
   if (result.errors) {
@@ -60,7 +60,6 @@ exports.createPages = async ({ graphql, actions }) => {
 
   // Load templates
   const indexTemplate = path.resolve(`./src/templates/index.js`);
-  const blogsTemplate = path.resolve(`./src/templates/blogs.js`);
   const tagsTemplate = path.resolve(`./src/templates/tag.js`);
   const authorTemplate = path.resolve(`./src/templates/author.js`);
   const pageTemplate = path.resolve(`./src/templates/page.js`);
@@ -82,7 +81,8 @@ exports.createPages = async ({ graphql, actions }) => {
       items: items,
       itemsPerPage: postsPerPage,
       component: tagsTemplate,
-      pathPrefix: ({ pageNumber }) => (pageNumber === 0 ? url : `${url}/page`),
+      pathPrefix: ({ pageNumber }) =>
+        pageNumber === 0 ? url : `${url}/page`,
       context: {
         slug: node.slug,
       },
@@ -90,27 +90,28 @@ exports.createPages = async ({ graphql, actions }) => {
   });
 
   // Create author pages
-  // authors.forEach(({ node }) => {
-  //   const totalPosts = node.postCount !== null ? node.postCount : 0;
+  authors.forEach(({ node }) => {
+    const totalPosts = node.postCount !== null ? node.postCount : 0;
 
-  //   // This part here defines, that our author pages will use
-  //   // a `/author/:slug/` permalink.
-  //   const url = `/author/${node.slug}`;
+    // This part here defines, that our author pages will use
+    // a `/author/:slug/` permalink.
+    const url = `/author/${node.slug}`;
 
-  //   const items = Array.from({ length: totalPosts });
+    const items = Array.from({ length: totalPosts });
 
-  //   // Create pagination
-  //   paginate({
-  //     createPage,
-  //     items: items,
-  //     itemsPerPage: postsPerPage,
-  //     component: authorTemplate,
-  //     pathPrefix: ({ pageNumber }) => (pageNumber === 0 ? url : `${url}/page`),
-  //     context: {
-  //       slug: node.slug,
-  //     },
-  //   });
-  // });
+    // Create pagination
+    paginate({
+      createPage,
+      items: items,
+      itemsPerPage: postsPerPage,
+      component: authorTemplate,
+      pathPrefix: ({ pageNumber }) =>
+        pageNumber === 0 ? url : `${url}/page`,
+      context: {
+        slug: node.slug,
+      },
+    });
+  });
 
   // Create pages
   pages.forEach(({ node }) => {
@@ -160,20 +161,6 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     },
   });
-
-  paginate({
-    createPage,
-    items: posts,
-    itemsPerPage: postsPerPage,
-    component: blogsTemplate,
-    pathPrefix: ({ pageNumber }) => {
-      if (pageNumber === 0) {
-        return `/blogs`;
-      } else {
-        return `/blogs/page`;
-      }
-    },
-  });
 };
 
 exports.onCreateWebpackConfig = ({ stage, actions }) => {
@@ -183,4 +170,3 @@ exports.onCreateWebpackConfig = ({ stage, actions }) => {
     },
   });
 };
-

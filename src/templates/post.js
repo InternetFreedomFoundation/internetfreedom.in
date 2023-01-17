@@ -32,13 +32,17 @@ const Post = ({ data, location }) => {
       <Layout>
         <div className="">
           <div className="bg-bg-black text-white">
-            <div className="px-4 py-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:pt-16">
-              <div className="md:mx-auto text-left lg:max-w-4xl">
+            <div className="px-4 py-4 mx-auto md:max-w-full lg:max-w-screen-md 2xl:max-w-screen-lg lg:pt-16">
+              <div className="md:mx-auto text-left">
                 <div>
                   {post.tags.map((tag) => (
-                    <span className="uppercase text-sm text-iff-orange font-bold mr-4">
+                    <Link
+                      to={`/tag/${tag.slug}`}
+                      aria-label="Author"
+                      className="text-sm p-2 inline-block bg-slate-800 rounded-lg text-slate-300 mr-2 mb-2">
                       {tag.name}
-                    </span>
+                    </Link>
+
                   ))}
                 </div>
 
@@ -67,7 +71,7 @@ const Post = ({ data, location }) => {
                         </Link>
                         <div className="text-center mb-[0.2rem]">
                           <Link
-                            to={`/author/${post.primary_author.slug}`}
+                            to={`/author/${author.slug}`}
                             aria-label="Author"
                             className="font-medium text-iff-orange ml-2 mr-8"
                           >
@@ -102,7 +106,7 @@ const Post = ({ data, location }) => {
           </div>
 
           <article
-            className="mt-16 prose md:prose-lg lg:prose-lg prose-img:rounded-xl prose-img:shadow-xl mx-auto p-4"
+            className="mt-16 prose prose-img:rounded-xl prose-img:shadow-xl mx-auto lg:max-w-screen-md 2xl:max-w-screen-lg p-4"
             dangerouslySetInnerHTML={{ __html: post.html }}
           ></article>
         </div>

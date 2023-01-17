@@ -18,4 +18,32 @@
   .post-container {
     @apply px-4 py-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:pt-16;
   }
+
+  .btn {
+    @apply border-2 border-iff-orange text-white bg-iff-orange px-6 py-2 rounded-md;
+  }
+
+  .btn-secondary {
+    @apply border-2 border-iff-orange text-iff-orange px-6 py-2 rounded-md;
+  }
+
+  .responsive-container {
+    @apply md:mx-auto max-w-screen-lg;
+  }
+
+  .text-subheading-1 {
+    @apply text-gray-900 text-2xl md:text-3xl font-semibold
+  }
+
+  .text-subheading-2 {
+    @apply text-gray-900 text-xl md:text-2xl font-semibold
+  }
+
+  .text-subheading-3 {
+    @apply text-gray-900 text-base font-semibold
+  }
+
+  .text-paragraph {
+
+  }
 }
