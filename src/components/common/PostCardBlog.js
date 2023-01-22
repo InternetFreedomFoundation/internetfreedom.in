@@ -35,16 +35,16 @@ const PostCardBlog = ({ post, number }) => {
               ))}
             </div>
             {post.featured && <span>Featured</span>}
-            <h2 className="text-lg mt-2 md:text-xl mb-1 text-heading-black font-bold">
+            <h2 className="text-lg mt-2 md:text-xl mb-1 text-heading-black font-bold hover:underline">
               {post.title}
             </h2>
           </header>
-          <section className=" text-body-grey line-clamp-6  md:line-clamp-2">
+          <section className=" text-body-grey line-clamp-6 my-2 md:line-clamp-2">
             {post.excerpt}
           </section>
           <div>
           {post.authors.map((author, index) => 
-            <span className=" text-sm font-semibold text-neutral-600">
+            <span className=" text-sm font-semibold text-neutral-600 hover:underline">
               {author.name} { index !== post.authors.length - 1 && "& "}
             </span>
           )}
