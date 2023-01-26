@@ -21,9 +21,10 @@ const Tag = ({ data, location, pageContext }) => {
       <Layout>
       <div>
           <div className=" bg-bg-black py-8 text-white mx-auto">
-            <h1 className="text-4xl md:text-5xl ml-4 font-semibold md:mx-auto max-w-3xl">
-              <h1>{tag.name}</h1> 
-            </h1>
+            <div className="prose ml-4 md:mx-auto max-w-3xl">
+              <h3 className="prose-sm text-white font-light">Catergory</h3>
+              <h1 className="prose-4xl text-white">{tag.name}</h1> 
+            </div>
           </div>
 
           <div>
