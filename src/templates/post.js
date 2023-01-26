@@ -106,7 +106,7 @@ const Post = ({ data, location }) => {
           </div>
 
           <article
-            className="mt-16 prose prose-img:rounded-xl prose-img:shadow-xl mx-auto lg:max-w-screen-md 2xl:max-w-screen-lg p-4"
+            className="mt-16 prose prose-img:rounded-xl prose-img:shadow-xl mx-auto lg:max-w-screen-md 2xl:max-w-screen-lg p-4 select-none"
             dangerouslySetInnerHTML={{ __html: post.html }}
           ></article>
         </div>
