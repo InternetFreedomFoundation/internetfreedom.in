@@ -39,7 +39,7 @@ const Post = ({ data, location }) => {
                     <Link
                       to={`/tag/${tag.slug}`}
                       aria-label="Author"
-                      className="text-sm p-2 inline-block bg-zinc-800 rounded-lg tracking-tight text-zinc-400 mr-2 mb-2">
+                      className="text-sm p-2 inline-block bg-zinc-800 rounded-lg tracking-tight text-zinc-400 mr-2 mb-2 capitalize">
                       {tag.name}
                     </Link>
 

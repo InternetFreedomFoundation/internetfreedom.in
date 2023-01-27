@@ -28,7 +28,7 @@ const PostCardBlog = ({ post, number }) => {
                   key={index}
                   className={`bg-slate-100 ${
                     index > 0 ? "hidden md:inline" : ""
-                  } text-slate-500 mr-2 py-1 px-2 rounded-lg text-sm`}
+                  } capitalize text-slate-500 mr-2 py-1 px-2 rounded-lg text-sm`}
                 >
                   {tag.name}
                 </span>
