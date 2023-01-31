@@ -18,13 +18,13 @@ const DonateCard = () => {
             <div class="text-sm font-medium text-center text-gray-500">
                 <ul class="flex flex-wrap -mb-px bg-bg-light-grey">
                     <li class="ml-16 mr-2">
-                        <a href="#" className="inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-body-grey hover:border-gray-300">One time</a>
+                        <a href="" className="inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-body-grey hover:border-gray-300">One time</a>
                     </li>
                     <li className="mr-2">
-                        <a href="#" className="inline-block p-4 text-iff-orange rounded-t-lg border-b-2 border-iff-orange active dark:iff-orange" aria-current="page">Monthly</a>
+                        <a href="" className="inline-block p-4 text-iff-orange rounded-t-lg border-b-2 border-iff-orange active dark:iff-orange" aria-current="page">Monthly</a>
                     </li>
                     <li className="mr-2">
-                        <a href="#" className="inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-body-grey hover:border-gray-300">Annual</a>
+                        <a href="" className="inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-body-grey hover:border-gray-300">Annual</a>
                     </li>
                    
                 </ul>
