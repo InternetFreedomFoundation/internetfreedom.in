@@ -48,6 +48,8 @@ export const ghostPostFields = graphql`
     slug
     featured
     feature_image
+    feature_image_alt
+    feature_image_caption
     excerpt
     custom_excerpt
     visibility

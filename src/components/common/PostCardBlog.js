@@ -13,7 +13,7 @@ const PostCardBlog = ({ post, number }) => {
       <Link to={url} id="post-card" className="mb-4 w-full flex flex-col md:flex-row items-center pb-5 border-b-2 md:border-0">
         <div className=" md:w-1/3 md:mr-4">
           <img
-            src={post.og_image}
+            src={post.feature_image || post.og_image}
             className={
               "aspect-video w-full rounded object-cover max-w-xl"
             }
@@ -28,7 +28,7 @@ const PostCardBlog = ({ post, number }) => {
                   key={index}
                   className={`bg-slate-100 ${
                     index > 0 ? "hidden md:inline" : ""
-                  } text-slate-500 mr-2 py-1 px-2 rounded-lg text-sm`}
+                  } capitalize text-slate-500 mr-2 py-1 px-2 rounded-lg text-sm`}
                 >
                   {tag.name}
                 </span>
