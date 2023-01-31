@@ -4,12 +4,12 @@ import { Layout } from "../components/common";
 
 const Index = () => {
   return (
-    <>
+    <Layout>
       <TopSection />
       <OurPrinciples />
       <LatestUpdates />
       <LegalDocket />
-    </>
+    </Layout>
   );
 };
 
@@ -18,7 +18,7 @@ export default Index;
 function TopSection() {
   return (
     <div className="bg-bg-black">
-      <div className="px-4 py-6 md:py-16 md:text-lg  responsive-container">
+      <div className="px-4 py-6 md:py-16 md:text-lg responsive-container">
         <h1 className="text-white text-2xl font-semibold md:text-3xl">
           Strategic Litigation
         </h1>
@@ -385,141 +385,3 @@ function DocketCard({ court, name, role, issue, link }) {
     </div>
   );
 }
-
-function Avatar({ name, title, description = null }) {
-  return (
-    <div className="flex text-base">
-      <img
-        src={"/images/icons/avatar.svg"}
-        className="object-cover w-10 h-10 mr-3 mt-1 rounded-full z-10 border-none outline-none"
-      />
-      <div>
-        <h3 className="text-subheading-3">{name}</h3>
-        <p>{title}</p>
-        <p className="">{description}</p>
-      </div>
-    </div>
-  );
-}
-
-function Staffs() {
-  return (
-    <div className="mt-12">
-      <h1 className="text-subheading-2 pb-2 mb-6 border-b-2">Staff</h1>
-
-      <div className="grid md:grid-cols-3 gap-5">
-        <Avatar name={"Apar Gupta"} title={"Executive Director"} />
-        <Avatar name={"Apar Gupta"} title={"Executive Director"} />
-        <Avatar name={"Apar Gupta"} title={"Executive Director"} />
-        <Avatar name={"Apar Gupta"} title={"Executive Director"} />
-        <Avatar name={"Apar Gupta"} title={"Executive Director"} />
-        <Avatar name={"Apar Gupta"} title={"Executive Director"} />
-        <Avatar name={"Apar Gupta"} title={"Executive Director"} />
-        <Avatar name={"Apar Gupta"} title={"Executive Director"} />
-      </div>
-    </div>
-  );
-}
-
-function OfCounsels() {
-  return (
-    <div className="mt-12">
-      <h1 className="text-subheading-2 pb-2 mb-6 border-b-2">
-        Of-Counsels and Legal Fellows
-      </h1>
-
-      <div className="grid md:grid-cols-3 gap-5">
-        <Avatar name={"Apar Gupta"} title={"Executive Director"} />
-        <Avatar name={"Apar Gupta"} title={"Executive Director"} />
-        <Avatar name={"Apar Gupta"} title={"Executive Director"} />
-      </div>
-    </div>
-  );
-}
-
-function Interns() {
-  return (
-    <div className="mt-12">
-      <h1 className="text-subheading-2 pb-2 mb-6 border-b-2">Interns</h1>
-
-      <div className="grid md:grid-cols-3 gap-5">
-        <Avatar name={"Apar Gupta"} title={"Executive Director"} />
-        <Avatar name={"Apar Gupta"} title={"Executive Director"} />
-        <Avatar name={"Apar Gupta"} title={"Executive Director"} />
-        <Avatar name={"Apar Gupta"} title={"Executive Director"} />
-      </div>
-    </div>
-  );
-}
-
-function Alumni() {
-  return (
-    <div className="mt-12">
-      <h1 className="text-subheading-2 pb-2 mb-6 border-b-2">Alumni</h1>
-      <div className="flex flex-wrap flex-col sm:flex-row	">
-        {[...Array(10)].map((x, i) => {
-          return (
-            <div key={i} className="">
-              <h3 className="text-subheading-3 mr-4 mb-2">Anushree Verma</h3>
-            </div>
-          );
-        })}
-      </div>
-      <p className="mt-6 text-base">
-        Work alongside the best in the digital rights sector
-      </p>
-
-      <button className="btn-secondary mt-4">Jobs & Internship</button>
-    </div>
-  );
-}
-
-function Leadership() {
-  return (
-    <div className="mt-12">
-      <h1 className="text-subheading-2 pb-2 mb-6 border-b-2">
-        {" "}
-        Leadership at IFF
-      </h1>
-
-      <div className="grid md:grid-cols-2 gap-y-10 gap-x-20">
-        <Avatar
-          name={"Apar Gupta"}
-          title={"Executive Director"}
-          description={
-            "He is a lawyer and is the Asia Policy Director at Access Now. Raman was also one of the founders of the SaveTheInternet movement and advises IFF towards fulfilling its mission and objectives."
-          }
-        />
-        <Avatar
-          name={"Apar Gupta"}
-          title={"Executive Director"}
-          description={
-            "He is a lawyer and is the Asia Policy Director at Access Now. Raman was also one of the founders of the SaveTheInternet movement and advises IFF towards fulfilling its mission and objectives."
-          }
-        />{" "}
-        <Avatar
-          name={"Apar Gupta"}
-          title={"Executive Director"}
-          description={
-            "He is a lawyer and is the Asia Policy Director at Access Now. Raman was also one of the founders of the SaveTheInternet movement and advises IFF towards fulfilling its mission and objectives."
-          }
-        />
-        <Avatar
-          name={"Apar Gupta"}
-          title={"Executive Director"}
-          description={
-            "He is a lawyer and is the Asia Policy Director at Access Now. Raman was also one of the founders of the SaveTheInternet movement and advises IFF towards fulfilling its mission and objectives."
-          }
-        />
-        <Avatar
-          name={"Apar Gupta"}
-          title={"Executive Director"}
-          description={
-            "He is a lawyer and is the Asia Policy Director at Access Now. Raman was also one of the founders of the SaveTheInternet movement and advises IFF towards fulfilling its mission and objectives."
-          }
-        />{" "}
-      </div>
-    </div>
-  );
-}
-
