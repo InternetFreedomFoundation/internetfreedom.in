@@ -15,20 +15,17 @@ const PostCard = ({ post, number }) => {
         <div id="post-features" className="ml-6">
           <header className="post-card-header">
             {post.featured && <span>Featured</span>}
-            <h2 id="post-card-title" className="text-xl mb-3 text-heading-black font-bold">
+            <h2 id="post-card-title" className="text-xl mb-3 text-heading-black font-bold hover:underline hover:underline-offset-8">
               {post.title}
             </h2>
           </header>
-          <div id="post-card-excerpt" className="mb-3 text-body-grey">{post.excerpt}</div>
+          <div id="post-card-excerpt" className="mb-3 text-body-grey text-justify">{post.excerpt}</div>
           <footer id="post-card-footer" className="flex mb-3">
-            <div id="post-card-footer-left" className="mr-3 text-iff-orange">
+            <div id="post-card-footer-left" className="mr-3 text-zinc-400 font-light">
               <span>{post.published_at_pretty}</span>
             </div>
-            <div id="post-card-footer-left" className="ml-3 text-iff-orange flex-1">
+            <div id="post-card-footer-left" className="ml-3 text-zinc-400 font-light flex-1">
               <div>{readingTime}</div>
-            </div>
-            <div id="post-card-footer-right" className="ml-3 mr-3 text-iff-orange underline ">
-              <div>Read Now</div>
             </div>
           </footer>
         </div>
