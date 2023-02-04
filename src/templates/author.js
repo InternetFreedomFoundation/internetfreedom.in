@@ -27,9 +27,10 @@ const Author = ({ data, location, pageContext }) => {
       <Layout>
         <div>
           <div className="bg-bg-black py-8 text-white mx-auto">
-            <h1 className="text-4xl md:text-5xl ml-4 font-semibold md:mx-auto max-w-3xl">
-              <h1>{author.name}</h1>
-            </h1>
+            <div className="prose ml-4 md:mx-auto max-w-3xl">
+              <h3 className="prose-sm text-white font-light">All Articles by:</h3>
+              <h1 className="prose-4xl text-white capitalize underline underline-offset-8">{author.name}</h1> 
+            </div>
           </div>
           <div className="post-container">
             <section className="post-feed max-w-3xl mx-auto">

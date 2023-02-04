@@ -23,7 +23,7 @@ const Tag = ({ data, location, pageContext }) => {
           <div className=" bg-bg-black py-8 text-white mx-auto">
             <div className="prose ml-4 md:mx-auto max-w-3xl">
               <h3 className="prose-sm text-white font-light">Catergory</h3>
-              <h1 className="prose-4xl text-white capitalize">{tag.name}</h1> 
+              <h1 className="prose-4xl text-white underline underline-offset-8 capitalize">{tag.name}</h1> 
             </div>
           </div>
 
