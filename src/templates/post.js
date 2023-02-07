@@ -39,7 +39,7 @@ const Post = ({ data, location }) => {
                     <Link
                       to={`/tag/${tag.slug}`}
                       aria-label="Author"
-                      className="text-sm p-2 inline-block bg-slate-800 rounded-lg text-slate-300 mr-2 mb-2">
+                      className="text-sm p-2 font-mono inline-block bg-zinc-800 rounded-lg tracking-tight text-zinc-400 mr-2 mb-2 capitalize">
                       {tag.name}
                     </Link>
 
@@ -47,16 +47,16 @@ const Post = ({ data, location }) => {
                 </div>
 
                 <div className="max-w-2xl">
-                  <div className="my-4 block text-4xl text-left font-extrabold text-white">
+                  <h1 className="my-4 font-sans block tracking-tight md:tracking-normal break-normal text-2xl md:text-4xl text-left font-extrabold text-white">
                     {post.title}
-                  </div>
-                  <p className="text-left text-gray-400">{post.excerpt}</p>
+                  </h1>
+                  <p className="text-left text text-zinc-500">{post.excerpt}</p>
                 </div>
 
                 <div className="mb-4 mt-8 flex relative -translate-x-1">
                   <div className="flex flex-col md:flex-row">
                     {post.authors.map((author, index) => (
-                      <div className="flex items-center mb-4">
+                      <div className="flex items-center">
                         <Link
                           to={`/author/${post.primary_author.slug}`}
                           aria-label="Author"
@@ -73,7 +73,7 @@ const Post = ({ data, location }) => {
                           <Link
                             to={`/author/${author.slug}`}
                             aria-label="Author"
-                            className="font-medium text-iff-orange ml-2 mr-8"
+                            className="font-medium text-sm text-iff-orange hover:underline ml-2 mr-8"
                           >
                             {author.name}
                           </Link>
@@ -106,7 +106,7 @@ const Post = ({ data, location }) => {
           </div>
 
           <article
-            className="mt-16 prose prose-img:rounded-xl prose-img:shadow-xl mx-auto lg:max-w-screen-md 2xl:max-w-screen-lg p-4 select-none"
+            className="mt-16 mx-auto prose md:prose-lg prose-img:rounded-xl prose-img:shadow-xl hover:prose-headings:underline underline-offset-4 hover:prose-a:text-iff-orange px-4 select-none"
             dangerouslySetInnerHTML={{ __html: post.html }}
           ></article>
         </div>

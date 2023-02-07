@@ -10,6 +10,7 @@ import {
   ProjectCarousel,
 } from "../components/common";
 import { MetaData } from "../components/common/meta";
+import DonateCard from "../components/common/DonateCard";
 
 /**
  * Main index page (home page)
@@ -128,6 +129,7 @@ const Index = ({ data, location, pageContext }) => {
               </svg>
             </button>
           </div>
+          
         </div>
          
       </Layout>
