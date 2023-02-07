@@ -47,3 +47,27 @@
 
   }
 }
+
+
+.pagination{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.pagination li {
+  /* border: 0.1px solid gray; */
+  padding: 0.1rem 0.5rem;
+  cursor: pointer;
+  display: block;
+  font-weight: bold;
+  @apply text-gray-400 md:text-lg w-10 text-center mt-auto rounded-full;
+}
+
+.pagination .selected {
+  padding: 0.1rem 0.5rem;
+  cursor: pointer;
+  display: block;
+  font-weight: bold;
+  @apply text-orange-700 bg-orange-100;
+}

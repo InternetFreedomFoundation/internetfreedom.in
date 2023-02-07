@@ -64,14 +64,27 @@ exports.createPages = async ({ graphql, actions }) => {
   const authorTemplate = path.resolve(`./src/templates/author.js`);
   const pageTemplate = path.resolve(`./src/templates/page.js`);
   const postTemplate = path.resolve(`./src/templates/post.js`);
+  const blogsTemplate = path.resolve(`./src/templates/blogs.js`);
 
+  paginate({
+    createPage,
+    items: posts,
+    itemsPerPage: postsPerPage,
+    component: blogsTemplate,
+    pathPrefix: "blogs",
+    context: {
+      pathPrefix: "blogs",
+      // slug: node.slug,
+    },
+  });
+  
   // Create tag pages
   tags.forEach(({ node }) => {
     const totalPosts = node.postCount !== null ? node.postCount : 0;
 
     // This part here defines, that our tag pages will use
     // a `/tag/:slug/` permalink.
-    const url = `/tag/${node.slug}`;
+    const url = `tag/${node.slug}`;
 
     const items = Array.from({ length: totalPosts });
 
@@ -81,9 +94,9 @@ exports.createPages = async ({ graphql, actions }) => {
       items: items,
       itemsPerPage: postsPerPage,
       component: tagsTemplate,
-      pathPrefix: ({ pageNumber }) =>
-        pageNumber === 0 ? url : `${url}/page`,
+      pathPrefix: url,
       context: {
+        pathPrefix: url,
         slug: node.slug,
       },
     });

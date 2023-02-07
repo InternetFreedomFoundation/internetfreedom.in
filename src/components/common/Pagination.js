@@ -1,32 +1,38 @@
 import * as React from "react";
 import PropTypes from "prop-types";
 import { Link } from "gatsby";
+import ReactPaginate from 'react-paginate';
+import { navigate } from "gatsby"
+
 
 const Pagination = ({ pageContext }) => {
-  const { previousPagePath, nextPagePath, humanPageNumber, numberOfPages } =
+  const { previousPagePath, nextPagePath, pageNumber, numberOfPages, pathPrefix } =
     pageContext;
+
+  console.log(pageContext)
+
+  function handlePageClick(e) {
+    if (e.selected == 0) {
+      navigate(`/${pathPrefix}`)
+    } else {
+      navigate(`/${pathPrefix}/${e.selected + 1}`)
+    }
+  }
 
   return (
     <nav className="pagination" role="navigation">
-      <div>
-        {previousPagePath && (
-          <Link to={previousPagePath} rel="prev">
-            Previous
-          </Link>
-        )}
-      </div>
-      {numberOfPages > 1 && (
-        <div className="pagination-location">
-          Page {humanPageNumber} of {numberOfPages}
-        </div>
-      )}
-      <div>
-        {nextPagePath && (
-          <Link to={nextPagePath} rel="next">
-            Next
-          </Link>
-        )}
-      </div>
+      <ReactPaginate
+        breakLabel="."
+        containerClassName={"pagination"}
+        nextLabel=">"
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={3}
+        pageCount={numberOfPages}
+        previousLabel="<"
+        marginPagesDisplayed={2}
+        renderOnZeroPageCount={null}
+        initialPage={pageNumber}
+      />
     </nav>
   );
 };
