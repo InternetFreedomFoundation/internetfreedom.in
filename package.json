@@ -1,22 +1,22 @@
 {
-  "name": "gatsby-starter-ghost",
-  "description": "A starter template to build lightning fast websites with Ghost and Gatsby",
-  "version": "2.0.0",
+  "name": "iff-frontend",
+  "description": "Front that powers internetfreedom.in built using Ghost and Gatsby",
+  "version": "1.0.0",
   "license": "MIT",
-  "author": "Ghost Foundation",
-  "homepage": "https://docs.ghost.org/api/gatsby/",
+  "author": "Internet Freedom Foundation",
+  "homepage": "https://internetfreedom.in",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tryghost/gatsby-starter-ghost.git"
+    "url": "git+https://InternetFreedomFoundation/internetfreedom.in.git"
   },
   "engines": {
-    "node": ">= 12.13.0"
+    "node": ">= 18.14.0"
   },
   "bugs": {
-    "url": "https://github.com/tryghost/gatsby-starter-ghost/issues"
+    "url": "https://InternetFreedomFoundation/internetfreedom.in/issues"
   },
   "keywords": [
-    "gatsby",
+    "IFF",
     "ghost"
   ],
   "main": "n/a",
