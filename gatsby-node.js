@@ -108,7 +108,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
     // This part here defines, that our author pages will use
     // a `/author/:slug/` permalink.
-    const url = `/author/${node.slug}`;
+    const url = `author/${node.slug}`;
 
     const items = Array.from({ length: totalPosts });
 
@@ -118,9 +118,9 @@ exports.createPages = async ({ graphql, actions }) => {
       items: items,
       itemsPerPage: postsPerPage,
       component: authorTemplate,
-      pathPrefix: ({ pageNumber }) =>
-        pageNumber === 0 ? url : `${url}/page`,
+      pathPrefix: url,
       context: {
+        pathPrefix: url,
         slug: node.slug,
       },
     });

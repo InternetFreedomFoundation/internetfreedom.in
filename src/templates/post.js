@@ -16,7 +16,6 @@ import { readingTime as readingTimeHelper } from "@tryghost/helpers";
  */
 const Post = ({ data, location }) => {
   const post = data.ghostPost;
-  console.log(post)
   const readingTime = readingTimeHelper(post);
 
   const addDefaultSrc = (e) => {
