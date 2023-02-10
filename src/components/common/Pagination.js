@@ -9,13 +9,13 @@ const Pagination = ({ pageContext }) => {
   const { previousPagePath, nextPagePath, pageNumber, numberOfPages, pathPrefix } =
     pageContext;
 
-  console.log(pageContext)
-
   function handlePageClick(e) {
-    if (e.selected == 0) {
-      navigate(`/${pathPrefix}`)
-    } else {
-      navigate(`/${pathPrefix}/${e.selected + 1}`)
+    if (e.selected !== pageNumber ){
+      if (e.selected == 0) {
+        navigate(`/${pathPrefix}`)
+      } else {
+        navigate(`/${pathPrefix}/${e.selected + 1}`)
+      }
     }
   }
 

@@ -23,16 +23,12 @@ const PostCardBlog = ({ post, number }) => {
         <div className=" md:w-2/3">
           <header className="post-card-header mt-4">
             <div className="line-clamp-1 overflow-clip">
-              {post.tags.map((tag, index) => (
-                <span
-                  key={index}
-                  className={`bg-slate-100 ${
-                    index > 0 ? "hidden md:inline" : ""
-                  } capitalize text-slate-500 mr-2 py-1 px-2 rounded-lg text-sm`}
-                >
-                  {tag.name}
-                </span>
-              ))}
+              <Link
+                to={`/tag/${post.primary_tag?.slug}`}
+                className={`bg-slate-100 capitalize hover:underline text-slate-500 mr-2 py-1 px-2 rounded-lg text-sm`}
+              >
+                {post.primary_tag?.name}
+              </Link>
             </div>
             {post.featured && <span>Featured</span>}
             <h2 className="text-lg mt-2 md:text-xl mb-1 text-heading-black font-bold hover:underline">
@@ -44,9 +40,9 @@ const PostCardBlog = ({ post, number }) => {
           </section>
           <div>
           {post.authors.map((author, index) => 
-            <span className=" text-sm font-semibold text-neutral-600 hover:underline">
+            <Link to={`/author/${author.slug}`} key={index} className=" text-sm font-semibold text-neutral-600 hover:underline">
               {author.name} { index !== post.authors.length - 1 && "& "}
-            </span>
+            </Link>
           )}
           </div>
           <footer className="flex text-sm font-light">
