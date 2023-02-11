@@ -51,7 +51,7 @@ const Index = ({ data, location, pageContext }) => {
           </button>
           <hr></hr>
           <h1 className="text-3xl mt-20 mb-6 font-bold">Our latest work</h1>
-          <section id="post-feed" className="flex flex-col w-1/3 md:flex-row">
+          <section id="post-feed" className="flex flex-col lg:w-1/3 md:flex-row">
             {posts.map(({ node }, index) => (
               // The tag below includes the markup for each post - components/common/PostCard.js
               <PostCarousel key={node.id} post={node} number={index + 1} />
