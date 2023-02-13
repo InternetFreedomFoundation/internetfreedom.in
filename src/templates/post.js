@@ -34,15 +34,12 @@ const Post = ({ data, location }) => {
             <div className="px-4 py-4 mx-auto md:max-w-full lg:max-w-screen-md 2xl:max-w-screen-lg lg:pt-16">
               <div className="md:mx-auto text-left">
                 <div>
-                  {post.tags.map((tag) => (
-                    <Link
-                      to={`/tag/${tag.slug}`}
-                      aria-label="Author"
-                      className="text-sm p-2 font-mono inline-block bg-zinc-800 rounded-lg tracking-tight text-zinc-400 mr-2 mb-2 capitalize">
-                      {tag.name}
-                    </Link>
-
-                  ))}
+                  <Link
+                    to={`/tag/${post.primary_tag.slug}`}
+                    aria-label="Author"
+                    className="text-sm p-2 font-mono bg-zinc-800 rounded-lg tracking-tight text-zinc-400 mr-2 mb-2 capitalize hover:underline hover:underline hover:underline-offset-4">
+                    {post.primary_tag.name}
+                  </Link>
                 </div>
 
                 <div className="max-w-2xl">
