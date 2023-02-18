@@ -33,14 +33,16 @@ const Post = ({ data, location }) => {
           <div className="bg-bg-black text-white">
             <div className="px-4 py-4 mx-auto md:max-w-full lg:max-w-screen-md 2xl:max-w-screen-lg lg:pt-16">
               <div className="md:mx-auto text-left">
-                <div>
-                  <Link
-                    to={`/tag/${post.primary_tag.slug}`}
-                    aria-label="Author"
-                    className="text-sm p-2 font-mono bg-zinc-800 rounded-lg tracking-tight text-zinc-400 mr-2 mb-2 capitalize hover:underline hover:underline hover:underline-offset-4">
-                    {post.primary_tag.name}
-                  </Link>
-                </div>
+                {post.primary_tag &&
+                  <div>
+                    <Link
+                      to={`/tag/${post.primary_tag?.slug}`}
+                      aria-label="Author"
+                      className="text-sm p-2 font-mono bg-zinc-800 rounded-lg tracking-tight text-zinc-400 mr-2 mb-2 capitalize hover:underline hover:underline hover:underline-offset-4">
+                      {post.primary_tag.name}
+                    </Link>
+                  </div>
+                }
 
                 <div className="max-w-2xl">
                   <h1 className="my-4 font-sans block tracking-tight md:tracking-normal break-normal text-2xl md:text-4xl text-left font-extrabold text-white">
