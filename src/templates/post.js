@@ -56,7 +56,7 @@ const Post = ({ data, location }) => {
                     {post.authors.map((author, index) => (
                       <div className="flex items-center">
                         <Link
-                          to={`/author/${post.primary_author.slug}`}
+                          to={`/author/${author.slug}`}
                           aria-label="Author"
                           className="inline-block mb-1"
                         >
