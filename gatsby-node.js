@@ -11,40 +11,40 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const result = await graphql(`
         {
-            allGhostPost(sort: { order: ASC, fields: published_at }) {
-                edges {
-                    node {
-                        slug
-                    }
-                }
-            }
-            allGhostTag(sort: { order: ASC, fields: name }) {
-                edges {
-                    node {
-                        slug
-                        url
-                        postCount
-                    }
-                }
-            }
-            allGhostAuthor(sort: { order: ASC, fields: name }) {
-                edges {
-                    node {
-                        slug
-                        url
-                        postCount
-                    }
-                }
-            }
-            allGhostPage(sort: { order: ASC, fields: published_at }) {
-                edges {
-                    node {
-                        slug
-                        url
-                    }
-                }
-            }
-        }
+  allGhostPost(sort: {published_at: ASC}) {
+    edges {
+      node {
+        slug
+      }
+    }
+  }
+  allGhostTag(sort: {name: ASC}) {
+    edges {
+      node {
+        slug
+        url
+        postCount
+      }
+    }
+  }
+  allGhostAuthor(sort: {name: ASC}) {
+    edges {
+      node {
+        slug
+        url
+        postCount
+      }
+    }
+  }
+  allGhostPage(sort: {published_at: ASC}) {
+    edges {
+      node {
+        slug
+        url
+      }
+    }
+  }
+    }
     `);
 
   // Check for any errors
