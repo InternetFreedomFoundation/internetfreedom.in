@@ -19,11 +19,11 @@ const Tag = ({ data, location, pageContext }) => {
     <>
       <MetaData data={data} location={location} type="series" />
       <Layout>
-        <div>
+      <div>
           <div className=" bg-bg-black py-8 text-white mx-auto">
             <div className="prose ml-4 md:mx-auto max-w-3xl">
               <h3 className="prose-sm text-white font-light">Catergory</h3>
-              <h1 className="prose-4xl text-white underline underline-offset-8 capitalize">{tag.name}</h1>
+              <h1 className="prose-4xl text-white underline underline-offset-8 capitalize">{tag.name}</h1> 
             </div>
           </div>
 
@@ -68,12 +68,12 @@ export default Tag;
 
 export const pageQuery = graphql`
   query GhostTagQuery($slug: String!, $limit: Int!, $skip: Int!) {
-    ghostTag(slug: {eq: $slug}) {
+    ghostTag(slug: { eq: $slug }) {
       ...GhostTagFields
     }
     allGhostPost(
-      sort: {published_at: DESC}
-      filter: {tags: {elemMatch: {slug: {eq: $slug}}}}
+      sort: { order: DESC, fields: [published_at] }
+      filter: { tags: { elemMatch: { slug: { eq: $slug } } } }
       limit: $limit
       skip: $skip
     ) {
