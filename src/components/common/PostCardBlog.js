@@ -1,7 +1,6 @@
 import * as React from "react";
 import PropTypes from "prop-types";
 import { Link } from "gatsby";
-import { Tags } from "@tryghost/helpers-gatsby";
 import { readingTime as readingTimeHelper } from "@tryghost/helpers";
 
 const PostCardBlog = ({ post, number }) => {
@@ -22,14 +21,16 @@ const PostCardBlog = ({ post, number }) => {
         </div>
         <div className=" md:w-2/3">
           <header className="post-card-header mt-4">
-            <div className="line-clamp-1 overflow-clip">
-              <Link
-                to={`/tag/${post.primary_tag?.slug}`}
-                className={`bg-slate-100 capitalize hover:underline text-slate-500 mr-2 py-1 px-2 rounded-lg text-sm`}
-              >
-                {post.primary_tag?.name}
-              </Link>
-            </div>
+            {post.primary_tag &&
+              <div className="line-clamp-1 overflow-clip">
+                <Link
+                  to={`/tag/${post.primary_tag.slug}`}
+                  className={`bg-slate-100 capitalize hover:underline text-slate-500 mr-2 py-1 px-2 rounded-lg text-sm`}
+                >
+                  {post.primary_tag.name}
+                </Link>
+              </div>
+            }
             {post.featured && <span>Featured</span>}
             <h2 className="text-lg mt-2 md:text-xl mb-1 text-heading-black font-bold hover:underline">
               {post.title}
@@ -39,11 +40,11 @@ const PostCardBlog = ({ post, number }) => {
             {post.excerpt}
           </section>
           <div>
-          {post.authors.map((author, index) => 
-            <Link to={`/author/${author.slug}`} key={index} className=" text-sm font-semibold text-neutral-600 hover:underline">
-              {author.name} { index !== post.authors.length - 1 && "& "}
-            </Link>
-          )}
+            {post.authors.map((author, index) =>
+              <Link to={`/author/${author.slug}`} key={index} className=" text-sm font-semibold text-neutral-600 hover:underline">
+                {author.name} {index !== post.authors.length - 1 && "& "}
+              </Link>
+            )}
           </div>
           <footer className="flex text-sm font-light">
             <div className="mr-3 text-iff-orange">
