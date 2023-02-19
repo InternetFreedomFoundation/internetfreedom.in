@@ -1,12 +1,9 @@
 import * as React from "react";
 import PropTypes from "prop-types";
 import { Link } from "gatsby";
-import { Tags } from "@tryghost/helpers-gatsby";
-import { readingTime as readingTimeHelper } from "@tryghost/helpers";
 
 const PostCarousel = ({ post, number }) => {
   const url = `/${post.slug}/`;
-  const readingTime = readingTimeHelper(post);
 
   return (
     <>

@@ -1,12 +1,9 @@
 import * as React from "react";
 import PropTypes from "prop-types";
 import { Link } from "gatsby";
-import { Tags } from "@tryghost/helpers-gatsby";
-import { readingTime as readingTimeHelper } from "@tryghost/helpers";
 
 const ProjectCarousel = ({ post, number }) => {
   const url = `/${post.slug}/`;
-  const readingTime = readingTimeHelper(post);
 
   return (
     <>
@@ -35,7 +32,6 @@ ProjectCarousel.propTypes = {
   post: PropTypes.shape({
     slug: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    feature_image: PropTypes.string,
     featured: PropTypes.bool,
     tags: PropTypes.arrayOf(
       PropTypes.shape({
