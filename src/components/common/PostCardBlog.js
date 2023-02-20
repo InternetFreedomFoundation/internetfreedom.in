@@ -12,7 +12,7 @@ const PostCardBlog = ({ post, number }) => {
       <Link to={url} id="post-card" className="mb-4 w-full flex flex-col md:flex-row items-center pb-5 border-b-2 md:border-0">
         <div className=" md:w-1/3 md:mr-4">
           <img
-            src={post.feature_image || post.og_image}
+            src={post.feature_image || post.og_image || "/images/blog_placeholder_image.png"}
             className={
               "aspect-video w-full rounded object-cover max-w-xl"
             }
@@ -46,7 +46,7 @@ const PostCardBlog = ({ post, number }) => {
               </Link>
             )}
           </div>
-          <footer className="flex text-sm font-light">
+          <footer className="flex text-sm pb-4 font-light">
             <div className="mr-3 text-iff-orange">
               <span>{post.published_at_pretty}</span>
             </div>
