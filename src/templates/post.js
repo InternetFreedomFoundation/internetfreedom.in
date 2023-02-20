@@ -88,21 +88,6 @@ const Post = ({ data, location }) => {
               </div>
             </div>
           </div>
-
-          <div className="relative blog-feature_image">
-            <div
-              className={
-                "w-full p-4 md:p-0 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8"
-              }
-            >
-              <img
-                src={post.feature_image}
-                className=" rounded-md w-full lg:max-w-4xl mx-auto"
-                alt=""
-              />
-            </div>
-          </div>
-
           <article
             className="mt-16 mx-auto prose md:prose-lg prose-img:rounded-xl prose-img:shadow-xl hover:prose-headings:underline underline-offset-4 hover:prose-a:text-iff-orange px-4 select-none"
             dangerouslySetInnerHTML={{ __html: post.html }}
