@@ -32,23 +32,23 @@ const Post = ({ data, location }) => {
         <div className="">
           <div className="bg-bg-black text-white">
             <div className="px-4 py-4 mx-auto md:max-w-full lg:max-w-screen-md 2xl:max-w-screen-lg lg:pt-16">
-              <div className="md:mx-auto text-left">
+              <div className="md:mx-auto  text-left">
                 {post.primary_tag &&
-                  <div>
+                  <div className="pb-4">
                     <Link
                       to={`/tag/${post.primary_tag?.slug}`}
                       aria-label="Author"
-                      className="text-sm p-2 font-mono bg-zinc-800 rounded-lg tracking-tight text-zinc-400 mr-2 mb-2 capitalize hover:underline hover:underline hover:underline-offset-4">
+                      className="p-2 px-4 text-sm bg-bg-light-grey rounded-full tracking-tight text-gray-300 mr-2 capitalize hover:text-iff-orange">
                       {post.primary_tag.name}
                     </Link>
                   </div>
                 }
 
-                <div className="max-w-2xl">
-                  <h1 className="my-4 font-sans block tracking-tight md:tracking-normal break-normal text-2xl md:text-4xl text-left font-extrabold text-white">
+                <div>
+                  <h1 className="mb-1 font-sans block tracking-tight md:tracking-normal break-normal text-xl md:text-2xl text-left font-extrabold text-white">
                     {post.title}
                   </h1>
-                  <p className="text-left text text-zinc-500">{post.excerpt}</p>
+                  <p className="text-left text text-body-grey text-big-body">{post.excerpt}</p>
                 </div>
 
                 <div className="mb-4 mt-8 flex relative -translate-x-1">
@@ -71,7 +71,7 @@ const Post = ({ data, location }) => {
                           <Link
                             to={`/author/${author.slug}`}
                             aria-label="Author"
-                            className="font-medium text-sm text-iff-orange hover:underline ml-2 mr-8"
+                            className="font-medium text-iff-orange ml-2 mr-8"
                           >
                             {author.name}
                           </Link>
@@ -80,7 +80,7 @@ const Post = ({ data, location }) => {
                     ))}
                   </div>
                   <div className="ml-auto">
-                    <p className="ml-auto font-light mt-2 text-sm text-iff-orange border-l-2 pl-2 border-iff-orange">
+                    <p className="ml-auto mt-2 text-sm text-iff-orange border-l-2 pl-2 border-iff-orange">
                       {post.published_at_pretty} <br /> {readingTime}
                     </p>
                   </div>
@@ -89,7 +89,7 @@ const Post = ({ data, location }) => {
             </div>
           </div>
           <article
-            className="mt-16 mx-auto prose md:prose-lg prose-img:rounded-xl prose-img:shadow-xl hover:prose-headings:underline underline-offset-4 hover:prose-a:text-iff-orange px-4 select-none"
+            className="mt-16 mx-auto prose md:prose-xl prose-img:rounded-xl prose-img:shadow-xl hover:prose-headings:underline underline-offset-4 hover:prose-a:text-iff-orange px-4 select-none"
             dangerouslySetInnerHTML={{ __html: post.html }}
           ></article>
         </div>
