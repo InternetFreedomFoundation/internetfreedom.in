@@ -36,7 +36,7 @@ const Tag = ({ data, location, pageContext }) => {
           </div>
 
           <div className="post-container">
-            <section className="post-feed max-w-3xl mx-auto">
+            <section className="post-feed max-w-4xl mx-auto">
               {posts.map(({ node }) => (
                 // The tag below includes the markup for each post - components/common/PostCard.js
                 <PostCardBlog key={node.id} post={node} />

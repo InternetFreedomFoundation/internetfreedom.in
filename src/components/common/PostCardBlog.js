@@ -9,8 +9,8 @@ const PostCardBlog = ({ post, number }) => {
 
   return (
     <>
-      <Link to={url} id="post-card" className="mb-4 w-full flex flex-col md:flex-row items-center pb-5 border-b-2 md:border-0">
-        <div className=" md:w-1/3 md:mr-4">
+      <Link to={url} id="post-card" className="mb-4 w-full flex hover:text-iff-orange flex-col md:flex-row items-center pb-5">
+        <div className=" md:w-1/3 md:mr-10">
           <img
             src={post.feature_image || post.og_image || "/images/blog_placeholder_image.png"}
             className={
@@ -25,35 +25,36 @@ const PostCardBlog = ({ post, number }) => {
               <div className="line-clamp-1 overflow-clip">
                 <Link
                   to={`/tag/${post.primary_tag.slug}`}
-                  className={`bg-slate-100 capitalize hover:underline text-slate-500 mr-2 py-1 px-2 rounded-lg text-sm`}
+                  className={`bg-number-grey capitalize text-bg-black hover:text-iff-orange mr-2 py-1 px-3 rounded-full text-sm`}
                 >
                   {post.primary_tag.name}
                 </Link>
               </div>
             }
             {post.featured && <span>Featured</span>}
-            <h2 className="text-lg mt-2 md:text-xl mb-1 text-heading-black font-bold hover:underline">
+            <h2 className="text-lg mt-2 md:text-xl mb-1 text-heading-black font-bold hover:text-iff-orange">
               {post.title}
             </h2>
           </header>
           <section className=" text-body-grey line-clamp-6 my-2 md:line-clamp-2">
             {post.excerpt}
           </section>
-          <div>
+          <div className="flex text-sm pb-2">
+            <div className="mr-3 text-gray-900">
+              <span>{post.published_at_pretty}</span>
+            </div>
+            <div className="ml-3 text-gray-900">
+              <div>{readingTime}</div>
+            </div>
+          </div>
+          <hr />
+          <div className="mt-1 pb-2">
             {post.authors.map((author, index) =>
-              <Link to={`/author/${author.slug}`} key={index} className=" text-sm font-semibold text-neutral-600 hover:underline">
-                {author.name} {index !== post.authors.length - 1 && "& "}
+              <Link to={`/author/${author.slug}`} key={index} className=" text-sm text-gray-900 hover:text-iff-orange">
+                {author.name}{index !== post.authors.length - 1 && (index === post.authors.length - 2 ? " & " :  ", ")}
               </Link>
             )}
           </div>
-          <footer className="flex text-sm pb-4 font-light">
-            <div className="mr-3 text-iff-orange">
-              <span>{post.published_at_pretty}</span>
-            </div>
-            <div className="ml-3 text-iff-orange font-light">
-              <div>{readingTime}</div>
-            </div>
-          </footer>
         </div>
       </Link>
     </>
