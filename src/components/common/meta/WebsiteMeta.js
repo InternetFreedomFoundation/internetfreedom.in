@@ -126,17 +126,20 @@ WebsiteMeta.propTypes = {
   type: PropTypes.oneOf([`WebSite`, `Series`]).isRequired,
 };
 
-export default function WebsiteMetaQuery() {
+const WebsiteMetaQuery = (props) => {
   const data = useStaticQuery(graphql`
-      query GhostSettingsWebsiteMeta {
-        allGhostSettings {
-          edges {
-            node {
-              ...GhostSettingsFields
-            }
+    query GhostSettingsWebsiteMeta {
+      allGhostSettings {
+        edges {
+          node {
+            ...GhostSettingsFields
           }
         }
       }
-    `)
-  return <WebsiteMeta settings={data} data={data} />
+    }
+  `)
+
+  return <WebsiteMeta settings={data} {...props} />
 }
+
+export default WebsiteMetaQuery;
