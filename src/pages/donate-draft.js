@@ -145,6 +145,7 @@ const Tabs = () => {
                     <br />
                     Dynamically innovate resource-leveling customer service for
                     state of the art customer service.
+                    </p>
                     <Card/>
                   
                 </div>
