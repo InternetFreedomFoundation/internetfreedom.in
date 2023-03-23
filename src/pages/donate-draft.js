@@ -36,9 +36,9 @@ function TopSection() {
               of counsel.
             </p>
           </div>
-          <div id="donate-widget" className="h-[438px]">
+          <div id="donate-widget" className="w-[942px] h-[438px]">
             <div class="text-sm font-medium text-gray-500">
-              <Tabs/>
+              <Tabs />
             </div>
           </div>
         </div>
@@ -137,17 +137,15 @@ const Tabs = () => {
                   className={openTab === 2 ? "block" : "hidden"}
                   id="Monthly"
                 >
-                  <p>
-                    Completely synergize resource taxing relationships via
-                    premier niche markets. Professionally cultivate one-to-one
-                    customer service with robust ideas.
-                    <br />
-                    <br />
-                    Dynamically innovate resource-leveling customer service for
-                    state of the art customer service.
-                    </p>
-                    <Card/>
-                  
+                  <Card
+                    tiers={[
+                      "Alladi Krishnaswamy Ayyar",
+                      "Bakshi Tek Chand",
+                      "Begum Aizaz Rasul",
+                      "Jawaharlal Nehru",
+                      "Dakshayani Velayudhan",
+                    ]}
+                  />
                 </div>
                 <div className={openTab === 3 ? "block" : "hidden"} id="Annual">
                   <p>
@@ -168,12 +166,49 @@ const Tabs = () => {
   );
 };
 
-const Card = () => {
+const Card = ({ tiers }) => {
   return (
-    <p>Some Stuff Goes Here</p>
+    <div className="flex flex-row mb-4">
+      <div className="w-3/4" id="picker">
+        <div className="flex flex-col">
+          <div className="flex flex-row flex-wrap">
+            {tiers.map(function (d, idx) {
+              return (
+                <div className="w-1/3 my-3">
+                  <input
+                    id="ripple-on"
+                    name="ripple"
+                    type="radio"
+                    class="before:content[''] peer relative h-4 w-4 cursor-pointer rounded-full border border-iff-orange text-iff-orange transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:iff-orange before:opacity-0 before:transition-opacity checked:border-iff-orange checked:before:bg-iff-orange hover:before:opacity-10"
+                    checked
+                    onClick={(e) => {
+                      
+                      console.log({d})
+                    }}
+                  />
+                  <label
+                    class="relative cursor-pointer items-center rounded-full p-3"
+                    for="ripple-on"
+                    data-ripple-dark="true"
+                  >
+                    {d}
+                  </label>
+                  
+                </div>
+              );
+            })}
+          </div>
+          <div className="">
+            <p>description</p>
+          </div>
+        </div>
+      </div>
+      <div className="w-1/4" id="card">
+        <p>Some stuff here</p>
+      </div>
+    </div>
   );
-
-}
+};
 function OurPrinciples() {
   return (
     <div className="px-4 py-6 md:py-16 md:text-lg  border-b-2 text-gray-500 flex-col lg:flex-row gap-8 responsive-container flex">
