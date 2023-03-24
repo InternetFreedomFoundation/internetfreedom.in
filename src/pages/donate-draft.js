@@ -36,7 +36,7 @@ function TopSection() {
               of counsel.
             </p>
           </div>
-          <div id="donate-widget" className="w-[942px] h-[438px]">
+          <div id="donate-widget" className="xl:w-[942px] xl: h-[438px]">
             <div class="text-sm font-medium text-gray-500">
               <Tabs />
             </div>
@@ -139,11 +139,12 @@ const Tabs = () => {
                 >
                   <Card
                     tiers={[
-                      "Alladi Krishnaswamy Ayyar",
-                      "Bakshi Tek Chand",
-                      "Begum Aizaz Rasul",
-                      "Jawaharlal Nehru",
-                      "Dakshayani Velayudhan",
+                      {"name":"Alladi Krishnaswamy Ayyar", "price": 1800, "perks":"Ut enim ad minim veniam, quis nostrud exercitation  laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."},
+                      {"name":"Bakshi Tek Chand", "price": 2500, "perks":"Ut enim ad minim veniam, quis nostrud  ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."},
+                      {"name":"Begum Aizaz Rasul", "price": 800, "perks":"Ut enim ad minim veniam,  nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."},
+                      {"name":"Jawahar Lal Nehru", "price": 10000, "perks":"Ut enim ad  veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."},
+                      {"name":"Dakshayani Velayudhan", "price": 2800, "perks":"Ut  ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."},
+                    
                     ]}
                   />
                 </div>
@@ -167,6 +168,7 @@ const Tabs = () => {
 };
 
 const Card = ({ tiers }) => {
+  const [tier, setTier] = React.useState(0);
   return (
     <div className="flex flex-row mb-4">
       <div className="w-3/4" id="picker">
@@ -174,37 +176,43 @@ const Card = ({ tiers }) => {
           <div className="flex flex-row flex-wrap">
             {tiers.map(function (d, idx) {
               return (
-                <div className="w-1/3 my-3">
+                <div className="lg:w-1/3 my-3"
+                  onClick={(e) => {
+                    setTier(idx);
+                  }}   
+                >
                   <input
-                    id="ripple-on"
+                    id={idx}
                     name="ripple"
                     type="radio"
-                    class="before:content[''] peer relative h-4 w-4 cursor-pointer rounded-full border border-iff-orange text-iff-orange transition-all before:absolute before:top-2/4 before:left-2/4 before:block before:h-12 before:w-12 before:-translate-y-2/4 before:-translate-x-2/4 before:rounded-full before:iff-orange before:opacity-0 before:transition-opacity checked:border-iff-orange checked:before:bg-iff-orange hover:before:opacity-10"
-                    checked
-                    onClick={(e) => {
-                      
-                      console.log({d})
-                    }}
+                    className="accent-iff-orange"
+                    checked = {tier === idx}
+                    
                   />
                   <label
-                    class="relative cursor-pointer items-center rounded-full p-3"
-                    for="ripple-on"
+                    className="relative cursor-pointer items-center rounded-full p-3"
+                    for={idx}
                     data-ripple-dark="true"
                   >
-                    {d}
+                    {d["name"]}
                   </label>
                   
                 </div>
               );
             })}
           </div>
+          <hr class="h-px mx-auto w-full my-4 bg-white border-0 dark:bg-gray-700"></hr>
           <div className="">
-            <p>description</p>
+            <p className="font-bold text-white">{tiers[tier]['name']} membership perks</p>
+            <p className="">{tiers[tier]['perks']}</p>
           </div>
         </div>
       </div>
-      <div className="w-1/4" id="card">
-        <p>Some stuff here</p>
+      <div className="w-1/4 ml-10 m-6 " id="card">
+        <p className="my-2">Membership</p>
+        <p className="font-bold text-white text-sm my-2">{tiers[tier]['name']} </p>
+        <p className="text-3xl text-white my-2">₹ {tiers[tier]['price']} <span className="text-xs"> /month</span> </p>
+        <button className="btn my-4">Donate</button>
       </div>
     </div>
   );
@@ -360,6 +368,7 @@ function UpdateCard({ title, description, tags, author, date, length }) {
       </div>
       <h1 className="text-xl font-bold mb-2 text-black"> {title} </h1>
       <p className="text-grey-200 text-sm text-justify"> {description} </p>
+      
     </div>
   );
 }
