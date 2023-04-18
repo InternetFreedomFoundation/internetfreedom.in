@@ -6,4 +6,4 @@ export { default as ProjectCarousel } from "./ProjectCarousel";
 export { default as Pagination } from "./Pagination";
 export { default as Navigation } from "./Navigation";
 export { default as Footer } from "./Footer";
-export { default as DonateCard } from "./DonateCard";
+export { default as CTA } from "./CTA";
