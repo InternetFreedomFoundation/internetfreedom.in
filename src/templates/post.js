@@ -89,7 +89,7 @@ const Post = ({ data, location }) => {
             </div>
           </div>
           <article
-            className="mt-16 mx-auto prose md:prose-xl prose-img:rounded-xl prose-img:shadow-xl hover:prose-headings:underline underline-offset-4 hover:prose-a:text-iff-orange px-4 select-none"
+            className="mt-16 mx-auto prose md:prose-xl prose-img:rounded-xl prose-img:shadow-xl prose-img:border hover:prose-headings:underline underline-offset-4 hover:prose-a:text-iff-orange px-4 select-none"
             dangerouslySetInnerHTML={{ __html: post.html }}
           ></article>
         </div>

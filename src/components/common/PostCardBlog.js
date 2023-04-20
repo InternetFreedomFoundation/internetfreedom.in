@@ -14,7 +14,7 @@ const PostCardBlog = ({ post, number }) => {
           <img
             src={post.feature_image || post.og_image || "/images/blog_placeholder_image.png"}
             className={
-              "aspect-video w-full rounded object-cover max-w-xl"
+              "aspect-video w-full rounded object-cover max-w-xl shadow-xl border"
             }
             alt=""
           />
