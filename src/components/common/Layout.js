@@ -4,7 +4,6 @@ import { Helmet } from "react-helmet";
 import { Link, StaticQuery, graphql } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 
-import { Navigation } from ".";
 import { Footer } from ".";
 import { CTA } from ".";
 import config from "../../utils/siteConfig";
@@ -49,10 +48,18 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
           />
           <nav id="site-nav" className="flex flex-col mt-8 items-center">
             {/* The navigation items as setup in Ghost */}
-            <Navigation
-              data={localData.navigation}
-              navClass="inline-block py-7 px-8 text-body-grey hover:opacity-100 hover:no-underline"
-            />
+
+            {localData.navigation.map((navItem, i) => (
+              <Link
+                className={
+                  "inline-block py-8 px-8 text-body-grey hover:text-iff-orange hover:no-underline"
+                }
+                to={navItem.url}
+                key={i}
+              >
+                {navItem.label}
+              </Link>
+            ))}
           </nav>
         </div>
       )}
@@ -87,10 +94,17 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                 >
                   <nav id="site-nav" className="flex items-center">
                     {/* The navigation items as setup in Ghost */}
-                    <Navigation
-                      data={localData.navigation}
-                      navClass="inline-block py-1 px-8 text-body-grey hover:opacity-100 hover:no-underline"
-                    />
+                    {localData.navigation.map((navItem, i) => (
+                      <Link
+                        className={
+                          "inline-block py-2 px-8 text-body-grey hover:text-iff-orange hover:no-underline"
+                        }
+                        to={navItem.url}
+                        key={i}
+                      >
+                        {navItem.label}
+                      </Link>
+                    ))}
                   </nav>
                 </div>
               </div>
