@@ -8,7 +8,7 @@ import {
   Pagination,
   PostCarousel,
   ProjectCarousel,
-  PostCardBlog
+  PostCardBlog,
 } from "../components/common";
 import { MetaData } from "../components/common/meta";
 import DonateCard from "../components/common/DonateCard";
@@ -31,7 +31,10 @@ const Index = ({ data, location, pageContext }) => {
     <>
       <MetaData location={location} />
       <Layout isHome={true}>
-        <div id="container" className="responsive-container px-4 mt-4 text-left">
+        <div
+          id="container"
+          className="responsive-container px-4 mt-4 text-left"
+        >
           <h1 className="text-subheading-1 mb-4 mt-24 font-bold">Blogposts</h1>
           <section id="post-feed">
             {posts.map(({ node }, index) => (
@@ -49,27 +52,40 @@ const Index = ({ data, location, pageContext }) => {
           <hr></hr>
           <h1 className="text-3xl mt-20 font-bold">Campaigns & Projects</h1>
           <p className="text-base text-body-grey mt-6 mb-6">
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+            {/* Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
             nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
             reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur.
+            pariatur. */}
           </p>
           <section
             id="post-feed"
-            ref={scrollElement}
-            className="flex flex-col md:flex-row scrolling-touch overflow-x-hidden"
+            // ref={scrollElement}
+            className="flex flex-col lg:flex-row overflow-x-hidden"
           >
-            {posts.map(({ node }, index) => (
-              // The tag below includes the markup for each post - components/common/ProjectCarousel.js
-              <>
-                <ProjectCarousel key={node.id} post={node} number={index + 1} />
-                <ProjectCarousel key={node.id} post={node} number={index + 1} />
-              </>
-            ))}
+            <ProjectCarousel
+              url={"https://patrakardefence.in/?ref=internetfreedom.in"}
+              img="/images/digital.png"
+              desc={`The Digital Patrakar Defence Clinic provides pro bono legal assistance to all journalists in India who face legal threats related to their reporting.`}
+            />
+            <ProjectCarousel
+              url={"https://panoptic.in/?ref=internetfreedom.in"}
+              img="/images/panoptic.png"
+              desc={`IFF’s Project Panoptic aims to bring transparency and accountability to the relevant government stakeholders involved in the deployment and implementation of facial recognition technology (FRT) projects in India.`}
+            />
+            <ProjectCarousel
+              url={"https://saveourprivacy.in/?ref=internetfreedom.in"}
+              img="/images/privacy.png"
+              desc={`#SaveOurPrivacy is an online collective launched in May, 2018 to safeguard your privacy and ensure a citizen centric data protection law.`}
+            />
+            <ProjectCarousel
+              url={"https://zombietracker.in/?ref=internetfreedom.in"}
+              img="/images/zombie.png"
+              desc={`The ‘Zombie Tracker’ is a platform which monitors cases which include a charge under Section 66A of the Information Technology Act 2000 which was deemed unconstitutional by the Hon’ble Supreme Court of India in Shreya Singhal v Union of India.`}
+            />
           </section>
 
           <div className="flex items-center justify-center">
-            <button
+            {/* <button
               id="leftScroll"
               className="px-3"
               onClick={() => scroll(-200)}
@@ -124,7 +140,7 @@ const Index = ({ data, location, pageContext }) => {
                   stroke-linejoin="round"
                 />
               </svg>
-            </button>
+            </button> */}
           </div>
         </div>
          
