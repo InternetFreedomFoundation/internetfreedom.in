@@ -9,10 +9,18 @@ const PostCardBlog = ({ post, number }) => {
 
   return (
     <>
-      <Link to={url} id="post-card" className="mb-4 w-full flex hover:text-iff-orange flex-col md:flex-row items-center pb-5">
+      <Link
+        to={url}
+        id="post-card"
+        className="mb-4 w-full flex hover:text-iff-orange flex-col md:flex-row items-center pb-5"
+      >
         <div className=" md:w-1/3 md:mr-10">
           <img
-            src={post.feature_image || post.og_image || "/images/blog_placeholder_image.png"}
+            src={
+              post.feature_image ||
+              post.og_image ||
+              "/images/blog_placeholder_image.png"
+            }
             className={
               "aspect-video w-full rounded object-cover max-w-xl shadow-xl border"
             }
@@ -21,7 +29,7 @@ const PostCardBlog = ({ post, number }) => {
         </div>
         <div className=" md:w-2/3">
           <header className="post-card-header mt-4">
-            {post.primary_tag &&
+            {post.primary_tag && (
               <div className="line-clamp-1 overflow-clip">
                 <Link
                   to={`/tag/${post.primary_tag.slug}`}
@@ -30,7 +38,7 @@ const PostCardBlog = ({ post, number }) => {
                   {post.primary_tag.name}
                 </Link>
               </div>
-            }
+            )}
             {post.featured && <span>Featured</span>}
             <h2 className="text-lg mt-2 md:text-xl mb-1 text-heading-black font-bold hover:text-iff-orange">
               {post.title}
@@ -49,11 +57,22 @@ const PostCardBlog = ({ post, number }) => {
           </div>
           <hr />
           <div className="mt-1 pb-2">
-            {post.authors.map((author, index) =>
-              <Link to={`/author/${author.slug}`} key={index} className=" text-sm text-gray-900 hover:text-iff-orange">
-                {author.name}{index !== post.authors.length - 1 && (index === post.authors.length - 2 ? " & " :  ", ")}
+            {post.authors.map((author, index) => (
+              <Link
+                to={`/author/${author.slug}`}
+                key={index}
+                className=" text-sm text-gray-900 hover:text-iff-orange"
+              >
+                <img
+                  class="inline-block h-6 w-6 rounded-full pr-1"
+                  src={author.profile_image || "/images/icons/avatar.svg"}
+                  alt=""
+                ></img>
+                {author.name}
+                {index !== post.authors.length - 1 &&
+                  (index === post.authors.length - 2 ? " & " : ", ")}
               </Link>
-            )}
+            ))}
           </div>
         </div>
       </Link>
@@ -81,4 +100,3 @@ PostCardBlog.propTypes = {
 };
 
 export default PostCardBlog;
-

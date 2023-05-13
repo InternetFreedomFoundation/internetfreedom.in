@@ -10,42 +10,42 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
 
   const result = await graphql(`
-        {
-            allGhostPost(sort: { order: ASC, fields: published_at }) {
-                edges {
-                    node {
-                        slug
-                    }
-                }
-            }
-            allGhostTag(sort: { order: ASC, fields: name }) {
-                edges {
-                    node {
-                        slug
-                        url
-                        postCount
-                    }
-                }
-            }
-            allGhostAuthor(sort: { order: ASC, fields: name }) {
-                edges {
-                    node {
-                        slug
-                        url
-                        postCount
-                    }
-                }
-            }
-            allGhostPage(sort: { order: ASC, fields: published_at }) {
-                edges {
-                    node {
-                        slug
-                        url
-                    }
-                }
-            }
+    {
+      allGhostPost(sort: { order: ASC, fields: published_at }) {
+        edges {
+          node {
+            slug
+          }
         }
-    `);
+      }
+      allGhostTag(sort: { order: ASC, fields: name }) {
+        edges {
+          node {
+            slug
+            url
+            postCount
+          }
+        }
+      }
+      allGhostAuthor(sort: { order: ASC, fields: name }) {
+        edges {
+          node {
+            slug
+            url
+            postCount
+          }
+        }
+      }
+      allGhostPage(sort: { order: ASC, fields: published_at }) {
+        edges {
+          node {
+            slug
+            url
+          }
+        }
+      }
+    }
+  `);
 
   // Check for any errors
   if (result.errors) {
@@ -71,13 +71,13 @@ exports.createPages = async ({ graphql, actions }) => {
     items: posts,
     itemsPerPage: postsPerPage,
     component: blogsTemplate,
-    pathPrefix: "blogs",
+    pathPrefix: "posts",
     context: {
-      pathPrefix: "blogs",
+      pathPrefix: "posts",
       // slug: node.slug,
     },
   });
-  
+
   // Create tag pages
   tags.forEach(({ node }) => {
     const totalPosts = node.postCount !== null ? node.postCount : 0;
