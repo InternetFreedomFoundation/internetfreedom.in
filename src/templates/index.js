@@ -8,6 +8,7 @@ import {
   Pagination,
   PostCarousel,
   ProjectCarousel,
+  PostCardBlog
 } from "../components/common";
 import { MetaData } from "../components/common/meta";
 import DonateCard from "../components/common/DonateCard";
@@ -30,33 +31,21 @@ const Index = ({ data, location, pageContext }) => {
     <>
       <MetaData location={location} />
       <Layout isHome={true}>
-        <div
-          id="container"
-          className="mt-20 my-0 ml-5 md:mx-auto text-left lg:max-w-4xl"
-        >
-          <h1 className="text-3xl mb-6 font-bold">Blogposts</h1>
+        <div id="container" className="responsive-container px-4 mt-4 text-left">
+          <h1 className="text-subheading-1 mb-4 mt-24 font-bold">Blogposts</h1>
           <section id="post-feed">
             {posts.map(({ node }, index) => (
               // The tag below includes the markup for each post - components/common/PostCard.js
-              <PostCard key={node.id} post={node} number={index + 1} />
+              <PostCardBlog key={node.id} post={node} number={index + 1} />
             ))}
           </section>
 
-          {/* <Pagination pageContext={pageContext} /> */}
-          <p className="ml-14 text-body-grey">
+          <p className="text-body-grey">
             Read more blogs on numerous other topics
           </p>
-          <button class="ml-14 mt-6 mb-20 bg-iff-orange hover:bg-iff-orange-700 text-white font-normal text-xl leading-6 not-italic py-2 px-4 rounded w-36 h-14">
+          <button class="mt-6 mb-16 bg-iff-orange hover:bg-iff-orange-700 text-white font-normal text-xl leading-6 not-italic py-2 px-4 rounded w-36 h-14">
             Read more
           </button>
-          <hr></hr>
-          <h1 className="text-3xl mt-20 mb-6 font-bold">Our latest work</h1>
-          <section id="post-feed" className="flex flex-col lg:w-1/3 md:flex-row">
-            {posts.map(({ node }, index) => (
-              // The tag below includes the markup for each post - components/common/PostCard.js
-              <PostCarousel key={node.id} post={node} number={index + 1} />
-            ))}
-          </section>
           <hr></hr>
           <h1 className="text-3xl mt-20 font-bold">Campaigns & Projects</h1>
           <p className="text-base text-body-grey mt-6 mb-6">
@@ -80,7 +69,11 @@ const Index = ({ data, location, pageContext }) => {
           </section>
 
           <div className="flex items-center justify-center">
-            <button id="leftScroll" className="px-3" onClick={() => scroll(-200)}>
+            <button
+              id="leftScroll"
+              className="px-3"
+              onClick={() => scroll(-200)}
+            >
               <svg
                 width="32"
                 height="32"
@@ -104,7 +97,11 @@ const Index = ({ data, location, pageContext }) => {
                 />
               </svg>
             </button>
-            <button id="rightScroll" className="px-3" onClick={() => scroll(200)}>
+            <button
+              id="rightScroll"
+              className="px-3"
+              onClick={() => scroll(200)}
+            >
               <svg
                 width="32"
                 height="32"
@@ -129,7 +126,6 @@ const Index = ({ data, location, pageContext }) => {
               </svg>
             </button>
           </div>
-          
         </div>
          
       </Layout>
@@ -161,8 +157,9 @@ export const pageQuery = graphql`
       edges {
         node {
           ...GhostPostFields
-        } 
+        }
       }
     }
   }
 `;
+

@@ -68,8 +68,8 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
         <div className="viewport-top">
           {/* The main header section on top of the screen */}
           <header className="bg-center bg-cover py-5 text-white bg-bg-black">
-            <div className="md:mx-auto max-w-screen-xl px-4">
-              <div className="flex items-center justify-between" id="site-mast">
+            <div className="px-4">
+              <div className="flex items-center justify-between max-w-6xl mx-auto" id="site-mast">
                 <Link to="/">
                   {isHome ? null : (
                     <img
@@ -109,31 +109,31 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                 </div>
               </div>
               {isHome ? (
-                <div id="site-banner" className="my-0 mx-auto">
-                  <img src="/images/logo.svg" className="h-28 mt-28" />
+                <div id="site-banner" className="my-0 mx-auto responsive-container ">
+                  <img src="/images/logo.svg" className=" w-72 mt-24" />
                   <h1
                     id=" site-banner-title"
-                    className="mt-12 font-bold text-2xl leading-7 not-italic max-w-lg"
+                    className="mt-12 text-white text-superheading not-italic max-w-2xl"
                   >
                     {localData.description}
                   </h1>
                   <p
                     id="site-banner-desc"
-                    className="my-4 max-w-lg text-body-grey text-xl leading-6 not-italic"
+                    className="mt-4 text-gray-400 text-big-body not-italic max-w-2xl"
                   >
                     {localData.subDescription}
                   </p>
                   <p
                     id="site-banner-desc"
-                    className="my-4 max-w-lg text-body-grey text-xl leading-6 not-italic mb-14"
+                    className="mt-4 text-gray-400 text-big-body not-italic max-w-2xl"
                   >
                     {localData.cta}
                   </p>
-                  <div id="action" className="mb-40">
-                    <button class="bg-iff-orange hover:bg-iff-orange-700 text-white font-normal text-xl leading-6 not-italic py-2 px-4 rounded w-36 h-14">
+                  <div id="action" className="mb-20 mt-8 flex">
+                    <button class="btn w-full text-xl md:w-36  h-14">
                       Donate
                     </button>
-                    <button class="border border-iff-orange hover:text-white text-iff-orange font-normal text-xl leading-6 not-italic py-2 ml-8 rounded w-36 h-14">
+                    <button class="btn-secondary ml-4 w-full text-xl md:w-36  h-14">
                       Subscribe
                     </button>
                   </div>
