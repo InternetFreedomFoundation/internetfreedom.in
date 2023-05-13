@@ -24,7 +24,7 @@
   }
 
   .btn-secondary {
-    @apply border-2 border-iff-orange text-iff-orange px-6 py-2 rounded-md;
+    @apply border border-iff-orange text-iff-orange px-6 py-2 rounded-md;
   }
 
   .responsive-container {
