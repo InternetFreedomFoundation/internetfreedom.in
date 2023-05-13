@@ -1,12 +1,11 @@
 import * as React from "react";
 import PropTypes from "prop-types";
-import { graphql, Link } from "gatsby";
+import { useStaticQuery, graphql, Link } from "gatsby";
 import { Helmet } from "react-helmet";
 
 import { Layout } from "../components/common";
 import { MetaData } from "../components/common/meta";
 import { readingTime as readingTimeHelper } from "@tryghost/helpers";
-
 
 /**
  * Single post view (/:slug)
@@ -17,6 +16,24 @@ import { readingTime as readingTimeHelper } from "@tryghost/helpers";
 const Post = ({ data, location }) => {
   const post = data.ghostPost;
   const readingTime = readingTimeHelper(post);
+  const allPosts = data.allGhostPost;
+
+  const findRelatedArticles = () => {
+    const relatedArticles = [];
+    allPosts.nodes.forEach((relatedPost) => {
+      if (relatedArticles.length === 3) {
+        return relatedArticles;
+      } else if (relatedPost.primary_tag?.slug === post.primary_tag?.slug) {
+        relatedArticles.push(relatedPost);
+      } else if (
+        relatedPost.tags?.some((tag) => tag.slug === post.primary_tag?.slug)
+      ) {
+        relatedArticles.push(relatedPost);
+      }
+    });
+    return relatedArticles;
+  };
+  const relatedArticles = findRelatedArticles();
 
   const addDefaultSrc = (e) => {
     e.target.src = "/images/icons/avatar.svg";
@@ -33,22 +50,25 @@ const Post = ({ data, location }) => {
           <div className="bg-bg-black text-white">
             <div className="px-4 py-4 mx-auto md:max-w-full lg:max-w-screen-md 2xl:max-w-screen-lg lg:pt-16">
               <div className="md:mx-auto  text-left">
-                {post.primary_tag &&
+                {post.primary_tag && (
                   <div className="pb-4">
                     <Link
                       to={`/tag/${post.primary_tag?.slug}`}
                       aria-label="Author"
-                      className="p-2 px-4 text-sm bg-bg-light-grey rounded-full tracking-tight text-gray-300 mr-2 capitalize hover:text-iff-orange">
+                      className="p-2 px-4 text-sm bg-bg-light-grey rounded-full tracking-tight text-gray-300 mr-2 capitalize hover:text-iff-orange"
+                    >
                       {post.primary_tag.name}
                     </Link>
                   </div>
-                }
+                )}
 
                 <div>
-                  <h1 className="mb-1 font-sans block tracking-tight md:tracking-normal break-normal text-xl md:text-2xl text-left font-extrabold text-white">
+                  <h1 className="pb-4 font-sans block tracking-tight md:tracking-normal break-normal text-xl md:text-2xl text-left font-extrabold text-white">
                     {post.title}
                   </h1>
-                  <p className="text-left text text-body-grey text-big-body">{post.excerpt}</p>
+                  <p className="text-left text text-body-grey text-big-body font-light">
+                    {post.excerpt}
+                  </p>
                 </div>
 
                 <div className="mb-4 mt-8 flex relative -translate-x-1">
@@ -93,6 +113,44 @@ const Post = ({ data, location }) => {
             dangerouslySetInnerHTML={{ __html: post.html }}
           ></article>
         </div>
+        <div>
+          <div className="px-4 py-4 mx-auto md:max-w-full lg:max-w-screen-lg 2xl:max-w-screen-xl lg:pt-16">
+            <div className="md:mx-auto border-t text-left">
+              <div className="pb-4">
+                <h2 className="text-2xl font-bold py-8">Similar Posts</h2>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {relatedArticles.map((relatedArticle, index) => (
+                    <div className="flex flex-row">
+                      <span className="text-3xl text-[#E7E7E7] font-extrabold pr-4">
+                        {index + 1}
+                      </span>
+                      <div className="flex flex-col h-auto">
+                        <Link
+                          to={`/${relatedArticle.slug}`}
+                          className="text-gray-800 pb-2 hover:text-iff-orange text-lg font-bold"
+                        >
+                          {relatedArticle.title}
+                        </Link>
+                        <p className="line-clamp-5 hover:line-clamp-none flex-grow text-gray-500">
+                          {relatedArticle.excerpt}
+                        </p>
+                        <div className="flex flex-row text-iff-orange text-sm">
+                          <p className="grow">
+                            {relatedArticle.published_at_pretty}
+                          </p>
+                          <p className="">
+                            {relatedArticle.reading_time} min read
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </Layout>
     </>
   );
@@ -117,6 +175,13 @@ export const postQuery = graphql`
     ghostPost(slug: { eq: $slug }) {
       ...GhostPostFields
     }
+    allGhostPost(
+      sort: { order: DESC, fields: published_at }
+      filter: { slug: { ne: $slug } }
+    ) {
+      nodes {
+        ...GhostPostFields
+      }
+    }
   }
 `;
-
