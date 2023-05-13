@@ -45,6 +45,7 @@
     "tailwindcss": "^3.3.0"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.14",
     "@tryghost/helpers": "1.1.72",
     "@tryghost/helpers-gatsby": "2.0.2",
     "cheerio": "1.0.0-rc.11",

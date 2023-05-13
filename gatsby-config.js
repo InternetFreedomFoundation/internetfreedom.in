@@ -56,27 +56,26 @@ module.exports = {
     cta: `Support and help us sustain our work and join our list to receive timely updates about our work.`,
     navigation: [
       {
-        "label": "About Us",
-        "url": "/about-us"
+        label: "About Us",
+        url: "/about-us",
       },
       {
-        "label": "Our work",
-        "url": "/author/ghost/"
+        label: "Our work",
+        url: "/author/ghost/",
       },
       {
-        "label": "Join us",
-        "url": "#"
+        label: "Join us",
+        url: "#",
       },
       {
-        "label": "Blogposts",
-        "url": "/posts"
+        label: "Blogposts",
+        url: "/posts",
       },
       {
-        "label": "Donate",
-        "url": "#donate"
-      }
-
-    ]
+        label: "Donate",
+        url: "/donate-draft",
+      },
+    ],
   },
   trailingSlash: "always",
   plugins: [
