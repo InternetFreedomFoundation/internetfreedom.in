@@ -1,20 +1,24 @@
 import * as React from "react";
 import PropTypes from "prop-types";
 import { Link } from "gatsby";
-import ReactPaginate from 'react-paginate';
-import { navigate } from "gatsby"
-
+import ReactPaginate from "react-paginate";
+import { navigate } from "gatsby";
 
 const Pagination = ({ pageContext }) => {
-  const { previousPagePath, nextPagePath, pageNumber, numberOfPages, pathPrefix } =
-    pageContext;
+  const {
+    previousPagePath,
+    nextPagePath,
+    pageNumber,
+    numberOfPages,
+    pathPrefix,
+  } = pageContext;
 
   function handlePageClick(e) {
-    if (e.selected !== pageNumber ){
+    if (e.selected !== pageNumber) {
       if (e.selected == 0) {
-        navigate(`/${pathPrefix}`)
+        navigate(`/${pathPrefix}`);
       } else {
-        navigate(`/${pathPrefix}/${e.selected + 1}`)
+        navigate(`/${pathPrefix}/${e.selected + 1}`);
       }
     }
   }

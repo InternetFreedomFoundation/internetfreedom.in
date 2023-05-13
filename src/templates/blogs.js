@@ -33,7 +33,7 @@ const Blogs = ({ data, location, pageContext }) => {
             </div> */}
           </div>
 
-          <div className="m-4 mt-16">
+          <div className="m-4 my-16">
             <section className="post-feed max-w-4xl p-4 2xl:max-w-screen-lg mx-auto">
               {posts.map(({ node }) => (
                 // The tag below includes the markup for each post - components/common/PostCard.js
@@ -75,4 +75,3 @@ export const pageQuery = graphql`
     }
   }
 `;
-
