@@ -20,11 +20,11 @@
   }
 
   .btn {
-    @apply border-2 border-iff-orange text-white bg-iff-orange px-6 py-2 rounded-md;
+    @apply border-2 border-iff-orange text-white bg-iff-orange hover:bg-opacity-80 px-6 py-2 rounded-md;
   }
 
   .btn-secondary {
-    @apply border border-iff-orange text-iff-orange px-6 py-2 rounded-md;
+    @apply border border-iff-orange text-iff-orange hover:bg-iff-orange hover:bg-opacity-10 px-6  py-2 rounded-md;
   }
 
   .responsive-container {

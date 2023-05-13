@@ -68,8 +68,8 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
         <div className="viewport-top">
           {/* The main header section on top of the screen */}
           <header className="bg-center bg-cover py-5 text-white bg-bg-black">
-            <div className="responsive-container px-4">
-              <div className="flex items-center justify-between" id="site-mast">
+            <div className="px-4">
+              <div className="flex items-center justify-between max-w-6xl mx-auto" id="site-mast">
                 <Link to="/">
                   {isHome ? null : (
                     <img
@@ -109,7 +109,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                 </div>
               </div>
               {isHome ? (
-                <div id="site-banner" className="my-0 mx-auto">
+                <div id="site-banner" className="my-0 mx-auto responsive-container ">
                   <img src="/images/logo.svg" className=" w-72 mt-24" />
                   <h1
                     id=" site-banner-title"
@@ -119,21 +119,21 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                   </h1>
                   <p
                     id="site-banner-desc"
-                    className="mt-4 text-body-grey text-big-body not-italic max-w-2xl"
+                    className="mt-4 text-gray-400 text-big-body not-italic max-w-2xl"
                   >
                     {localData.subDescription}
                   </p>
                   <p
                     id="site-banner-desc"
-                    className="mt-4 text-body-grey text-big-body not-italic max-w-2xl"
+                    className="mt-4 text-gray-400 text-big-body not-italic max-w-2xl"
                   >
                     {localData.cta}
                   </p>
                   <div id="action" className="mb-20 mt-8 flex">
-                    <button class="bg-iff-orange hover:bg-iff-orange-700 text-white font-normal text-xl leading-6 not-italic py-2 px-4 rounded w-full md:w-36  h-14">
+                    <button class="btn w-full text-xl md:w-36  h-14">
                       Donate
                     </button>
-                    <button class="border border-iff-orange hover:text-white text-iff-orange font-normal text-xl leading-6 not-italic py-2 ml-4 rounded w-full md:w-36 h-14">
+                    <button class="btn-secondary ml-4 w-full text-xl md:w-36  h-14">
                       Subscribe
                     </button>
                   </div>
