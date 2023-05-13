@@ -68,7 +68,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
         <div className="viewport-top">
           {/* The main header section on top of the screen */}
           <header className="bg-center bg-cover py-5 text-white bg-bg-black">
-            <div className="md:mx-auto max-w-screen-xl px-4">
+            <div className="responsive-container px-4">
               <div className="flex items-center justify-between" id="site-mast">
                 <Link to="/">
                   {isHome ? null : (
@@ -110,30 +110,30 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
               </div>
               {isHome ? (
                 <div id="site-banner" className="my-0 mx-auto">
-                  <img src="/images/logo.svg" className="h-28 mt-28" />
+                  <img src="/images/logo.svg" className=" w-72 mt-24" />
                   <h1
                     id=" site-banner-title"
-                    className="mt-12 font-bold text-2xl leading-7 not-italic max-w-lg"
+                    className="mt-12 text-white text-superheading not-italic max-w-2xl"
                   >
                     {localData.description}
                   </h1>
                   <p
                     id="site-banner-desc"
-                    className="my-4 max-w-lg text-body-grey text-xl leading-6 not-italic"
+                    className="mt-4 text-body-grey text-big-body not-italic max-w-2xl"
                   >
                     {localData.subDescription}
                   </p>
                   <p
                     id="site-banner-desc"
-                    className="my-4 max-w-lg text-body-grey text-xl leading-6 not-italic mb-14"
+                    className="mt-4 text-body-grey text-big-body not-italic max-w-2xl"
                   >
                     {localData.cta}
                   </p>
-                  <div id="action" className="mb-40">
-                    <button class="bg-iff-orange hover:bg-iff-orange-700 text-white font-normal text-xl leading-6 not-italic py-2 px-4 rounded w-36 h-14">
+                  <div id="action" className="mb-20 mt-8 flex">
+                    <button class="bg-iff-orange hover:bg-iff-orange-700 text-white font-normal text-xl leading-6 not-italic py-2 px-4 rounded w-full md:w-36  h-14">
                       Donate
                     </button>
-                    <button class="border border-iff-orange hover:text-white text-iff-orange font-normal text-xl leading-6 not-italic py-2 ml-8 rounded w-36 h-14">
+                    <button class="border border-iff-orange hover:text-white text-iff-orange font-normal text-xl leading-6 not-italic py-2 ml-4 rounded w-full md:w-36 h-14">
                       Subscribe
                     </button>
                   </div>

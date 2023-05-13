@@ -30,10 +30,7 @@ const Index = ({ data, location, pageContext }) => {
     <>
       <MetaData location={location} />
       <Layout isHome={true}>
-        <div
-          id="container"
-          className="mt-20 my-0 ml-5 md:mx-auto text-left lg:max-w-4xl"
-        >
+        <div id="container" className="responsive-container mt-4 text-left">
           <h1 className="text-3xl mb-6 font-bold">Blogposts</h1>
           <section id="post-feed">
             {posts.map(({ node }, index) => (
@@ -51,7 +48,10 @@ const Index = ({ data, location, pageContext }) => {
           </button>
           <hr></hr>
           <h1 className="text-3xl mt-20 mb-6 font-bold">Our latest work</h1>
-          <section id="post-feed" className="flex flex-col lg:w-1/3 md:flex-row">
+          <section
+            id="post-feed"
+            className="flex flex-col lg:w-1/3 md:flex-row"
+          >
             {posts.map(({ node }, index) => (
               // The tag below includes the markup for each post - components/common/PostCard.js
               <PostCarousel key={node.id} post={node} number={index + 1} />
@@ -80,7 +80,11 @@ const Index = ({ data, location, pageContext }) => {
           </section>
 
           <div className="flex items-center justify-center">
-            <button id="leftScroll" className="px-3" onClick={() => scroll(-200)}>
+            <button
+              id="leftScroll"
+              className="px-3"
+              onClick={() => scroll(-200)}
+            >
               <svg
                 width="32"
                 height="32"
@@ -104,7 +108,11 @@ const Index = ({ data, location, pageContext }) => {
                 />
               </svg>
             </button>
-            <button id="rightScroll" className="px-3" onClick={() => scroll(200)}>
+            <button
+              id="rightScroll"
+              className="px-3"
+              onClick={() => scroll(200)}
+            >
               <svg
                 width="32"
                 height="32"
@@ -129,7 +137,6 @@ const Index = ({ data, location, pageContext }) => {
               </svg>
             </button>
           </div>
-          
         </div>
          
       </Layout>
@@ -161,8 +168,9 @@ export const pageQuery = graphql`
       edges {
         node {
           ...GhostPostFields
-        } 
+        }
       }
     }
   }
 `;
+
