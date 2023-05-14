@@ -2,7 +2,7 @@ import * as React from "react";
 import { Helmet } from "react-helmet";
 import PropTypes from "prop-types";
 import _ from "lodash";
-import { StaticQuery, graphql } from "gatsby";
+import { useStaticQuery, graphql } from "gatsby";
 import url from "url";
 
 import ImageMeta from "./ImageMeta";
@@ -34,9 +34,8 @@ const WebsiteMeta = ({
     data.description ||
     config.siteDescriptionMeta ||
     settings.description;
-  title = `${title || data.meta_title || data.name || data.title} - ${
-    settings.title
-  }`;
+  title = `${title || data.meta_title || data.name || data.title} - ${settings.title
+    }`;
 
   const jsonLd = {
     "@context": `https://schema.org/`,
@@ -44,11 +43,11 @@ const WebsiteMeta = ({
     url: canonical,
     image: shareImage
       ? {
-          "@type": `ImageObject`,
-          url: shareImage,
-          width: config.shareImageWidth,
-          height: config.shareImageHeight,
-        }
+        "@type": `ImageObject`,
+        url: shareImage,
+        width: config.shareImageWidth,
+        height: config.shareImageHeight,
+      }
       : undefined,
     publisher: {
       "@type": `Organization`,
@@ -127,21 +126,20 @@ WebsiteMeta.propTypes = {
   type: PropTypes.oneOf([`WebSite`, `Series`]).isRequired,
 };
 
-const WebsiteMetaQuery = (props) => (
-  <StaticQuery
-    query={graphql`
-      query GhostSettingsWebsiteMeta {
-        allGhostSettings {
-          edges {
-            node {
-              ...GhostSettingsFields
-            }
+const WebsiteMetaQuery = (props) => {
+  const data = useStaticQuery(graphql`
+    query GhostSettingsWebsiteMeta {
+      allGhostSettings {
+        edges {
+          node {
+            ...GhostSettingsFields
           }
         }
       }
-    `}
-    render={(data) => <WebsiteMeta settings={data} {...props} />}
-  />
-);
+    }
+  `)
+
+  return <WebsiteMeta settings={data} {...props} />
+}
 
 export default WebsiteMetaQuery;
