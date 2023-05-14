@@ -83,49 +83,36 @@ const generateRSSFeed = function generateRSSFeed(siteConfig) {
     },
     query: `
         {
-            allGhostPost(
-                sort: {order: DESC, fields: published_at}
-            ) {
-                edges {
-                    node {
-                        # Main fields
-                        id
-                        title
-                        slug
-                        featured
-                        feature_image
-
-                        # Dates unformatted
-                        created_at
-                        published_at
-                        updated_at
-
-                        # SEO
-                        excerpt
-                        meta_title
-                        meta_description
-
-                        # Authors
-                        authors {
-                            name
-                        }
-                        primary_author {
-                            name
-                        }
-                        tags {
-                            name
-                            visibility
-                        }
-
-                        # Content
-                        html
-
-                        # Additional fields
-                        url
-                        canonical_url
-                    }
+          allGhostPost(sort: {published_at: DESC}) {
+            edges {
+              node {
+                id
+                title
+                slug
+                featured
+                feature_image
+                created_at
+                published_at
+                updated_at
+                excerpt
+                meta_title
+                meta_description
+                authors {
+                  name
                 }
+                primary_author {
+                  name
+                }
+                tags {
+                  name
+                  visibility
+                }
+                html
+                url
+                canonical_url
+              }
             }
+          }
         }
   `,
     output: `/rss`,
