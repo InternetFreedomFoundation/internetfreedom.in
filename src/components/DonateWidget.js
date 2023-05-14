@@ -71,6 +71,10 @@ const DonateWidget = () => {
           </div>
         </div>
       </div>
+      <span className="font-italic text-xs text-gray-400">
+        All donations to IFF are 50% tax deductible under Section 80G of the
+        Income Tax Act
+      </span>
     </div>
   );
 };

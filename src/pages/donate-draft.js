@@ -202,24 +202,76 @@ function UpdateCard({ title, description, tags, author, date, length }) {
 function FaqSection() {
   const faqs = [
     {
-      question: "What's the best thing about Switzerland?",
-      answer:
-        "I don't know, but the flag is a big plus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
+      question: "Who funds IFF?",
+      answer: `Beyond the Trustees who chipped in with initial contributions, more than 4000 supporters have donated to us over the course of time. We have also received donations from organisations.
+IFF is eligible to receive donations from Indian citizens and Indian companies. We are registered under the Indian Trusts Act, 1882, Section 80G of the Income Tax Act, and can accept CSR contributions.
+We welcome all donations and hope to grow a large, diverse donor-base of Indians cutting across all regional, gender, caste, and language barriers— united in the belief of realising their fundamental rights with technology.`,
     },
     {
-      question: "How do you make holy water?",
+      question: "Why should I contribute to IFF?",
       answer:
-        "You boil the hell out of it. Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+        'IFF champions digital rights, privacy, and free speech in India, which is vital to safeguarding online freedoms and securing fundamental rights for a growing community of Indians, who are connected online. When asked who funds us and whom we represent, our answer is easy - "the people of India!" Thus, it is important that the core base of our financial support comes from a donor base of ordinary Indian internet users like you.',
     },
     {
-      question: "What do you call someone with no body and no nose?",
+      question: "What does IFF do with the public funding?",
       answer:
-        "Nobody knows. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
+        "All the funds are directly used to sustain our work. IFF's work involves strategic litigation in courts, policy advocacy, representations to public authorities, engaging with the Right to Information Act, and digital literacy. IFF uses the funds to pay staff/contractor salaries and scale up its existing areas of work.",
     },
     {
-      question: "What's the best thing about Switzerland?",
+      question: "How do I cancel or change my recurring donation?",
       answer:
-        "I don't know, but the flag is a big plus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
+        "You can cancel anytime by writing to us at donate@internetfreedom.in with details of your membership (the email address that you used to sign up or your subscription ID). In case you wish to change the amount of your recurring donation, you can write to us to cancel your existing membership and set up a new recurring donation.",
+    },
+    {
+      question: "How do I renew my halted membership?",
+      answer:
+        "You can update your linked card or switch to another method of payment to renew your halted membership. Alternatively, you can sign up for the membership again or make a one time annual payment as per your preferred tier. In case you need a direct link to update the card, please drop us a line at donate@internetfreedom.in",
+    },
+    {
+      question: "Will I get a receipt to claim a 80G tax exemption?",
+      answer:
+        "Yes, you will receive an 80G tax exemption receipt as soon as you make a donation via email. For recurring donors, the consolidated 80G receipt is sent across at the end of the financial year in March every year. If you haven’t received a copy, please write to us at donate@internetfreedom.in and we will send it across.",
+    },
+    {
+      question: "Are my payment details safe?",
+      answer:
+        "Yes, your payment details are secure. We believe in keeping the absolute least amount of data necessary for keeping in touch (your name and email) and regulatory tax compliance (payment details, address, and PAN) and will resist overbroad requests for our donor data.",
+    },
+    {
+      question: "Why do you need my address and PAN details?",
+      answer:
+        "In order to meet regulatory compliance requirements, we are required to collect the address and PAN details of all donors. Without the complete and accurate information, we will be unable to accept your donation.",
+    },
+    {
+      question:
+        "I signed up to become a member on IFF’s old tiers of membership. What happens to my membership?",
+      answer:
+        "IFF introduced its new tiers of membership in April 2023. However, we did not discontinue any of our previously existing memberships and you will continue to be charged each month for the amount that you had originally signed up for the remaining validity of your membership. If you wish to change your membership tier, reach out to donate@internetfreedom.in.",
+    },
+    {
+      question: "Do you accept matching funds from my employer?",
+      answer:
+        "Yes, we would be happy to work with you to get your donation matched by your employer. However, due to regulatory compliance restrictions, we only accept donations from Indian companies. In case you wish to support us through a match donation from your employer, please write to us at donate@internetfreedom.in. ",
+    },
+    {
+      question: "Why are you asking for recurring donations?",
+      answer:
+        "Victory on digital rights requires long term and strategic advocacy action. Recurring donations are the most reliable source of revenue and help us build a consistent and predictable capital flow to plan our expenses and build capacity accordingly. Each rupee counts towards internet freedom!",
+    },
+    {
+      question: "What does my membership letter and card get me?",
+      answer:
+        "Your membership card and letter is a token of gratitude and personal recognition for your generous contribution. It gives you priority access to exclusive events and meetups and reserved seating at all IFF events.",
+    },
+    {
+      question: "What is the IFF membership merchandise?",
+      answer:
+        "We send out member merchandise kits that include a set of laptop stickers, card games, mugs, and notebooks based on the level of support in regular batches every month. These goodies are not meant for sale and are sent as a token of our appreciation to our members.",
+    },
+    {
+      question: "What are IFF quarterly calls and when will they take place?",
+      answer:
+        "We organise members' calls with IFF leadership, including the executive director and trustees, every quarter to discuss our work, fundraising, and the impact we have had in the previous quarter. These calls also give us an opportunity to listen to the thoughts and concerns of our supporters.",
     },
   ];
   return (
