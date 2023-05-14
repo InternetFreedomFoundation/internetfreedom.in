@@ -6,6 +6,7 @@ import { Helmet } from "react-helmet";
 import { Layout } from "../components/common";
 import { MetaData } from "../components/common/meta";
 import { readingTime as readingTimeHelper } from "@tryghost/helpers";
+import NewsletterWidget from "../components/NewsletterWidget";
 
 /**
  * Single post view (/:slug)
@@ -113,6 +114,7 @@ const Post = ({ data, location }) => {
             dangerouslySetInnerHTML={{ __html: post.html }}
           ></article>
         </div>
+        <NewsletterWidget />
         <div>
           <div className="px-4 py-4 mx-auto md:max-w-full lg:max-w-screen-lg 2xl:max-w-screen-xl lg:pt-16">
             <div className="md:mx-auto border-t text-left">

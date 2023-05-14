@@ -12,6 +12,7 @@ import {
 } from "../components/common";
 import { MetaData } from "../components/common/meta";
 import DonateCard from "../components/common/DonateCard";
+import NewsletterWidget from "../components/NewsletterWidget";
 
 /**
  * Main index page (home page)
@@ -49,6 +50,7 @@ const Index = ({ data, location, pageContext }) => {
           <button class="mt-6 mb-16 bg-iff-orange hover:bg-iff-orange-700 text-white font-normal text-xl leading-6 not-italic py-2 px-4 rounded w-36 h-14">
             Read more
           </button>
+          <NewsletterWidget />
           <hr></hr>
           <h1 className="text-3xl mt-20 font-bold">Campaigns & Projects</h1>
           <p className="text-base text-body-grey mt-6 mb-6">
@@ -178,4 +180,3 @@ export const pageQuery = graphql`
     }
   }
 `;
-
