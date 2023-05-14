@@ -20,8 +20,8 @@ const DonateWidget = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [currentMembership, setCurrentMembership] = useState({
     type: "Membership (Monthly)",
-    amount: 2500,
-    title: "Bakshi Tek Chand",
+    amount: 2000,
+    title: "Equality Member",
     description:
       "Ut enim ad minim veniam, quis nostrud  ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
   });
@@ -168,7 +168,7 @@ const PersonalInfo = ({
   return (
     <form className="flex sm:flex-row flex-col">
       <div className="sm:w-3/4 w-full p-4">
-        <div className="sm:grid w-full sm:grid-cols-2 space-y-5 gap-x-6 gap-y-8">
+        <div className="sm:grid w-full sm:grid-cols-2 space-y-5 sm:space-y-0 gap-x-6 gap-y-8">
           <div className="col-span-1">
             <label
               htmlFor="name"
@@ -414,32 +414,32 @@ const Tabs = ({ setCurrentMembership }) => {
                   <Card
                     tiers={[
                       {
-                        name: "Alladi Krishnaswamy Ayyar",
-                        price: 1800,
+                        name: "Justice Supporter",
+                        price: 100,
                         perks:
                           "Ut enim ad minim veniam, quis nostrud exercitation  laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
                       },
                       {
-                        name: "Bakshi Tek Chand",
-                        price: 2500,
+                        name: "Liberty Advocate",
+                        price: 750,
                         perks:
                           "Ut enim ad minim veniam, quis nostrud  ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
                       },
                       {
-                        name: "Begum Aizaz Rasul",
-                        price: 800,
+                        name: "Equality Member",
+                        price: 2000,
                         perks:
                           "Ut enim ad minim veniam,  nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
                       },
                       {
-                        name: "Jawahar Lal Nehru",
-                        price: 10000,
+                        name: "Fraternity champion",
+                        price: 5000,
                         perks:
                           "Ut enim ad  veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
                       },
                       {
-                        name: "Dakshayani Velayudhan",
-                        price: 2800,
+                        name: "Equality ally",
+                        price: 10000,
                         perks:
                           "Ut  ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
                       },
@@ -460,7 +460,7 @@ const Tabs = ({ setCurrentMembership }) => {
 };
 
 const Card = ({ tiers, setCurrentMembership }) => {
-  const [tier, setTier] = React.useState(1);
+  const [tier, setTier] = React.useState(2);
   return (
     <div className="flex flex-row mb-4">
       <div className="w-full" id="picker">
