@@ -1,0 +1,24 @@
+{
+    "content": [
+        {
+            "url": "https://patrakardefence.in/?ref=internetfreedom.in",
+            "img": "/images/digital.png",
+            "desc": "The Digital Patrakar Defence Clinic provides pro bono legal assistance to all journalists in India who face legal threats related to their reporting."
+        },
+        {
+            "url": "https://panoptic.in/?ref=internetfreedom.in",
+            "img": "/images/panoptic.png",
+            "desc": "IFF’s Project Panoptic aims to bring transparency and accountability to the relevant government stakeholders involved in the deployment and implementation of facial recognition technology (FRT) projects in India."
+        },
+        {
+            "url": "https://saveourprivacy.in/?ref=internetfreedom.in",
+            "img": "/images/privacy.png",
+            "desc": "#SaveOurPrivacy is an online collective launched in May, 2018 to safeguard your privacy and ensure a citizen centric data protection law."
+        },
+        {
+            "url": "https://zombietracker.in/?ref=internetfreedom.in",
+            "img": "/images/zombie.png",
+            "desc": "The ‘Zombie Tracker’ is a platform which monitors cases which include a charge under Section 66A of the Information Technology Act 2000 which was deemed unconstitutional by the Hon’ble Supreme Court of India in Shreya Singhal v Union of India."
+        }
+    ]
+}
