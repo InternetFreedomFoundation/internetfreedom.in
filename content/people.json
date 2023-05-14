@@ -1,0 +1,33 @@
+{
+    "Staff": [
+        {
+            "title": "Executive Director",
+            "name": "Apar Gupta"
+        }
+    ],
+    "councels": [
+        {
+            "title": "Executive Director",
+            "name": "Apar Gupta"
+        }
+    ],
+    "interns": [
+        {
+            "title": "Executive Director",
+            "name": "Apar Gupta"
+        }
+    ],
+    "alumini": [
+        {
+            "title": "Executive Director",
+            "name": "Anushree Verma"
+        }
+    ],
+    "leadership": [
+        {
+            "title": "Executive Director",
+            "name": "Apar Gupta",
+            "desc": "He is a lawyer and is the Asia Policy Director at Access Now. Raman was also one of the founders of the SaveTheInternet movement and advises IFF towards fulfilling its mission and objectives."
+        }
+    ]
+}
