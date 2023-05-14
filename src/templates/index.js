@@ -145,7 +145,7 @@ const Index = ({ data, location, pageContext }) => {
             </button> */}
           </div>
         </div>
-         
+         
       </Layout>
     </>
   );

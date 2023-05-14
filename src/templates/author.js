@@ -71,12 +71,12 @@ export default Author;
 
 export const pageQuery = graphql`
   query GhostAuthorQuery($slug: String!, $limit: Int!, $skip: Int!) {
-    ghostAuthor(slug: { eq: $slug }) {
+    ghostAuthor(slug: {eq: $slug}) {
       ...GhostAuthorFields
     }
     allGhostPost(
-      sort: { order: DESC, fields: [published_at] }
-      filter: { authors: { elemMatch: { slug: { eq: $slug } } } }
+      sort: {published_at: DESC}
+      filter: {authors: {elemMatch: {slug: {eq: $slug}}}}
       limit: $limit
       skip: $skip
     ) {
