@@ -174,13 +174,10 @@ export default Post;
 
 export const postQuery = graphql`
   query ($slug: String!) {
-    ghostPost(slug: { eq: $slug }) {
+    ghostPost(slug: {eq: $slug}) {
       ...GhostPostFields
     }
-    allGhostPost(
-      sort: { order: DESC, fields: published_at }
-      filter: { slug: { ne: $slug } }
-    ) {
+    allGhostPost(sort: {published_at: DESC}, filter: {slug: {ne: $slug}}) {
       nodes {
         ...GhostPostFields
       }
