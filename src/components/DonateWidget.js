@@ -57,6 +57,7 @@ const DonateWidget = () => {
               <PersonalInfo
                 setCurrentStep={setCurrentStep}
                 currentMembership={currentMembership}
+                userDetails={userDetails}
                 setUserDetails={setUserDetails}
               />
             )}
@@ -80,9 +81,9 @@ const TierSelection = ({
   setCurrentMembership,
 }) => {
   return (
-    <div className="flex flex-row">
+    <div className="flex sm:flex-row flex-col">
       <Tabs setCurrentMembership={setCurrentMembership} />
-      <div className="bg-[#2E2E2E] w-1/4 rounded-md">
+      <div className="bg-[#2E2E2E] sm:w-1/4 w-full rounded-md">
         <div className="w-full h-full p-8 flex flex-col items-center justify-center space-y-5">
           <span className="text-[#888888]">{currentMembership.type}</span>
           <span className="text-white text-xl text-center">
@@ -103,13 +104,14 @@ const TierSelection = ({
 const PersonalInfo = ({
   setCurrentStep,
   currentMembership,
+  userDetails,
   setUserDetails,
 }) => {
-  const [name, setName] = useState("");
-  const [pan, setPan] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [address, setAddress] = useState("");
+  const [name, setName] = useState(userDetails.name);
+  const [pan, setPan] = useState(userDetails.pan);
+  const [email, setEmail] = useState(userDetails.email);
+  const [phone, setPhone] = useState(userDetails.phone);
+  const [address, setAddress] = useState(userDetails.address);
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -137,6 +139,18 @@ const PersonalInfo = ({
       alert("Please fill all the fields");
       return;
     }
+    if (pan.length !== 10 || !pan.match(/^[A-Z]{5}[0-9]{4}[A-Z]{1}$/)) {
+      alert("Please enter a valid PAN number");
+      return;
+    }
+    if (!phone.match(/^[0-9]{10}$/)) {
+      alert("Please enter a valid phone number");
+      return;
+    }
+    if (!email.match(/^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/)) {
+      alert("Please enter a valid email");
+      return;
+    }
     setUserDetails({
       name,
       pan,
@@ -148,9 +162,9 @@ const PersonalInfo = ({
   };
 
   return (
-    <div className="flex flex-row">
-      <div className="w-3/4 p-4">
-        <div className="grid w-full grid-cols-2 gap-x-6 gap-y-8">
+    <form className="flex sm:flex-row flex-col">
+      <div className="sm:w-3/4 w-full p-4">
+        <div className="sm:grid w-full sm:grid-cols-2 space-y-5 gap-x-6 gap-y-8">
           <div className="col-span-1">
             <label
               htmlFor="name"
@@ -242,7 +256,7 @@ const PersonalInfo = ({
           </div>
         </div>
       </div>
-      <div className="bg-[#2E2E2E] w-1/4 rounded-md">
+      <div className="bg-[#2E2E2E] sm:w-1/4 w-full rounded-md">
         <div className="w-full h-full p-8 flex flex-col items-center justify-center space-y-5">
           <span className="text-[#888888]">{currentMembership.type}</span>
           <span className="text-white text-xl text-center">
@@ -251,7 +265,11 @@ const PersonalInfo = ({
           <span className="text-white text-3xl">
             ₹{currentMembership.amount}
           </span>
-          <button className="btn mt-4" onClick={(e) => handleSubmit(e)}>
+          <button
+            className="btn mt-4"
+            type="submit"
+            onClick={(e) => handleSubmit(e)}
+          >
             Next
           </button>
           <button
@@ -262,14 +280,14 @@ const PersonalInfo = ({
           </button>
         </div>
       </div>
-    </div>
+    </form>
   );
 };
 
 const Confirmation = ({ setCurrentStep, currentMembership, userDetails }) => {
   return (
-    <div className="flex flex-row">
-      <div className="w-3/4 flex flex-col space-y-5">
+    <div className="flex sm:flex-row flex-col">
+      <div className="sm:w-3/4 w-full flex flex-col space-y-5">
         <span className="text-[#888888]">{currentMembership.type}</span>
         <span className="text-white text-xl">{currentMembership.title}</span>
         <div className="flex flex-col">
@@ -280,7 +298,7 @@ const Confirmation = ({ setCurrentStep, currentMembership, userDetails }) => {
         </div>
         <span className="text-[#888888]">{currentMembership.description}</span>
       </div>
-      <div className="bg-[#2E2E2E] w-1/4 rounded-md">
+      <div className="bg-[#2E2E2E] w-full mt-10 sm:mt-0 sm:w-1/4 rounded-md">
         <div className="w-full h-full p-8 flex flex-col items-center justify-center space-y-5">
           <span className="text-[#888888]">
             {userDetails.name}, would you like to proceed with making the
@@ -310,7 +328,7 @@ const Tabs = ({ setCurrentMembership }) => {
   const [openTab, setOpenTab] = React.useState(2);
   return (
     <>
-      <div className="flex flex-wrap w-3/4">
+      <div className="flex flex-wrap sm:w-3/4 w-full">
         <div className="w-full">
           <ul
             className="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row"
