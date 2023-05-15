@@ -512,7 +512,6 @@ const Card = ({ tiers, setCurrentMembership }) => {
 };
 
 function Steps({ steps, currentStep, setCurrentStep }) {
-  console.log(steps);
   return (
     <div className="bg-[#2E2E2E] p-10 grid grid-flow-col grid-cols-1 md:grid-cols-4 lg:grid-cols-5">
       {steps.map((step) => (

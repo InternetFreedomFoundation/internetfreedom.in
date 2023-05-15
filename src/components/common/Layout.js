@@ -130,11 +130,8 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                     {localData.cta}
                   </p>
                   <div id="action" className="mb-20 mt-8 flex">
-                    <button class="btn w-full text-xl md:w-36  h-14">
+                    <button class="btn w-full text-xl font-light md:w-36  h-14">
                       Donate
-                    </button>
-                    <button class="btn-secondary ml-4 w-full text-xl md:w-36  h-14">
-                      Subscribe
                     </button>
                   </div>
                 </div>

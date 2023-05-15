@@ -47,7 +47,7 @@ const Index = ({ data, location, pageContext }) => {
           </section>
           <button
             onClick={() => { navigate("/posts") }}
-            class="mt-6 mb-16 bg-iff-orange hover:bg-iff-orange-700 text-white font-normal text-xl leading-6 not-italic py-2 px-4 rounded w-36 h-14">
+            class="mt-6 mb-16 bg-iff-orange hover:bg-iff-orange-700 text-white font-light text-xl leading-6 not-italic py-2 px-4 rounded w-36 h-14">
             Read more
           </button>
           <NewsletterWidget />

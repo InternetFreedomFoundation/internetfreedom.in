@@ -22,7 +22,7 @@ export default function NewsletterWidget() {
                 className="min-w-0 flex-auto rounded border-0 bg-white/5 px-3.5 py-2 text-white sm:text-sm sm:leading-6 focus:outline-none"
                 placeholder="Enter your email"
               />
-              <button type="submit" className="btn">
+              <button type="submit" className="btn font-light">
                 Subscribe
               </button>
             </div>
