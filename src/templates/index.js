@@ -44,10 +44,6 @@ const Index = ({ data, location, pageContext }) => {
               <PostCardBlog key={node.id} post={node} number={index + 1} />
             ))}
           </section>
-
-          <p className="text-body-grey">
-            Read more blogs on numerous other topics
-          </p>
           <button class="mt-6 mb-16 bg-iff-orange hover:bg-iff-orange-700 text-white font-normal text-xl leading-6 not-italic py-2 px-4 rounded w-36 h-14">
             Read more
           </button>
@@ -55,7 +51,6 @@ const Index = ({ data, location, pageContext }) => {
           <h1 className="text-subheading-1 mb-4 mt-24 font-bold">Campaigns & Projects</h1>
           <section
             id="post-feed"
-            // ref={scrollElement}
             className="flex flex-col lg:flex-row overflow-x-hidden"
           >
             {projectData.content.map((data) => {
