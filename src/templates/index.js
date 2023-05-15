@@ -51,7 +51,7 @@ const Index = ({ data, location, pageContext }) => {
           <h1 className="text-subheading-1 mb-4 mt-24 font-bold">Campaigns & Projects</h1>
           <section
             id="post-feed"
-            className="flex flex-col lg:flex-row overflow-x-hidden"
+            className="flex flex-col lg:flex-row overflow-x-hidden py-8"
           >
             {projectData.content.map((data) => {
               return <ProjectCarousel
