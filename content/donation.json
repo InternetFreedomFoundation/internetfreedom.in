@@ -1,0 +1,109 @@
+{
+    "monthly": [
+        {
+            "name": "Accessibility supporter",
+            "price": 100,
+            "perks": [
+                "Newsletter access",
+                "Membership letter and card",
+                "Briefing calls and exclusive events",
+                "Quarterly calls with IFF’s leadership"
+            ]
+        },
+        {
+            "name": "Transparency advocate",
+            "price": 750,
+            "perks": [
+                "Newsletter access",
+                "Membership letter and card",
+                "Briefing calls and exclusive events",
+                "Quarterly calls with IFF’s leadership",
+                "Stickers"
+            ]
+        },
+        {
+            "name": "Freedom Member",
+            "price": 2000,
+            "perks": [
+                "Newsletter access",
+                "Membership letter and card",
+                "Briefing calls and exclusive events",
+                "Quarterly calls with IFF’s leadership",
+                "Stickers",
+                "Postcards",
+                "Tote"
+            ]
+        },
+        {
+            "name": "Inclusivity champion",
+            "price": 5000,
+            "perks": [
+                "Newsletter access",
+                "Membership letter and card",
+                "Briefing calls and exclusive events",
+                "Quarterly calls with IFF’s leadership",
+                "Stickers",
+                "Postcards",
+                "Tote",
+                "Cap",
+                "Notebook"
+            ]
+        },
+        {
+            "name": "Equality catalyst",
+            "price": 10000,
+            "perks": [
+                "Newsletter access",
+                "Membership letter and card",
+                "Briefing calls and exclusive events",
+                "Quarterly calls with IFF’s leadership",
+                "Stickers",
+                "Postcards",
+                "Tote",
+                "Cap",
+                "Notebook",
+                "Mug",
+                "Invite to IFF’s donor dinner"
+            ]
+        }
+    ],
+    "annual": [
+        {
+            "name": "Net neutrality ally",
+            "price": 100000,
+            "perks": [
+                "Newsletter access",
+                "Membership letter and card",
+                "Briefing calls and exclusive events",
+                "Quarterly calls with IFF’s leadership",
+                "Stickers",
+                "Postcards",
+                "Tote",
+                "Cap",
+                "Notebook",
+                "Mug",
+                "Tee shirt",
+                "Invite to IFF’s donor dinner"
+            ]
+        },
+        {
+            "name": "Privacy patron",
+            "price": 500000,
+            "perks": [
+                "Newsletter access",
+                "Membership letter and card",
+                "Briefing calls and exclusive events",
+                "Quarterly calls with IFF’s leadership",
+                "Stickers",
+                "Postcards",
+                "Tote",
+                "Cap",
+                "Notebook",
+                "Mug",
+                "Custom Tee shirt",
+                "Invite to IFF’s donor dinner",
+                "Office hours with IFF staffers"
+            ]
+        }
+    ]
+}

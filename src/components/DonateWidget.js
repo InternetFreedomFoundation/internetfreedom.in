@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import donationData from "../../content/donation.json";
 
 const DonateWidget = () => {
   const steps = [
@@ -412,38 +413,7 @@ const Tabs = ({ setCurrentMembership }) => {
                   id="Monthly"
                 >
                   <Card
-                    tiers={[
-                      {
-                        name: "Justice Supporter",
-                        price: 100,
-                        perks:
-                          "Ut enim ad minim veniam, quis nostrud exercitation  laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-                      },
-                      {
-                        name: "Liberty Advocate",
-                        price: 750,
-                        perks:
-                          "Ut enim ad minim veniam, quis nostrud  ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-                      },
-                      {
-                        name: "Equality Member",
-                        price: 2000,
-                        perks:
-                          "Ut enim ad minim veniam,  nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-                      },
-                      {
-                        name: "Fraternity champion",
-                        price: 5000,
-                        perks:
-                          "Ut enim ad  veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-                      },
-                      {
-                        name: "Equality ally",
-                        price: 10000,
-                        perks:
-                          "Ut  ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-                      },
-                    ]}
+                    tiers={donationData.monthly}
                     setCurrentMembership={setCurrentMembership}
                   />
                 </div>
@@ -516,22 +486,20 @@ function Steps({ steps, currentStep, setCurrentStep }) {
     <div className="bg-[#2E2E2E] p-10 grid grid-flow-col grid-cols-1 md:grid-cols-4 lg:grid-cols-5">
       {steps.map((step) => (
         <div
-          className={`flex flex-row items-center ${
-            step.id <= currentStep ? "text-white hover:cursor-pointer" : ""
-          }`}
+          className={`flex flex-row items-center ${step.id <= currentStep ? "text-white hover:cursor-pointer" : ""
+            }`}
           onClick={() => {
             if (step.id < currentStep) setCurrentStep(step.id);
           }}
         >
           <span className="flex-shrink-0">
             <span
-              className={`flex h-4 w-4 items-center justify-center rounded-full ${
-                step.id < currentStep
-                  ? "bg-[#1D6411]"
-                  : step.id === currentStep
+              className={`flex h-4 w-4 items-center justify-center rounded-full ${step.id < currentStep
+                ? "bg-[#1D6411]"
+                : step.id === currentStep
                   ? "bg-iff-orange"
                   : "bg-[#444444]"
-              }`}
+                }`}
             >
               {step.id < currentStep ? (
                 <svg
@@ -548,9 +516,8 @@ function Steps({ steps, currentStep, setCurrentStep }) {
                 </svg>
               ) : (
                 <span
-                  className={`${
-                    step.id === currentStep ? "text-white" : "text-[#888888]"
-                  } text-xs`}
+                  className={`${step.id === currentStep ? "text-white" : "text-[#888888]"
+                    } text-xs`}
                 >
                   {step.id}
                 </span>
