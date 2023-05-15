@@ -1,6 +1,6 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 import { Layout } from "../components/common";
+import people from "../../content/people.json";
 
 const Index = () => {
   return (
@@ -98,8 +98,6 @@ function PeopleAtIff() {
       </p>
       <Staffs />
       <OfCounsels />
-      <Interns />
-      <Alumni />
       <Leadership />
     </div>
   );
@@ -127,14 +125,12 @@ function Staffs() {
       <h1 className="text-subheading-2 pb-2 mb-6 border-b">Staff</h1>
 
       <div className="grid md:grid-cols-3 gap-5 gap-y-10">
-        <Avatar name={"Apar Gupta"} title={"Executive Director"} />
-        <Avatar name={"Apar Gupta"} title={"Executive Director"} />
-        <Avatar name={"Apar Gupta"} title={"Executive Director"} />
-        <Avatar name={"Apar Gupta"} title={"Executive Director"} />
-        <Avatar name={"Apar Gupta"} title={"Executive Director"} />
-        <Avatar name={"Apar Gupta"} title={"Executive Director"} />
-        <Avatar name={"Apar Gupta"} title={"Executive Director"} />
-        <Avatar name={"Apar Gupta"} title={"Executive Director"} />
+        {
+          people.Staff.map((data) => {
+            return <Avatar name={data.name} title={data.title} />
+          }
+          )
+        }
       </div>
     </div>
   );
@@ -148,47 +144,13 @@ function OfCounsels() {
       </h1>
 
       <div className="grid md:grid-cols-3 gap-5 gap-y-10">
-        <Avatar name={"Apar Gupta"} title={"Executive Director"} />
-        <Avatar name={"Apar Gupta"} title={"Executive Director"} />
-        <Avatar name={"Apar Gupta"} title={"Executive Director"} />
+        {
+          people.councels.map((data) => {
+            return <Avatar name={data.name} title={data.title} />
+          }
+          )
+        }
       </div>
-    </div>
-  );
-}
-
-function Interns() {
-  return (
-    <div className="mt-12">
-      <h1 className="text-subheading-2 pb-2 mb-6 border-b">Interns</h1>
-
-      <div className="grid md:grid-cols-3 gap-5 gap-y-10">
-        <Avatar name={"Apar Gupta"} title={"Executive Director"} />
-        <Avatar name={"Apar Gupta"} title={"Executive Director"} />
-        <Avatar name={"Apar Gupta"} title={"Executive Director"} />
-        <Avatar name={"Apar Gupta"} title={"Executive Director"} />
-      </div>
-    </div>
-  );
-}
-
-function Alumni() {
-  return (
-    <div className="mt-12">
-      <h1 className="text-subheading-2 pb-2 mb-6 border-b">Alumni</h1>
-      <div className="flex flex-wrap flex-col sm:flex-row	">
-        {[...Array(10)].map((x, i) => {
-          return (
-            <div key={i} className="">
-              <h3 className="text-subheading-3 mr-4 mb-2">Anushree Verma</h3>
-            </div>
-          );
-        })}
-      </div>
-      <p className="mt-6 text-base">
-        Work alongside the best in the digital rights sector
-      </p>
-
-      <button className="btn-secondary mt-4">Jobs & Internship</button>
     </div>
   );
 }
@@ -202,41 +164,12 @@ function Leadership() {
       </h1>
 
       <div className="grid md:grid-cols-2 gap-y-10 gap-x-20">
-        <Avatar
-          name={"Apar Gupta"}
-          title={"Executive Director"}
-          description={
-            "He is a lawyer and is the Asia Policy Director at Access Now. Raman was also one of the founders of the SaveTheInternet movement and advises IFF towards fulfilling its mission and objectives."
+        {
+          people.leadership.map((data) => {
+            return <Avatar name={data.name} title={data.title} description={data.desc}/>
           }
-        />
-        <Avatar
-          name={"Apar Gupta"}
-          title={"Executive Director"}
-          description={
-            "He is a lawyer and is the Asia Policy Director at Access Now. Raman was also one of the founders of the SaveTheInternet movement and advises IFF towards fulfilling its mission and objectives."
-          }
-        />{" "}
-        <Avatar
-          name={"Apar Gupta"}
-          title={"Executive Director"}
-          description={
-            "He is a lawyer and is the Asia Policy Director at Access Now. Raman was also one of the founders of the SaveTheInternet movement and advises IFF towards fulfilling its mission and objectives."
-          }
-        />
-        <Avatar
-          name={"Apar Gupta"}
-          title={"Executive Director"}
-          description={
-            "He is a lawyer and is the Asia Policy Director at Access Now. Raman was also one of the founders of the SaveTheInternet movement and advises IFF towards fulfilling its mission and objectives."
-          }
-        />
-        <Avatar
-          name={"Apar Gupta"}
-          title={"Executive Director"}
-          description={
-            "He is a lawyer and is the Asia Policy Director at Access Now. Raman was also one of the founders of the SaveTheInternet movement and advises IFF towards fulfilling its mission and objectives."
-          }
-        />{" "}
+          )
+        }
       </div>
     </div>
   );

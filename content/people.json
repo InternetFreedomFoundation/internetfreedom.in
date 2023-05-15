@@ -3,31 +3,82 @@
         {
             "title": "Executive Director",
             "name": "Apar Gupta"
+        },
+        {
+            "title": "Policy Counsel",
+            "name": "Anushka Jain"
+        },
+        {
+            "title": "Campaign and Advocacy Associate",
+            "name": "Ashlesh Biradar"
+        },
+        {
+            "title": "Office Manager",
+            "name": "DK Rai"
+        },
+        {
+            "title": "Policy Director",
+            "name": "Prateek Waghre"
+        },
+        {
+            "title": "Community Fundraising Associate",
+            "name": "Shilpa Mariam Joseph"
+        },
+        {
+            "title": "Senior Litigation Counsel",
+            "name": "Tanmay Singh"
+        },
+        {
+            "title": "Associate Policy Counsel",
+            "name": "Tejasi Panjiar"
+        },
+        {
+            "title": "Associate Litigation Counsel",
+            "name": "Gayatri Malhotra"
+        },
+        {
+            "title": "Video Literacy Associate",
+            "name": "Asma Jamal"
+        },
+        {
+            "title": "Associate Litigation Counsel",
+            "name": "Radhika Roy"
         }
     ],
     "councels": [
         {
-            "title": "Executive Director",
-            "name": "Apar Gupta"
-        }
-    ],
-    "interns": [
+            "title": "Lead Of-Counsel",
+            "name": "Vrinda Bhandari"
+        },
         {
-            "title": "Executive Director",
-            "name": "Apar Gupta"
-        }
-    ],
-    "alumini": [
+            "title": "Of-Counsel",
+            "name": "Abhinav Sekhri"
+        },
         {
-            "title": "Executive Director",
-            "name": "Anushree Verma"
+            "title": "Of-Counsel",
+            "name": "Gautam Bhatia"
         }
     ],
     "leadership": [
         {
-            "title": "Executive Director",
+            "title": "Founding Director",
             "name": "Apar Gupta",
-            "desc": "He is a lawyer and is the Asia Policy Director at Access Now. Raman was also one of the founders of the SaveTheInternet movement and advises IFF towards fulfilling its mission and objectives."
+            "desc": "He is a lawyer and is the Asia Policy Director at Access Now. Raman was also one of the founders of the SaveTheInternet movement and advises IFF towards fulfilling its mission and objectives"
+        },
+        {
+            "title": "Board Co-chair and Trustee",
+            "name": "Karthik Balakrishnan",
+            "desc": "He is a software engineer at Insider.in and has built most of IFF’s tech assets. Karthik also provides guidance on technical queries and also implements fixes on IFF’s main website as well as other campaign websites and campaigns"
+        },
+        {
+            "title": "Chair and Trustee",
+            "name": "Rachita Taneja",
+            "desc": "She is an artist, activist and the co-founder of Jhatkaa.org. Rachita is also the creator of Sanitary Panels. She advises IFF on creating and running public campaigns given her previous expertise in the area and also oversees matters of organisational structuring"
+        },
+        {
+            "title": "Co-Chair and Trustee",
+            "name": "Aravind Ravi-Sulekha",
+            "desc": "Software engineer and entrepreneur at Nektar.ai. He is a co-founder and trustee and broadly oversees projects being run by volunteers. His experience with tech startups has provided IFF with a deeper understanding of the technology sector"
         }
     ]
 }
