@@ -14,6 +14,7 @@ import { MetaData } from "../components/common/meta";
 import DonateCard from "../components/common/DonateCard";
 import NewsletterWidget from "../components/NewsletterWidget";
 import projectData from "../../content/projects.json";
+import { navigate } from "gatsby";
 
 /**
  * Main index page (home page)
@@ -44,7 +45,9 @@ const Index = ({ data, location, pageContext }) => {
               <PostCardBlog key={node.id} post={node} number={index + 1} />
             ))}
           </section>
-          <button class="mt-6 mb-16 bg-iff-orange hover:bg-iff-orange-700 text-white font-normal text-xl leading-6 not-italic py-2 px-4 rounded w-36 h-14">
+          <button
+            onClick={() => { navigate("/posts") }}
+            class="mt-6 mb-16 bg-iff-orange hover:bg-iff-orange-700 text-white font-normal text-xl leading-6 not-italic py-2 px-4 rounded w-36 h-14">
             Read more
           </button>
           <NewsletterWidget />
