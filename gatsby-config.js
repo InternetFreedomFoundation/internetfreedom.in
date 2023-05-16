@@ -57,7 +57,7 @@ module.exports = {
     navigation: [
       {
         label: "About Us",
-        url: "/about-us",
+        url: "/about/",
       },
       {
         label: "Our work",
@@ -69,11 +69,11 @@ module.exports = {
       },
       {
         label: "Blogposts",
-        url: "/posts",
+        url: "/posts/",
       },
       {
         label: "Donate",
-        url: "/donate-draft",
+        url: "/donate/",
       },
     ],
   },

@@ -8,6 +8,7 @@ import { Footer } from ".";
 import { CTA } from ".";
 import config from "../../utils/siteConfig";
 import { useState } from "react";
+import { navigate } from "gatsby";
 
 // Styles
 //import "../../styles/app.css";
@@ -130,7 +131,9 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                     {localData.cta}
                   </p>
                   <div id="action" className="mb-20 mt-8 flex">
-                    <button class="btn w-full text-xl font-light md:w-36  h-14">
+                    <button
+                      onClick={() => { navigate("/donate/") }}
+                      class="btn w-full text-xl font-light md:w-36  h-14">
                       Donate
                     </button>
                   </div>

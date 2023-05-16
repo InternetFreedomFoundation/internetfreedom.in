@@ -2,10 +2,10 @@ import * as React from "react";
 import { Layout } from "../components/common";
 
 const links = [
-  { title: 'Forum', description: 'Come join our forum', url: 'https://forum.internetfreedom.in' },
-  { title: 'Donate', description: 'Donate to Internet Freedom Foundation' , url: '/donate'},
-  { title: 'Support', description: 'Our contact info and support  ', url: '/contact' },
-  { title: 'Blog', description: 'Read our articles' , url: '/blogs'},
+  { title: 'Forum', description: 'Come join our forum', url: 'https://forum.internetfreedom.in/' },
+  { title: 'Donate', description: 'Donate to Internet Freedom Foundation' , url: '/donate/'},
+  { title: 'Support', description: 'Our contact info and support  ', url: '/contact/' },
+  { title: 'Blog', description: 'Read our articles' , url: '/blogs/'},
 ]
 
 export default function NotFoundPage() {

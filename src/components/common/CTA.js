@@ -15,7 +15,7 @@ const CTA = () => {
           <h2 class="mb-4 text-2xl tracking-tight font-bold underline underline-offset-8 leading-tight text-gray-600">{CtaData.title}</h2>
           <p class="mb-6 text-gray-500 md:text-xl">{CtaData.description}</p>
           <button
-            onClick={() => { navigate("/donate") }}
+            onClick={() => { navigate("/donate/") }}
             aria-label="Donate"
             class="bg-iff-orange hover:bg-iff-orange-700 text-white font-normal text-xl leading-6 not-italic py-2 px-4 rounded w-36 h-14"
           >
