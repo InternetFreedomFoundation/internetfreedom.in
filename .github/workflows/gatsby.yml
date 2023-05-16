@@ -78,6 +78,8 @@ jobs:
       - name: Build with Gatsby
         env:
           PREFIX_PATHS: 'true'
+          GHOST_CONTENT_API_KEY: ${{ secrets.GHOST_CONTENT_API_KEY }}
+          GHOST_API_URL: ${{ vars.GHOST_CONTENT_API_KEY }}
         run: ${{ steps.detect-package-manager.outputs.manager }} run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
