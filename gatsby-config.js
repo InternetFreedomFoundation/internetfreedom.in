@@ -61,11 +61,11 @@ module.exports = {
       },
       {
         label: "Our work",
-        url: "/author/ghost/",
+        url: "/legal/",
       },
       {
         label: "Join us",
-        url: "#",
+        url: "/jobs-and-internships/",
       },
       {
         label: "Blogposts",

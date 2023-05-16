@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Layout } from "../components/common";
 import people from "../../content/people.json";
+import { Link, navigate } from "gatsby";
 
 const Index = () => {
   return (
@@ -34,11 +35,14 @@ function TopSection() {
         </p>
         <p className=" text-gray-400 mt-2">
           We follow radical{" "}
-          <span className="text-iff-orange">Transparency and Disclosures</span>
+          <Link to= "/transparency-and-finances/" className="text-iff-orange">Transparency and Disclosures</Link>
         </p>
         <div className="mt-6">
-          <button className="btn">Donate</button>
-          <button className="btn-secondary ml-4">Subscribe</button>
+          <button
+            onClick={() => { navigate("/donate/") }}
+            class="btn w-full text-xl font-light md:w-36  h-14">
+            Donate
+          </button>
         </div>
       </div>
     </div>
@@ -166,7 +170,7 @@ function Leadership() {
       <div className="grid md:grid-cols-2 gap-y-10 gap-x-20">
         {
           people.leadership.map((data) => {
-            return <Avatar name={data.name} title={data.title} description={data.desc}/>
+            return <Avatar name={data.name} title={data.title} description={data.desc} />
           }
           )
         }
