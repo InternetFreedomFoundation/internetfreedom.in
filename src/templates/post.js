@@ -92,7 +92,7 @@ const Post = ({ data, location }) => {
                           <Link
                             to={`/author/${author.slug}`}
                             aria-label="Author"
-                            className="font-medium text-iff-orange ml-2 mr-8"
+                            className="font-medium text-bold hover:underline text-iff-orange ml-2 mr-8"
                           >
                             {author.name}
                           </Link>

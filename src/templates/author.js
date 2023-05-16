@@ -27,9 +27,20 @@ const Author = ({ data, location, pageContext }) => {
       <Layout>
         <div>
           <div className="bg-bg-black py-8 text-white mx-auto">
-            <div className="prose ml-4 md:mx-auto max-w-3xl">
-              <h3 className="prose-sm text-white font-light">All Articles by:</h3>
-              <h1 className="prose-4xl text-white capitalize underline underline-offset-8">{author.name}</h1> 
+            <div className="ml-4 md:mx-auto max-w-3xl">
+              <h3 className="text-xl text-white font-light mb-5">All Posts by:</h3>
+              <div className="flex items-center space-x-2">
+                <img
+                  src={author.profile_image || "/images/icons/avatar.svg"}
+                  className="object-cover w-16 h-16 ring-2 ring-gray-400 rounded-full p-1"
+                  alt={author.name}
+                />
+                <p className="text-4xl font-extrabold leading-none tracking-tight text-white capitalize underline underline-offset-8">
+                  {author.name}
+                </p>
+              </div>
+
+
             </div>
           </div>
           <div className="post-container">

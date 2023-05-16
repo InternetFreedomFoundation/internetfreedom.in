@@ -48,32 +48,34 @@ const PostCardBlog = ({ post, number }) => {
             {post.excerpt}
           </section>
           <div className="flex text-sm pb-2">
-            <div className="mr-3 text-gray-900">
+            <div className="mr-3 text-gray-900 text-mono font-light">
               <span>{post.published_at_pretty}</span>
             </div>
-            <div className="ml-3 text-gray-900">
+            <div className="ml-3 text-gray-900 text-mono font-light">
               <div>{readingTime}</div>
             </div>
           </div>
           <hr />
-          <div className="mt-1 pb-2">
+          <div className="mt-1 pb-2 flex flex-wrap">
             {post.authors.map((author, index) => (
               <Link
                 to={`/author/${author.slug}`}
                 key={index}
-                className=" text-sm text-gray-900 hover:text-iff-orange"
+                className=" text-sm text-gray-900 hover:text-iff-orange hover:underline flex items-center space-x-2 mb-2 mr-2"
               >
                 <img
-                  class="inline-block h-6 w-6 rounded-full pr-1"
+                  class="object-cover inline-block h-6 w-6 rounded-full"
                   src={author.profile_image || "/images/icons/avatar.svg"}
                   alt=""
                 ></img>
-                {author.name}
+                <span className="inline-block">{author.name}</span>
                 {index !== post.authors.length - 1 &&
                   (index === post.authors.length - 2 ? " & " : ", ")}
               </Link>
             ))}
           </div>
+
+
         </div>
       </Link>
     </>
