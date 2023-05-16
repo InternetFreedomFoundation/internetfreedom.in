@@ -8,7 +8,8 @@
                 "Membership letter and card",
                 "Briefing calls and exclusive events",
                 "Quarterly calls with IFF’s leadership"
-            ]
+            ],
+            "plan_id": "plan_LZE0Tlk0RfSHwy"
         },
         {
             "name": "Transparency advocate",
@@ -19,7 +20,8 @@
                 "Briefing calls and exclusive events",
                 "Quarterly calls with IFF’s leadership",
                 "Stickers"
-            ]
+            ],
+            "plan_id": "plan_LZE55rEq3kjtqn"
         },
         {
             "name": "Freedom Member",
@@ -32,7 +34,8 @@
                 "Stickers",
                 "Postcards",
                 "Tote"
-            ]
+            ],
+            "plan_id": "plan_LZFgMUbNksuFHf"
         },
         {
             "name": "Inclusivity champion",
@@ -47,7 +50,8 @@
                 "Tote",
                 "Cap",
                 "Notebook"
-            ]
+            ],
+            "plan_id": "plan_LZFjJpwgImVheg"
         },
         {
             "name": "Equality catalyst",
@@ -64,7 +68,8 @@
                 "Notebook",
                 "Mug",
                 "Invite to IFF’s donor dinner"
-            ]
+            ],
+            "plan_id": "plan_LZFlokJYeyFFg0"
         }
     ],
     "annual": [
@@ -84,7 +89,8 @@
                 "Mug",
                 "Tee shirt",
                 "Invite to IFF’s donor dinner"
-            ]
+            ],
+            "plan_id": "plan_LZFqRtuvf6tT0C"
         },
         {
             "name": "Privacy patron",
@@ -103,7 +109,8 @@
                 "Custom Tee shirt",
                 "Invite to IFF’s donor dinner",
                 "Office hours with IFF staffers"
-            ]
+            ],
+            "plan_id": "plan_LZFriB0wFn3a4t"
         }
     ]
 }
