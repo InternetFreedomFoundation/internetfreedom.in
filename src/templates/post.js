@@ -17,6 +17,40 @@ import NewsletterWidget from "../components/NewsletterWidget";
 const Post = ({ data, location }) => {
   const post = data.ghostPost;
   const readingTime = readingTimeHelper(post);
+  const allPosts = data.allGhostPost;
+
+  const findRelatedArticles = () => {
+    const relatedArticles = [];
+    allPosts.nodes.forEach((relatedPost) => {
+      if (relatedArticles.length === 3) {
+        return relatedArticles;
+      } else if (relatedPost.primary_tag?.slug === post.primary_tag?.slug) {
+        relatedArticles.push(relatedPost);
+      } else if (
+        relatedPost.tags?.some((tag) => tag.slug === post.primary_tag?.slug)
+      ) {
+        relatedArticles.push(relatedPost);
+      }
+    });
+    return relatedArticles;
+  };
+  const relatedArticles = findRelatedArticles();
+  if (relatedArticles.length < 3) {
+    allPosts.nodes.forEach((relatedPost) => {
+      if (relatedArticles.length === 3) {
+        return relatedArticles;
+      } else if (relatedArticles.includes(relatedPost)) {
+        return;
+      } else {
+        relatedArticles.push(relatedPost);
+      }
+    });
+  }
+
+  const addDefaultSrc = (e) => {
+    e.target.src = "/images/icons/avatar.svg";
+  };
+
   return (
     <>
       <MetaData data={data} location={location} type="article" />
@@ -113,8 +147,26 @@ export default Post;
 
 export const postQuery = graphql`
   query ($slug: String!) {
-    ghostPost(slug: {eq: $slug}) {
+    ghostPost(slug: { eq: $slug }) {
       ...GhostPostFields
+    }
+    allGhostPost(
+      sort: { order: DESC, fields: published_at }
+      filter: { slug: { ne: $slug } }
+    ) {
+      nodes {
+        excerpt
+        slug
+        title
+        published_at
+        reading_time
+        primary_tag {
+          slug
+        }
+        tags {
+          slug
+        }
+      }
     }
   }
 `;
