@@ -1,116 +1,116 @@
 {
-    "monthly": [
-        {
-            "name": "Accessibility supporter",
-            "price": 100,
-            "perks": [
-                "Newsletter access",
-                "Membership letter and card",
-                "Briefing calls and exclusive events",
-                "Quarterly calls with IFF’s leadership"
-            ],
-            "plan_id": "plan_LZE0Tlk0RfSHwy"
-        },
-        {
-            "name": "Transparency advocate",
-            "price": 750,
-            "perks": [
-                "Newsletter access",
-                "Membership letter and card",
-                "Briefing calls and exclusive events",
-                "Quarterly calls with IFF’s leadership",
-                "Stickers"
-            ],
-            "plan_id": "plan_LZE55rEq3kjtqn"
-        },
-        {
-            "name": "Freedom Member",
-            "price": 2000,
-            "perks": [
-                "Newsletter access",
-                "Membership letter and card",
-                "Briefing calls and exclusive events",
-                "Quarterly calls with IFF’s leadership",
-                "Stickers",
-                "Postcards",
-                "Tote"
-            ],
-            "plan_id": "plan_LZFgMUbNksuFHf"
-        },
-        {
-            "name": "Inclusivity champion",
-            "price": 5000,
-            "perks": [
-                "Newsletter access",
-                "Membership letter and card",
-                "Briefing calls and exclusive events",
-                "Quarterly calls with IFF’s leadership",
-                "Stickers",
-                "Postcards",
-                "Tote",
-                "Cap",
-                "Notebook"
-            ],
-            "plan_id": "plan_LZFjJpwgImVheg"
-        },
-        {
-            "name": "Equality catalyst",
-            "price": 10000,
-            "perks": [
-                "Newsletter access",
-                "Membership letter and card",
-                "Briefing calls and exclusive events",
-                "Quarterly calls with IFF’s leadership",
-                "Stickers",
-                "Postcards",
-                "Tote",
-                "Cap",
-                "Notebook",
-                "Mug",
-                "Invite to IFF’s donor dinner"
-            ],
-            "plan_id": "plan_LZFlokJYeyFFg0"
-        }
-    ],
-    "annual": [
-        {
-            "name": "Net neutrality ally",
-            "price": 100000,
-            "perks": [
-                "Newsletter access",
-                "Membership letter and card",
-                "Briefing calls and exclusive events",
-                "Quarterly calls with IFF’s leadership",
-                "Stickers",
-                "Postcards",
-                "Tote",
-                "Cap",
-                "Notebook",
-                "Mug",
-                "Tee shirt",
-                "Invite to IFF’s donor dinner"
-            ],
-            "plan_id": "plan_LZFqRtuvf6tT0C"
-        },
-        {
-            "name": "Privacy patron",
-            "price": 500000,
-            "perks": [
-                "Newsletter access",
-                "Membership letter and card",
-                "Briefing calls and exclusive events",
-                "Quarterly calls with IFF’s leadership",
-                "Stickers",
-                "Postcards",
-                "Tote",
-                "Cap",
-                "Notebook",
-                "Mug",
-                "Custom Tee shirt",
-                "Invite to IFF’s donor dinner",
-                "Office hours with IFF staffers"
-            ],
-            "plan_id": "plan_LZFriB0wFn3a4t"
-        }
-    ]
+  "monthly": [
+    {
+      "name": "Accessibility supporter",
+      "price": 100,
+      "perks": [
+        "Newsletter access",
+        "Membership letter and card",
+        "Briefing calls and exclusive events",
+        "Quarterly calls with IFF’s leadership"
+      ],
+      "plan_id": "plan_LZE0Tlk0RfSHwy"
+    },
+    {
+      "name": "Transparency advocate",
+      "price": 750,
+      "perks": [
+        "Newsletter access",
+        "Membership letter and card",
+        "Briefing calls and exclusive events",
+        "Quarterly calls with IFF’s leadership",
+        "Stickers"
+      ],
+      "plan_id": "plan_LZE55rEq3kjtqn"
+    },
+    {
+      "name": "Freedom Member",
+      "price": 2000,
+      "perks": [
+        "Newsletter access",
+        "Membership letter and card",
+        "Briefing calls and exclusive events",
+        "Quarterly calls with IFF’s leadership",
+        "Stickers",
+        "Postcards",
+        "Tote"
+      ],
+      "plan_id": "plan_LZFgMUbNksuFHf"
+    },
+    {
+      "name": "Inclusivity champion",
+      "price": 5000,
+      "perks": [
+        "Newsletter access",
+        "Membership letter and card",
+        "Briefing calls and exclusive events",
+        "Quarterly calls with IFF’s leadership",
+        "Stickers",
+        "Postcards",
+        "Tote",
+        "Cap",
+        "Notebook"
+      ],
+      "plan_id": "plan_LZFjJpwgImVheg"
+    },
+    {
+      "name": "Equality catalyst",
+      "price": 10000,
+      "perks": [
+        "Newsletter access",
+        "Membership letter and card",
+        "Briefing calls and exclusive events",
+        "Quarterly calls with IFF’s leadership",
+        "Stickers",
+        "Postcards",
+        "Tote",
+        "Cap",
+        "Notebook",
+        "Mug",
+        "Invite to IFF’s donor dinner"
+      ],
+      "plan_id": "plan_LZFlokJYeyFFg0"
+    }
+  ],
+  "annual": [
+    {
+      "name": "Net neutrality ally",
+      "price": 100000,
+      "perks": [
+        "Newsletter access",
+        "Membership letter and card",
+        "Briefing calls and exclusive events",
+        "Quarterly calls with IFF’s leadership",
+        "Stickers",
+        "Postcards",
+        "Tote",
+        "Cap",
+        "Notebook",
+        "Mug",
+        "Tee shirt",
+        "Invite to IFF’s donor dinner"
+      ],
+      "plan_id": "plan_LZFqRtuvf6tT0C"
+    },
+    {
+      "name": "Privacy patron",
+      "price": 500000,
+      "perks": [
+        "Newsletter access",
+        "Membership letter and card",
+        "Briefing calls and exclusive events",
+        "Quarterly calls with IFF’s leadership",
+        "Stickers",
+        "Postcards",
+        "Tote",
+        "Cap",
+        "Notebook",
+        "Mug",
+        "Custom Tee shirt",
+        "Invite to IFF’s donor dinner",
+        "Office hours with IFF staffers"
+      ],
+      "plan_id": "plan_LZFriB0wFn3a4t"
+    }
+  ]
 }

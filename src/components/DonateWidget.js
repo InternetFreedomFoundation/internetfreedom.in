@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import donationData from "../../content/donation.json";
+import { RadioGroup } from "@headlessui/react";
 
 const DonateWidget = () => {
   const steps = [
@@ -21,10 +22,15 @@ const DonateWidget = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [currentMembership, setCurrentMembership] = useState({
     type: "Membership (Monthly)",
-    amount: 2000,
-    title: "Equality Member",
-    description:
-      "Ut enim ad minim veniam, quis nostrud  ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    amount: 750,
+    title: "Transparency advocate",
+    perks: [
+      "Newsletter access",
+      "Membership letter and card",
+      "Briefing calls and exclusive events",
+      "Quarterly calls with IFF’s leadership",
+      "Stickers",
+    ],
   });
   const [userDetails, setUserDetails] = useState({
     name: "",
@@ -80,6 +86,8 @@ const DonateWidget = () => {
   );
 };
 
+function makeDonation(currentMembership, userDetails) {}
+
 const TierSelection = ({
   setCurrentStep,
   currentMembership,
@@ -97,7 +105,16 @@ const TierSelection = ({
           <span className="text-white text-3xl">
             ₹{currentMembership.amount}
           </span>
-          <button className="btn mt-4" onClick={() => setCurrentStep(2)}>
+          <button
+            className="btn mt-4"
+            onClick={() => {
+              if (currentMembership.amount < 1) {
+                alert("Please enter valid donation amount");
+                return;
+              }
+              setCurrentStep(2);
+            }}
+          >
             Next
           </button>
         </div>
@@ -312,14 +329,16 @@ const Confirmation = ({ setCurrentStep, currentMembership, userDetails }) => {
           <button
             className="btn mt-4"
             onClick={() => {
-              // Make API call here for razorpay
+              makeDonation(currentMembership, userDetails);
             }}
           >
             Next
           </button>
           <button
             className="text-iff-orange mt-4"
-            onClick={() => setCurrentStep(2)}
+            onClick={() => {
+              setCurrentStep(2);
+            }}
           >
             Back
           </button>
@@ -406,19 +425,24 @@ const Tabs = ({ setCurrentMembership }) => {
                   className={openTab === 1 ? "block" : "hidden"}
                   id="One time"
                 >
-                  <p>TODO: Add one time payment options here</p>
+                  <OneTimeOptions setCurrentMembership={setCurrentMembership} />
                 </div>
                 <div
                   className={openTab === 2 ? "block" : "hidden"}
                   id="Monthly"
                 >
                   <Card
+                    type="monthly"
                     tiers={donationData.monthly}
                     setCurrentMembership={setCurrentMembership}
                   />
                 </div>
                 <div className={openTab === 3 ? "block" : "hidden"} id="Annual">
-                  <p>TODO: Yearly payment options card here.</p>
+                  <Card
+                    type="annual"
+                    tiers={donationData.annual}
+                    setCurrentMembership={setCurrentMembership}
+                  />
                 </div>
               </div>
             </div>
@@ -429,7 +453,135 @@ const Tabs = ({ setCurrentMembership }) => {
   );
 };
 
-const Card = ({ tiers, setCurrentMembership }) => {
+function classNames(...classes) {
+  return classes.filter(Boolean).join(" ");
+}
+
+function OneTimeOptions({ setCurrentMembership }) {
+  const amounts = [
+    {
+      id: 1,
+      title: "₹2,500",
+      description: "One Time Donation",
+      amount: 2500,
+    },
+    {
+      id: 2,
+      title: "₹5,000",
+      description: "One Time Donation",
+      amount: 5000,
+    },
+    {
+      id: 3,
+      title: "₹7,500",
+      description: "One Time Donation",
+      amount: 7500,
+    },
+    {
+      id: 4,
+      title: "₹10,000",
+      description: "One Time Donation",
+      amount: 10000,
+    },
+    {
+      id: 5,
+      title: "₹25,000",
+      description: "One Time Donation",
+      amount: 25000,
+    },
+    {
+      id: 6,
+      title: "₹50,000",
+      description: "One Time Donation",
+      amount: 50000,
+    },
+  ];
+
+  const [selectedAmount, setSelectedAmount] = useState(amounts[0]);
+
+  React.useEffect(() => {
+    setCurrentMembership({
+      type: "One Time Donation",
+      title: selectedAmount.title,
+      amount: selectedAmount.amount,
+      description: selectedAmount.description,
+    });
+  }, [selectedAmount]);
+
+  return (
+    <>
+      <RadioGroup value={selectedAmount} onChange={setSelectedAmount}>
+        <div className="mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-3 sm:gap-x-4">
+          {amounts.map((amount) => (
+            <RadioGroup.Option
+              key={amount.id}
+              value={amount}
+              className={({ checked, active }) =>
+                classNames(
+                  checked ? "border-transparent" : "border-gray-600",
+                  active ? "border-iff-orange ring-2 ring-iff-orange" : "",
+                  "relative flex cursor-pointer rounded-lg border bg-white/10 p-4 shadow-sm focus:outline-none"
+                )
+              }
+            >
+              {({ checked, active }) => (
+                <>
+                  <span className="flex flex-1">
+                    <span className="flex flex-col">
+                      <RadioGroup.Label
+                        as="span"
+                        className="block text-sm font-medium text-gray-100"
+                      >
+                        {amount.title}
+                      </RadioGroup.Label>
+                      <RadioGroup.Description
+                        as="span"
+                        className="mt-1 flex items-center text-sm text-gray-400"
+                      >
+                        {amount.description}
+                      </RadioGroup.Description>
+                    </span>
+                  </span>
+                  <span
+                    className={classNames(
+                      active ? "border" : "border-2",
+                      checked ? "border-iff-orange" : "border-transparent",
+                      "pointer-events-none absolute -inset-px rounded-lg"
+                    )}
+                    aria-hidden="true"
+                  />
+                </>
+              )}
+            </RadioGroup.Option>
+          ))}
+        </div>
+      </RadioGroup>
+      <div className="mt-5">
+        <label
+          htmlFor="custom-amount"
+          className="block text-sm font-medium leading-6 text-white"
+        >
+          Custom amount
+        </label>
+        <input
+          type="number"
+          className="w-full rounded-sm border-0 py-1.5 pl-4 text-white placeholder:text-gray-400 bg-[#2E2E2E] focus:bg-[#3E3E3E] focus:outline-none sm:text-sm sm:leading-6"
+          placeholder="Enter custom amount"
+          onChange={(e) => {
+            setCurrentMembership({
+              type: "One Time Donation",
+              title: "Custom Amount",
+              amount: e.target.value,
+              description: "One Time Donation",
+            });
+          }}
+        />
+      </div>
+    </>
+  );
+}
+
+const Card = ({ tiers, type, setCurrentMembership }) => {
   const [tier, setTier] = React.useState(2);
   return (
     <div className="flex flex-row mb-4">
@@ -442,7 +594,9 @@ const Card = ({ tiers, setCurrentMembership }) => {
                   className="lg:w-1/3 my-3"
                   onClick={(e) => {
                     setCurrentMembership({
-                      type: "Membership (Monthly)",
+                      type:
+                        (type == "monthly" ? "Monthly" : "Annual") +
+                        " Membership",
                       title: d["name"],
                       amount: d["price"],
                       description: d["perks"],
@@ -451,15 +605,15 @@ const Card = ({ tiers, setCurrentMembership }) => {
                   }}
                 >
                   <input
-                    id={idx}
-                    name="ripple"
+                    id={type + "-" + idx}
+                    name={type}
                     type="radio"
                     className="accent-iff-orange"
                     checked={tier === idx}
                   />
                   <label
                     className="relative cursor-pointer items-center rounded-full p-3"
-                    for={idx}
+                    for={type + "-" + idx}
                     data-ripple-dark="true"
                   >
                     {d["name"]}
@@ -471,9 +625,12 @@ const Card = ({ tiers, setCurrentMembership }) => {
           <hr class="h-px mx-auto w-full my-4 bg-white border-0 dark:bg-gray-700"></hr>
           <div className="">
             <p className="font-bold text-white">
-              {tiers[tier]["name"]} membership perks
+              {tiers[tier] != undefined && tiers[tier]["name"]} membership perks
             </p>
-            <p className="">{tiers[tier]["perks"]}</p>
+            <ul>
+              {tiers[tier] != undefined &&
+                tiers[tier].perks.map((perk) => <li>{perk}</li>)}
+            </ul>
           </div>
         </div>
       </div>
@@ -486,20 +643,22 @@ function Steps({ steps, currentStep, setCurrentStep }) {
     <div className="bg-[#2E2E2E] p-10 grid grid-flow-col grid-cols-1 md:grid-cols-4 lg:grid-cols-5">
       {steps.map((step) => (
         <div
-          className={`flex flex-row items-center ${step.id <= currentStep ? "text-white hover:cursor-pointer" : ""
-            }`}
+          className={`flex flex-row items-center ${
+            step.id <= currentStep ? "text-white hover:cursor-pointer" : ""
+          }`}
           onClick={() => {
             if (step.id < currentStep) setCurrentStep(step.id);
           }}
         >
           <span className="flex-shrink-0">
             <span
-              className={`flex h-4 w-4 items-center justify-center rounded-full ${step.id < currentStep
-                ? "bg-[#1D6411]"
-                : step.id === currentStep
+              className={`flex h-4 w-4 items-center justify-center rounded-full ${
+                step.id < currentStep
+                  ? "bg-[#1D6411]"
+                  : step.id === currentStep
                   ? "bg-iff-orange"
                   : "bg-[#444444]"
-                }`}
+              }`}
             >
               {step.id < currentStep ? (
                 <svg
@@ -516,8 +675,9 @@ function Steps({ steps, currentStep, setCurrentStep }) {
                 </svg>
               ) : (
                 <span
-                  className={`${step.id === currentStep ? "text-white" : "text-[#888888]"
-                    } text-xs`}
+                  className={`${
+                    step.id === currentStep ? "text-white" : "text-[#888888]"
+                  } text-xs`}
                 >
                   {step.id}
                 </span>
