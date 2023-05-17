@@ -189,7 +189,7 @@ export const postQuery = graphql`
       ...GhostPostFields
     }
     allGhostPost(
-      sort: { order: DESC, fields: published_at }
+      sort: { published_at: DESC }
       filter: { slug: { ne: $slug } }
     ) {
       nodes {
