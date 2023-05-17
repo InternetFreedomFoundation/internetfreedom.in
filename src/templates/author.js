@@ -28,7 +28,9 @@ const Author = ({ data, location, pageContext }) => {
         <div>
           <div className="bg-bg-black py-8 text-white mx-auto">
             <div className="ml-4 md:mx-auto max-w-3xl">
-              <h3 className="text-xl text-white font-light mb-5">All Posts by:</h3>
+              <h3 className="text-xl text-white font-light mb-5">
+                All Posts by:
+              </h3>
               <div className="flex items-center space-x-2">
                 <img
                   src={author.profile_image || "/images/icons/avatar.svg"}
@@ -39,8 +41,6 @@ const Author = ({ data, location, pageContext }) => {
                   {author.name}
                 </p>
               </div>
-
-
             </div>
           </div>
           <div className="post-container">
@@ -82,12 +82,12 @@ export default Author;
 
 export const pageQuery = graphql`
   query GhostAuthorQuery($slug: String!, $limit: Int!, $skip: Int!) {
-    ghostAuthor(slug: {eq: $slug}) {
+    ghostAuthor(slug: { eq: $slug }) {
       ...GhostAuthorFields
     }
     allGhostPost(
-      sort: {published_at: DESC}
-      filter: {authors: {elemMatch: {slug: {eq: $slug}}}}
+      sort: { fields: published_at, order: DESC }
+      filter: { authors: { elemMatch: { slug: { eq: $slug } } } }
       limit: $limit
       skip: $skip
     ) {

@@ -46,27 +46,32 @@ const Index = ({ data, location, pageContext }) => {
             ))}
           </section>
           <button
-            onClick={() => { navigate("/posts") }}
-            class="mt-6 mb-16 bg-iff-orange hover:bg-iff-orange-700 text-white font-light text-xl leading-6 not-italic py-2 px-4 rounded w-36 h-14">
+            onClick={() => {
+              navigate("/posts");
+            }}
+            class="mt-6 mb-16 bg-iff-orange hover:bg-iff-orange-700 text-white font-light text-xl leading-6 not-italic py-2 px-4 rounded w-36 h-14"
+          >
             Read more
           </button>
           <NewsletterWidget />
-          <h1 className="text-subheading-1 mb-4 mt-24 font-bold">Campaigns & Projects</h1>
+          <h1 className="text-subheading-1 mb-4 mt-24 font-bold">
+            Campaigns & Projects
+          </h1>
           <section
             id="post-feed"
             className="flex flex-col lg:flex-row overflow-x-hidden py-8"
           >
             {projectData.content.map((data) => {
-              return <ProjectCarousel
-                url={data.url}
-                img={data.img}
-                desc={data.desc}
-              />
+              return (
+                <ProjectCarousel
+                  url={data.url}
+                  img={data.img}
+                  desc={data.desc}
+                />
+              );
             })}
-
           </section>
         </div>
-
       </Layout>
     </>
   );
@@ -88,7 +93,11 @@ export default Index;
 // The `limit` and `skip` values are used for pagination
 export const pageQuery = graphql`
   query GhostPostQuery($limit: Int!, $skip: Int!) {
-    allGhostPost(sort: {published_at: DESC}, limit: $limit, skip: $skip) {
+    allGhostPost(
+      sort: { fields: published_at, order: DESC }
+      limit: $limit
+      skip: $skip
+    ) {
       edges {
         node {
           ...GhostPostFields

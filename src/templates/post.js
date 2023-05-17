@@ -126,6 +126,44 @@ const Post = ({ data, location }) => {
           ></article>
         </div>
         <NewsletterWidget />
+        <div>
+          <div className="px-4 py-4 mx-auto md:max-w-full lg:max-w-screen-lg 2xl:max-w-screen-xl lg:pt-16">
+            <div className="md:mx-auto border-t text-left">
+              <div className="pb-4">
+                <h2 className="text-2xl font-bold py-8">Similar Posts</h2>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {relatedArticles.map((relatedArticle, index) => (
+                    <div className="flex flex-row">
+                      <span className="text-3xl text-[#E7E7E7] font-extrabold pr-4">
+                        {index + 1}
+                      </span>
+                      <div className="flex flex-col h-auto">
+                        <Link
+                          to={`/${relatedArticle.slug}`}
+                          className="text-gray-800 pb-2 hover:text-iff-orange text-lg font-bold"
+                        >
+                          {relatedArticle.title}
+                        </Link>
+                        <p className="line-clamp-5 hover:line-clamp-none flex-grow text-gray-500">
+                          {relatedArticle.excerpt}
+                        </p>
+                        <div className="flex flex-row text-iff-orange text-sm">
+                          <p className="grow">
+                            {relatedArticle.published_at_pretty}
+                          </p>
+                          <p className="">
+                            {relatedArticle.reading_time} min read
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </Layout>
     </>
   );
