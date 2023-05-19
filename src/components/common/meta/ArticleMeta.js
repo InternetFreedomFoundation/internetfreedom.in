@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Helmet } from "react-helmet";
-import { StaticQuery, graphql } from "gatsby";
+import { useStaticQuery, graphql } from "gatsby";
 import PropTypes from "prop-types";
 import _ from "lodash";
 import url from "url";
@@ -182,9 +182,8 @@ ArticleMetaGhost.propTypes = {
   canonical: PropTypes.string.isRequired,
 };
 
-const ArticleMetaQuery = (props) => (
-  <StaticQuery
-    query={graphql`
+const ArticleMetaQuery = (props) => {
+  const data = useStaticQuery(graphql`
       query GhostSettingsArticleMeta {
         allGhostSettings {
           edges {
@@ -194,9 +193,9 @@ const ArticleMetaQuery = (props) => (
           }
         }
       }
-    `}
-    render={(data) => <ArticleMetaGhost settings={data} {...props} />}
-  />
-);
+  `);
+
+  return <ArticleMetaGhost settings={data} {...props} />;
+};
 
 export default ArticleMetaQuery;

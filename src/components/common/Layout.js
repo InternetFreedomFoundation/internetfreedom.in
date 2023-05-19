@@ -1,7 +1,7 @@
 import * as React from "react";
 import PropTypes from "prop-types";
 import { Helmet } from "react-helmet";
-import { Link, StaticQuery, graphql } from "gatsby";
+import { Link, useStaticQuery, graphql } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 
 import { Footer } from ".";
@@ -166,9 +166,8 @@ DefaultLayout.propTypes = {
   }).isRequired,
 };
 
-const DefaultLayoutSettingsQuery = (props) => (
-  <StaticQuery
-    query={graphql`
+const DefaultLayoutSettingsQuery = (props) => {
+  const data = useStaticQuery(graphql`
       query GhostSettings {
         allGhostSettings {
           edges {
@@ -186,10 +185,9 @@ const DefaultLayoutSettingsQuery = (props) => (
           }
         }
       }
-    `}
-    render={(data) => <DefaultLayout data={data} {...props} />}
-  />
-);
+  `);
+
+  return <DefaultLayout data={data} {...props} />;
+};
 
 export default DefaultLayoutSettingsQuery;
-
