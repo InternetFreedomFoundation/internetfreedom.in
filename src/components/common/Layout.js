@@ -133,7 +133,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                   <div id="action" className="mb-20 mt-8 flex">
                     <button
                       onClick={() => { navigate("/donate/") }}
-                      className="btn w-full text-xl font-light md:w-36  h-14">
+                      className="btn w-full text-xl font-semibold md:w-36  h-14">
                       Donate
                     </button>
                   </div>
