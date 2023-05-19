@@ -15,7 +15,6 @@ export default function NewsletterWidget() {
       source: window.location.pathname,
     };
 
-    console.log(JSON.stringify(formData));
     try {
       const response = await fetch('https://heimdall.internetfreedom.in/campaigns/capture', {
         method: 'POST',
