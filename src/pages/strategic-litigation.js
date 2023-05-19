@@ -51,9 +51,9 @@ function OurPrinciples() {
           constitutionally. To this end, we are guided by the following
           principles:
         </p>
-        <div class="flex flex-wrap -mx-2 mb-8">
-          <div class="w-full lg:w-1/2 px-2">
-            <div class="mr-6 mt-4">
+        <div className="flex flex-wrap -mx-2 mb-8">
+          <div className="w-full lg:w-1/2 px-2">
+            <div className="mr-6 mt-4">
               <h1 className="text-iff-orange text-xl">
                 Progressive constitutionalism
               </h1>
@@ -68,8 +68,8 @@ function OurPrinciples() {
                
             </div>
           </div>
-          <div class="w-full lg:w-1/2 px-2">
-            <div class="mr-6 mt-4">
+          <div className="w-full lg:w-1/2 px-2">
+            <div className="mr-6 mt-4">
               <h1 className="text-iff-orange text-xl">Non-Partisanship</h1>
               <p className="text-sm text-justify mt-4">
                 We represent all individuals and organisations to achieve
@@ -81,8 +81,8 @@ function OurPrinciples() {
                
             </div>
           </div>
-          <div class="w-full lg:w-1/2 px-2">
-            <div class="mr-6 mt-4">
+          <div className="w-full lg:w-1/2 px-2">
+            <div className="mr-6 mt-4">
               <h1 className="text-iff-orange text-xl">Collaboration</h1>
               <p className="text-sm text-justify mt-4">
                 We recognize the value of adopting a collaborative approach
@@ -92,8 +92,8 @@ function OurPrinciples() {
                
             </div>
           </div>
-          <div class="w-full lg:w-1/2 px-2">
-            <div class="mr-6 mt-4">
+          <div className="w-full lg:w-1/2 px-2">
+            <div className="mr-6 mt-4">
               <h1 className="text-iff-orange text-xl">
                 Technological expertise
               </h1>
@@ -107,8 +107,8 @@ function OurPrinciples() {
                
             </div>
           </div>
-          <div class="w-full lg:w-1/2 px-2">
-            <div class="mr-6 mt-4">
+          <div className="w-full lg:w-1/2 px-2">
+            <div className="mr-6 mt-4">
               <h1 className="text-iff-orange text-xl">Indigenously funded</h1>
               <p className="text-sm text-justify mt-4">
                 IFF is wholly funded by Indian citizens and organisations. We do
@@ -136,7 +136,7 @@ function LatestUpdates() {
       <h1 className="text-subheading-1 mb-10">Latest Updates</h1>
 
       <div className="flex flex-wrap">
-        <div class="w-full lg:w-1/3">
+        <div className="w-full lg:w-1/3">
           <UpdateCard
             title={"Lorem ipsum dolor sit amet, consectetur"}
             description={
@@ -148,7 +148,7 @@ function LatestUpdates() {
             tags={["litigation", "policy"]}
           />
         </div>
-        <div class="w-full lg:w-1/3">
+        <div className="w-full lg:w-1/3">
           <UpdateCard
             title={"Lorem ipsum dolor sit amet, consectetur"}
             description={
@@ -160,7 +160,7 @@ function LatestUpdates() {
             tags={["litigation", "policy"]}
           />
         </div>
-        <div class="w-full lg:w-1/3">
+        <div className="w-full lg:w-1/3">
           <UpdateCard
             title={"Lorem ipsum dolor sit amet, consectetur"}
             description={
@@ -180,7 +180,7 @@ function LatestUpdates() {
 function UpdateCard({ title, description, tags, author, date, length }) {
   return (
     <div className="mr-6 sm:mb-6">
-      <div class="w-full h-48 dark:bg-gray-200 rounded-lg"></div>
+      <div className="w-full h-48 dark:bg-gray-200 rounded-lg"></div>
       <div className="">
         {tags.map(function (d, idx) {
           return (
@@ -222,7 +222,7 @@ function ActiveDockets() {
         Currently, we are engaged in the following cases:
       </p>
       <div className="flex flex-wrap">
-        <div class="w-full lg:w-1/2 py-3 pr-3">
+        <div className="w-full lg:w-1/2 py-3 pr-3">
           <DocketCard
             court={"Supreme Court"}
             name={
@@ -233,7 +233,7 @@ function ActiveDockets() {
             link={"#"}
           />
         </div>
-        <div class="w-full lg:w-1/2  py-3 pr-3">
+        <div className="w-full lg:w-1/2  py-3 pr-3">
           <DocketCard
             court={"Supreme Court"}
             name={
@@ -244,7 +244,7 @@ function ActiveDockets() {
             link={"#"}
           />
         </div>
-        <div class="w-full lg:w-1/2  py-3 pr-3">
+        <div className="w-full lg:w-1/2  py-3 pr-3">
           <DocketCard
             court={"Supreme Court"}
             name={
@@ -255,7 +255,7 @@ function ActiveDockets() {
             link={"#"}
           />
         </div>
-        <div class="w-full lg:w-1/2  py-3 pr-3">
+        <div className="w-full lg:w-1/2  py-3 pr-3">
           <DocketCard
             court={"Supreme Court"}
             name={
@@ -266,7 +266,7 @@ function ActiveDockets() {
             link={"#"}
           />
         </div>
-        <div class="w-full lg:w-1/2 py-3 pr-3">
+        <div className="w-full lg:w-1/2 py-3 pr-3">
           <DocketCard
             court={"Supreme Court"}
             name={
@@ -277,7 +277,7 @@ function ActiveDockets() {
             link={"#"}
           />
         </div>
-        <div class="w-full lg:w-1/2 py-3 pr-3">
+        <div className="w-full lg:w-1/2 py-3 pr-3">
           <DocketCard
             court={"Supreme Court"}
             name={
@@ -302,7 +302,7 @@ function PastDockets() {
       We have previously been involved in the following matters:
       </p>
       <div className="flex flex-wrap">
-        <div class="w-full lg:w-1/2 py-3 pr-3">
+        <div className="w-full lg:w-1/2 py-3 pr-3">
           <DocketCard
             court={"Supreme Court"}
             name={
@@ -313,7 +313,7 @@ function PastDockets() {
             link={"#"}
           />
         </div>
-        <div class="w-full lg:w-1/2  py-3 pr-3">
+        <div className="w-full lg:w-1/2  py-3 pr-3">
           <DocketCard
             court={"Supreme Court"}
             name={
@@ -324,7 +324,7 @@ function PastDockets() {
             link={"#"}
           />
         </div>
-        <div class="w-full lg:w-1/2  py-3 pr-3">
+        <div className="w-full lg:w-1/2  py-3 pr-3">
           <DocketCard
             court={"Supreme Court"}
             name={
@@ -335,7 +335,7 @@ function PastDockets() {
             link={"#"}
           />
         </div>
-        <div class="w-full lg:w-1/2  py-3 pr-3">
+        <div className="w-full lg:w-1/2  py-3 pr-3">
           <DocketCard
             court={"Supreme Court"}
             name={
@@ -346,7 +346,7 @@ function PastDockets() {
             link={"#"}
           />
         </div>
-        <div class="w-full lg:w-1/2 py-3 pr-3">
+        <div className="w-full lg:w-1/2 py-3 pr-3">
           <DocketCard
             court={"Supreme Court"}
             name={
@@ -357,7 +357,7 @@ function PastDockets() {
             link={"#"}
           />
         </div>
-        <div class="w-full lg:w-1/2 py-3 pr-3">
+        <div className="w-full lg:w-1/2 py-3 pr-3">
           <DocketCard
             court={"Supreme Court"}
             name={

@@ -40,7 +40,7 @@ function TopSection() {
         <div className="mt-6">
           <button
             onClick={() => { navigate("/donate/") }}
-            class="btn w-full text-xl font-light md:w-36  h-14">
+            className="btn w-full text-xl font-light md:w-36  h-14">
             Donate
           </button>
         </div>

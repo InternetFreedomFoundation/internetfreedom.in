@@ -416,7 +416,7 @@ const Tabs = ({ setCurrentMembership }) => {
               </a>
             </li>
           </ul>
-          <hr class="h-px mx-auto w-1/2 -mt-3 mb-8 bg-white border-0 dark:bg-gray-700"></hr>
+          <hr className="h-px mx-auto w-1/2 -mt-3 mb-8 bg-white border-0 dark:bg-gray-700"></hr>
 
           <div className="relative flex flex-col min-w-0 break-words w-full mb-6 rounded">
             <div className="px-4 py-5 flex-auto">
@@ -622,7 +622,7 @@ const Card = ({ tiers, type, setCurrentMembership }) => {
               );
             })}
           </div>
-          <hr class="h-px mx-auto w-full my-4 bg-white border-0 dark:bg-gray-700"></hr>
+          <hr className="h-px mx-auto w-full my-4 bg-white border-0 dark:bg-gray-700"></hr>
           <div className="">
             <p className="font-bold text-white">
               {tiers[tier] != undefined && tiers[tier]["name"]} membership perks

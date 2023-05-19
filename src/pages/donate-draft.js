@@ -55,9 +55,9 @@ function OurPrinciples() {
           constitutionally. To this end, we are guided by the following
           principles:
         </p>
-        <div class="flex flex-wrap -mx-2 mb-8">
-          <div class="w-full lg:w-1/2 px-2">
-            <div class="mr-6 mt-4">
+        <div className="flex flex-wrap -mx-2 mb-8">
+          <div className="w-full lg:w-1/2 px-2">
+            <div className="mr-6 mt-4">
               <h1 className="text-iff-orange text-xl">
                 Progressive constitutionalism
               </h1>
@@ -72,8 +72,8 @@ function OurPrinciples() {
                
             </div>
           </div>
-          <div class="w-full lg:w-1/2 px-2">
-            <div class="mr-6 mt-4">
+          <div className="w-full lg:w-1/2 px-2">
+            <div className="mr-6 mt-4">
               <h1 className="text-iff-orange text-xl">Non-Partisanship</h1>
               <p className="text-sm text-justify mt-4">
                 We represent all individuals and organisations to achieve
@@ -85,8 +85,8 @@ function OurPrinciples() {
                
             </div>
           </div>
-          <div class="w-full lg:w-1/2 px-2">
-            <div class="mr-6 mt-4">
+          <div className="w-full lg:w-1/2 px-2">
+            <div className="mr-6 mt-4">
               <h1 className="text-iff-orange text-xl">Collaboration</h1>
               <p className="text-sm text-justify mt-4">
                 We recognize the value of adopting a collaborative approach
@@ -96,8 +96,8 @@ function OurPrinciples() {
                
             </div>
           </div>
-          <div class="w-full lg:w-1/2 px-2">
-            <div class="mr-6 mt-4">
+          <div className="w-full lg:w-1/2 px-2">
+            <div className="mr-6 mt-4">
               <h1 className="text-iff-orange text-xl">
                 Technological expertise
               </h1>
@@ -111,8 +111,8 @@ function OurPrinciples() {
                
             </div>
           </div>
-          <div class="w-full lg:w-1/2 px-2">
-            <div class="mr-6 mt-4">
+          <div className="w-full lg:w-1/2 px-2">
+            <div className="mr-6 mt-4">
               <h1 className="text-iff-orange text-xl">Indigenously funded</h1>
               <p className="text-sm text-justify mt-4">
                 IFF is wholly funded by Indian citizens and organisations. We do
@@ -140,7 +140,7 @@ function LatestUpdates() {
       <h1 className="text-subheading-1 mb-10">Latest Updates</h1>
 
       <div className="flex flex-wrap">
-        <div class="w-full lg:w-1/3">
+        <div className="w-full lg:w-1/3">
           <UpdateCard
             title={"Lorem ipsum dolor sit amet, consectetur"}
             description={
@@ -152,7 +152,7 @@ function LatestUpdates() {
             tags={["litigation", "policy"]}
           />
         </div>
-        <div class="w-full lg:w-1/3">
+        <div className="w-full lg:w-1/3">
           <UpdateCard
             title={"Lorem ipsum dolor sit amet, consectetur"}
             description={
@@ -164,7 +164,7 @@ function LatestUpdates() {
             tags={["litigation", "policy"]}
           />
         </div>
-        <div class="w-full lg:w-1/3">
+        <div className="w-full lg:w-1/3">
           <UpdateCard
             title={"Lorem ipsum dolor sit amet, consectetur"}
             description={
@@ -184,7 +184,7 @@ function LatestUpdates() {
 function UpdateCard({ title, description, tags, author, date, length }) {
   return (
     <div className="mr-6 sm:mb-6">
-      <div class="w-full h-48 dark:bg-gray-200 rounded-lg"></div>
+      <div className="w-full h-48 dark:bg-gray-200 rounded-lg"></div>
       <div className="">
         {tags.map(function (d, idx) {
           return (
@@ -288,17 +288,17 @@ function WaysToSupport() {
       </p>
       <p>Here are other ways you can support us:</p>
       <ul className="list-disc list-inside">
-        <li class="text-iff-orange">
-          <span class="text-gray-600">Host birthday fundraisers (links)</span>
+        <li className="text-iff-orange">
+          <span className="text-gray-600">Host birthday fundraisers (links)</span>
         </li>
-        <li class="text-iff-orange">
-          <span class="text-gray-600">Host match donations</span>
+        <li className="text-iff-orange">
+          <span className="text-gray-600">Host match donations</span>
         </li>
-        <li class="text-iff-orange">
-          <span class="text-gray-600">Become an IFF Patron</span>
+        <li className="text-iff-orange">
+          <span className="text-gray-600">Become an IFF Patron</span>
         </li>
-        <li class="text-iff-orange">
-          <span class="text-gray-600">Pledge a major donation</span>
+        <li className="text-iff-orange">
+          <span className="text-gray-600">Pledge a major donation</span>
         </li>
       </ul>
       <p>

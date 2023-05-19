@@ -64,7 +64,7 @@ const PostCardBlog = ({ post, number }) => {
                 className=" text-sm text-gray-900 hover:text-iff-orange hover:underline flex items-center space-x-2 mb-2 mr-2"
               >
                 <img
-                  class="object-cover inline-block h-6 w-6 rounded-full"
+                  className="object-cover inline-block h-6 w-6 rounded-full"
                   src={author.profile_image || "/images/icons/avatar.svg"}
                   alt=""
                 ></img>

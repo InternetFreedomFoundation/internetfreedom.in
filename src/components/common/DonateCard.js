@@ -12,12 +12,12 @@ const DonateCard = () => {
             <h1 className="text-white text-3xl leading-7 not-italic max-w-lg">{localData.title}</h1>
             <p id="site-banner-desc" className="my-4 max-w-lg text-white text-xl leading-6 not-italic">{localData.description}</p>
             <p id="site-banner-desc" className="my-4 max-w-lg text-body-grey leading-6 not-italic mt-3.5 mb-14">{localData.plea}</p>
-            <button class="border border-iff-orange hover:text-white text-iff-orange font-normal text-xl leading-6 not-italic py-2 rounded w-36 h-14">Know more</button>
+            <button className="border border-iff-orange hover:text-white text-iff-orange font-normal text-xl leading-6 not-italic py-2 rounded w-36 h-14">Know more</button>
           </div>
           <div id="donate-widget" className="ml-72 bg-bg-dark-grey w-[530px] h-[438px]">
-            <div class="text-sm font-medium text-center text-gray-500">
-                <ul class="flex flex-wrap -mb-px bg-bg-light-grey">
-                    <li class="ml-16 mr-2">
+            <div className="text-sm font-medium text-center text-gray-500">
+                <ul className="flex flex-wrap -mb-px bg-bg-light-grey">
+                    <li className="ml-16 mr-2">
                         <a href="" className="inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-body-grey hover:border-gray-300">One time</a>
                     </li>
                     <li className="mr-2">
