@@ -86,7 +86,7 @@ const DonateWidget = () => {
   );
 };
 
-function makeDonation(currentMembership, userDetails) {}
+function makeDonation(currentMembership, userDetails) { }
 
 const TierSelection = ({
   setCurrentStep,
@@ -161,7 +161,7 @@ const PersonalInfo = ({
       alert("Please fill all the fields");
       return;
     }
-    if (pan.length !== 10 || !pan.match(/^[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}$/)){
+    if (pan.length !== 10 || !pan.match(/^[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}$/)) {
       alert("Please enter a valid PAN number");
       return;
     }
@@ -201,7 +201,8 @@ const PersonalInfo = ({
                 name="name"
                 id="name"
                 autoComplete="given-name"
-                className="block w-full rounded-sm border-0 py-1.5 pl-4 text-white placeholder:text-gray-400 bg-[#2E2E2E] focus:bg-[#3E3E3E] focus:outline-none sm:text-sm sm:leading-6"
+                placeholder="Enter Your Full Name"
+                className="block w-full rounded border-0 py-1.5 pl-4 text-white placeholder:text-gray-400 bg-[#2E2E2E] focus:bg-[#3E3E3E] focus:outline-none sm:text-sm sm:leading-6"
               />
             </div>
           </div>
@@ -218,7 +219,8 @@ const PersonalInfo = ({
                 onChange={handlePanChange}
                 name="pan"
                 id="pan"
-                className="block w-full rounded-sm border-0 py-1.5 pl-4 text-white placeholder:text-gray-400 bg-[#2E2E2E] focus:bg-[#3E3E3E] focus:outline-none sm:text-sm sm:leading-6"
+                placeholder="ABCDE1234F"
+                className="block w-full rounded border-0 py-1.5 pl-4 text-white placeholder:text-gray-400 bg-[#2E2E2E] focus:bg-[#3E3E3E] focus:outline-none sm:text-sm sm:leading-6"
               />
             </div>
           </div>
@@ -236,7 +238,8 @@ const PersonalInfo = ({
                 name="email"
                 id="email"
                 autoComplete="email"
-                className="block w-full rounded-sm border-0 py-1.5 pl-4 text-white placeholder:text-gray-400 bg-[#2E2E2E] focus:bg-[#3E3E3E] focus:outline-none sm:text-sm sm:leading-6"
+                placeholder="test@example.com"
+                className="block w-full rounded border-0 py-1.5 pl-4 text-white placeholder:text-gray-400 bg-[#2E2E2E] focus:bg-[#3E3E3E] focus:outline-none sm:text-sm sm:leading-6"
               />
             </div>
           </div>
@@ -254,7 +257,8 @@ const PersonalInfo = ({
                 name="phone"
                 id="phone"
                 autoComplete="tel"
-                className="block w-full rounded-sm border-0 py-1.5 pl-4 text-white placeholder:text-gray-400 bg-[#2E2E2E] focus:bg-[#3E3E3E] focus:outline-none sm:text-sm sm:leading-6"
+                placeholder="9876543210"
+                className="block w-full rounded border-0 py-1.5 pl-4 text-white placeholder:text-gray-400 bg-[#2E2E2E] focus:bg-[#3E3E3E] focus:outline-none sm:text-sm sm:leading-6"
               />
             </div>
           </div>
@@ -266,13 +270,14 @@ const PersonalInfo = ({
               Address
             </label>
             <div className="mt-2">
-              <input
+              <textarea
+                rows="3"
                 type="text"
                 onChange={handleAddressChange}
                 name="address"
                 id="address"
                 autoComplete="street-address"
-                className="block w-full rounded-sm border-0 py-1.5 pl-4 text-white placeholder:text-gray-400 bg-[#2E2E2E] focus:bg-[#3E3E3E] focus:outline-none sm:text-sm sm:leading-6"
+                className="block w-full rounded border-0 py-1.5 pl-4 text-white placeholder:text-gray-400 bg-[#2E2E2E] focus:bg-[#3E3E3E] focus:outline-none sm:text-sm sm:leading-6"
               />
             </div>
           </div>
@@ -629,7 +634,14 @@ const Card = ({ tiers, type, setCurrentMembership }) => {
             </p>
             <ul>
               {tiers[tier] != undefined &&
-                tiers[tier].perks.map((perk) => <li>{perk}</li>)}
+                tiers[tier].perks.map((perk) =>
+                  <ul class="my-4 text-left text-gray-400">
+                    <li class="flex items-center space-x-3">
+                      <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                      <span>{perk}</span>
+                    </li>
+                  </ul>
+                )}
             </ul>
           </div>
         </div>
@@ -643,22 +655,20 @@ function Steps({ steps, currentStep, setCurrentStep }) {
     <div className="bg-[#2E2E2E] p-10 grid grid-flow-col grid-cols-1 md:grid-cols-4 lg:grid-cols-5">
       {steps.map((step) => (
         <div
-          className={`flex flex-row items-center ${
-            step.id <= currentStep ? "text-white hover:cursor-pointer" : ""
-          }`}
+          className={`flex flex-row items-center ${step.id <= currentStep ? "text-white hover:cursor-pointer" : ""
+            }`}
           onClick={() => {
             if (step.id < currentStep) setCurrentStep(step.id);
           }}
         >
           <span className="flex-shrink-0">
             <span
-              className={`flex h-4 w-4 items-center justify-center rounded-full ${
-                step.id < currentStep
-                  ? "bg-[#1D6411]"
-                  : step.id === currentStep
+              className={`flex h-4 w-4 items-center justify-center rounded-full ${step.id < currentStep
+                ? "bg-[#1D6411]"
+                : step.id === currentStep
                   ? "bg-iff-orange"
                   : "bg-[#444444]"
-              }`}
+                }`}
             >
               {step.id < currentStep ? (
                 <svg
@@ -675,9 +685,8 @@ function Steps({ steps, currentStep, setCurrentStep }) {
                 </svg>
               ) : (
                 <span
-                  className={`${
-                    step.id === currentStep ? "text-white" : "text-[#888888]"
-                  } text-xs`}
+                  className={`${step.id === currentStep ? "text-white" : "text-[#888888]"
+                    } text-xs`}
                 >
                   {step.id}
                 </span>
