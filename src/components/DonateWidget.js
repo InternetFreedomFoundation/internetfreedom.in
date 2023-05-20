@@ -161,7 +161,7 @@ const PersonalInfo = ({
       alert("Please fill all the fields");
       return;
     }
-    if (pan.length !== 10 || !pan.match(/^[A-Z]{5}[0-9]{4}[A-Z]{1}$/)) {
+    if (pan.length !== 10 || !pan.match(/^[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}$/)){
       alert("Please enter a valid PAN number");
       return;
     }
