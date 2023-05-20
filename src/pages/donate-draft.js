@@ -28,15 +28,10 @@ function TopSection() {
                 Support Our Work
               </h1>
               <p id="site-banner-desc" className="text-gray-400 mt-3">
-                The Internet Freedom Foundation is committed to defending and
-                expanding fundamental rights as India gets more digitally
-                connected. As part of this mandate, we strategically engage with
-                courts, regulators, and other legal institutions across India.
-                On this page, we list principles which guide our litigation
-                advocacy and provide details of cases in which we have acted as
-                parties, collaborators or our retained lawyers have acted in the
-                capacity of counsel.
+                When you donate to IFF, you join a community of over 4000 Indians who believe that collective action can secure and advance our constitutional freedoms in an increasingly digital world. Your donation supports our collective vision for the internet—an internet that is transparent, accountable, inclusive, equal, safe, and free.
               </p>
+              <br />
+              <span className="text-gray-400"> We fight for the digital rights of every Indian, but we can’t do it alone—donate today.</span>
             </div>
           </div>
         </div>
@@ -49,7 +44,7 @@ function OurPrinciples() {
   return (
     <div className="px-4 py-6 md:py-16 md:text-lg  border-b-2 text-gray-500 flex-col lg:flex-row gap-8 responsive-container flex">
       <div className="">
-         <h2 className="text-2xl text-black mb-2">Our Principles</h2>
+        <h2 className="text-2xl text-black mb-2">Our Principles</h2>
         <p className="text-grey">
           Digital rights are constitutional rights, and must be defended
           constitutionally. To this end, we are guided by the following
@@ -69,7 +64,7 @@ function OurPrinciples() {
                 of citizens and further constitutional values of justice,
                 equality, liberty and fraternity.
               </p>
-               
+
             </div>
           </div>
           <div className="w-full lg:w-1/2 px-2">
@@ -82,7 +77,7 @@ function OurPrinciples() {
                 objective, but with the letter and the spirit of the
                 Constitution of India.
               </p>
-               
+
             </div>
           </div>
           <div className="w-full lg:w-1/2 px-2">
@@ -93,7 +88,7 @@ function OurPrinciples() {
                 because the harms arising from new technologies are often
                 disproportionately borne by vulnerable and marginalized groups.
               </p>
-               
+
             </div>
           </div>
           <div className="w-full lg:w-1/2 px-2">
@@ -108,7 +103,7 @@ function OurPrinciples() {
                 by shedding light on the technological feasibility of different
                 alternatives which may be under consideration.
               </p>
-               
+
             </div>
           </div>
           <div className="w-full lg:w-1/2 px-2">
@@ -121,7 +116,7 @@ function OurPrinciples() {
                 prevent co-option, and maintain autonomy. All funding received
                 by IFF goes into our general corpus.
               </p>
-               
+
               <p className="text-xs">
                 Read more in our Strategic Litigation Handbook
               </p>
@@ -255,9 +250,9 @@ function FaqSection() {
                         </span>
                       </Disclosure.Button>
                     </dt>
-                    <Disclosure.Panel as="dd" className="mt-2 pr-12">
-                      <p className="text-base leading-7 text-gray-600">
-                        {faq.answer}
+                    <Disclosure.Panel as="dd" className="my-8">
+                      <p className="prose max-w-2xl"
+                        dangerouslySetInnerHTML={{ __html: faq.answer }}>
                       </p>
                     </Disclosure.Panel>
                   </>
@@ -273,39 +268,31 @@ function FaqSection() {
 
 function WaysToSupport() {
   return (
-    <div className="py-20 mx-auto max-w-4xl border-b space-y-6 text-gray-600">
+    <div className="prose py-20 px-4 mx-auto max-w-4xl border-b space-y-6 text-gray-600 hover:prose-a:text-iff-orange">
       <span className="text-2xl font-bold leading-10 text-gray-900">
-        Other Ways to Support Us
+        How else can I support IFF?
       </span>
       <p>
-        Our community is helping us fight issues like mass surveillance,
-        internet shutdowns and protecting the rights guaranteed by our
-        constitution. It’s about acting with a sense of responsibility and care,
-        as we address these challenging issues, devise solutions and take
-        responsibility for our collective future. You can help us become a
-        sustainable and autonomous organisation by making your contribution
-        today.
+        Thank you for your interest in supporting us, we really appreciate it! Here are other ways you can help us out:
       </p>
-      <p>Here are other ways you can support us:</p>
       <ul className="list-disc list-inside">
         <li className="text-iff-orange">
-          <span className="text-gray-600">Host birthday fundraisers (links)</span>
+          <span className="text-gray-600">Host birthday fundraisers</span>
         </li>
         <li className="text-iff-orange">
           <span className="text-gray-600">Host match donations</span>
         </li>
         <li className="text-iff-orange">
-          <span className="text-gray-600">Become an IFF Patron</span>
-        </li>
-        <li className="text-iff-orange">
-          <span className="text-gray-600">Pledge a major donation</span>
+          <span className="text-gray-600">Host a fundraising event for IFF</span>
         </li>
       </ul>
       <p>
-        Start a conversation with us by reaching out to us at{" "}
-        <a className="text-iff-orange" href="mailto:donate@internetfreedom.in">
+        Start a conversation with us by reaching out to us at: {" "}
+        <a href="mailto:donate@internetfreedom.in">
           donate@internetfreedom.in
         </a>
+        <br />
+        We understand that not everyone is able to support us through financial contributions, but there are plenty of other ways to get involved with our community by volunteering with your time and skills. Read more about volunteering for IFF <a href="https://internetfreedom.in/volunteer-for-digital-freedom/">here.</a>
       </p>
     </div>
   );
