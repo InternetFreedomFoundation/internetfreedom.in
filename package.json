@@ -67,6 +67,7 @@
     "react-dom": "18.2.0",
     "react-helmet": "6.1.0",
     "react-paginate": "^8.1.4",
+    "react-razorpay": "^1.2.0",
     "url": "0.11.0"
   }
 }

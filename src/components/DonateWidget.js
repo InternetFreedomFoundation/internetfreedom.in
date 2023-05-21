@@ -2,8 +2,97 @@ import React from "react";
 import { useState } from "react";
 import donationData from "../../content/donation.json";
 import { RadioGroup } from "@headlessui/react";
+import useRazorpay from "react-razorpay";
 
 const DonateWidget = () => {
+  const Razorpay = useRazorpay();
+
+  const createOrder = async () => {
+    const order = await fetch(
+      "https://heimdall.internetfreedom.in/sync/proxy",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: userDetails.name,
+          email: userDetails.email,
+          contact: userDetails.phone,
+          pan: userDetails.pan,
+          plan: currentMembership.planId,
+          max_amount: currentMembership.amount,
+          type: "SUBS-PROXY",
+          address: {
+            address_line1: userDetails.address,
+          },
+        }),
+      }
+    );
+    return order;
+  };
+
+  const handlePayment = async () => {
+    let options = {};
+    if (currentMembership.title !== "One Time Donation") {
+      const order = await createOrder();
+
+      options = {
+        key: "rzp_live_hjnqVr1bRh6gsb",
+        subscription_id: order.id,
+        name: "Donate",
+        description:
+          "Support the fight for Internet Freedom - " + currentMembership.title,
+        prefill: {
+          name: userDetails.name,
+          email: userDetails.email,
+          contact: userDetails.phone,
+        },
+        notes: {
+          REFERENCE: order.reference,
+          PAN: userDetails.pan,
+          ADDRESS: userDetails.address,
+        },
+        handler: (res) => {
+          console.log(res);
+        },
+        theme: {
+          color: "#CC7755",
+        },
+      };
+    } else {
+      options = {
+        key: "rzp_live_hjnqVr1bRh6gsb",
+        amount: currentMembership.amount * 100,
+        currency: "INR",
+        name: "Donate",
+        description:
+          "Support the fight for Internet Freedom - " + currentMembership.title,
+        handler: (res) => {
+          console.log(res);
+        },
+        prefill: {
+          name: userDetails.name,
+          email: userDetails.email,
+          contact: userDetails.phone,
+        },
+        notes: {
+          NAME: userDetails.name,
+          EMAIL: userDetails.email,
+          CONTACT: userDetails.phone,
+          ADDRESS: userDetails.address,
+          PAN: userDetails.pan,
+        },
+        theme: {
+          color: "#CC7755",
+        },
+      };
+    }
+
+    const rzpay = new Razorpay(options);
+    rzpay.open();
+  };
+
   const steps = [
     {
       id: 1,
@@ -24,6 +113,7 @@ const DonateWidget = () => {
     type: "Membership (Monthly)",
     amount: 750,
     title: "Transparency advocate",
+    planId: null,
     perks: [
       "Newsletter access",
       "Membership letter and card",
@@ -73,6 +163,7 @@ const DonateWidget = () => {
                 setCurrentStep={setCurrentStep}
                 currentMembership={currentMembership}
                 userDetails={userDetails}
+                handlePayment={handlePayment}
               />
             )}
           </div>
@@ -85,8 +176,6 @@ const DonateWidget = () => {
     </div>
   );
 };
-
-function makeDonation(currentMembership, userDetails) { }
 
 const TierSelection = ({
   setCurrentStep,
@@ -311,7 +400,12 @@ const PersonalInfo = ({
   );
 };
 
-const Confirmation = ({ setCurrentStep, currentMembership, userDetails }) => {
+const Confirmation = ({
+  setCurrentStep,
+  currentMembership,
+  userDetails,
+  handlePayment,
+}) => {
   return (
     <div className="flex sm:flex-row flex-col">
       <div className="sm:w-3/4 w-full flex flex-col space-y-5">
@@ -331,12 +425,7 @@ const Confirmation = ({ setCurrentStep, currentMembership, userDetails }) => {
             {userDetails.name}, would you like to proceed with making the
             donation?
           </span>
-          <button
-            className="btn mt-4"
-            onClick={() => {
-              makeDonation(currentMembership, userDetails);
-            }}
-          >
+          <button className="btn mt-4" onClick={handlePayment}>
             Next
           </button>
           <button
@@ -605,6 +694,7 @@ const Card = ({ tiers, type, setCurrentMembership }) => {
                       title: d["name"],
                       amount: d["price"],
                       description: d["perks"],
+                      planId: d["plan_id"],
                     });
                     setTier(idx);
                   }}
@@ -634,14 +724,25 @@ const Card = ({ tiers, type, setCurrentMembership }) => {
             </p>
             <ul>
               {tiers[tier] != undefined &&
-                tiers[tier].perks.map((perk) =>
+                tiers[tier].perks.map((perk) => (
                   <ul class="my-4 text-left text-gray-400">
                     <li class="flex items-center space-x-3">
-                      <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                      <svg
+                        class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          fill-rule="evenodd"
+                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                          clip-rule="evenodd"
+                        ></path>
+                      </svg>
                       <span>{perk}</span>
                     </li>
                   </ul>
-                )}
+                ))}
             </ul>
           </div>
         </div>
@@ -655,20 +756,22 @@ function Steps({ steps, currentStep, setCurrentStep }) {
     <div className="bg-[#2E2E2E] p-10 grid grid-flow-col grid-cols-1 md:grid-cols-4 lg:grid-cols-5">
       {steps.map((step) => (
         <div
-          className={`flex flex-row items-center ${step.id <= currentStep ? "text-white hover:cursor-pointer" : ""
-            }`}
+          className={`flex flex-row items-center ${
+            step.id <= currentStep ? "text-white hover:cursor-pointer" : ""
+          }`}
           onClick={() => {
             if (step.id < currentStep) setCurrentStep(step.id);
           }}
         >
           <span className="flex-shrink-0">
             <span
-              className={`flex h-4 w-4 items-center justify-center rounded-full ${step.id < currentStep
-                ? "bg-[#1D6411]"
-                : step.id === currentStep
+              className={`flex h-4 w-4 items-center justify-center rounded-full ${
+                step.id < currentStep
+                  ? "bg-[#1D6411]"
+                  : step.id === currentStep
                   ? "bg-iff-orange"
                   : "bg-[#444444]"
-                }`}
+              }`}
             >
               {step.id < currentStep ? (
                 <svg
@@ -685,8 +788,9 @@ function Steps({ steps, currentStep, setCurrentStep }) {
                 </svg>
               ) : (
                 <span
-                  className={`${step.id === currentStep ? "text-white" : "text-[#888888]"
-                    } text-xs`}
+                  className={`${
+                    step.id === currentStep ? "text-white" : "text-[#888888]"
+                  } text-xs`}
                 >
                   {step.id}
                 </span>
