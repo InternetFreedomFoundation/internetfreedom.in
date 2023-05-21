@@ -25,7 +25,7 @@ const DonateWidget = () => {
           type: "SUBS-PROXY",
           address: {
             address_line1: userDetails.address,
-            pincode: userDetails.pincode,
+            pincode: parseInt(userDetails.pincode),
           },
         }),
       }
