@@ -25,6 +25,7 @@ const DonateWidget = () => {
           type: "SUBS-PROXY",
           address: {
             address_line1: userDetails.address,
+            pincode: userDetails.pincode,
           },
         }),
       }
@@ -34,7 +35,8 @@ const DonateWidget = () => {
 
   const handlePayment = async () => {
     let options = {};
-    if (currentMembership.title !== "One Time Donation") {
+    console.log(userDetails);
+    if (currentMembership.description !== "One Time Donation") {
       const order = await createOrder();
 
       options = {
@@ -128,6 +130,7 @@ const DonateWidget = () => {
     email: "",
     phone: "",
     address: "",
+    pincode: "",
   });
 
   return (
@@ -223,6 +226,7 @@ const PersonalInfo = ({
   const [email, setEmail] = useState(userDetails.email);
   const [phone, setPhone] = useState(userDetails.phone);
   const [address, setAddress] = useState(userDetails.address);
+  const [pincode, setPincode] = useState(userDetails.pincode);
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -244,6 +248,10 @@ const PersonalInfo = ({
     setAddress(e.target.value);
   };
 
+  const handlePincodeChange = (e) => {
+    setPincode(e.target.value);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!name || !pan || !email || !phone || !address) {
@@ -262,12 +270,18 @@ const PersonalInfo = ({
       alert("Please enter a valid email");
       return;
     }
+    if (!pincode.match(/^[0-9]{6}$/)) {
+      alert("Please enter a valid pincode");
+      return;
+    }
+
     setUserDetails({
       name,
       pan,
       email,
       phone,
       address,
+      pincode,
     });
     setCurrentStep(3);
   };
@@ -351,7 +365,7 @@ const PersonalInfo = ({
               />
             </div>
           </div>
-          <div className="col-span-2">
+          <div className="col-span-1">
             <label
               htmlFor="address"
               className="block text-sm font-medium leading-6 text-white"
@@ -359,13 +373,29 @@ const PersonalInfo = ({
               Address
             </label>
             <div className="mt-2">
-              <textarea
-                rows="3"
+              <input
                 type="text"
                 onChange={handleAddressChange}
                 name="address"
                 id="address"
                 autoComplete="street-address"
+                className="block w-full rounded border-0 py-1.5 pl-4 text-white placeholder:text-gray-400 bg-[#2E2E2E] focus:bg-[#3E3E3E] focus:outline-none sm:text-sm sm:leading-6"
+              />
+            </div>
+          </div>
+          <div className="col-span-1">
+            <label
+              htmlFor="pincode"
+              className="block text-sm font-medium leading-6 text-white"
+            >
+              Pincode
+            </label>
+            <div className="mt-2">
+              <input
+                type="number"
+                onChange={handlePincodeChange}
+                name="pincode"
+                id="pincode"
                 className="block w-full rounded border-0 py-1.5 pl-4 text-white placeholder:text-gray-400 bg-[#2E2E2E] focus:bg-[#3E3E3E] focus:outline-none sm:text-sm sm:leading-6"
               />
             </div>
