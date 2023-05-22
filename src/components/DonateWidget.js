@@ -124,19 +124,7 @@ const DonateWidget = () => {
   ];
 
   const [currentStep, setCurrentStep] = useState(1);
-  const [currentMembership, setCurrentMembership] = useState({
-    type: "Membership (Monthly)",
-    amount: 750,
-    title: "Transparency advocate",
-    planId: null,
-    perks: [
-      "Newsletter access",
-      "Membership letter and card",
-      "Briefing calls and exclusive events",
-      "Quarterly calls with IFF’s leadership",
-      "Stickers",
-    ],
-  });
+  const [currentMembership, setCurrentMembership] = useState(donationData.monthly[0]);
   const [userDetails, setUserDetails] = useState({
     name: "",
     pan: "",
@@ -742,7 +730,7 @@ function OneTimeOptions({ setCurrentMembership }) {
 }
 
 const Card = ({ tiers, type, setCurrentMembership }) => {
-  const [tier, setTier] = React.useState(2);
+  const [tier, setTier] = React.useState(1);
   return (
     <div className="flex flex-row mb-4">
       <div className="w-full" id="picker">
