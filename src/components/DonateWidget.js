@@ -1,11 +1,13 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { useState } from "react";
 import donationData from "../../content/donation.json";
-import { RadioGroup } from "@headlessui/react";
+import { Dialog, RadioGroup, Transition } from "@headlessui/react";
 import useRazorpay from "react-razorpay";
 
 const DonateWidget = () => {
   const Razorpay = useRazorpay();
+  const [isOpen, setIsOpen] = useState(true);
+  const [isSuccess, setIsSuccess] = useState(false);
 
   const createOrder = async () => {
     const order = await fetch(
@@ -21,7 +23,7 @@ const DonateWidget = () => {
           contact: userDetails.phone,
           pan: userDetails.pan,
           plan: currentMembership.planId,
-          max_amount: currentMembership.amount,
+          max_amount: currentMembership.amount * 100,
           type: "SUBS-PROXY",
           address: {
             address_line1: userDetails.address,
@@ -42,6 +44,7 @@ const DonateWidget = () => {
       options = {
         key: "rzp_live_hjnqVr1bRh6gsb",
         subscription_id: order.id,
+        amount: currentMembership.amount * 100,
         name: "Donate",
         description:
           "Support the fight for Internet Freedom - " + currentMembership.title,
@@ -56,7 +59,7 @@ const DonateWidget = () => {
           ADDRESS: userDetails.address,
         },
         handler: (res) => {
-          console.log(res);
+          handlePaymentResponse(res);
         },
         theme: {
           color: "#CC7755",
@@ -71,7 +74,7 @@ const DonateWidget = () => {
         description:
           "Support the fight for Internet Freedom - " + currentMembership.title,
         handler: (res) => {
-          console.log(res);
+          handlePaymentResponse(res);
         },
         prefill: {
           name: userDetails.name,
@@ -93,6 +96,16 @@ const DonateWidget = () => {
 
     const rzpay = new Razorpay(options);
     rzpay.open();
+  };
+
+  const handlePaymentResponse = (res) => {
+    if (res.razorpay_payment_id) {
+      setIsSuccess(true);
+      setIsOpen(true);
+    } else {
+      setIsSuccess(false);
+      setIsOpen(true);
+    }
   };
 
   const steps = [
@@ -133,50 +146,111 @@ const DonateWidget = () => {
     pincode: "",
   });
 
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+
   return (
-    <div
-      id="donate-widget"
-      className="w-full h-auto responsive-container -mt-48"
-    >
-      <div className="text-sm font-medium text-gray-500">
-        <div className="bg-[#2E2E2E]">
-          <Steps
-            steps={steps}
-            currentStep={currentStep}
-            setCurrentStep={setCurrentStep}
-          />
-          <div className="w-full h-auto bg-[#212121] p-8">
-            {currentStep === 1 && (
-              <TierSelection
-                setCurrentStep={setCurrentStep}
-                setCurrentMembership={setCurrentMembership}
-                currentMembership={currentMembership}
-              />
-            )}
-            {currentStep === 2 && (
-              <PersonalInfo
-                setCurrentStep={setCurrentStep}
-                currentMembership={currentMembership}
-                userDetails={userDetails}
-                setUserDetails={setUserDetails}
-              />
-            )}
-            {currentStep === 3 && (
-              <Confirmation
-                setCurrentStep={setCurrentStep}
-                currentMembership={currentMembership}
-                userDetails={userDetails}
-                handlePayment={handlePayment}
-              />
-            )}
+    <>
+      <div
+        id="donate-widget"
+        className="w-full h-auto responsive-container -mt-48"
+      >
+        <div className="text-sm font-medium text-gray-500">
+          <div className="bg-[#2E2E2E]">
+            <Steps
+              steps={steps}
+              currentStep={currentStep}
+              setCurrentStep={setCurrentStep}
+            />
+            <div className="w-full h-auto bg-[#212121] p-8">
+              {currentStep === 1 && (
+                <TierSelection
+                  setCurrentStep={setCurrentStep}
+                  setCurrentMembership={setCurrentMembership}
+                  currentMembership={currentMembership}
+                />
+              )}
+              {currentStep === 2 && (
+                <PersonalInfo
+                  setCurrentStep={setCurrentStep}
+                  currentMembership={currentMembership}
+                  userDetails={userDetails}
+                  setUserDetails={setUserDetails}
+                />
+              )}
+              {currentStep === 3 && (
+                <Confirmation
+                  setCurrentStep={setCurrentStep}
+                  currentMembership={currentMembership}
+                  userDetails={userDetails}
+                  handlePayment={handlePayment}
+                />
+              )}
+            </div>
           </div>
         </div>
+        <span className="font-italic text-xs text-gray-400">
+          All donations to IFF are 50% tax deductible under Section 80G of the
+          Income Tax Act
+        </span>
       </div>
-      <span className="font-italic text-xs text-gray-400">
-        All donations to IFF are 50% tax deductible under Section 80G of the
-        Income Tax Act
-      </span>
-    </div>
+      <Transition appear show={isOpen} as={Fragment}>
+        <Dialog as="div" className="relative z-10" onClose={closeModal}>
+          <Transition.Child
+            as={Fragment}
+            enter="ease-out duration-300"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="ease-in duration-200"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <div className="fixed inset-0 bg-black bg-opacity-40" />
+          </Transition.Child>
+
+          <div className="fixed inset-0 overflow-y-auto">
+            <div className="flex min-h-full items-center justify-center p-4 text-center">
+              <Transition.Child
+                as={Fragment}
+                enter="ease-out duration-300"
+                enterFrom="opacity-0 scale-95"
+                enterTo="opacity-100 scale-100"
+                leave="ease-in duration-200"
+                leaveFrom="opacity-100 scale-100"
+                leaveTo="opacity-0 scale-95"
+              >
+                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                  <Dialog.Title
+                    as="h3"
+                    className="text-lg font-medium leading-6 text-gray-900"
+                  >
+                    {isSuccess ? "Donation Successful" : "Donation Failed"}
+                  </Dialog.Title>
+                  <div className="mt-2">
+                    <p className="text-sm text-gray-500">
+                      {isSuccess
+                        ? "Thanks for making the donation!"
+                        : "There was an error while completing the payment."}
+                    </p>
+                  </div>
+
+                  <div className="mt-4">
+                    <button
+                      type="button"
+                      className="btn-secondary"
+                      onClick={closeModal}
+                    >
+                      Got it, Thanks!
+                    </button>
+                  </div>
+                </Dialog.Panel>
+              </Transition.Child>
+            </div>
+          </div>
+        </Dialog>
+      </Transition>
+    </>
   );
 };
 
