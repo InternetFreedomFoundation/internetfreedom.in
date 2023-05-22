@@ -17,35 +17,7 @@ import NewsletterWidget from "../components/NewsletterWidget";
 const Post = ({ data, location }) => {
   const post = data.ghostPost;
   const readingTime = readingTimeHelper(post);
-  const allPosts = data.allGhostPost;
-
-  const findRelatedArticles = () => {
-    const relatedArticles = [];
-    allPosts.nodes.forEach((relatedPost) => {
-      if (relatedArticles.length === 3) {
-        return relatedArticles;
-      } else if (relatedPost.primary_tag?.slug === post.primary_tag?.slug) {
-        relatedArticles.push(relatedPost);
-      } else if (
-        relatedPost.tags?.some((tag) => tag.slug === post.primary_tag?.slug)
-      ) {
-        relatedArticles.push(relatedPost);
-      }
-    });
-    return relatedArticles;
-  };
-  const relatedArticles = findRelatedArticles();
-  if (relatedArticles.length < 3) {
-    allPosts.nodes.forEach((relatedPost) => {
-      if (relatedArticles.length === 3) {
-        return relatedArticles;
-      } else if (relatedArticles.includes(relatedPost)) {
-        return;
-      } else {
-        relatedArticles.push(relatedPost);
-      }
-    });
-  }
+  const relatedArticles = data.allGhostPost.nodes;
 
   const addDefaultSrc = (e) => {
     e.target.src = "/images/icons/avatar.svg";
@@ -127,42 +99,42 @@ const Post = ({ data, location }) => {
         </div>
         <NewsletterWidget />
         <div>
-          <div className="px-4 py-4 mx-auto md:max-w-full lg:max-w-screen-lg 2xl:max-w-screen-xl lg:pt-16">
-            <div className="md:mx-auto border-t text-left">
-              <div className="pb-4">
-                <h2 className="text-2xl font-bold py-8">Similar Posts</h2>
+          {relatedArticles.length > 0 && (
+            <div className="px-4 py-4 mx-auto md:max-w-full lg:max-w-screen-lg 2xl:max-w-screen-xl lg:pt-16">
+              <div className="md:mx-auto border-t text-left">
+                <div className="pb-4">
+                  <h2 className="text-2xl font-bold py-8">Similar Posts</h2>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {relatedArticles.map((relatedArticle, index) => (
-                    <div className="flex flex-row">
-                      <span className="text-3xl text-[#E7E7E7] font-extrabold pr-4">
-                        {index + 1}
-                      </span>
-                      <div className="flex flex-col h-auto">
-                        <Link
-                          to={`/${relatedArticle.slug}`}
-                          className="text-gray-800 pb-2 hover:text-iff-orange text-lg font-bold"
-                        >
-                          {relatedArticle.title}
-                        </Link>
-                        <p className="line-clamp-5 hover:line-clamp-none flex-grow text-gray-500">
-                          {relatedArticle.excerpt}
-                        </p>
-                        <div className="flex flex-row text-iff-orange text-sm">
-                          <p className="grow">
-                            {relatedArticle.published_at_pretty}
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {relatedArticles.map((relatedArticle, index) => (
+                      <div className="flex flex-row" key={index}>
+                        <span className="text-3xl text-[#E7E7E7] font-extrabold pr-4">
+                          {index + 1}
+                        </span>
+                        <div className="flex flex-col h-auto">
+                          <Link
+                            to={`/${relatedArticle.slug}`}
+                            className="text-gray-800 pb-2 hover:text-iff-orange text-lg font-bold"
+                          >
+                            {relatedArticle.title}
+                          </Link>
+                          <p className="line-clamp-5 hover:line-clamp-none flex-grow text-gray-500">
+                            {relatedArticle.excerpt}
                           </p>
-                          <p className="">
-                            {relatedArticle.reading_time} min read
-                          </p>
+                          <div className="flex flex-row text-iff-orange text-sm">
+                            <p className="grow">
+                              {relatedArticle.published_at_pretty}
+                            </p>
+                            <p className="">{relatedArticle.reading_time} min read</p>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
       </Layout>
     </>
@@ -184,26 +156,21 @@ Post.propTypes = {
 export default Post;
 
 export const postQuery = graphql`
-  query ($slug: String!) {
+  query ($slug: String!, $tags:[String]) {
     ghostPost(slug: { eq: $slug }) {
       ...GhostPostFields
     }
     allGhostPost(
-      sort: { published_at: DESC }
-      filter: { slug: { ne: $slug } }
-    ) {
+    filter: {tags: {elemMatch: {slug: {in: $tags}}}, slug: {ne: $slug}}
+    limit: 3
+    sort: {published_at: DESC}
+  ) {
       nodes {
         excerpt
         slug
         title
         published_at
         reading_time
-        primary_tag {
-          slug
-        }
-        tags {
-          slug
-        }
       }
     }
   }
