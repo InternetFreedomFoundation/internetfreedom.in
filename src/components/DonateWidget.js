@@ -37,7 +37,6 @@ const DonateWidget = () => {
 
   const handlePayment = async () => {
     let options = {};
-    console.log(userDetails);
     if (currentMembership.description !== "One Time Donation") {
       const order = await createOrder();
 
@@ -759,7 +758,7 @@ const Card = ({ tiers, type, setCurrentMembership }) => {
                         (type == "monthly" ? "Monthly" : "Annual") +
                         " Membership",
                       title: d["name"],
-                      amount: d["price"],
+                      amount: d["amount"],
                       description: d["perks"],
                       planId: d["plan_id"],
                     });
@@ -825,7 +824,7 @@ function Steps({ steps, currentStep, setCurrentStep }) {
         <div
           className={`flex flex-row items-center ${
             step.id <= currentStep ? "text-white hover:cursor-pointer" : ""
-          }`}
+            }`}
           onClick={() => {
             if (step.id < currentStep) setCurrentStep(step.id);
           }}
@@ -836,9 +835,9 @@ function Steps({ steps, currentStep, setCurrentStep }) {
                 step.id < currentStep
                   ? "bg-[#1D6411]"
                   : step.id === currentStep
-                  ? "bg-iff-orange"
-                  : "bg-[#444444]"
-              }`}
+                    ? "bg-iff-orange"
+                    : "bg-[#444444]"
+                }`}
             >
               {step.id < currentStep ? (
                 <svg
@@ -857,7 +856,7 @@ function Steps({ steps, currentStep, setCurrentStep }) {
                 <span
                   className={`${
                     step.id === currentStep ? "text-white" : "text-[#888888]"
-                  } text-xs`}
+                    } text-xs`}
                 >
                   {step.id}
                 </span>

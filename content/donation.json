@@ -2,7 +2,7 @@
   "monthly": [
     {
       "name": "Accessibility supporter",
-      "price": 100,
+      "amount": 100,
       "perks": [
         "Newsletter access",
         "Membership letter and card",
@@ -13,7 +13,7 @@
     },
     {
       "name": "Transparency advocate",
-      "price": 750,
+      "amount": 750,
       "perks": [
         "Newsletter access",
         "Membership letter and card",
@@ -25,7 +25,7 @@
     },
     {
       "name": "Freedom Member",
-      "price": 2000,
+      "amount": 2000,
       "perks": [
         "Newsletter access",
         "Membership letter and card",
@@ -39,7 +39,7 @@
     },
     {
       "name": "Inclusivity champion",
-      "price": 5000,
+      "amount": 5000,
       "perks": [
         "Newsletter access",
         "Membership letter and card",
@@ -55,7 +55,7 @@
     },
     {
       "name": "Equality catalyst",
-      "price": 10000,
+      "amount": 10000,
       "perks": [
         "Newsletter access",
         "Membership letter and card",
@@ -75,7 +75,7 @@
   "annual": [
     {
       "name": "Net neutrality ally",
-      "price": 100000,
+      "amount": 100000,
       "perks": [
         "Newsletter access",
         "Membership letter and card",
@@ -94,7 +94,7 @@
     },
     {
       "name": "Privacy patron",
-      "price": 500000,
+      "amount": 500000,
       "perks": [
         "Newsletter access",
         "Membership letter and card",
@@ -118,36 +118,42 @@
       "id": 1,
       "title": "₹2,500",
       "description": "One Time Donation",
+      "perks": [],
       "amount": 2500
     },
     {
       "id": 2,
       "title": "₹5,000",
       "description": "One Time Donation",
+      "perks": [],
       "amount": 5000
     },
     {
       "id": 3,
       "title": "₹7,500",
       "description": "One Time Donation",
+      "perks": [],
       "amount": 7500
     },
     {
       "id": 4,
       "title": "₹10,000",
       "description": "One Time Donation",
+      "perks": [],
       "amount": 10000
     },
     {
       "id": 5,
       "title": "₹25,000",
       "description": "One Time Donation",
+      "perks": [],
       "amount": 25000
     },
     {
       "id": 6,
       "title": "₹50,000",
       "description": "One Time Donation",
+      "perks": [],
       "amount": 50000
     }
   ]
