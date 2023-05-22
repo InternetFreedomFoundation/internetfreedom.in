@@ -657,46 +657,8 @@ function classNames(...classes) {
 }
 
 function OneTimeOptions({ setCurrentMembership }) {
-  const amounts = [
-    {
-      id: 1,
-      title: "₹2,500",
-      description: "One Time Donation",
-      amount: 2500,
-    },
-    {
-      id: 2,
-      title: "₹5,000",
-      description: "One Time Donation",
-      amount: 5000,
-    },
-    {
-      id: 3,
-      title: "₹7,500",
-      description: "One Time Donation",
-      amount: 7500,
-    },
-    {
-      id: 4,
-      title: "₹10,000",
-      description: "One Time Donation",
-      amount: 10000,
-    },
-    {
-      id: 5,
-      title: "₹25,000",
-      description: "One Time Donation",
-      amount: 25000,
-    },
-    {
-      id: 6,
-      title: "₹50,000",
-      description: "One Time Donation",
-      amount: 50000,
-    },
-  ];
 
-  const [selectedAmount, setSelectedAmount] = useState(amounts[0]);
+  const [selectedAmount, setSelectedAmount] = useState(donationData.onetime[0]);
 
   React.useEffect(() => {
     setCurrentMembership({
@@ -711,7 +673,7 @@ function OneTimeOptions({ setCurrentMembership }) {
     <>
       <RadioGroup value={selectedAmount} onChange={setSelectedAmount}>
         <div className="mt-4 grid grid-cols-1 gap-y-6 sm:grid-cols-3 sm:gap-x-4">
-          {amounts.map((amount) => (
+          {donationData.onetime.map((amount) => (
             <RadioGroup.Option
               key={amount.id}
               value={amount}
