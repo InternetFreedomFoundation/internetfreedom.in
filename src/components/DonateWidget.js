@@ -6,7 +6,7 @@ import useRazorpay from "react-razorpay";
 
 const DonateWidget = () => {
   const Razorpay = useRazorpay();
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
   const createOrder = async () => {
@@ -102,6 +102,7 @@ const DonateWidget = () => {
     if (res.razorpay_payment_id) {
       setIsSuccess(true);
       setIsOpen(true);
+      setCurrentStep(1);
     } else {
       setIsSuccess(false);
       setIsOpen(true);
