@@ -29,6 +29,8 @@ const DonateWidget = () => {
             address_line1: userDetails.address,
             pincode: parseInt(userDetails.pincode),
           },
+          source: window.location.pathname,
+          metadata: window.navigator.userAgent,
         }),
       }
     );
@@ -65,6 +67,33 @@ const DonateWidget = () => {
         },
       };
     } else {
+      const randomId = crypto.randomUUID();
+
+      fetch(
+        "https://heimdall.internetfreedom.in/proxy",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: userDetails.name,
+            email: userDetails.email,
+            contact: userDetails.phone,
+            pan: userDetails.pan,
+            max_amount: currentMembership.amount * 100,
+            type: "ONETIME-PROXY",
+            reference: randomId,
+            address: {
+              address_line1: userDetails.address,
+              pincode: parseInt(userDetails.pincode),
+            },
+            source: window.location.pathname,
+            metadata: window.navigator.userAgent,
+          }),
+        }
+      );
+
       options = {
         key: "rzp_live_hjnqVr1bRh6gsb",
         amount: currentMembership.amount * 100,
@@ -81,11 +110,8 @@ const DonateWidget = () => {
           contact: userDetails.phone,
         },
         notes: {
-          NAME: userDetails.name,
           EMAIL: userDetails.email,
-          CONTACT: userDetails.phone,
-          ADDRESS: userDetails.address,
-          PAN: userDetails.pan,
+          REFERENCE: randomId,
         },
         theme: {
           color: "#CC7755",
@@ -810,8 +836,7 @@ function Steps({ steps, currentStep, setCurrentStep }) {
     <div className="bg-[#2E2E2E] p-10 grid grid-flow-col grid-cols-1 md:grid-cols-4 lg:grid-cols-5">
       {steps.map((step) => (
         <div
-          className={`flex flex-row items-center ${
-            step.id <= currentStep ? "text-white hover:cursor-pointer" : ""
+          className={`flex flex-row items-center ${step.id <= currentStep ? "text-white hover:cursor-pointer" : ""
             }`}
           onClick={() => {
             if (step.id < currentStep) setCurrentStep(step.id);
@@ -819,12 +844,11 @@ function Steps({ steps, currentStep, setCurrentStep }) {
         >
           <span className="flex-shrink-0">
             <span
-              className={`flex h-4 w-4 items-center justify-center rounded-full ${
-                step.id < currentStep
-                  ? "bg-[#1D6411]"
-                  : step.id === currentStep
-                    ? "bg-iff-orange"
-                    : "bg-[#444444]"
+              className={`flex h-4 w-4 items-center justify-center rounded-full ${step.id < currentStep
+                ? "bg-[#1D6411]"
+                : step.id === currentStep
+                  ? "bg-iff-orange"
+                  : "bg-[#444444]"
                 }`}
             >
               {step.id < currentStep ? (
@@ -842,8 +866,7 @@ function Steps({ steps, currentStep, setCurrentStep }) {
                 </svg>
               ) : (
                 <span
-                  className={`${
-                    step.id === currentStep ? "text-white" : "text-[#888888]"
+                  className={`${step.id === currentStep ? "text-white" : "text-[#888888]"
                     } text-xs`}
                 >
                   {step.id}
