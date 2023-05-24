@@ -143,7 +143,7 @@ const DonateWidget = () => {
     },
     {
       id: 3,
-      title: "Cofirmation",
+      title: "Confirmation",
     },
   ];
 
