@@ -10,7 +10,7 @@ const DonateWidget = () => {
   const [isSuccess, setIsSuccess] = useState(false);
 
   const createOrder = async () => {
-    const order = await fetch(
+    const fetchOrder = await fetch(
       "https://heimdall.internetfreedom.in/sync/proxy",
       {
         method: "POST",
@@ -34,6 +34,7 @@ const DonateWidget = () => {
         }),
       }
     );
+    const order = await fetchOrder.json();
     return order;
   };
 
@@ -69,30 +70,27 @@ const DonateWidget = () => {
     } else {
       const randomId = crypto.randomUUID();
 
-      fetch(
-        "https://heimdall.internetfreedom.in/proxy",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
+      fetch("https://heimdall.internetfreedom.in/proxy", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: userDetails.name,
+          email: userDetails.email,
+          contact: userDetails.phone,
+          pan: userDetails.pan,
+          max_amount: currentMembership.amount * 100,
+          type: "ONETIME-PROXY",
+          reference: randomId,
+          address: {
+            address_line1: userDetails.address,
+            pincode: parseInt(userDetails.pincode),
           },
-          body: JSON.stringify({
-            name: userDetails.name,
-            email: userDetails.email,
-            contact: userDetails.phone,
-            pan: userDetails.pan,
-            max_amount: currentMembership.amount * 100,
-            type: "ONETIME-PROXY",
-            reference: randomId,
-            address: {
-              address_line1: userDetails.address,
-              pincode: parseInt(userDetails.pincode),
-            },
-            source: window.location.pathname,
-            metadata: window.navigator.userAgent,
-          }),
-        }
-      );
+          source: window.location.pathname,
+          metadata: window.navigator.userAgent,
+        }),
+      });
 
       options = {
         key: "rzp_live_hjnqVr1bRh6gsb",
@@ -150,7 +148,9 @@ const DonateWidget = () => {
   ];
 
   const [currentStep, setCurrentStep] = useState(1);
-  const [currentMembership, setCurrentMembership] = useState(donationData.monthly[0]);
+  const [currentMembership, setCurrentMembership] = useState(
+    donationData.monthly[0]
+  );
   const [userDetails, setUserDetails] = useState({
     name: "",
     pan: "",
@@ -670,7 +670,6 @@ function classNames(...classes) {
 }
 
 function OneTimeOptions({ setCurrentMembership }) {
-
   const [selectedAmount, setSelectedAmount] = useState(donationData.onetime[0]);
 
   React.useEffect(() => {
@@ -836,20 +835,22 @@ function Steps({ steps, currentStep, setCurrentStep }) {
     <div className="bg-[#2E2E2E] p-10 grid grid-flow-col grid-cols-1 md:grid-cols-4 lg:grid-cols-5">
       {steps.map((step) => (
         <div
-          className={`flex flex-row items-center ${step.id <= currentStep ? "text-white hover:cursor-pointer" : ""
-            }`}
+          className={`flex flex-row items-center ${
+            step.id <= currentStep ? "text-white hover:cursor-pointer" : ""
+          }`}
           onClick={() => {
             if (step.id < currentStep) setCurrentStep(step.id);
           }}
         >
           <span className="flex-shrink-0">
             <span
-              className={`flex h-4 w-4 items-center justify-center rounded-full ${step.id < currentStep
-                ? "bg-[#1D6411]"
-                : step.id === currentStep
+              className={`flex h-4 w-4 items-center justify-center rounded-full ${
+                step.id < currentStep
+                  ? "bg-[#1D6411]"
+                  : step.id === currentStep
                   ? "bg-iff-orange"
                   : "bg-[#444444]"
-                }`}
+              }`}
             >
               {step.id < currentStep ? (
                 <svg
@@ -866,8 +867,9 @@ function Steps({ steps, currentStep, setCurrentStep }) {
                 </svg>
               ) : (
                 <span
-                  className={`${step.id === currentStep ? "text-white" : "text-[#888888]"
-                    } text-xs`}
+                  className={`${
+                    step.id === currentStep ? "text-white" : "text-[#888888]"
+                  } text-xs`}
                 >
                   {step.id}
                 </span>
