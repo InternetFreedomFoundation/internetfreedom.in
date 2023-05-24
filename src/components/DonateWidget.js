@@ -561,7 +561,7 @@ const Confirmation = ({
 };
 
 const Tabs = ({ setCurrentMembership }) => {
-  const [openTab, setOpenTab] = React.useState(2);
+  const [openTab, setOpenTab] = React.useState(1);
   return (
     <>
       <div className="flex flex-wrap sm:w-3/4 w-full">
@@ -581,6 +581,12 @@ const Tabs = ({ setCurrentMembership }) => {
                 onClick={(e) => {
                   e.preventDefault();
                   setOpenTab(1);
+                  setCurrentMembership({
+                    type: "One Time Donation",
+                    title: "₹2,500",
+                    amount: 2500,
+                    description: "One Time Donation",
+                  });
                 }}
                 data-toggle="tab"
                 href="#link1"
@@ -600,6 +606,18 @@ const Tabs = ({ setCurrentMembership }) => {
                 onClick={(e) => {
                   e.preventDefault();
                   setOpenTab(2);
+                  setCurrentMembership({
+                    type: "Monthly Membership",
+                    title: "Accessibility supporter",
+                    amount: 100,
+                    perks: [
+                      "Newsletter access",
+                      "Membership letter and card",
+                      "Briefing calls and exclusive events",
+                      "Quarterly calls with IFF’s leadership",
+                    ],
+                    plan_id: "plan_LZE0Tlk0RfSHwy",
+                  });
                 }}
                 data-toggle="tab"
                 href="#link3"
@@ -619,6 +637,26 @@ const Tabs = ({ setCurrentMembership }) => {
                 onClick={(e) => {
                   e.preventDefault();
                   setOpenTab(3);
+                  setCurrentMembership({
+                    type: "Annual Membership",
+                    title: "Net neutrality ally",
+                    amount: 100000,
+                    perks: [
+                      "Newsletter access",
+                      "Membership letter and card",
+                      "Briefing calls and exclusive events",
+                      "Quarterly calls with IFF’s leadership",
+                      "Stickers",
+                      "Postcards",
+                      "Tote",
+                      "Cap",
+                      "Notebook",
+                      "Mug",
+                      "Tee shirt",
+                      "Invite to IFF’s donor dinner",
+                    ],
+                    plan_id: "plan_LZFqRtuvf6tT0C",
+                  });
                 }}
                 data-toggle="tab"
                 href="#link3"
@@ -755,7 +793,7 @@ function OneTimeOptions({ setCurrentMembership }) {
 }
 
 const Card = ({ tiers, type, setCurrentMembership }) => {
-  const [tier, setTier] = React.useState(1);
+  const [tier, setTier] = React.useState(0);
   return (
     <div className="flex flex-row mb-4">
       <div className="w-full" id="picker">
