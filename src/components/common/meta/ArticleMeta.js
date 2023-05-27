@@ -21,9 +21,8 @@ const ArticleMetaGhost = ({ data, settings, canonical }) => {
     `name`
   );
   const primaryTag = publicTags[0] || ``;
-  const shareImage = ghostPost.feature_image
-    ? ghostPost.feature_image
-    : _.get(settings, `cover_image`, null);
+  const shareImage = ghostPost.feature_image || ghostPost.twitter_image || ghostPost.og_image || _.get(settings, 'cover_image', null);
+
   const publisherLogo =
     settings.logo || config.siteIcon
       ? url.resolve(config.siteUrl, settings.logo || config.siteIcon)
@@ -45,11 +44,11 @@ const ArticleMetaGhost = ({ data, settings, canonical }) => {
     dateModified: ghostPost.updated_at,
     image: shareImage
       ? {
-          "@type": `ImageObject`,
-          url: shareImage,
-          width: config.shareImageWidth,
-          height: config.shareImageHeight,
-        }
+        "@type": `ImageObject`,
+        url: shareImage,
+        width: config.shareImageWidth,
+        height: config.shareImageHeight,
+      }
       : undefined,
     publisher: {
       "@type": `Organization`,
@@ -168,8 +167,10 @@ ArticleMetaGhost.propTypes = {
       name: PropTypes.string,
     }),
     og_title: PropTypes.string,
+    og_image: PropTypes.string,
     og_description: PropTypes.string,
     twitter_title: PropTypes.string,
+    twitter_image: PropTypes.string,
     twitter_description: PropTypes.string,
     excerpt: PropTypes.string.isRequired,
   }).isRequired,
