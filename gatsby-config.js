@@ -157,5 +157,18 @@ module.exports = {
     `gatsby-plugin-catch-links`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-offline`,
+    {
+      resolve: "gatsby-plugin-sitemap",
+      options: {
+        exclude: [
+          `/dev-404-page`,
+          `/404`,
+          `/404.html`,
+          `/offline-plugin-app-shell-fallback`,
+          `/my-excluded-page`,
+          /(\/)?hash-\S*/,
+      ],
+      },
+    },
   ],
 };
