@@ -59,6 +59,7 @@
     "gatsby-plugin-offline": "6.9.0",
     "gatsby-plugin-react-helmet": "6.9.0",
     "gatsby-plugin-sharp": "5.9.0",
+    "gatsby-plugin-sitemap": "^6.10.0",
     "gatsby-source-filesystem": "^5.9.0",
     "gatsby-source-ghost": "5.0.2",
     "gatsby-transformer-sharp": "5.9.0",
