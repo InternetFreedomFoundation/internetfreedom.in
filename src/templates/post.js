@@ -68,7 +68,9 @@ const Post = ({ data, location }) => {
                             src={
                               author.profile_image || "/images/icons/avatar.svg"
                             }
-                            className="object-cover w-8x h-8 rounded-full z-10  border-none outline-none"
+                            loading="lazy"
+                            alt={author.name}
+                            className="object-cover w-8 h-8 rounded-full z-10  border-none outline-none"
                           />
                         </Link>
                         <div className="text-center mb-[0.2rem]">

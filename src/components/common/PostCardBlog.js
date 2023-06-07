@@ -66,7 +66,10 @@ const PostCardBlog = ({ post, number }) => {
                 <img
                   className="object-cover inline-block h-6 w-6 rounded-full"
                   src={author.profile_image || "/images/icons/avatar.svg"}
-                  alt=""
+                  loading="lazy"
+                  alt={author.name}
+                  width={40}
+                  height={40}
                 ></img>
                 <span className="inline-block">{author.name}</span>
                 {index !== post.authors.length - 1 &&
