@@ -1,8 +1,6 @@
 import * as React from "react";
 import PropTypes from "prop-types";
 import { graphql, Link } from "gatsby";
-import { Helmet } from "react-helmet";
-
 import { Layout } from "../components/common";
 import { MetaData } from "../components/common/meta";
 import { readingTime as readingTimeHelper } from "@tryghost/helpers";
@@ -25,10 +23,6 @@ const Post = ({ data, location }) => {
 
   return (
     <>
-      <MetaData data={data} location={location} type="article" />
-      <Helmet>
-        <style type="text/css">{`${post.codeinjection_styles}`}</style>
-      </Helmet>
       <Layout>
         <div className="">
           <div className="bg-bg-black text-white">
@@ -156,6 +150,12 @@ Post.propTypes = {
 };
 
 export default Post;
+
+export const Head = ({ location, data }) => (
+  <>
+    <MetaData data={data} location={location} type="article" />
+  </>
+)
 
 export const postQuery = graphql`
   query ($slug: String!, $tags:[String]) {
