@@ -842,10 +842,10 @@ const Card = ({ tiers, type, setCurrentMembership }) => {
             <ul>
               {tiers[tier] != undefined &&
                 tiers[tier].perks.map((perk) => (
-                  <ul class="my-4 text-left text-gray-400">
-                    <li class="flex items-center space-x-3">
+                  <ul className="my-4 text-left text-gray-400">
+                    <li className="flex items-center space-x-3">
                       <svg
-                        class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                        className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
                         fill="currentColor"
                         viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg"
