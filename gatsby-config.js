@@ -160,13 +160,11 @@ module.exports = {
     {
       resolve: "gatsby-plugin-sitemap",
       options: {
-        exclude: [
+        excludes: [
           `/dev-404-page`,
           `/404`,
           `/404.html`,
-          `/offline-plugin-app-shell-fallback`,
-          `/my-excluded-page`,
-          /(\/)?hash-\S*/,
+          `/offline-plugin-app-shell-fallback`
       ],
       },
     },
