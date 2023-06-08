@@ -15,6 +15,14 @@ const Index = () => {
 
 export default Index;
 
+export const Head = () => (
+  <SEO
+    title={"About Internet Freedom Foundation"}
+    description={"We fight with courage and strategy to advance liberty, equality, fraternity and social justice in the digital age."}
+    url={"https://www.internetfreedom.in/about/"}
+  />
+)
+
 function TopSection() {
   return (
     <div className="bg-bg-black">

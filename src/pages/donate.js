@@ -1,9 +1,9 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 import { Layout } from "../components/common";
 import DonateWidget from "../components/DonateWidget";
 import { Disclosure } from "@headlessui/react";
 import faqs from "../../content/faq.json";
+import { SEO } from "../components/seo";
 
 const Index = () => {
   return (
@@ -297,3 +297,11 @@ function WaysToSupport() {
     </div>
   );
 }
+
+export const Head = () => (
+  <SEO
+    title={"Donate to Internet Freedom Foundation"}
+    description={"We fight for the digital rights of every Indian, but we can’t do it alone—donate today."}
+    url={"https://www.internetfreedom.in/donate/"}
+  />
+)
