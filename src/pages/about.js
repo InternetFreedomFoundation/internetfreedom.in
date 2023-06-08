@@ -2,6 +2,7 @@ import * as React from "react";
 import { Layout } from "../components/common";
 import people from "../../content/people.json";
 import { Link, navigate } from "gatsby";
+import { SEO } from "../components/seo";
 
 const Index = () => {
   return (
