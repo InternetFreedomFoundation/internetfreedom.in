@@ -1,12 +1,12 @@
 import React from "react"
 
-export const SEO = ({ title, description, url, children }) => {
+export const SEO = ({ title, description, url, image, children }) => {
 
     const seo = {
         title: title,
         description: description,
         url: url,
-        image: "https://internetfreedom.in/images/blog_placeholder_image.png",
+        image: image || "https://static.internetfreedom.in/content/images/2023/06/blog_placeholder_image.png",
     }
 
     return (
