@@ -1,6 +1,5 @@
 import * as React from "react";
 import { Layout } from "../components/common";
-import { StaticImage } from "gatsby-plugin-image";
 
 const links = [
   { title: 'Forum', description: 'Come join our forum', url: 'https://forum.internetfreedom.in/' },
@@ -15,7 +14,7 @@ export default function NotFoundPage() {
       <div className="bg-white">
         <main className="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex-shrink-0 pt-16">
-            <StaticImage
+            <img
               className="mx-auto h-12 w-auto"
               src="/images/logo.svg"
               alt="IFF-logo"
