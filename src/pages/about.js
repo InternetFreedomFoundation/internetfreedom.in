@@ -121,6 +121,7 @@ function Avatar({ name, title, description = null }) {
     <div className="flex text-base">
       <img
         src={"/images/icons/avatar.svg"}
+        loading="lazy"
         className="object-cover w-10 h-10 mr-3 mt-1 rounded-full z-10 border-none outline-none"
       />
       <div>

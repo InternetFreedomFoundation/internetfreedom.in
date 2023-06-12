@@ -36,6 +36,7 @@ const Author = ({ data, location, pageContext }) => {
                   src={author.profile_image || "/images/icons/avatar.svg"}
                   className="object-cover w-16 h-16 ring-2 ring-gray-400 rounded-full p-1"
                   alt={author.name}
+                  loading="lazy"
                 />
                 <p className="text-4xl font-extrabold leading-none tracking-tight text-white capitalize underline underline-offset-8">
                   {author.name}

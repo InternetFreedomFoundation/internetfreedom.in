@@ -24,6 +24,7 @@ const PostCardBlog = ({ post, number }) => {
             className={
               "aspect-video w-full rounded object-cover max-w-xl shadow-xl border"
             }
+            loading="lazy"
             alt=""
           />
         </div>
