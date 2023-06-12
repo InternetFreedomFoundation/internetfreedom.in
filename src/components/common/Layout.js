@@ -2,7 +2,7 @@ import * as React from "react";
 import PropTypes from "prop-types";
 import { Helmet } from "react-helmet";
 import { Link, useStaticQuery, graphql } from "gatsby";
-import { GatsbyImage } from "gatsby-plugin-image";
+import { StaticImage } from "gatsby-plugin-image";
 
 import { Footer } from ".";
 import { CTA } from ".";
@@ -42,7 +42,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
 
       {isOpen && (
         <div className="w-full h-full lg:hidden bg-bg-light-grey fixed top-0 z-50">
-          <img
+          <StaticImage
             src="/images/icons/close.png"
             onClick={() => setIsOpen(false)}
             className="h-10 mt-4 ml-4 cursor-pointer"
@@ -73,7 +73,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
               <div className="flex items-center justify-between max-w-6xl mx-auto" id="site-mast">
                 <Link to="/">
                   {isHome ? null : (
-                    <img
+                    <StaticImage
                       id="site-logo"
                       className="h-12"
                       src="/images/logo.svg"
@@ -83,7 +83,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
                 </Link>
 
                 <div className="lg:hidden">
-                  <img
+                  <StaticImage
                     onClick={() => setIsOpen(true)}
                     src="/images/icons/menu.png"
                     className="h-10 cursor-pointer"
@@ -111,7 +111,7 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
               </div>
               {isHome ? (
                 <div id="site-banner" className="my-0 mx-auto responsive-container ">
-                  <img src="/images/logo.svg" className=" w-72 mt-24" />
+                  <StaticImage src="/images/logo.svg" className=" w-72 mt-24" />
                   <h1
                     id=" site-banner-title"
                     className="mt-12 text-white text-superheading not-italic max-w-2xl"
