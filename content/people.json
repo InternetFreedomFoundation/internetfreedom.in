@@ -1,7 +1,7 @@
 {
     "Staff": [
         {
-            "title": "Executive Director",
+            "title": "Founding Director",
             "name": "Apar Gupta"
         },
         {
@@ -17,8 +17,16 @@
             "name": "DK Rai"
         },
         {
+            "title": "Associate Litigation Counsel",
+            "name": "Gayatri Malhotra"
+        },
+        {
             "title": "Policy Director",
             "name": "Prateek Waghre"
+        },
+        {
+            "title": "Associate Litigation Counsel",
+            "name": "Radhika Roy"
         },
         {
             "title": "Community Fundraising Associate",
@@ -31,32 +39,20 @@
         {
             "title": "Associate Policy Counsel",
             "name": "Tejasi Panjiar"
-        },
-        {
-            "title": "Associate Litigation Counsel",
-            "name": "Gayatri Malhotra"
-        },
-        {
-            "title": "Video Literacy Associate",
-            "name": "Asna Jamal"
-        },
-        {
-            "title": "Associate Litigation Counsel",
-            "name": "Radhika Roy"
         }
     ],
     "councels": [
         {
-            "title": "Lead Of-Counsel",
+            "title": "Of-Counsel",
+            "name": "Gautam Bhatia"
+        },
+        {
+            "title": "Of-Counsel",
             "name": "Vrinda Bhandari"
         },
         {
             "title": "Of-Counsel",
             "name": "Abhinav Sekhri"
-        },
-        {
-            "title": "Of-Counsel",
-            "name": "Gautam Bhatia"
         }
     ],
     "leadership": [
