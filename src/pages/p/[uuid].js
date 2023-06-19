@@ -4,6 +4,7 @@ import { Link } from "gatsby";
 import { Layout } from "../../components/common";
 import { readingTime as readingTimeHelper } from "@tryghost/helpers";
 import NewsletterWidget from "../../components/NewsletterWidget";
+import { Helmet } from 'react-helmet';
 
 /**
  * Single post preview (/:uuid)
