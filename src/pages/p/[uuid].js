@@ -43,8 +43,18 @@ function Uuid(props) {
     return (
         <>
             <Helmet>
-                <style type="text/css">{`${post.codeinjection_head}`}</style>
-                <style type="text/css">{`${post.codeinjection_foot}`}</style>
+                {post.codeinjection_head && (
+                    <style type="text/css">
+                        {`${post.codeinjection_head}`}
+                    </style>
+                )}
+
+                {post.codeinjection_foot && (
+                    <style type="text/css">
+                        {`${post.codeinjection_foot}`}
+                    </style>
+                )}
+
             </Helmet>
             <Layout>
                 <div className="">
