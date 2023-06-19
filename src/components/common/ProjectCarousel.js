@@ -8,7 +8,7 @@ const ProjectCarousel = ({ title, img, url, desc }) => {
       <Link to={url} id="post-card" className="p-2 mb-4 flex rounded basis-0 grow items-start h-xl w-lg bg-project-bg mx-1 cursor-pointer">
         <div id="post-features" className="">
           <header className="w-full">
-            <img className="w-full rounded" src={img} />
+            <img className="w-full rounded" src={img} loading="lazy"/>
           </header>
           <section id="post-card-excerpt" className="line-clamp-5 hover:line-clamp-none mt-7 mx-5 text-heading-black text-sm mb-2">
             <p>{desc}</p>
