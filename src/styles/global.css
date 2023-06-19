@@ -16,31 +16,31 @@
 
 @layer components {
   .post-container {
-    @apply px-4 py-4 mx-auto sm: max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:pt-16;
+    @apply px-4 py-4 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:pt-16;
   }
 
   .btn {
-    @apply border-2 border-iff-orange text-white bg-iff-orange hover: bg-opacity-80 px-6 py-2 rounded-md;
+    @apply border-2 border-iff-orange text-white bg-iff-orange hover:bg-opacity-80 px-6 py-2 rounded-md;
   }
 
   .btn-secondary {
-    @apply border border-iff-orange text-iff-orange hover: bg-iff-orange hover:bg-opacity-10 px-6 py-2 rounded-md;
+    @apply border border-iff-orange text-iff-orange hover:bg-iff-orange hover:bg-opacity-10 px-6 py-2 rounded-md;
   }
 
   .responsive-container {
-    @apply md: mx-auto max-w-screen-lg;
+    @apply md:mx-auto max-w-screen-lg;
   }
 
   .text-superheading {
-    @apply text-gray-900 text-2xl md: text-3xl font-semibold
+    @apply text-gray-900 text-2xl md:text-3xl font-semibold
   }
 
   .text-subheading-1 {
-    @apply text-gray-900 text-3xl md: text-3xl font-semibold
+    @apply text-gray-900 text-3xl md:text-3xl font-semibold
   }
 
   .text-subheading-2 {
-    @apply text-gray-900 text-2xl md: text-2xl font-semibold
+    @apply text-gray-900 text-2xl md:text-2xl font-semibold
   }
 
   .text-subheading-3 {
@@ -202,7 +202,7 @@
   cursor: pointer;
   display: block;
   font-weight: 400;
-  @apply text-iff-orange md: text-lg w-10 text-center mt-auto rounded-full;
+  @apply text-iff-orange md:text-lg w-10 text-center mt-auto rounded-full;
 }
 
 .pagination .selected {
