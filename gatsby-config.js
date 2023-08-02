@@ -59,6 +59,10 @@ module.exports = {
         label: "About Us",
         url: "/about/",
       },
+       {
+        label: "Contact",
+        url: "/contact/",
+      },
       {
         label: "Our work",
         url: "/legal/",
