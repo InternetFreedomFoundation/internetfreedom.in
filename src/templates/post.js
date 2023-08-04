@@ -34,17 +34,17 @@ const Post = ({ data, location }) => {
           <div className="bg-bg-black text-white">
             <div className="px-4 py-4 mx-auto md:max-w-full lg:max-w-screen-md 2xl:max-w-screen-lg lg:pt-16">
               <div className="md:mx-auto  text-left">
-                {post.primary_tag && (
-                  <div className="pb-4">
+                <div className="flex flex-row mb-4">
+                  {post.tags.map((tag, index) => (
                     <Link
-                      to={`/tag/${post.primary_tag?.slug}`}
+                      to={`/tag/${tag.slug}`}
                       aria-label="Author"
                       className="p-2 px-4 text-sm bg-bg-light-grey rounded-full tracking-tight text-gray-300 mr-2 capitalize hover:text-iff-orange"
                     >
-                      {post.primary_tag.name}
+                      {tag.name}
                     </Link>
-                  </div>
-                )}
+                  ))}
+                </div>
 
                 <div>
                   <h1 className="pb-4 font-sans block tracking-tight md:tracking-normal break-normal text-xl md:text-2xl text-left font-extrabold text-white">
@@ -54,7 +54,6 @@ const Post = ({ data, location }) => {
                     {post.excerpt}
                   </p>
                 </div>
-
                 <div className="mb-4 mt-8 flex relative -translate-x-1">
                   <div className="flex flex-col md:flex-row">
                     {post.authors.map((author, index) => (
@@ -127,7 +126,9 @@ const Post = ({ data, location }) => {
                             <p className="grow">
                               {relatedArticle.published_at_pretty}
                             </p>
-                            <p className="">{relatedArticle.reading_time} min read</p>
+                            <p className="">
+                              {relatedArticle.reading_time} min read
+                            </p>
                           </div>
                         </div>
                       </div>
@@ -158,15 +159,18 @@ Post.propTypes = {
 export default Post;
 
 export const postQuery = graphql`
-  query ($slug: String!, $tags:[String]) {
+  query ($slug: String!, $tags: [String]) {
     ghostPost(slug: { eq: $slug }) {
       ...GhostPostFields
     }
     allGhostPost(
-    filter: {tags: {elemMatch: {slug: {in: $tags}}}, slug: {ne: $slug}}
-    limit: 3
-    sort: {published_at: DESC}
-  ) {
+      filter: {
+        tags: { elemMatch: { slug: { in: $tags } } }
+        slug: { ne: $slug }
+      }
+      limit: 3
+      sort: { published_at: DESC }
+    ) {
       nodes {
         excerpt
         slug
