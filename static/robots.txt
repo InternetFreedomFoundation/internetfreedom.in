@@ -1,3 +1,7 @@
+User-agent: GPTBot
+Disallow: /
+
 User-agent: *
 Allow: /
+
 Sitemap: https://internetfreedom.in/sitemap-index.xml
