@@ -5,7 +5,7 @@ module.exports = {
       ? process.env.SITE_URL || `https://internetfreedom.in`
       : `https://internetfreedom-in.pages.dev`, // Site domain. Do not include a trailing slash!
 
-  postsPerPage: 3, // Number of posts shown on paginated pages (changes this requires sometimes to delete the cache)
+  postsPerPage: 10, // Number of posts shown on paginated pages (changes this requires sometimes to delete the cache)
 
   siteTitleMeta: `Internet Freedom Foundation`, // This allows an alternative site title for meta data for pages.
   siteDescriptionMeta: `Internet Freedom Foundation defends online freedom, privacy and innovation in India`,
