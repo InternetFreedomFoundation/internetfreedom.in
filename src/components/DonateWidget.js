@@ -22,7 +22,7 @@ const DonateWidget = () => {
           email: userDetails.email,
           contact: userDetails.phone,
           pan: userDetails.pan,
-          plan: currentMembership.planId,
+          plan: currentMembership.plan_id,
           max_amount: currentMembership.amount * 100,
           type: "SUBS-PROXY",
           address: {
