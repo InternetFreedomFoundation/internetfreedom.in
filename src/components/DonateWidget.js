@@ -811,7 +811,7 @@ const Card = ({ tiers, type, setCurrentMembership }) => {
                       title: d["name"],
                       amount: d["amount"],
                       description: d["perks"],
-                      planId: d["plan_id"],
+                      plan_id: d["plan_id"],
                     });
                     setTier(idx);
                   }}
