@@ -34,12 +34,12 @@ const Post = ({ data, location }) => {
           <div className="bg-bg-black text-white">
             <div className="px-4 py-4 mx-auto md:max-w-full lg:max-w-screen-md 2xl:max-w-screen-lg lg:pt-16">
               <div className="md:mx-auto  text-left">
-                <div className="flex flex-row mb-4">
+                <div className="flex flex-row flex-wrap mb-4">
                   {post.tags.map((tag, index) => (
                     <Link
                       to={`/tag/${tag.slug}`}
                       aria-label="Author"
-                      className="p-2 px-4 text-sm bg-bg-light-grey rounded-full tracking-tight text-gray-300 mr-2 capitalize hover:text-iff-orange"
+                      className="p-2 px-4 text-sm bg-bg-light-grey rounded-full tracking-tight text-gray-300 mr-2 my-1 capitalize hover:text-iff-orange"
                     >
                       {tag.name}
                     </Link>
