@@ -321,7 +321,7 @@ const PersonalInfo = ({
   };
 
   const handlePanChange = (e) => {
-    setPan(e.target.value);
+    setPan(e.target.value.toUpperCase());
   };
 
   const handleEmailChange = (e) => {
