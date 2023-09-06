@@ -38,7 +38,7 @@ function Uuid(props) {
         return <div>Loading... Please wait.</div>; // Render a loading state while waiting for data
     }
 
-    const post = apiData.posts[0];
+    const post = apiData.posts[0] || apiData.pages[0];
     const readingTime = readingTimeHelper(post);
 
     return (
