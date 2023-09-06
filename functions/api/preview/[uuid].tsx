@@ -30,6 +30,8 @@ export async function onRequestGet(context) {
     const ghost_cookie = response.headers.get("set-cookie");
 
     const post_url = new URL(context.env.GHOST_BASE_URL + '/admin/posts/')
+    const page_url = new URL(context.env.GHOST_BASE_URL + '/admin/pages/')
+
     post_url.searchParams.append("filter", "UUID:" + context.params.uuid)
     post_url.searchParams.append("formats", "html")
 
@@ -39,6 +41,21 @@ export async function onRequestGet(context) {
             cookie: ghost_cookie!
         }
     })
+
+    if (!ghostResponse.ok) {
+        const ghostResponse = await fetch(page_url, {
+            method: 'GET',
+            headers: {
+                cookie: ghost_cookie!
+            }
+        })
+        return new Response(ghostResponse.body, {
+            status: ghostResponse.status,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+    }
 
     return new Response(ghostResponse.body, {
         status: ghostResponse.status,
