@@ -39,7 +39,7 @@ function Uuid(props) {
     }
 
     var post = apiData.posts[0];
-    if (Array.isArray(apiData.posts) || !apiData.posts.length){
+    if (!Array.isArray(apiData.posts) || !apiData.posts.length){
         post = apiData.pages[0];
     }
     const readingTime = readingTimeHelper(post);

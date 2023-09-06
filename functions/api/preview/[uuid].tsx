@@ -42,7 +42,9 @@ export async function onRequestGet(context) {
         }
     })
 
-    if (!ghostResponse.ok) {
+    const apiData = await ghostResponse.json()
+
+    if (!ghostResponse.ok || !Array.isArray(apiData.posts) || !apiData.posts.length) {
         const ghostResponse = await fetch(page_url, {
             method: 'GET',
             headers: {
