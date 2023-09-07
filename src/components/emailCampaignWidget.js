@@ -34,7 +34,7 @@ const EmailCampaignWidget = () => {
       body: JSON.stringify(formData),
     });
     
-    window.open(email_content, "_blank");
+    window.location.href = email_content;
   };
 
   return (
