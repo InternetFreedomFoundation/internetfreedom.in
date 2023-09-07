@@ -23,6 +23,9 @@ const EmailCampaignWidget = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    formData.metadata = navigator.userAgent;
+    formData.source = window.location.href;
+
     await fetch("https://heimdall.internetfreedom.in/campaigns/capture", {
       method: "POST",
       headers: {
@@ -30,10 +33,8 @@ const EmailCampaignWidget = () => {
       },
       body: JSON.stringify(formData),
     });
-
-    formData.metadata = navigator.userAgent;
-    formData.source = window.location.href;
-    window.location.href = email_content;
+    
+    window.open(email_content, "_blank");
   };
 
   return (
