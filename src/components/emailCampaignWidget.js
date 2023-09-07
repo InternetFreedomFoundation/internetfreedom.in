@@ -20,21 +20,20 @@ const EmailCampaignWidget = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    navigator.clipboard.writeText(email_content);
-    formData.metadata = navigator.userAgent;
-    formData.source = window.location.href;
 
-    fetch("https://heimdall.internetfreedom.in/campaigns/capture", {
+    await fetch("https://heimdall.internetfreedom.in/campaigns/capture", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(formData),
     });
-    window.location.href = email_content;
 
+    formData.metadata = navigator.userAgent;
+    formData.source = window.location.href;
+    window.location.href = email_content;
   };
 
   return (
