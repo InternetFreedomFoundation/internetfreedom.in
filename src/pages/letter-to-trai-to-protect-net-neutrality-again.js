@@ -51,11 +51,9 @@ function Content() {
             </p>
 
             <EmailCampaignWidget />
-            <p>
-                <small>
+            <p className="prose-sm">
                     IFF will have a copy of the email you send to TRAI. This will help us keep a track of how many of these emails are sent to TRAI, which we wish to use for our broader advocacy. Our <a href="https://internetfreedom.in/privacy-policy/#:~:text=We%20do%20not%20rent%20or,government%20request%20to%20access%20it.">Privacy Policy
                     </a> contains further information on how/ if we collect, store, and use your data. We are not storing your information in any other form.
-                </small>
 
             </p>
 
