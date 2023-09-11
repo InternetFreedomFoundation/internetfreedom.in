@@ -81,7 +81,7 @@ const EmailCampaignWidget = () => {
 
         <div className="mb-4">
           <label htmlFor="organization" className="block text-gray-600">
-            Organization:
+            Organization (optional):
           </label>
           <input
             type="text"
