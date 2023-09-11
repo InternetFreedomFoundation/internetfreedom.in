@@ -90,7 +90,6 @@ const EmailCampaignWidget = () => {
             value={formData.organization}
             onChange={handleChange}
             className="w-full px-4 py-2 border rounded-lg focus:ring focus:ring-iff-orange"
-            required
           />
         </div>
 
