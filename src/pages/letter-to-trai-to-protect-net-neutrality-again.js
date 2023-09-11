@@ -19,6 +19,7 @@ export const Head = () => (
         title={"Letter to TRAI to protect Net Neutrality"}
         description={"TRAI is wondering whether the “OTT” space should be policed — and your telecom service providers believe IT SHOULD."}
         url={"https://www.internetfreedom.in/letter-to-trai-to-protect-net-neutrality-again/"}
+        image={"https://content.internetfreedom.in/api/files/divco3ywedt9rpe/71g4inydhwetffh/trai_net_neutrality_campaign_p71FirUNDI.png?token="}
     />
 )
 
