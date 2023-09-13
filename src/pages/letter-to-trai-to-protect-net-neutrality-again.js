@@ -28,11 +28,11 @@ function TopSection() {
         <div className="bg-bg-black">
             <div className="px-4 py-6 md:py-32 space-y-5 responsive-container prose prose-invert">
                 <h1>
-                    TRAI is wondering whether the “OTT” space should be policed — and your telecom service providers believe IT SHOULD.
+                    #SaveTheInternet, again.
                 </h1>
                 <div className="text-gray-300">
                     <p className="italic">
-                        Minor updates to the copy of this page were made on September 11, 2023 based on suggestions from our community. An archived version of the page can be found <a className="underline" href="https://web.archive.org/web/20230911105904/https://internetfreedom.in/letter-to-trai-to-protect-net-neutrality-again/">here</a>.
+                        Minor updates to the copy of this page were made on September 11, and September 13 based on suggestions from our community. Archived versions of the page can be found <a className="underline" href="https://web.archive.org/web/20230911105904/https://internetfreedom.in/letter-to-trai-to-protect-net-neutrality-again/">here</a>.
                     </p>
                     <p>
                         Telecom operators are lobbying the Indian telecom regulator TRAI to force online services to pay them network usage fees, and bring some online services under a telecom licence.
