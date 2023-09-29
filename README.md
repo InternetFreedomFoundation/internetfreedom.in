@@ -2,7 +2,9 @@
 
 Website that powers internetfreedom.in, built using [Ghost](https://ghost.org/) & [Gatsby](https://gatsbyjs.org)
 
-# Installing
+Initail architecture and motivation can be found [here](./proposal.md).
+
+## Installing
 
 ```bash
 # From Source
@@ -18,7 +20,7 @@ yarn
 
 &nbsp;
 
-# Running
+## Running
 
 Start the development server. You now have a Gatsby site pulling content from headless Ghost.
 
