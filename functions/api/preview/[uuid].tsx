@@ -3,7 +3,16 @@
  * Returns html content from a ghost private draft post
  */
 
-export async function onRequestGet(context) {
+import { GhostData } from "@tryghost/content-api";
+
+interface Env {
+    GHOST_BASE_URL: string;
+    GHOST_ADMIN_USERNAME: string;
+    GHOST_ADMIN_PASSWORD: string;
+}
+
+
+export const onRequestGet: PagesFunction<Env> = async (context) => {
 
     if (!context.params.uuid) {
         return new Response("Error: 'uuid' parameter is missing or null", { status: 400 });
@@ -13,12 +22,12 @@ export async function onRequestGet(context) {
 
     const body = {
         username: context.env.GHOST_ADMIN_USERNAME,
-        password: context.env.GHOST_ADMIN_PASSWORD
+        password: context.env.GHOST_ADMIN_PASSWORD,
     }
 
     const headers = {
         'Content-Type': 'application/json;charset=utf-8',
-        'Origin': context.env.GHOST_ORIGIN
+        'Origin': context.env.GHOST_BASE_URL
     }
 
     const response = await fetch(session_url, {
@@ -42,9 +51,9 @@ export async function onRequestGet(context) {
         }
     })
 
-    const apiData = await ghostResponse.json()
+    const apiData:GhostData = await ghostResponse.json()
 
-    if (!ghostResponse.ok || !Array.isArray(apiData.posts) || !apiData.posts.length) {
+    if (!ghostResponse.ok || !Array.isArray(apiData) || !apiData.length) {
         const ghostResponse = await fetch(page_url, {
             method: 'GET',
             headers: {
