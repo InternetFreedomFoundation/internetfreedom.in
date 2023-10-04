@@ -44,6 +44,8 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
 
     post_url.searchParams.append("filter", "UUID:" + context.params.uuid)
     post_url.searchParams.append("formats", "html")
+    page_url.searchParams.append("filter", "UUID:" + context.params.uuid)
+    page_url.searchParams.append("formats", "html")
 
     const ghostResponse = await fetch(post_url, {
         method: 'GET',
@@ -54,7 +56,7 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
 
     const apiData: PostsOrPages = await ghostResponse.json()
 
-    if (!ghostResponse.ok || !Array.isArray(apiData) || !apiData.length) {
+    if (!ghostResponse.ok || apiData.meta.pagination.total === 0) {
         const ghostResponse = await fetch(page_url, {
             method: 'GET',
             headers: {
@@ -69,7 +71,7 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
         })
     }
 
-    return new Response(ghostResponse.body, {
+    return new Response(JSON.stringify(apiData), {
         status: ghostResponse.status,
         headers: {
             'Content-Type': 'application/json'
