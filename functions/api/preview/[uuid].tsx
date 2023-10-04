@@ -3,11 +3,11 @@
  * Returns html content from a ghost private draft post
  */
 
-import { GhostData } from "@tryghost/content-api";
+import { PostsOrPages } from "@tryghost/content-api";
 
 interface Env {
     GHOST_BASE_URL: string;
-    GHOST_ORIGIN:string;
+    GHOST_ORIGIN: string;
     GHOST_ADMIN_USERNAME: string;
     GHOST_ADMIN_PASSWORD: string;
 }
@@ -52,7 +52,7 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
         }
     })
 
-    const apiData:GhostData = await ghostResponse.json()
+    const apiData: PostsOrPages = await ghostResponse.json()
 
     if (!ghostResponse.ok || !Array.isArray(apiData) || !apiData.length) {
         const ghostResponse = await fetch(page_url, {
