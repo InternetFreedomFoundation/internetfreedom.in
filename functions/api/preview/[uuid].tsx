@@ -7,6 +7,7 @@ import { GhostData } from "@tryghost/content-api";
 
 interface Env {
     GHOST_BASE_URL: string;
+    GHOST_ORIGIN:string;
     GHOST_ADMIN_USERNAME: string;
     GHOST_ADMIN_PASSWORD: string;
 }
@@ -27,7 +28,7 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
 
     const headers = {
         'Content-Type': 'application/json;charset=utf-8',
-        'Origin': context.env.GHOST_BASE_URL
+        'Origin': context.env.GHOST_ORIGIN
     }
 
     const response = await fetch(session_url, {
