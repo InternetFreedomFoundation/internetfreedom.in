@@ -68,6 +68,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
                 "region": String(context.request.cf.region),
                 "ip": String(context.request.headers.get('CF-Connecting-IP')),
                 "UA": String(context.request.headers.get('user-agent')),
+                "razorpayId": String(razorpay.id),
             };
 
             sendToHeimdall(formData, context.env.BACK_OFFICE);
