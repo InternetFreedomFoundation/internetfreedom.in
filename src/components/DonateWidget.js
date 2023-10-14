@@ -11,7 +11,7 @@ const DonateWidget = () => {
 
   const createOrder = async () => {
     const fetchOrder = await fetch(
-      "https://heimdall.internetfreedom.in/sync/proxy",
+      "https://internetfreedom.in/api/donate",
       {
         method: "POST",
         headers: {
@@ -30,9 +30,6 @@ const DonateWidget = () => {
             pincode: parseInt(userDetails.pincode),
           },
           source: window.location.pathname,
-          metadata: {
-            "header":  window.navigator.userAgent,
-          },
         }),
       }
     );
@@ -909,9 +906,8 @@ function Steps({ steps, currentStep, setCurrentStep }) {
                 </svg>
               ) : (
                 <span
-                  className={`${
-                    step.id === currentStep ? "text-white" : "text-[#888888]"
-                  } text-xs`}
+                  className={`${step.id === currentStep ? "text-white" : "text-[#888888]"
+                    } text-xs`}
                 >
                   {step.id}
                 </span>
