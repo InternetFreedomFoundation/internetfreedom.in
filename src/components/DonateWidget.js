@@ -87,7 +87,9 @@ const DonateWidget = () => {
             pincode: parseInt(userDetails.pincode),
           },
           source: window.location.pathname,
-          metadata: window.navigator.userAgent,
+          metadata: {
+            "UA": window.navigator.userAgent,
+          },
         }),
       });
 
