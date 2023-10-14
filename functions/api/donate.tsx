@@ -71,7 +71,8 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
                 "razorpayId": String(razorpay.id),
             };
 
-            sendToHeimdall(formData, context.env.BACK_OFFICE);
+            // comtinue to process in the background
+            context.waitUntil(sendToHeimdall(formData, context.env.BACK_OFFICE));
 
 
             return new Response(JSON.stringify({
@@ -87,7 +88,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     }
 };
 
-function sendToHeimdall(formData: Subscription, endpoint: string) {
+async function sendToHeimdall(formData: Subscription, endpoint: string):Promise<Response> {
     const init: RequestInit = {
         method: 'POST',
         headers: {
@@ -96,5 +97,5 @@ function sendToHeimdall(formData: Subscription, endpoint: string) {
         body: JSON.stringify(formData),
     };
 
-    fetch(endpoint, init);
+    return fetch(endpoint, init);
 }
