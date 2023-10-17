@@ -38,7 +38,7 @@ const Index = ({ data, location, pageContext }) => {
           id="container"
           className="responsive-container px-4 mt-4 text-left"
         >
-          <h1 className="text-subheading-1 mb-4 mt-24 font-bold">Blogposts</h1>
+          <h1 className="text-subheading-1 mb-4 mt-24 font-bold">Updates</h1>
           <section id="post-feed">
             {posts.map(({ node }, index) => (
               // The tag below includes the markup for each post - components/common/PostCard.js
