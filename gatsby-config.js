@@ -72,7 +72,7 @@ module.exports = {
         url: "/jobs-and-internships/",
       },
       {
-        label: "Blogposts",
+        label: "Updates",
         url: "/posts/",
       },
       {
