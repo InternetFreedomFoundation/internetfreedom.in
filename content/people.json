@@ -1,10 +1,6 @@
 {
     "Staff": [
         {
-            "title": "Founding Director",
-            "name": "Apar Gupta"
-        },
-        {
             "title": "Accounts Associate",
             "name": "Aditya Jha"
         },
@@ -25,16 +21,16 @@
             "name": "Gayatri Malhotra"
         },
         {
-            "title": "Policy Director",
+            "title": "Executive Director",
             "name": "Prateek Waghre"
+        },
+        {
+            "title": "Digital Literacy Fellow",
+            "name": "Purvai Dwivedi"
         },
         {
             "title": "Associate Litigation Counsel",
             "name": "Radhika Roy"
-        },
-        {
-            "title": "Community and Operations Associate",
-            "name": "Sragvi Chaturvedi"
         },
         {
             "title": "Senior Litigation Counsel",
@@ -61,9 +57,9 @@
     ],
     "leadership": [
         {
-            "title": "Founding Director",
+            "title": "Observer Trustee",
             "name": "Apar Gupta",
-            "desc": "He is an accomplished lawyer who  directs the operations, programme and staff at IFF. Apar is a lawyer who has practised for several years and for his work has been awarded the Ashoka Fellowship."
+            "desc": "He is an accomplished lawyer who directs the operations, programme and staff at IFF. Apar is a lawyer who has practised for several years and for his work has been awarded the Ashoka Fellowship."
         },
         {
             "title": "Board Co-chair and Trustee",
@@ -71,14 +67,14 @@
             "desc": "He is a software engineer at Insider.in and has built most of IFF’s tech assets. Karthik also provides guidance on technical queries and also implements fixes on IFF’s main website as well as other campaign websites and campaigns"
         },
         {
-            "title": "Chair and Trustee",
-            "name": "Rachita Taneja",
-            "desc": "She is an artist, activist and the co-founder of Jhatkaa.org. Rachita is also the creator of Sanitary Panels. She advises IFF on creating and running public campaigns given her previous expertise in the area and also oversees matters of organisational structuring"
+            "title": "Trustee",
+            "name": "Vandita Morarka",
+            "desc": "She is a social justice leader and the founder and CEO of One Future Collective: a feminist youth led non profit with the vision of a world built on social justice, led by communities of care. Her work focuses on building feminist leadership capacities for social change. She brings to the Board her experience in community organising, campaigning, and organisation building."
         },
         {
-            "title": "Co-Chair and Trustee",
-            "name": "Aravind Ravi-Sulekha",
-            "desc": "Software engineer and entrepreneur at Nektar.ai. He is a co-founder and trustee and broadly oversees projects being run by volunteers. His experience with tech startups has provided IFF with a deeper understanding of the technology sector"
+            "title": "Trustee",
+            "name": ":Anshul Tewari",
+            "desc": "He is a social entrepreneur and the founder of Youth Ki Awaaz, India’s largest youth-centred open expression platform, which he began while he was in high school. He has worked across media, campaigning, and citizen advocacy for over a decade, with the goal of impacting change by building grassroots citizen power."
         }
     ]
 }
