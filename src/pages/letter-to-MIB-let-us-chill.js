@@ -19,7 +19,7 @@ export default Index;
 export const Head = () => (
     <SEO
         title={"Ask MIB to kill the bill and #LetUsChill"}
-        description={"TRAI is wondering whether the “OTT” space should be policed — and your telecom service providers believe IT SHOULD."}
+        description={"Hey! There’s yet another bill in town, targeting your favourite Netflix shows, YouTubers, and online news channels. It’s about to clamp down on our right to free expression —censoring everything from satire to inconvenient truths."}
         url={"https://letuschill.in/"}
         image={"https://content.internetfreedom.in/api/files/divco3ywedt9rpe/hdlw6oi0euufpac/bb23_1_epAWk4NL2R.jpg"}
     />
