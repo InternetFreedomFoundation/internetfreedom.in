@@ -58,7 +58,7 @@ function Content() {
             </p>
 
             <p>
-                [When you click on the button above, an email compose box should open on your device. Relevant details, including the body of the email,  recipients, and subject line, will already be filled out. If you wish to add your name and affiliation at the bottom of the email body, please do so. <strong>If the above method doesn’t work for you, please find the details for sending the email <a href="https://docs.google.com/document/d/1s1oB2-3Wy0yzt6xiQPhxSSSzbY1q2pSs76ghgG5k2_w/sharing">here</a></strong>] 
+                [When you click on the button above, an email compose box should open on your device. Relevant details, including the body of the email,  recipients, and subject line, will already be filled out. If you wish to add your name and affiliation at the bottom of the email body, please do so. <strong>If the above method doesn’t work for you, please find the details for sending the email <a href="https://docs.google.com/document/d/1s1oB2-3Wy0yzt6xiQPhxSSSzbY1q2pSs76ghgG5k2_w/edit?usp=sharing">here</a></strong>]
             </p>
 
             <p>
