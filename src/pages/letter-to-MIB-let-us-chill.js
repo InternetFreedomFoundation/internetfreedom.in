@@ -12,7 +12,6 @@ const Index = () => {
         <Layout>
             <TopSection />
             <Content />
-            <FaqSection />
         </Layout>
     );
 };
@@ -63,7 +62,7 @@ function Content() {
             <p>
                 [When you click on the button above, an email compose box should open on your device. Relevant details, including the body of the email,  recipients, and subject line, will already be filled out. If you wish to add your name and affiliation at the bottom of the email body, please do so. <strong>If the above method doesn’t work for you, please find the details for sending the email <a href="https://docs.google.com/document/d/1s1oB2-3Wy0yzt6xiQPhxSSSzbY1q2pSs76ghgG5k2_w/edit?usp=sharing">here</a></strong>]
             </p>
-
+            <FaqSection />
             <p>
                 First they came for radios, then they came for television, then cinemas, and now they are coming for your favourite Netflix shows, YouTubers and independent news channels. The Ministry of Information and Broadcasting, in its recently released draft Broadcasting Bill, has proposed the inclusion of “OTT” broadcasting services, such as Netflix, Disney Hotstar, Jio cinema under its regulatory ambit, which originally only governed the traditional broadcasters such as Cable TV and Radio.In what seems to be an attempt to stifle journalistic speech and expression, the Bill extends regulatory compliance to individuals who broadcast news and current affairs programs through a digital medium, including a website or a social media platform.
 
