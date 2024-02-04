@@ -40,6 +40,7 @@ const DonateWidget = () => {
   const handlePayment = async () => {
     let options = {};
     if (currentMembership.description !== "One Time Donation") {
+      // handle subscription donations
       const order = await createOrder();
 
       options = {
@@ -56,8 +57,7 @@ const DonateWidget = () => {
         },
         notes: {
           REFERENCE: order.reference,
-          PAN: userDetails.pan,
-          ADDRESS: userDetails.address,
+          EMAIL: userDetails.email,
         },
         handler: (res) => {
           handlePaymentResponse(res);
@@ -67,6 +67,7 @@ const DonateWidget = () => {
         },
       };
     } else {
+      // handle one time donations
       const randomId = crypto.randomUUID();
 
       fetch("https://heimdall.internetfreedom.in/proxy", {
