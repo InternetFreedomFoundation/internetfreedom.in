@@ -46,7 +46,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
         },
         body: JSON.stringify({
             "plan_id": formData.plan,
-            "total_count": 24,
+            "total_count": 120,
             "notes": {
                 "EMAIL": formData.email,
                 "REFERENCE": formData.reference,
