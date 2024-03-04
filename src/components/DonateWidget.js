@@ -72,7 +72,7 @@ const DonateWidget = () => {
       } else {
         // handle one time donations
         const randomId = crypto.randomUUID();
-        const metadata = await cf.json();
+        const data = await cf.json();
 
         fetch("https://heimdall.internetfreedom.in/proxy", {
           method: "POST",
@@ -92,7 +92,7 @@ const DonateWidget = () => {
               pincode: parseInt(userDetails.pincode),
             },
             source: window.location.pathname,
-            metadata: metadata,
+            metadata: data.metadata,
           }),
         });
 
