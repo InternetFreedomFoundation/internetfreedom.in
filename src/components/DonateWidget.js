@@ -39,88 +39,91 @@ const DonateWidget = () => {
 
   const handlePayment = async () => {
     let options = {};
-    if (currentMembership.description !== "One Time Donation") {
-      // handle subscription donations
-      const order = await createOrder();
+    //do a health check before proceeding
+    const cf = await fetch('/api/healthz');
+    if (cf.ok) {
+      if (currentMembership.description !== "One Time Donation") {
+        // handle subscription donations
+        const order = await createOrder();
 
-      options = {
-        key: "rzp_live_hjnqVr1bRh6gsb",
-        subscription_id: order.id,
-        amount: currentMembership.amount * 100,
-        name: "Donate",
-        description:
-          "Support the fight for Internet Freedom - " + currentMembership.title,
-        prefill: {
-          name: userDetails.name,
-          email: userDetails.email,
-          contact: userDetails.phone,
-        },
-        notes: {
-          REFERENCE: order.reference,
-          EMAIL: userDetails.email,
-        },
-        handler: (res) => {
-          handlePaymentResponse(res);
-        },
-        theme: {
-          color: "#CC7755",
-        },
-      };
-    } else {
-      // handle one time donations
-      const randomId = crypto.randomUUID();
-
-      fetch("https://heimdall.internetfreedom.in/proxy", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name: userDetails.name,
-          email: userDetails.email,
-          contact: userDetails.phone,
-          pan: userDetails.pan,
-          max_amount: currentMembership.amount * 100,
-          type: "ONETIME-PROXY",
-          reference: randomId,
-          address: {
-            address_line1: userDetails.address,
-            pincode: parseInt(userDetails.pincode),
+        options = {
+          key: "rzp_live_hjnqVr1bRh6gsb",
+          subscription_id: order.id,
+          amount: currentMembership.amount * 100,
+          name: "Donate",
+          description:
+            "Support the fight for Internet Freedom - " + currentMembership.title,
+          prefill: {
+            name: userDetails.name,
+            email: userDetails.email,
+            contact: userDetails.phone,
           },
-          source: window.location.pathname,
-          metadata: {
-            "UA": window.navigator.userAgent,
+          notes: {
+            REFERENCE: order.reference,
+            EMAIL: userDetails.email,
           },
-        }),
-      });
+          handler: (res) => {
+            handlePaymentResponse(res);
+          },
+          theme: {
+            color: "#CC7755",
+          },
+        };
+      } else {
+        // handle one time donations
+        const randomId = crypto.randomUUID();
+        const metadata = await cf.json();
 
-      options = {
-        key: "rzp_live_hjnqVr1bRh6gsb",
-        amount: currentMembership.amount * 100,
-        currency: "INR",
-        name: "Donate",
-        description:
-          "Support the fight for Internet Freedom - " + currentMembership.title,
-        handler: (res) => {
-          handlePaymentResponse(res);
-        },
-        prefill: {
-          name: userDetails.name,
-          email: userDetails.email,
-          contact: userDetails.phone,
-        },
-        notes: {
-          EMAIL: userDetails.email,
-          REFERENCE: randomId,
-        },
-        theme: {
-          color: "#CC7755",
-        },
-      };
+        fetch("https://heimdall.internetfreedom.in/proxy", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: userDetails.name,
+            email: userDetails.email,
+            contact: userDetails.phone,
+            pan: userDetails.pan,
+            max_amount: currentMembership.amount * 100,
+            type: "ONETIME-PROXY",
+            reference: randomId,
+            address: {
+              address_line1: userDetails.address,
+              pincode: parseInt(userDetails.pincode),
+            },
+            source: window.location.pathname,
+            metadata: metadata,
+          }),
+        });
+
+        options = {
+          key: "rzp_live_hjnqVr1bRh6gsb",
+          amount: currentMembership.amount * 100,
+          currency: "INR",
+          name: "Donate",
+          description:
+            "Support the fight for Internet Freedom - " + currentMembership.title,
+          handler: (res) => {
+            handlePaymentResponse(res);
+          },
+          prefill: {
+            name: userDetails.name,
+            email: userDetails.email,
+            contact: userDetails.phone,
+          },
+          notes: {
+            EMAIL: userDetails.email,
+            REFERENCE: randomId,
+          },
+          theme: {
+            color: "#CC7755",
+          },
+        };
+      }
+
+      const rzpay = new Razorpay(options);
+      rzpay.open();
     }
-
-    const rzpay = new Razorpay(options);
-    rzpay.open();
   };
 
   const handlePaymentResponse = (res) => {
