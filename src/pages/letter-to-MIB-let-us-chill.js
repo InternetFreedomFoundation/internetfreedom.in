@@ -53,6 +53,7 @@ function Content() {
             <EmailCampaignWidget
                 title="Letter to MIB"
                 campaign="MIB-LetUsChill-DEC-2023"
+                campaignClosed={true}
                 emailContent={email_content}
             />
             <p className="prose-sm">

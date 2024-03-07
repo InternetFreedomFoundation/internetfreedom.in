@@ -12,10 +12,14 @@ const defaultFormData = {
 };
 
 const EmailCampaignWidget = (props) => {
-  const { title, campaign, emailContent } = props;
+  const { title, campaign, emailContent, campaignClosed } = props;
   const [formData, setFormData] = useState({ ...defaultFormData, campaign });
 
   const handleChange = (e) => {
+    if (campaignClosed) {
+      alert("The campaign is closed and submissions are no longer accepted.");
+      return;
+    }
     const { name, value } = e.target;
     if (name === "communication_consent") {
       setFormData({
@@ -113,8 +117,9 @@ const EmailCampaignWidget = (props) => {
           <button
             type="submit"
             className="btn w-full text-xl font-light h-14"
-          >
-            Write now
+            disabled={campaignClosed}
+            >
+              {campaignClosed ? "Campaign Closed" : "Write now"}
           </button>
         </div>
       </form>
