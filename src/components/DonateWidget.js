@@ -9,9 +9,13 @@ const DonateWidget = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
-  const createOrder = async () => {
+  const createOrder = async (orderType) => {
+    if (!['SUBS-PROXY', 'ONETIME-PROXY'].includes(orderType)) {
+      throw new Error('Invalid orderType. Must be either "SUBS-PROXY" or "ONETIME-PROXY"');
+    }
+
     const fetchOrder = await fetch(
-      "https://internetfreedom.in/api/donate",
+      '/api/donate',
       {
         method: "POST",
         headers: {
@@ -22,9 +26,8 @@ const DonateWidget = () => {
           email: userDetails.email,
           contact: userDetails.phone,
           pan: userDetails.pan,
-          plan: currentMembership.plan_id,
           max_amount: currentMembership.amount * 100,
-          type: "SUBS-PROXY",
+          type: orderType,
           address: {
             address_line1: userDetails.address,
             pincode: parseInt(userDetails.pincode),
@@ -33,97 +36,72 @@ const DonateWidget = () => {
         }),
       }
     );
+
     const order = await fetchOrder.json();
     return order;
   };
 
+
   const handlePayment = async () => {
     let options = {};
-    //do a health check before proceeding
-    const cf = await fetch('/api/healthz');
-    if (cf.ok) {
-      if (currentMembership.description !== "One Time Donation") {
-        // handle subscription donations
-        const order = await createOrder();
+    if (currentMembership.description !== "One Time Donation") {
+      // handle subscription donations
+      const sub = await createOrder('SUBS-PROXY');
 
-        options = {
-          key: "rzp_live_hjnqVr1bRh6gsb",
-          subscription_id: order.id,
-          amount: currentMembership.amount * 100,
-          name: "Donate",
-          description:
-            "Support the fight for Internet Freedom - " + currentMembership.title,
-          prefill: {
-            name: userDetails.name,
-            email: userDetails.email,
-            contact: userDetails.phone,
-          },
-          notes: {
-            REFERENCE: order.reference,
-            EMAIL: userDetails.email,
-          },
-          handler: (res) => {
-            handlePaymentResponse(res);
-          },
-          theme: {
-            color: "#CC7755",
-          },
-        };
-      } else {
-        // handle one time donations
-        const randomId = crypto.randomUUID();
-        const data = await cf.json();
+      options = {
+        key: "rzp_live_hjnqVr1bRh6gsb",
+        subscription_id: sub.id,
+        amount: currentMembership.amount * 100,
+        name: "Donate",
+        description:
+          "Support the fight for Internet Freedom - " + currentMembership.title,
+        prefill: {
+          name: userDetails.name,
+          email: userDetails.email,
+          contact: userDetails.phone,
+        },
+        notes: {
+          REFERENCE: sub.reference,
+          EMAIL: userDetails.email,
+        },
+        handler: (res) => {
+          handlePaymentResponse(res);
+        },
+        theme: {
+          color: "#CC7755",
+        },
+      };
+    } else {
+      // handle one time donations
+      const order = await createOrder('ONETIME-PROXY')
 
-        fetch("https://heimdall.internetfreedom.in/proxy", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            name: userDetails.name,
-            email: userDetails.email,
-            contact: userDetails.phone,
-            pan: userDetails.pan,
-            max_amount: currentMembership.amount * 100,
-            type: "ONETIME-PROXY",
-            reference: randomId,
-            address: {
-              address_line1: userDetails.address,
-              pincode: parseInt(userDetails.pincode),
-            },
-            source: window.location.pathname,
-            metadata: data.metadata,
-          }),
-        });
-
-        options = {
-          key: "rzp_live_hjnqVr1bRh6gsb",
-          amount: currentMembership.amount * 100,
-          currency: "INR",
-          name: "Donate",
-          description:
-            "Support the fight for Internet Freedom - " + currentMembership.title,
-          handler: (res) => {
-            handlePaymentResponse(res);
-          },
-          prefill: {
-            name: userDetails.name,
-            email: userDetails.email,
-            contact: userDetails.phone,
-          },
-          notes: {
-            EMAIL: userDetails.email,
-            REFERENCE: randomId,
-          },
-          theme: {
-            color: "#CC7755",
-          },
-        };
-      }
-
-      const rzpay = new Razorpay(options);
-      rzpay.open();
+      options = {
+        key: "rzp_live_hjnqVr1bRh6gsb",
+        amount: currentMembership.amount * 100,
+        currency: "INR",
+        name: "Donate",
+        description: "Support the fight for Internet Freedom",
+        order_id: order.id,
+        handler: (res) => {
+          handlePaymentResponse(res);
+        },
+        prefill: {
+          name: userDetails.name,
+          email: userDetails.email,
+          contact: userDetails.phone,
+        },
+        notes: {
+          EMAIL: userDetails.email,
+          REFERENCE: order.reference,
+        },
+        theme: {
+          color: "#CC7755",
+        },
+      };
     }
+
+    const rzpay = new Razorpay(options);
+    rzpay.open();
   };
 
   const handlePaymentResponse = (res) => {
@@ -878,22 +856,20 @@ function Steps({ steps, currentStep, setCurrentStep }) {
     <div className="bg-[#2E2E2E] p-10 grid grid-flow-col grid-cols-1 md:grid-cols-4 lg:grid-cols-5">
       {steps.map((step) => (
         <div
-          className={`flex flex-row items-center ${
-            step.id <= currentStep ? "text-white hover:cursor-pointer" : ""
-          }`}
+          className={`flex flex-row items-center ${step.id <= currentStep ? "text-white hover:cursor-pointer" : ""
+            }`}
           onClick={() => {
             if (step.id < currentStep) setCurrentStep(step.id);
           }}
         >
           <span className="flex-shrink-0">
             <span
-              className={`flex h-4 w-4 items-center justify-center rounded-full ${
-                step.id < currentStep
-                  ? "bg-[#1D6411]"
-                  : step.id === currentStep
+              className={`flex h-4 w-4 items-center justify-center rounded-full ${step.id < currentStep
+                ? "bg-[#1D6411]"
+                : step.id === currentStep
                   ? "bg-iff-orange"
                   : "bg-[#444444]"
-              }`}
+                }`}
             >
               {step.id < currentStep ? (
                 <svg
