@@ -4,12 +4,12 @@ interface Env {
     BACK_OFFICE: string;
 }
 
-interface Subscription {
+interface FormData {
     name: string;
     email: string;
     contact: string;
     pan: string;
-    plan: string;
+    plan?: string;
     max_amount: number;
     type: string;
     address: {
@@ -21,76 +21,136 @@ interface Subscription {
     source?: string;
 }
 
-interface RazorpayResponse {
+interface RazorpaySubscriptionResponse {
     id: string;
 }
 
+interface RazorpayOrderResponse {
+    id: string;
+}
 
-const razorpayApiUrl = 'https://api.razorpay.com/v1/subscriptions';
+const razorpaySubscriptionApiUrl = "https://api.razorpay.com/v1/subscriptions";
 
+const razorpayOrdersApiUrl = "https://api.razorpay.com/v1/orders";
 
 export const onRequestPost: PagesFunction<Env> = async (context) => {
     const apiKey = context.env.RAZORPAY_KEY + ":" + context.env.RAZORPAY_SECRET;
 
-    const formData: Subscription = await context.request.json();
+    const formData: FormData = await context.request.json();
 
     if (!formData.reference) {
-        formData.reference = context.request.headers.get('cf-ray') || crypto.randomUUID()
+        formData.reference =
+            context.request.headers.get("cf-ray") || crypto.randomUUID();
     }
 
-    const requestOptions: RequestInit = {
-        method: 'POST',
+    const subscriptionRequestOptions: RequestInit = {
+        method: "POST",
         headers: {
-            'Authorization': `Basic ${btoa(apiKey)}`,
-            'Content-Type': 'application/json',
+            Authorization: `Basic ${btoa(apiKey)}`,
+            "Content-Type": "application/json",
         },
         body: JSON.stringify({
-            "plan_id": formData.plan,
-            "total_count": 120,
-            "notes": {
-                "EMAIL": formData.email,
-                "REFERENCE": formData.reference,
-            }
+            plan_id: formData.plan,
+            total_count: 120,
+            notes: {
+                EMAIL: formData.email,
+                REFERENCE: formData.reference,
+            },
+        }),
+    };
+
+    const orderRequestOptions: RequestInit = {
+        method: "POST",
+        headers: {
+            Authorization: `Basic ${btoa(apiKey)}`,
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            amount: formData.max_amount,
+            currency: "INR",
+            receipt: formData.reference,
+            notes: {
+                EMAIL: formData.email,
+                REFERENCE: formData.reference,
+            },
         }),
     };
 
     try {
-        const response = await fetch(razorpayApiUrl, requestOptions);
+        if (formData.type === "ONETIME-PROXY") {
+            const response = await fetch(razorpayOrdersApiUrl, orderRequestOptions);
+            if (response.ok) {
+                const razorpay: RazorpayOrderResponse = await response.json();
 
-        if (response.ok) {
-            const razorpay: RazorpayResponse = await response.json();
+                formData.metadata = {
+                    city: String(context.request.cf.city),
+                    ISP: String(context.request.cf.asOrganization),
+                    country: String(context.request.cf.country),
+                    pincode: String(context.request.cf.postalCode),
+                    region: String(context.request.cf.region),
+                    ip: String(context.request.headers.get("CF-Connecting-IP")),
+                    UA: String(context.request.headers.get("user-agent")),
+                    razorpayId: String(razorpay.id),
+                };
 
-            formData.metadata = {
-                "city": String(context.request.cf.city),
-                "ISP": String(context.request.cf.asOrganization),
-                "country": String(context.request.cf.country),
-                "pincode": String(context.request.cf.postalCode),
-                "region": String(context.request.cf.region),
-                "ip": String(context.request.headers.get('CF-Connecting-IP')),
-                "UA": String(context.request.headers.get('user-agent')),
-                "razorpayId": String(razorpay.id),
-            };
+                // comtinue to process in the background
+                context.waitUntil(sendToHeimdall(formData, context.env.BACK_OFFICE));
 
-            // comtinue to process in the background
-            context.waitUntil(sendToHeimdall(formData, context.env.BACK_OFFICE));
+                return new Response(
+                    JSON.stringify({
+                        id: razorpay.id,
+                        reference: formData.reference,
+                    })
+                );
+            }
+            return new Response("razorpay request failed", {
+                status: 500,
+            });
+        } else if (formData.type === "SUBS-PROXY") {
+            const response = await fetch(
+                razorpaySubscriptionApiUrl,
+                subscriptionRequestOptions
+            );
 
+            if (response.ok) {
+                const razorpay: RazorpaySubscriptionResponse = await response.json();
 
-            return new Response(JSON.stringify({
-                "id": razorpay.id,
-                "reference": formData.reference,
-            }));
+                formData.metadata = {
+                    city: String(context.request.cf.city),
+                    ISP: String(context.request.cf.asOrganization),
+                    country: String(context.request.cf.country),
+                    pincode: String(context.request.cf.postalCode),
+                    region: String(context.request.cf.region),
+                    ip: String(context.request.headers.get("CF-Connecting-IP")),
+                    UA: String(context.request.headers.get("user-agent")),
+                    razorpayId: String(razorpay.id),
+                };
+
+                // comtinue to process in the background
+                context.waitUntil(sendToHeimdall(formData, context.env.BACK_OFFICE));
+
+                return new Response(
+                    JSON.stringify({
+                        id: razorpay.id,
+                        reference: formData.reference,
+                    })
+                );
+            }
+            return new Response("razorpay request failed", {
+                status: 500,
+            });
         }
-        return new Response('razorpay request failed', {
-            status: 500
-        });
     } catch (error) {
         return new Response(`Something went wrong`, { status: 500 });
     }
 };
 
-async function sendToHeimdall(formData: Subscription, endpoint: string):Promise<Response> {
+async function sendToHeimdall(
+    formData: FormData,
+    endpoint: string
+): Promise<Response> {
     const init: RequestInit = {
-        method: 'POST',
+        method: "POST",
         headers: {
             "content-type": "application/json;charset=UTF-8",
         },
