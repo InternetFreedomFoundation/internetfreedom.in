@@ -43,41 +43,25 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
             context.request.headers.get("cf-ray") || crypto.randomUUID();
     }
 
-    const subscriptionRequestOptions: RequestInit = {
-        method: "POST",
-        headers: {
-            Authorization: `Basic ${btoa(apiKey)}`,
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            plan_id: formData.plan,
-            total_count: 120,
-            notes: {
-                EMAIL: formData.email,
-                REFERENCE: formData.reference,
-            },
-        }),
-    };
-
-    const orderRequestOptions: RequestInit = {
-        method: "POST",
-        headers: {
-            Authorization: `Basic ${btoa(apiKey)}`,
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            amount: formData.max_amount,
-            currency: "INR",
-            receipt: formData.reference,
-            notes: {
-                EMAIL: formData.email,
-                REFERENCE: formData.reference,
-            },
-        }),
-    };
-
     try {
         if (formData.type === "ONETIME-PROXY") {
+            const orderRequestOptions: RequestInit = {
+                method: "POST",
+                headers: {
+                    Authorization: `Basic ${btoa(apiKey)}`,
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    amount: formData.max_amount,
+                    currency: "INR",
+                    receipt: formData.reference,
+                    notes: {
+                        EMAIL: formData.email,
+                        REFERENCE: formData.reference,
+                    },
+                }),
+            };
+
             const response = await fetch(razorpayOrdersApiUrl, orderRequestOptions);
             if (response.ok) {
                 const razorpay: RazorpayOrderResponse = await response.json();
@@ -103,10 +87,25 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
                     })
                 );
             }
-            return new Response("razorpay request failed", {
+            return new Response("razorpay order request failed", {
                 status: 500,
             });
         } else if (formData.type === "SUBS-PROXY") {
+            const subscriptionRequestOptions: RequestInit = {
+                method: "POST",
+                headers: {
+                    Authorization: `Basic ${btoa(apiKey)}`,
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    plan_id: formData.plan,
+                    total_count: 120,
+                    notes: {
+                        EMAIL: formData.email,
+                        REFERENCE: formData.reference,
+                    },
+                }),
+            };
             const response = await fetch(
                 razorpaySubscriptionApiUrl,
                 subscriptionRequestOptions
@@ -126,7 +125,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
                     razorpayId: String(razorpay.id),
                 };
 
-                // comtinue to process in the background
+                // continue to process in the background
                 context.waitUntil(sendToHeimdall(formData, context.env.BACK_OFFICE));
 
                 return new Response(
@@ -136,11 +135,12 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
                     })
                 );
             }
-            return new Response("razorpay request failed", {
-                status: 500,
-            });
         }
+        return new Response("Invalid request", {
+            status: 400,
+        });
     } catch (error) {
+        console.error(error);
         return new Response(`Something went wrong`, { status: 500 });
     }
 };
