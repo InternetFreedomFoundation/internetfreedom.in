@@ -87,7 +87,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
                     })
                 );
             }
-            const data = response.json()
+            const data = await response.json()
             console.log(data)
             return new Response("razorpay order request failed", {
                 status: 500,
@@ -137,7 +137,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
                     })
                 );
             }
-            const data = response.json()
+            const data = await response.json()
             console.log(data)
             return new Response("razorpay subscription request failed", {
                 status: 500,
