@@ -26,6 +26,7 @@ const DonateWidget = () => {
           email: userDetails.email,
           contact: userDetails.phone,
           pan: userDetails.pan,
+          plan: currentMembership.plan_id,
           max_amount: currentMembership.amount * 100,
           type: orderType,
           address: {
