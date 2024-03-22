@@ -29,6 +29,7 @@ const DonateWidget = () => {
           plan: currentMembership.plan_id,
           max_amount: currentMembership.amount * 100,
           type: orderType,
+          frequency: currentMembership.frequency,
           address: {
             address_line1: userDetails.address,
             pincode: parseInt(userDetails.pincode),
@@ -569,6 +570,7 @@ const Tabs = ({ setCurrentMembership }) => {
                     type: "One Time Donation",
                     title: "₹2,500",
                     amount: 2500,
+                    frequency: "onetime",
                     description: "One Time Donation",
                   });
                 }}
@@ -593,6 +595,7 @@ const Tabs = ({ setCurrentMembership }) => {
                   setCurrentMembership({
                     type: "Monthly Membership",
                     title: "Accessibility supporter",
+                    frequency: "monthly",
                     amount: 100,
                     perks: [
                       "Newsletter access",
@@ -624,6 +627,7 @@ const Tabs = ({ setCurrentMembership }) => {
                   setCurrentMembership({
                     type: "Annual Membership",
                     title: "Net neutrality ally",
+                    frequency:"annual",
                     amount: 100000,
                     perks: [
                       "Newsletter access",
@@ -697,6 +701,7 @@ function OneTimeOptions({ setCurrentMembership }) {
   React.useEffect(() => {
     setCurrentMembership({
       type: "One Time Donation",
+      frequency: selectedAmount.frequency,
       title: selectedAmount.title,
       amount: selectedAmount.amount,
       description: selectedAmount.description,
@@ -767,6 +772,7 @@ function OneTimeOptions({ setCurrentMembership }) {
               type: "One Time Donation",
               title: "Custom Amount",
               amount: e.target.value,
+              frequency: "onetime",
               description: "One Time Donation",
             });
           }}
@@ -796,6 +802,7 @@ const Card = ({ tiers, type, setCurrentMembership }) => {
                       amount: d["amount"],
                       description: d["perks"],
                       plan_id: d["plan_id"],
+                      frequency: d["frequency"]
                     });
                     setTier(idx);
                   }}
