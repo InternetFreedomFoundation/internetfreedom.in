@@ -87,6 +87,8 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
                     })
                 );
             }
+            const data = response.json()
+            console.log(data)
             return new Response("razorpay order request failed", {
                 status: 500,
             });
@@ -135,16 +137,16 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
                     })
                 );
             }
+            const data = response.json()
+            console.log(data)
             return new Response("razorpay subscription request failed", {
                 status: 500,
             });
-        }
-        else {
+        } else {
             return new Response("Invalid request", {
                 status: 400,
             });
         }
-
     } catch (error) {
         console.error(error);
         return new Response(`Something went wrong`, { status: 500 });
@@ -165,3 +167,4 @@ async function sendToHeimdall(
 
     return fetch(endpoint, init);
 }
+
