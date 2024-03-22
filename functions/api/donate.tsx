@@ -12,6 +12,7 @@ interface FormData {
     plan?: string;
     max_amount: number;
     type: string;
+    frequency?: string;
     address: {
         address_line1: string;
         pincode: number;
@@ -93,20 +94,35 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
                 status: 500,
             });
         } else if (formData.type === "SUBS-PROXY") {
+            
+            var requestPayload = {
+                plan_id: formData.plan,
+                total_count: 120,
+                notes: {
+                    EMAIL: formData.email,
+                    REFERENCE: formData.reference,
+                },
+            };
+
+            if (formData.frequency === "annual"){
+                requestPayload = {
+                    plan_id: formData.plan,
+                    total_count: 10,
+                    notes: {
+                        EMAIL: formData.email,
+                        REFERENCE: formData.reference,
+                    },
+                }; 
+            }
+
+            
             const subscriptionRequestOptions: RequestInit = {
                 method: "POST",
                 headers: {
                     Authorization: `Basic ${btoa(apiKey)}`,
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({
-                    plan_id: formData.plan,
-                    total_count: 120,
-                    notes: {
-                        EMAIL: formData.email,
-                        REFERENCE: formData.reference,
-                    },
-                }),
+                body: JSON.stringify(requestPayload),
             };
             const response = await fetch(
                 razorpaySubscriptionApiUrl,
