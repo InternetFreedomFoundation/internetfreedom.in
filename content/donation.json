@@ -5,22 +5,27 @@
       "amount": 100,
       "frequency": "monthly",
       "perks": [
-        "Newsletter access",
-        "Membership letter and card",
-        "Briefing calls and exclusive events",
-        "Quarterly calls with IFF’s leadership"
+        "Membership letter and card"
       ],
       "plan_id": "plan_LZE0Tlk0RfSHwy"
+    },
+    {
+      "name": "Data Defender",
+      "amount": 250,
+      "frequency": "monthly",
+      "perks": [
+        "Membership letter and card",
+        "Stickers"
+      ],
+      "plan_id": "plan_NzgnNE7omwQOJw"
     },
     {
       "name": "Transparency advocate",
       "amount": 750,
       "frequency": "monthly",
       "perks": [
-        "Newsletter access",
         "Membership letter and card",
-        "Briefing calls and exclusive events",
-        "Quarterly calls with IFF’s leadership",
+        "Postcards",
         "Stickers"
       ],
       "plan_id": "plan_LZE55rEq3kjtqn"
@@ -30,10 +35,7 @@
       "amount": 2000,
       "frequency": "monthly",
       "perks": [
-        "Newsletter access",
         "Membership letter and card",
-        "Briefing calls and exclusive events",
-        "Quarterly calls with IFF’s leadership",
         "Stickers",
         "Postcards",
         "Tote"
@@ -45,15 +47,11 @@
       "amount": 5000,
       "frequency": "monthly",
       "perks": [
-        "Newsletter access",
         "Membership letter and card",
-        "Briefing calls and exclusive events",
-        "Quarterly calls with IFF’s leadership",
         "Stickers",
         "Postcards",
         "Tote",
-        "Cap",
-        "Notebook"
+        "T-Shirt"
       ],
       "plan_id": "plan_LZFjJpwgImVheg"
     },
@@ -62,15 +60,12 @@
       "amount": 10000,
       "frequency": "monthly",
       "perks": [
-        "Newsletter access",
         "Membership letter and card",
-        "Briefing calls and exclusive events",
-        "Quarterly calls with IFF’s leadership",
         "Stickers",
         "Postcards",
         "Tote",
         "Cap",
-        "Notebook",
+        "T-shirt",
         "Mug",
         "Invite to IFF’s donor dinner"
       ],
@@ -83,17 +78,14 @@
       "amount": 100000,
       "frequency": "annual",
       "perks": [
-        "Newsletter access",
         "Membership letter and card",
-        "Briefing calls and exclusive events",
-        "Quarterly calls with IFF’s leadership",
         "Stickers",
         "Postcards",
         "Tote",
         "Cap",
         "Notebook",
         "Mug",
-        "Tee shirt",
+        "T-shirt",
         "Invite to IFF’s donor dinner"
       ],
       "plan_id": "plan_LZFqRtuvf6tT0C"
@@ -103,17 +95,14 @@
       "amount": 500000,
       "frequency": "annual",
       "perks": [
-        "Newsletter access",
         "Membership letter and card",
-        "Briefing calls and exclusive events",
-        "Quarterly calls with IFF’s leadership",
         "Stickers",
         "Postcards",
         "Tote",
         "Cap",
         "Notebook",
         "Mug",
-        "Custom Tee shirt",
+        "Custom T-shirt",
         "Invite to IFF’s donor dinner",
         "Office hours with IFF staffers"
       ],
