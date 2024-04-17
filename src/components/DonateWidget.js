@@ -46,7 +46,7 @@ const DonateWidget = () => {
 
   const handlePayment = async () => {
     let options = {};
-    if (currentMembership.description !== "One Time Donation") {
+    if (currentMembership.frequency !== "onetime") {
       // handle subscription donations
       const sub = await createOrder('SUBS-PROXY');
 
@@ -189,7 +189,7 @@ const DonateWidget = () => {
             </div>
           </div>
         </div>
-        <span className="font-italic text-xs text-gray-400">
+        <span className="p-4 italic text-xs text-gray-400">
           All donations to IFF are 50% tax deductible under Section 80G of the
           Income Tax Act
         </span>
@@ -264,9 +264,11 @@ const TierSelection = ({
       <div className="bg-[#2E2E2E] sm:w-1/4 w-full rounded-md">
         <div className="w-full h-full p-8 flex flex-col items-center justify-center space-y-5">
           <span className="text-[#888888]">{currentMembership.type}</span>
-          <span className="text-white text-xl text-center">
-            {currentMembership.title}
-          </span>
+          {currentMembership.frequency !== "onetime" && (
+            <span className="text-white text-xl text-center">
+              {currentMembership.title}
+            </span>
+          )}
           <span className="text-white text-3xl">
             ₹{currentMembership.amount}
           </span>
@@ -521,31 +523,31 @@ const Confirmation = ({
           </span>
         </div>
         <div className="">
-            <p className="font-bold text-white">
-              {currentMembership.title} membership perks
-            </p>
-            <ul>
-              {currentMembership.perks.map((perk) => (
-                  <ul className="my-4 text-left text-gray-400">
-                    <li className="flex items-center space-x-3">
-                      <svg
-                        className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          fill-rule="evenodd"
-                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                          clip-rule="evenodd"
-                        ></path>
-                      </svg>
-                      <span>{perk}</span>
-                    </li>
-                  </ul>
-                ))}
-            </ul>
-          </div> 
+          <p className="font-bold text-white">
+            {currentMembership.title} membership perks
+          </p>
+          <ul>
+            {currentMembership.perks.map((perk) => (
+              <ul className="my-4 text-left text-gray-400">
+                <li className="flex items-center space-x-3">
+                  <svg
+                    className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                  <span>{perk}</span>
+                </li>
+              </ul>
+            ))}
+          </ul>
+        </div>
       </div>
       <div className="bg-[#2E2E2E] w-full mt-10 sm:mt-0 sm:w-1/4 rounded-md">
         <div className="w-full h-full p-8 flex flex-col items-center justify-center space-y-5">
@@ -571,7 +573,7 @@ const Confirmation = ({
 };
 
 const Tabs = ({ setCurrentMembership }) => {
-  const [openTab, setOpenTab] = React.useState(1);
+  const [openTab, setOpenTab] = React.useState(2);
   return (
     <>
       <div className="flex flex-wrap sm:w-3/4 w-full">
@@ -652,7 +654,7 @@ const Tabs = ({ setCurrentMembership }) => {
                   setCurrentMembership({
                     type: "Annual Membership",
                     title: "Net neutrality ally",
-                    frequency:"annual",
+                    frequency: "annual",
                     amount: 100000,
                     perks: [
                       "Newsletter access",
@@ -752,19 +754,13 @@ function OneTimeOptions({ setCurrentMembership }) {
               {({ checked, active }) => (
                 <>
                   <span className="flex flex-1">
-                    <span className="flex flex-col">
+                    <span className="flex flex-col mx-auto ">
                       <RadioGroup.Label
                         as="span"
-                        className="block text-sm font-medium text-gray-100"
+                        className="text-xl font-medium text-gray-100"
                       >
                         {amount.title}
                       </RadioGroup.Label>
-                      <RadioGroup.Description
-                        as="span"
-                        className="mt-1 flex items-center text-sm text-gray-400"
-                      >
-                        {amount.description}
-                      </RadioGroup.Description>
                     </span>
                   </span>
                   <span
@@ -784,7 +780,7 @@ function OneTimeOptions({ setCurrentMembership }) {
       <div className="mt-5">
         <label
           htmlFor="custom-amount"
-          className="block text-sm font-medium leading-6 text-white"
+          className="block text-sm font-medium leading-6 text-gray-300"
         >
           Custom amount
         </label>
@@ -825,7 +821,7 @@ const Card = ({ tiers, type, setCurrentMembership }) => {
                         " Membership",
                       title: d["name"],
                       amount: d["amount"],
-                      description: d["perks"],
+                      perks: d["perks"],
                       plan_id: d["plan_id"],
                       frequency: d["frequency"]
                     });
