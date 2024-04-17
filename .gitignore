@@ -82,3 +82,4 @@ yarn-error.log
 .ghost.json
 .ghost
 .dev.vars
+*.lockb binary diff=lockb
