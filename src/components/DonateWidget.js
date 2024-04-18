@@ -480,9 +480,9 @@ const PersonalInfo = ({
       <div className="bg-[#2E2E2E] sm:w-1/4 w-full rounded-md">
         <div className="w-full h-full p-8 flex flex-col items-center justify-center space-y-5">
           <span className="text-[#888888]">{currentMembership.type}</span>
-          <span className="text-white text-xl text-center">
+          {currentMembership.frequency !== "onetime" && <span className="text-white text-xl text-center">
             {currentMembership.title}
-          </span>
+          </span>}
           <span className="text-white text-3xl">
             ₹{currentMembership.amount}
           </span>
@@ -522,7 +522,7 @@ const Confirmation = ({
             ₹{currentMembership.amount}
           </span>
         </div>
-        <div className="">
+        {currentMembership.perks.length != 0 && <div className="">
           <p className="font-bold text-white">
             {currentMembership.title} membership perks
           </p>
@@ -547,7 +547,7 @@ const Confirmation = ({
               </ul>
             ))}
           </ul>
-        </div>
+        </div>}
       </div>
       <div className="bg-[#2E2E2E] w-full mt-10 sm:mt-0 sm:w-1/4 rounded-md">
         <div className="w-full h-full p-8 flex flex-col items-center justify-center space-y-5">
@@ -595,10 +595,11 @@ const Tabs = ({ setCurrentMembership }) => {
                   setOpenTab(1);
                   setCurrentMembership({
                     type: "One Time Donation",
-                    title: "₹2,500",
-                    amount: 2500,
-                    frequency: "onetime",
-                    description: "One Time Donation",
+                    title: donationData.onetime[0].name,
+                    amount: donationData.onetime[0].amount,
+                    frequency: donationData.onetime[0].frequency,
+                    description: donationData.onetime[0].description,
+                    perks: donationData.onetime[0].perks,
                   });
                 }}
                 data-toggle="tab"
@@ -621,16 +622,11 @@ const Tabs = ({ setCurrentMembership }) => {
                   setOpenTab(2);
                   setCurrentMembership({
                     type: "Monthly Membership",
-                    title: "Accessibility supporter",
-                    frequency: "monthly",
-                    amount: 100,
-                    perks: [
-                      "Newsletter access",
-                      "Membership letter and card",
-                      "Briefing calls and exclusive events",
-                      "Quarterly calls with IFF’s leadership",
-                    ],
-                    plan_id: "plan_LZE0Tlk0RfSHwy",
+                    title: donationData.monthly[0].name,
+                    frequency: donationData.monthly[0].frequency,
+                    amount: donationData.monthly[0].amount,
+                    perks: donationData.monthly[0].perks,
+                    plan_id: donationData.monthly[0].plan_id,
                   });
                 }}
                 data-toggle="tab"
@@ -653,24 +649,11 @@ const Tabs = ({ setCurrentMembership }) => {
                   setOpenTab(3);
                   setCurrentMembership({
                     type: "Annual Membership",
-                    title: "Net neutrality ally",
-                    frequency: "annual",
-                    amount: 100000,
-                    perks: [
-                      "Newsletter access",
-                      "Membership letter and card",
-                      "Briefing calls and exclusive events",
-                      "Quarterly calls with IFF’s leadership",
-                      "Stickers",
-                      "Postcards",
-                      "Tote",
-                      "Cap",
-                      "Notebook",
-                      "Mug",
-                      "Tee shirt",
-                      "Invite to IFF’s donor dinner",
-                    ],
-                    plan_id: "plan_LZFqRtuvf6tT0C",
+                    title: donationData.annual[0].name,
+                    frequency: donationData.annual[0].frequency,
+                    amount: donationData.annual[0].amount,
+                    perks: donationData.annual[0].perks,
+                    plan_id: donationData.annual[0].plan_id,
                   });
                 }}
                 data-toggle="tab"
@@ -732,6 +715,7 @@ function OneTimeOptions({ setCurrentMembership }) {
       title: selectedAmount.title,
       amount: selectedAmount.amount,
       description: selectedAmount.description,
+      perks: selectedAmount.perks,
     });
   }, [selectedAmount]);
 
@@ -795,6 +779,7 @@ function OneTimeOptions({ setCurrentMembership }) {
               amount: e.target.value,
               frequency: "onetime",
               description: "One Time Donation",
+              perks: [],
             });
           }}
         />
