@@ -573,7 +573,7 @@ const Confirmation = ({
 };
 
 const Tabs = ({ setCurrentMembership }) => {
-  const [openTab, setOpenTab] = React.useState(2);
+  const [openTab, setOpenTab] = React.useState(1);
   return (
     <>
       <div className="flex flex-wrap sm:w-3/4 w-full">
