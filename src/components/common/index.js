@@ -6,3 +6,4 @@ export { default as ProjectCarousel } from "./ProjectCarousel";
 export { default as Pagination } from "./Pagination";
 export { default as Footer } from "./Footer";
 export { default as CTA } from "./CTA";
+export { default as Search } from "./Search";

@@ -9,6 +9,7 @@ import {
   PostCarousel,
   ProjectCarousel,
   PostCardBlog,
+  Search
 } from "../components/common";
 import { MetaData } from "../components/common/meta";
 import DonateCard from "../components/common/DonateCard";
@@ -39,6 +40,9 @@ const Index = ({ data, location, pageContext }) => {
           className="responsive-container px-4 mt-4 text-left"
         >
           <h1 className="text-subheading-1 mb-4 mt-24 font-bold">Updates</h1>
+          <div className="py-4">
+            <Search/>
+          </div>
           <section id="post-feed">
             {posts.map(({ node }, index) => (
               // The tag below includes the markup for each post - components/common/PostCard.js
@@ -89,6 +93,14 @@ Index.propTypes = {
 
 export default Index;
 
+export function Head() {
+  return (
+    <div>
+      <link href="/pagefind/pagefind-ui.css" rel="stylesheet" />
+      <script src="/pagefind/pagefind-ui.js" ></script>
+    </div>
+  )
+}
 // This page query loads all posts sorted descending by published date
 // The `limit` and `skip` values are used for pagination
 export const pageQuery = graphql`

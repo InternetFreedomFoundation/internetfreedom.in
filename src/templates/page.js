@@ -24,10 +24,11 @@ const Page = ({ data, location }) => {
       <Layout>
         <div className="mt-16 prose md:prose-lg lg:prose-xl prose-img:rounded-xl prose-img:shadow-xl mx-auto p-4">
 
-          <h1>{page.title}</h1>
+          <h1 data-pagefind-meta="title">{page.title}</h1>
 
           {/* The main page content */}
           <section
+            data-pagefind-body
             dangerouslySetInnerHTML={{ __html: page.html }}
           />
 
