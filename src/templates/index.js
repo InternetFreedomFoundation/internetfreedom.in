@@ -4,15 +4,11 @@ import { graphql } from "gatsby";
 import { useRef } from "react";
 import {
   Layout,
-  PostCard,
-  Pagination,
-  PostCarousel,
   ProjectCarousel,
   PostCardBlog,
   Search
 } from "../components/common";
 import { MetaData } from "../components/common/meta";
-import DonateCard from "../components/common/DonateCard";
 import NewsletterWidget from "../components/NewsletterWidget";
 import projectData from "../../content/projects.json";
 import { navigate } from "gatsby";
