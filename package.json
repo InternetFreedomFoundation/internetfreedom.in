@@ -23,6 +23,7 @@
   "scripts": {
     "serve": "gatsby build && NODE_ENV=production gatsby serve",
     "build": "gatsby build",
+    "postbuild": "pagefind --site public",
     "dev": "gatsby develop",
     "lint": "eslint . --ext .js --cache",
     "develop": "gatsby develop",
@@ -67,6 +68,7 @@
     "gatsby-source-ghost": "5.0.2",
     "gatsby-transformer-sharp": "5.9.0",
     "lodash": "4.17.21",
+    "pagefind": "^1.1.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-helmet": "6.1.0",
