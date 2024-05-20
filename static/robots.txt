@@ -1,4 +1,89 @@
+User-agent: Amazonbot
+Disallow: /
+
+User-agent: Arquivo-web-crawler
+Disallow: /
+
+User-agent: AwarioRssBot
+User-agent: AwarioSmartBot
+Disallow: /
+
+User-agent: Bingbot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+User-agent: Coherence.ai
+Disallow: /
+
+User-agent: DataForSeoBot
+Disallow: /
+
+User-agent: Diffbot
+Disallow: /
+
+User-agent: FacebookBot
+Disallow: /
+
 User-agent: GPTBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: Magpie-crawler
+Disallow: /
+
+User-agent: Mojeek
+Disallow: /
+
+User-agent: MoodleBot
+Disallow: /
+
+User-agent: NewsNow
+Disallow: /
+
+User-agent: Omgili
+Disallow: /
+
+User-agent: Omilibot
+Disallow: /
+
+User-agent: PetalBot
+Disallow: /
+
+User-agent: Peer39_ crawler
+Disallow: /
+
+User-agent: PerplexityBot
+Disallow: /
+
+User-agent: Scrapy
+Disallow: /
+
+User-agent: Seekr
+Disallow: /
+
+User-agent: Turnitin
+Disallow: /
+
+User-agent: TurnitinBot
+Disallow: /
+
+User-agent: YouBot
 Disallow: /
 
 User-agent: *
