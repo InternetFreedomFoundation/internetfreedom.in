@@ -772,6 +772,8 @@ function OneTimeOptions({ setCurrentMembership }) {
           type="number"
           className="w-full rounded-sm border-0 py-1.5 pl-4 text-white placeholder:text-gray-400 bg-[#2E2E2E] focus:bg-[#3E3E3E] focus:outline-none sm:text-sm sm:leading-6"
           placeholder="Enter custom amount"
+          min="100"
+          step="50"
           onChange={(e) => {
             setCurrentMembership({
               type: "One Time Donation",
