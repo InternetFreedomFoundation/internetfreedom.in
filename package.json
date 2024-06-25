@@ -23,7 +23,6 @@
   "scripts": {
     "serve": "gatsby build && NODE_ENV=production gatsby serve",
     "build": "gatsby build",
-    "postbuild": "pagefind --site public",
     "dev": "gatsby develop",
     "lint": "eslint . --ext .js --cache",
     "develop": "gatsby develop",
