@@ -49,7 +49,31 @@ function Content() {
     return (
 
         <div className="px-4 py-6 md:py-16 prose md:prose-xl hover:prose-headings:underline underline-offset-4 hover:prose-a:text-iff-orange responsive-container">
-            <h1>Time to act! Tell the MIB: #LetUsChill </h1>
+            <h1> A quick update from 2024: Plot twist, but the rights-infringing kind  </h1>
+            <p>
+               If you think the Broadcasting Bill, 2023 shared for public consultation is bad, wait till you hear what the Ministry has been up to. The MIB has conducted 4(!!) <a href="https://content.internetfreedom.in/api/files/divco3ywedt9rpe/pmm8vyid1gq2mos/iff_2024_052_letter_requesting_public_consultation_for_revised_broadcasting_bill_12_07_6w8mCPP6S8.2024.pdf">closed door meetings</a> (that has been reported upon so far) with selective industry representatives, without representation from civil society, journalists, or other key stakeholders. Further, each shared copy of the revised bill bears a watermark across every page that is unique to the stakeholder so that the MIB can trace leaks. Stakeholders were also asked to give an undertaking that they would not share the Bill further (a minute please… we’re left speechless).  
+            </p>
+                <h2> Consultations cannot be exclusive! </h2> 
+                     <p>
+                        Ministerial deliberations serve to inform the government about the key regulatory and policy issues, and thus should be attended by stakeholders representing diverse citizen interests and perspectives. We <a href="https://content.internetfreedom.in/api/files/divco3ywedt9rpe/pmm8vyid1gq2mos/iff_2024_052_letter_requesting_public_consultation_for_revised_broadcasting_bill_12_07_6w8mCPP6S8.2024.pdf">wrote</a> to them demanding a broad-based, public consultation on the revised Bill given its grave implications. 
+                    </p>
+                <h2> Revised Bill, Renewed Threats</h2> 
+                    <p>
+                        As per the revisions, individuals posting ‘news and current affairs’ may now be considered as ‘Digital News Broadcasters’ and may become subject to a ‘Code of Conduct’ (read Code of Content Policing) similar to the one applicable to cable TV broadcasters (that’s great because news journalism on TV is thriving).
+                    </p>
+                    <p>
+                        The revised bill reportedly introduces definitions  for “professional” & “systematic activity”. However, they are so ambiguous & vague that they don’t alleviate our concerns & instead amplify them - prompting us to ask if we (IFF) & YOU, as a commentator on current affairs, will end up getting covered under the Bill.
+                    </p>
+                    <p>
+                        The revised definition of “news and current affairs programmes” will reportedly now also include ‘texts’! Oh and lets not forget - the Bill lays down extensive penalties for platforms for failing to take down offending content, including potential loss of safe harbour privileges – this would mean direct liability for third-party content for platforms like Twitter, Instagram, Reddit, etc.
+                    </p>
+                     <p>
+                        You can see why we’re worried. However, there’s still time!! The Bill, with all of its changes, is yet to go through the Union Cabinet in order to be tabled in Parliament. Amplify & engage - ask MIB to #KillTheBill.
+                    </p>
+        
+        
+        
+            <h2>(Archived): Time to act! </h2>
             <EmailCampaignWidget
                 title="Letter to MIB"
                 campaign="MIB-LetUsChill-DEC-2023"
