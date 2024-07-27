@@ -51,11 +51,11 @@ function Content() {
         <div className="px-4 py-6 md:py-16 prose md:prose-xl hover:prose-headings:underline underline-offset-4 hover:prose-a:text-iff-orange responsive-container">
             <h1> A quick update from 2024: Plot twist, but the rights-infringing kind  </h1>
             <p>
-               If you think the Broadcasting Bill, 2023 shared for public consultation is bad, wait till you hear what the Ministry has been up to. The MIB has conducted 4(!!) closed door meetings (that has been reported upon so far) with selective industry representatives, without representation from civil society, journalists, or other key stakeholders. Further, each shared copy of the revised bill bears a watermark across every page that is unique to the stakeholder so that the MIB can trace leaks. Stakeholders were also asked to give an undertaking that they would not share the Bill further (a minute please… we’re left speechless).  
+               If you think the Broadcasting Bill, 2023 shared for public consultation is bad, wait till you hear what the Ministry has been up to. The MIB has conducted 4(!!) <a href="https://content.internetfreedom.in/api/files/divco3ywedt9rpe/pmm8vyid1gq2mos/iff_2024_052_letter_requesting_public_consultation_for_revised_broadcasting_bill_12_07_6w8mCPP6S8.2024.pdf">closed door meetings</a> (that has been reported upon so far) with selective industry representatives, without representation from civil society, journalists, or other key stakeholders. Further, each shared copy of the revised bill bears a watermark across every page that is unique to the stakeholder so that the MIB can trace leaks. Stakeholders were also asked to give an undertaking that they would not share the Bill further (a minute please… we’re left speechless).  
             </p>
                 <h2> Consultations cannot be exclusive! </h2> 
                      <p>
-                        Ministerial deliberations serve to inform the government about the key regulatory and policy issues, and thus should be attended by stakeholders representing diverse citizen interests and perspectives. We wrote to them demanding a broad-based, public consultation on the revised Bill given its grave implications. 
+                        Ministerial deliberations serve to inform the government about the key regulatory and policy issues, and thus should be attended by stakeholders representing diverse citizen interests and perspectives. We <a href="https://content.internetfreedom.in/api/files/divco3ywedt9rpe/pmm8vyid1gq2mos/iff_2024_052_letter_requesting_public_consultation_for_revised_broadcasting_bill_12_07_6w8mCPP6S8.2024.pdf">wrote</a> to them demanding a broad-based, public consultation on the revised Bill given its grave implications. 
                     </p>
                 <h2> Revised Bill, Renewed Threats</h2> 
                     <p>
@@ -73,7 +73,7 @@ function Content() {
         
         
         
-            <h1>Archived: Time to act! </h1>
+            <h2>(Archived): Time to act! </h2>
             <EmailCampaignWidget
                 title="Letter to MIB"
                 campaign="MIB-LetUsChill-DEC-2023"
