@@ -117,8 +117,7 @@ function Content() {
 
                     <li><strong>Help us sustain the work we do! </strong>
                         <p>
-
-                            Become an IFF member today and stand up for your digital rights.
+                            Become an IFF member today and stand up for your digital rights. <a href="https://internetfreedom.in/donate">Donate Now </a>
                         </p></li>
                     <li><strong>Sign the open letter led by creators</strong>
                         <p>
