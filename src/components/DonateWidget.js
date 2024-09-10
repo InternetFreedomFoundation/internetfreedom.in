@@ -34,7 +34,7 @@ const DonateWidget = () => {
             address_line1: userDetails.address,
             pincode: parseInt(userDetails.pincode),
           },
-          source: window.location.pathname,
+          source: window.location.search,
         }),
       }
     );
