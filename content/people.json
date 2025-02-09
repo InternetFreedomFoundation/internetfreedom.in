@@ -1,54 +1,60 @@
 {
     "Staff": [
         {
+            "title": "Advocate and Founder Director",
+            "name": "Apar Gupta"
+        },
+        {
             "title": "Accounts Associate",
             "name": "Aditya Jha"
-        },
-        {
-            "title": "Campaign and Advocacy Associate",
-            "name": "Ashlesh Biradar"
-        },
-        {
-            "title": "Associate Policy Counsel",
-            "name": "Disha Verma"
         },
         {
             "title": "Office Manager",
             "name": "DK Rai"
         },
         {
-            "title": "Associate Litigation Counsel",
+            "title": "Legal Counsel",
             "name": "Gayatri Malhotra"
         },
         {
-            "title": "Executive Director",
-            "name": "Prateek Waghre"
-        },
-        {
-            "title": "Digital Literacy Fellow",
-            "name": "Purvai Dwivedi"
-        },
-        {
-            "title": "Associate Litigation Counsel",
-            "name": "Radhika Roy"
-        },
-        {
-            "title": "Associate Policy Counsel",
-            "name": "Tejasi Panjiar"
+            "title": "Naman Kumar",
+            "name": "Gayatri Malhotra"
         }
     ],
-    "councels": [
+    "Fellows": [
         {
-            "title": "Of-Counsel",
-            "name": "Gautam Bhatia"
+            "title": "Shravani Nag Lanka",
+            "name": "Freedom Innovation Fellow"
         },
         {
-            "title": "Of-Counsel",
-            "name": "Vrinda Bhandari"
+            "title": "Medha Garg",
+            "name": "Freedom Innovation Fellow"
         },
         {
-            "title": "Of-Counsel",
-            "name": "Abhinav Sekhri"
+            "title": "Rubayya Tasneem",
+            "name": "Freedom Innovation Fellow"
+        },
+        {
+            "title": "Injila Muslim Zaidi",
+            "name": "Freedom Innovation Fellow"
+        },
+        {
+            "title": "Ahsnat Morakim",
+            "name": "Policy Fellow"
+        }
+    ],
+    "counsels": [
+        {
+            "title": "Gautam Bhatia",
+            "name": "Of-Counsel"
+        },
+        {
+            "title": "Vrinda Bhandari",
+            "name": "Of-Counsel"
+        },
+        {
+            "title": "Abhinav Sekhri",
+            "name": "Of-Counsel"
         }
     ],
     "leadership": [

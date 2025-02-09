@@ -110,6 +110,7 @@ function PeopleAtIff() {
         labour and initiative of volunteers
       </p>
       <Staffs />
+      <Fellows />
       <OfCounsels />
       <Leadership />
     </div>
@@ -150,6 +151,23 @@ function Staffs() {
   );
 }
 
+function Fellows() {
+  return (
+    <div className="mt-12">
+      <h1 className="text-subheading-2 pb-2 mb-6 border-b">Fellows</h1>
+
+      <div className="grid md:grid-cols-3 gap-5 gap-y-10">
+        {
+          people.Fellows.map((data) => {
+            return <Avatar name={data.name} title={data.title} />
+          }
+          )
+        }
+      </div>
+    </div>
+  );
+}
+
 function OfCounsels() {
   return (
     <div className="mt-12">
@@ -159,7 +177,7 @@ function OfCounsels() {
 
       <div className="grid md:grid-cols-3 gap-5 gap-y-10">
         {
-          people.councels.map((data) => {
+          people.counsels.map((data) => {
             return <Avatar name={data.name} title={data.title} />
           }
           )
