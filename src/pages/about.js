@@ -172,7 +172,7 @@ function OfCounsels() {
   return (
     <div className="mt-12">
       <h1 className="text-subheading-2 pb-2 mb-6 border-b">
-        Of-Counsels and Legal Fellows
+        Of-Counsels
       </h1>
 
       <div className="grid md:grid-cols-3 gap-5 gap-y-10">
