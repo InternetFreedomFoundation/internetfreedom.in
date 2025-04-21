@@ -1,86 +1,77 @@
 {
-    "Staff": [
-        {
-            "title": "Advocate and Founder Director",
-            "name": "Apar Gupta"
-        },
-        {
-            "title": "Accounts Associate",
-            "name": "Aditya Jha"
-        },
-        {
-            "title": "Office Manager",
-            "name": "DK Rai"
-        },
-        {
-            "title": "Legal Counsel",
-            "name": "Gayatri Malhotra"
-        },
-        {
-            "title": "Legal Counsel",
-            "name": "Naman Kumar"
-        },
-        {
-            "title": "Community and Fundraising Associate",
-            "name": "Ananta Datta"
-        }
-    ],
-    "Fellows": [
-        {
-            "name": "Shravani Nag Lanka",
-            "title": "Freedom Innovation Fellow"
-        },
-        {
-            "name": "Medha Garg",
-            "title": "Freedom Innovation Fellow"
-        },
-        {
-            "name": "Rubayya Tasneem",
-            "title": "Freedom Innovation Fellow"
-        },
-        {
-            "name": "Injila Muslim Zaidi",
-            "title": "Freedom Innovation Fellow"
-        },
-        {
-            "name": "Ahsnat Morakim",
-            "title": "Policy Fellow"
-        }
-    ],
-    "counsels": [
-        {
-            "name": "Gautam Bhatia",
-            "title": "Of-Counsel"
-        },
-        {
-            "name": "Vrinda Bhandari",
-            "title": "Of-Counsel"
-        },
-        {
-            "name": "Abhinav Sekhri",
-            "title": "Of-Counsel"
-        }
-    ],
-    "leadership": [
-        {
-            "title": "Observer Trustee",
-            "name": "Apar Gupta",
-            "desc": "He is an accomplished lawyer who directs the operations, programme and staff at IFF. Apar is a lawyer who has practised for several years and for his work has been awarded the Ashoka Fellowship."
-        },
-        {
-            "title": "Board Co-chair and Trustee",
-            "name": "Karthik Balakrishnan",
-            "desc": "He is a software engineer at Insider.in and has built most of IFF’s tech assets. Karthik also provides guidance on technical queries and also implements fixes on IFF’s main website as well as other campaign websites and campaigns"
-        },
-        {
-            "title": "Trustee",
-            "name": "Vandita Morarka",
-            "desc": "She is a social justice leader and the founder and CEO of One Future Collective: a feminist youth led non profit with the vision of a world built on social justice, led by communities of care. Her work focuses on building feminist leadership capacities for social change. She brings to the Board her experience in community organising, campaigning, and organisation building."
-        },
-        {
-            "title": "Trustee",
-            "name": "Anshul Tewari",
-            "desc": "He is a social entrepreneur and the founder of Youth Ki Awaaz, India’s largest youth-centred open expression platform, which he began while he was in high school. He has worked across media, campaigning, and citizen advocacy for over a decade, with the goal of impacting change by building grassroots citizen power."
-        }
-    ]
+  "Staff": [
+    {
+      "title": "Advocate and Founder Director",
+      "name": "Apar Gupta"
+    },
+    {
+      "title": "Accounts Associate",
+      "name": "Aditya Jha"
+    },
+    {
+      "title": "Office Manager",
+      "name": "DK Rai"
+    },
+    {
+      "title": "Legal Counsel",
+      "name": "Gayatri Malhotra"
+    },
+    {
+      "title": "Legal Counsel",
+      "name": "Naman Kumar"
+    },
+    {
+      "title": "Community and Fundraising Associate",
+      "name": "Aarushi Kaul"
+    }
+  ],
+  "Fellows": [
+    {
+      "name": "Shravani Nag Lanka",
+      "title": "Freedom Innovation Fellow"
+    },
+    {
+      "name": "Medha Garg",
+      "title": "Freedom Innovation Fellow"
+    },
+    {
+      "name": "Rubayya Tasneem",
+      "title": "Freedom Innovation Fellow"
+    },
+    {
+      "name": "Injila Muslim Zaidi",
+      "title": "Freedom Innovation Fellow"
+    }
+  ],
+  "counsels": [
+    {
+      "name": "Gautam Bhatia",
+      "title": "Of-Counsel"
+    },
+    {
+      "name": "Vrinda Bhandari",
+      "title": "Of-Counsel"
+    },
+    {
+      "name": "Abhinav Sekhri",
+      "title": "Of-Counsel"
+    }
+  ],
+  "leadership": [
+    {
+      "title": "Observer Trustee",
+      "name": "Apar Gupta",
+      "desc": "He is an accomplished lawyer who directs the operations, programme and staff at IFF. Apar is a lawyer who has practised for several years and for his work has been awarded the Ashoka Fellowship."
+    },
+    {
+      "title": "Board Co-chair and Trustee",
+      "name": "Karthik Balakrishnan",
+      "desc": "He is a software engineer at Insider.in and has built most of IFF’s tech assets. Karthik also provides guidance on technical queries and also implements fixes on IFF’s main website as well as other campaign websites and campaigns"
+    },
+    {
+      "title": "Trustee",
+      "name": "Anshul Tewari",
+      "desc": "He is a social entrepreneur and the founder of Youth Ki Awaaz, India’s largest youth-centred open expression platform, which he began while he was in high school. He has worked across media, campaigning, and citizen advocacy for over a decade, with the goal of impacting change by building grassroots citizen power."
+    }
+  ]
 }
