@@ -117,6 +117,7 @@ const Footer = () => {
                         </a>
                     ))}
                 </div>
+                <p className="mt-8 text-center text-base text-stone-500"><a href="https://internetfreedom.in/privacy-policy/" class="hover:underline">Privacy Policy</a></p>
                 <p className="mt-8 text-center text-base text-stone-700">&copy; Internet Freedom Foundation</p>
                 <p className="text-center text-base text-zinc-500">All contents licensed under CC-BY unless stated otherwise.</p>
             </div>
