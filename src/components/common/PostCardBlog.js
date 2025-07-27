@@ -74,7 +74,7 @@ const PostCardBlog = ({ post, number }) => {
                 ></img>
                 <span className="inline-block">{author.name}</span>
                 {index !== post.authors.length - 1 &&
-                  (index === post.authors.length - 2 ? " & " : ", ")}
+                  (index === post.authors.length - 2 ? " " : " ")}
               </Link>
             ))}
           </div>
