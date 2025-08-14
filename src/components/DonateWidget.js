@@ -58,7 +58,6 @@ const DonateWidget = () => {
         description:
           "Support the fight for Internet Freedom - " + currentMembership.title,
         prefill: {
-          name: userDetails.name,
           email: userDetails.email,
           contact: userDetails.phone,
         },
