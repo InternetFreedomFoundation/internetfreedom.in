@@ -30,116 +30,160 @@ const Post = ({ data, location }) => {
         <style type="text/css">{`${post.codeinjection_styles}`}</style>
       </Helmet>
       <Layout>
-        <div data-pagefind-body className="">
-          <div className="bg-bg-black text-white">
-            <div className="px-4 py-4 mx-auto md:max-w-full lg:max-w-screen-md 2xl:max-w-screen-lg lg:pt-16">
-              <div className="md:mx-auto  text-left">
-                <div className="flex flex-row flex-wrap mb-4">
-                  {post.tags.map((tag, index) => (
-                    <Link
-                      to={`/tag/${tag.slug}`}
-                      aria-label="Author"
-                      className="p-2 px-4 text-sm bg-bg-light-grey rounded-full tracking-tight text-gray-300 mr-2 my-1 capitalize hover:text-iff-orange"
-                      data-pagefind-filter="tag"
-                    >
-                      {tag.name}
-                    </Link>
-                  ))}
-                </div>
+        <div data-pagefind-body className="min-h-screen bg-white">
+          <header className="border-b border-gray-200">
+            <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-8">
+              <div className="mb-6">
+                {post.tags.slice(0, 1).map((tag) => (
+                  <Link
+                    key={tag.slug}
+                    to={`/tag/${tag.slug}`}
+                    className="inline-block text-sm font-medium tracking-wider uppercase text-iff-orange hover:underline"
+                    data-pagefind-filter="tag"
+                  >
+                    {tag.name}
+                  </Link>
+                ))}
+              </div>
 
-                <div>
-                  <h1 className="pb-4 font-sans block tracking-tight md:tracking-normal break-normal text-xl md:text-2xl text-left font-extrabold text-white"
-                    data-pagefind-meta="title">
-                    {post.title}
-                  </h1>
-                  <p className="text-left text text-body-grey text-big-body font-light">
-                    {post.excerpt}
-                  </p>
-                </div>
-                <div className="mb-4 mt-8 flex relative -translate-x-1">
-                  <div className="flex flex-col md:flex-row">
-                    {post.authors.map((author, index) => (
-                      <div className="flex items-center">
+              <h1
+                className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold text-gray-900 leading-tight tracking-tight mb-6"
+                data-pagefind-meta="title"
+              >
+                {post.title}
+              </h1>
+
+              {post.excerpt && (
+                <p className="text-lg sm:text-xl text-gray-600 font-serif leading-relaxed mb-8">
+                  {post.excerpt}
+                </p>
+              )}
+
+              <div className="flex items-center justify-between pt-6 border-t border-gray-100">
+                <div className="flex items-center space-x-4">
+                  {post.authors.map((author) => (
+                    <div
+                      key={author.slug}
+                      className="flex items-center space-x-3"
+                    >
+                      <Link to={`/author/${author.slug}`}>
+                        <img
+                          src={
+                            author.profile_image || "/images/icons/avatar.svg"
+                          }
+                          loading="lazy"
+                          alt={author.name}
+                          className="w-12 h-12 rounded-full object-cover border border-gray-200"
+                        />
+                      </Link>
+                      <div>
                         <Link
                           to={`/author/${author.slug}`}
-                          aria-label="Author"
-                          className="inline-block mb-1"
+                          className="block text-sm font-semibold text-gray-900 hover:text-iff-orange hover:underline"
+                          data-pagefind-filter="author"
                         >
-                          <img
-                            src={
-                              author.profile_image || "/images/icons/avatar.svg"
-                            }
-                            loading="lazy"
-                            alt={author.name}
-                            className="object-cover w-8 h-8 rounded-full z-10  border-none outline-none"
-                          />
+                          {author.name}
                         </Link>
-                        <div className="text-center mb-[0.2rem]">
-                          <Link
-                            to={`/author/${author.slug}`}
-                            aria-label="Author"
-                            className="font-medium text-bold hover:underline text-iff-orange ml-2 mr-8"
-                            data-pagefind-filter="author" 
-                          >
-                            {author.name}
-                          </Link>
-                        </div>
+                        <p className="text-xs text-gray-500 mt-0.5">
+                          <span data-pagefind-meta="date">
+                            {post.published_at_pretty}
+                          </span>
+                          <span className="mx-2">·</span>
+                          <span>{readingTime}</span>
+                        </p>
                       </div>
-                    ))}
-                  </div>
-                  <div className="ml-auto">
-                    <p className="ml-auto mt-2 text-sm text-iff-orange border-l-2 pl-2 border-iff-orange">
-                      <span data-pagefind-meta="date"> {post.published_at_pretty} </span> <br /> {readingTime}
-                    </p>
-                  </div>
+                    </div>
+                  ))}
                 </div>
+              </div>
+            </div>
+          </header>
+
+          {post.feature_image && (
+            <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+              <figure className="relative">
+                <img
+                  src={post.feature_image}
+                  alt={post.title}
+                  className="w-full h-auto rounded-lg shadow-lg"
+                />
+              </figure>
+            </div>
+          )}
+
+          <article className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div
+              className="prose prose-lg prose-slate max-w-none 
+                         prose-headings:font-serif prose-headings:font-bold prose-headings:text-gray-900
+                         prose-p:font-serif prose-p:text-gray-700 prose-p:leading-relaxed
+                         prose-a:text-iff-orange prose-a:no-underline hover:prose-a:underline
+                         prose-strong:text-gray-900 prose-strong:font-semibold
+                         prose-blockquote:border-l-4 prose-blockquote:border-iff-orange prose-blockquote:bg-gray-50 prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:italic prose-blockquote:font-serif
+                         prose-img:rounded-lg prose-img:shadow-md
+                         prose-figure:my-8
+                         prose-hr:border-gray-200
+                         first:prose-p:text-xl first:prose-p:font-serif first:prose-p:leading-relaxed first:prose-p:text-gray-800"
+              dangerouslySetInnerHTML={{ __html: post.html }}
+            />
+          </article>
+
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+            <div className="border-t border-gray-200 pt-8">
+              <div className="flex flex-wrap gap-2">
+                {post.tags.map((tag) => (
+                  <Link
+                    key={tag.slug}
+                    to={`/tag/${tag.slug}`}
+                    className="inline-flex items-center px-3 py-1 text-sm font-medium text-gray-600 bg-gray-100 rounded-full hover:bg-gray-200 transition-colors"
+                    data-pagefind-filter="tag"
+                  >
+                    {tag.name}
+                  </Link>
+                ))}
               </div>
             </div>
           </div>
-          <article
-            className="mt-16 mx-auto prose md:prose-xl prose-img:rounded-xl prose-img:shadow-xl prose-img:border hover:prose-headings:underline underline-offset-4 hover:prose-a:text-iff-orange px-4"
-            dangerouslySetInnerHTML={{ __html: post.html }}
-          ></article>
-        </div>
-        <NewsletterWidget />
-        <div>
-          {relatedArticles.length > 0 && (
-            <div className="px-4 py-4 mx-auto md:max-w-full lg:max-w-screen-lg 2xl:max-w-screen-xl lg:pt-16">
-              <div className="md:mx-auto border-t text-left">
-                <div className="pb-4">
-                  <h2 className="text-2xl font-bold py-8">Similar Posts</h2>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+            <NewsletterWidget />
+          </div>
+
+          {relatedArticles.length > 0 && (
+            <section className="bg-gray-50 py-16">
+              <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="border-t border-gray-200 pt-8">
+                  <h2 className="text-2xl font-serif font-bold text-gray-900 mb-8">
+                    More to Read
+                  </h2>
+
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {relatedArticles.map((relatedArticle, index) => (
-                      <div className="flex flex-row" key={index}>
-                        <span className="text-3xl text-[#E7E7E7] font-extrabold pr-4">
-                          {index + 1}
-                        </span>
-                        <div className="flex flex-col h-auto">
-                          <Link
-                            to={`/${relatedArticle.slug}`}
-                            className="text-gray-800 pb-2 hover:text-iff-orange text-lg font-bold"
-                          >
-                            {relatedArticle.title}
-                          </Link>
-                          <p className="line-clamp-5 hover:line-clamp-none flex-grow text-gray-500">
-                            {relatedArticle.excerpt}
-                          </p>
-                          <div className="flex flex-row text-iff-orange text-sm">
-                            <p className="grow">
-                              {relatedArticle.published_at_pretty}
-                            </p>
-                            <p className="">
-                              {relatedArticle.reading_time} min read
-                            </p>
+                      <article key={relatedArticle.slug} className="group">
+                        <Link to={`/${relatedArticle.slug}`} className="block">
+                          <div className="flex items-start space-x-4">
+                            <span className="text-4xl font-serif font-bold text-gray-200 group-hover:text-iff-orange transition-colors">
+                              {index + 1}
+                            </span>
+                            <div>
+                              <h3 className="text-lg font-serif font-semibold text-gray-900 group-hover:text-iff-orange transition-colors leading-tight mb-2">
+                                {relatedArticle.title}
+                              </h3>
+                              <p className="text-sm text-gray-600 line-clamp-3 font-serif leading-relaxed mb-3">
+                                {relatedArticle.excerpt}
+                              </p>
+                              <p className="text-xs text-gray-400">
+                                {relatedArticle.published_at_pretty} ·{" "}
+                                {relatedArticle.reading_time} min read
+                              </p>
+                            </div>
                           </div>
-                        </div>
-                      </div>
+                        </Link>
+                      </article>
                     ))}
                   </div>
                 </div>
               </div>
-            </div>
+            </section>
           )}
         </div>
       </Layout>
@@ -154,7 +198,14 @@ Post.propTypes = {
       title: PropTypes.string.isRequired,
       html: PropTypes.string.isRequired,
       feature_image: PropTypes.string,
+      excerpt: PropTypes.string,
+      published_at_pretty: PropTypes.string,
+      tags: PropTypes.array,
+      authors: PropTypes.array,
     }).isRequired,
+    allGhostPost: PropTypes.shape({
+      nodes: PropTypes.array,
+    }),
   }).isRequired,
   location: PropTypes.object.isRequired,
 };
@@ -180,6 +231,7 @@ export const postQuery = graphql`
         title
         published_at
         reading_time
+        published_at_pretty: published_at(formatString: "MMM DD, YYYY")
       }
     }
   }
