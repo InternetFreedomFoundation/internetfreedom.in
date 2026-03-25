@@ -44,7 +44,7 @@ function TopSection() {
         </p>
         <p className=" text-gray-400 mt-2">
           We follow radical{" "}
-          <Link to= "/transparency-and-finances/" className="text-iff-orange">Transparency and Disclosures</Link>
+          <Link to="/transparency-and-finances/" className="text-iff-orange">Transparency and Disclosures</Link>
         </p>
         <div className="mt-6">
           <button
@@ -110,8 +110,8 @@ function PeopleAtIff() {
         labour and initiative of volunteers
       </p>
       <Staffs />
-      <Fellows />
-      <OfCounsels />
+      {/* <Fellows /> */}
+      {/* <OfCounsels /> */}
       <Leadership />
     </div>
   );
