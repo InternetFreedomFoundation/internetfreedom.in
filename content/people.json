@@ -14,15 +14,27 @@
     },
     {
       "title": "Legal Counsel",
-      "name": "Gayatri Malhotra"
-    },
-    {
-      "title": "Legal Counsel",
       "name": "Naman Kumar"
     },
     {
-      "title": "Community and Fundraising Associate",
-      "name": "Aarushi Koul"
+      "title": "Legal Counsel",
+      "name": "Indumugi Chandarvairavan"
+    },
+    {
+      "title": "Legal Counsel",
+      "name": "Avanti Deshpande"
+    },
+    {
+      "title": "Digital and Literacy Collaborator",
+      "name": "Katyayini Saksham"
+    },
+    {
+      "title": "Policy Counsel",
+      "name": "Jhanvi Anam"
+    },
+    {
+      "title": "Digital Literacy Manager",
+      "name": "Vikram Raj"
     }
   ],
   "Fellows": [
@@ -59,19 +71,24 @@
   ],
   "leadership": [
     {
-      "title": "Observer Trustee",
+      "title": "Trustee & Board Chair",
+      "name": "Anshul Tewari",
+      "desc": "He is a social entrepreneur and the founder of Youth Ki Awaaz, India’s largest youth-centred open expression platform, which he began while he was in high school. He has worked across media, campaigning, and citizen advocacy for over a decade, with the goal of impacting change by building grassroots citizen power."
+    },
+    {
+      "title": "Founder Trustee",
       "name": "Apar Gupta",
       "desc": "He is an accomplished lawyer who directs the operations, programme and staff at IFF. Apar is a lawyer who has practised for several years and for his work has been awarded the Ashoka Fellowship."
     },
     {
-      "title": "Board Co-chair and Trustee",
-      "name": "Karthik Balakrishnan",
-      "desc": "He is a software engineer at Insider.in and has built most of IFF’s tech assets. Karthik also provides guidance on technical queries and also implements fixes on IFF’s main website as well as other campaign websites and campaigns"
+      "title": "Trustee",
+      "name": "Khushboo Ranka",
+      "desc": "Khshboo Ranka directed the award-winning political documentary An Insignificant Man. She was a co-writer on the National award winning fiction feature Ship of Theseus. Khushboo's first short film, Continuum, showed at multiple international Film Festivals. Khushboo has also produced the political strategy board game, Shasn, which raised over 500,000$ in Kickstarter and presales. She has also produced the Peabody winning documentary While We Watched. Her latest is a detective series. She is a 2026 Shorenstein Fellow at Harvard Kennedy School."
     },
     {
       "title": "Trustee",
-      "name": "Anshul Tewari",
-      "desc": "He is a social entrepreneur and the founder of Youth Ki Awaaz, India’s largest youth-centred open expression platform, which he began while he was in high school. He has worked across media, campaigning, and citizen advocacy for over a decade, with the goal of impacting change by building grassroots citizen power."
+      "name": "Maheshwer Peri",
+      "desc": "A passionate entrepreneur, Mahesh is a qualified CA, CMA and ACS. He started his career as an investment banker with SBI Capital Markets. He was associated with the Outlook group for 17 years and headed it for more than 10 years. Mahesh believes that the demographic dividend India seeks can turn into a nightmare if youth are not shown the right direction to maximize their capabilities. CAREERS360 is the result of his deep understanding of student issues, and the information gaps that need to be filled to help students take an informed career decision."
     }
   ]
 }
