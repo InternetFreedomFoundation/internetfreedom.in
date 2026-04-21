@@ -6,6 +6,7 @@ import { GatsbyImage } from "gatsby-plugin-image";
 
 import { Footer } from ".";
 import { CTA } from ".";
+import AnnouncementBar from "./AnnouncementBar";
 import config from "../../utils/siteConfig";
 import { useState } from "react";
 import { navigate } from "gatsby";
@@ -39,6 +40,8 @@ const DefaultLayout = ({ data, children, bodyClass, isHome }) => {
         <style type="text/css">{`${site.codeinjection_styles}`}</style>
         <body className={bodyClass} />
       </Helmet>
+
+      <AnnouncementBar />
 
       {isOpen && (
         <div className="w-full h-full lg:hidden bg-bg-light-grey fixed top-0 z-50">
