@@ -3,7 +3,7 @@ interface Env {
 }
 
 export const onRequestGet: PagesFunction<Env> = async (context) => {
-  const announcementUrl = new URL(context.env.GHOST_API_URL + "members/api/announcement/");
+  const announcementUrl = new URL(context.env.GHOST_API_URL + "/members/api/announcement/");
 
   try {
     const response = await fetch(announcementUrl.toString());
