@@ -1,4 +1,4 @@
-import { env } from 'process';
+import * as React from 'react';
 import { useState, useEffect } from 'react';
 
 interface Announcement {
