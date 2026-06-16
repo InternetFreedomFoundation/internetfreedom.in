@@ -107,7 +107,7 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     {
-      resolve: `gatsby-source-ghost`,
+      resolve: path.resolve(__dirname, `plugins/gatsby-source-ghost`),
       options:
         process.env.NODE_ENV === `development`
           ? ghostConfig.development
