@@ -10,8 +10,9 @@
     "url": "git+https://InternetFreedomFoundation/internetfreedom.in.git"
   },
   "engines": {
-    "node": ">= 18.14.0"
+    "node": ">=24 <25"
   },
+  "packageManager": "bun@1.4.4",
   "bugs": {
     "url": "https://InternetFreedomFoundation/internetfreedom.in/issues"
   },

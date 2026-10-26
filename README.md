@@ -8,14 +8,14 @@ Initail architecture and motivation can be found [here](./proposal.md).
 
 ```bash
 # From Source
-git clone https://github.com/TryGhost/gatsby-starter-ghost.git
-cd gatsby-starter-ghost
+git clone https://github.com/InternetFreedomFoundation/internetfreedom.in.git
+cd internetfreedom.in
 ```
 
 Then install dependencies
 
 ```bash
-yarn
+bun install
 ```
 
 &nbsp;
@@ -38,7 +38,7 @@ Create a `.ghost.json` file at the root of the repository with the following con
 Start the development server. You now have a Gatsby site pulling content from headless Ghost.
 
 ```bash
-yarn run dev
+bun run dev
 ```
 
 The following ENV variables are required for building the site: `apiUrl` & `contentApiKey`
