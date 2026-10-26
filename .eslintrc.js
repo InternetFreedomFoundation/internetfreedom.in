@@ -1,16 +1,19 @@
 module.exports = {
-  parser: "babel-eslint",
+  parser: "@babel/eslint-parser",
   parserOptions: {
     ecmaVersion: 6,
+    requireConfigFile: false,
     ecmaFeatures: {
       jsx: true,
       experimentalObjectRestSpread: true,
+    },
+    babelOptions: {
+      plugins: ["@babel/plugin-syntax-jsx"],
     },
   },
   plugins: ["ghost", "react"],
   extends: [
     "plugin:ghost/node",
-    "plugin:ghost/ember",
     "plugin:react/recommended",
     "prettier",
   ],

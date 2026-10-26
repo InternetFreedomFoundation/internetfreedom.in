@@ -2,12 +2,14 @@ import React, { Fragment } from "react";
 import { useState } from "react";
 import donationData from "../../content/donation.json";
 import { Dialog, RadioGroup, Transition } from "@headlessui/react";
-import useRazorpay from "react-razorpay";
+import { useRazorpay } from "react-razorpay";
 
 const DonateWidget = () => {
   const Razorpay = useRazorpay();
   const [isOpen, setIsOpen] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [paymentMessage, setPaymentMessage] = useState("");
+  const [isProcessing, setIsProcessing] = useState(false);
 
   const createOrder = async (orderType) => {
     if (!['SUBS-PROXY', 'ONETIME-PROXY'].includes(orderType)) {
@@ -39,79 +41,101 @@ const DonateWidget = () => {
       }
     );
 
+    if (!fetchOrder.ok) {
+      throw new Error("Unable to start the payment");
+    }
+
     const order = await fetchOrder.json();
     return order;
   };
 
 
   const handlePayment = async () => {
+    if (isProcessing) return;
+
+    setIsProcessing(true);
     let options = {};
-    if (currentMembership.frequency !== "onetime") {
-      // handle subscription donations
-      const sub = await createOrder('SUBS-PROXY');
+    try {
+      if (currentMembership.frequency !== "onetime") {
+        // handle subscription donations
+        const sub = await createOrder('SUBS-PROXY');
 
-      options = {
-        key: "rzp_live_hjnqVr1bRh6gsb",
-        subscription_id: sub.id,
-        amount: currentMembership.amount * 100,
-        name: "Donate",
-        description:
-          "Support the fight for Internet Freedom - " + currentMembership.title,
-        prefill: {
-          email: userDetails.email,
-          contact: userDetails.phone,
-        },
-        notes: {
-          REFERENCE: sub.reference,
-          EMAIL: userDetails.email,
-        },
-        handler: (res) => {
-          handlePaymentResponse(res);
-        },
-        theme: {
-          color: "#CC7755",
-        },
-      };
-    } else {
-      // handle one time donations
-      const order = await createOrder('ONETIME-PROXY')
+        options = {
+          key: "rzp_live_hjnqVr1bRh6gsb",
+          subscription_id: sub.id,
+          amount: currentMembership.amount * 100,
+          name: "Donate",
+          description:
+            "Support the fight for Internet Freedom - " + currentMembership.title,
+          prefill: {
+            email: userDetails.email,
+            contact: userDetails.phone,
+          },
+          notes: {
+            REFERENCE: sub.reference,
+            EMAIL: userDetails.email,
+          },
+          handler: (res) => {
+            handlePaymentResponse(res);
+          },
+          theme: {
+            color: "#CC7755",
+          },
+        };
+      } else {
+        // handle one time donations
+        const order = await createOrder('ONETIME-PROXY');
 
-      options = {
-        key: "rzp_live_hjnqVr1bRh6gsb",
-        amount: currentMembership.amount * 100,
-        currency: "INR",
-        name: "Donate",
-        description: "Support the fight for Internet Freedom",
-        order_id: order.id,
-        handler: (res) => {
-          handlePaymentResponse(res);
-        },
-        prefill: {
-          name: userDetails.name,
-          email: userDetails.email,
-          contact: userDetails.phone,
-        },
-        notes: {
-          EMAIL: userDetails.email,
-          REFERENCE: order.reference,
-        },
-        theme: {
-          color: "#CC7755",
-        },
-      };
+        options = {
+          key: "rzp_live_hjnqVr1bRh6gsb",
+          amount: currentMembership.amount * 100,
+          currency: "INR",
+          name: "Donate",
+          description: "Support the fight for Internet Freedom",
+          order_id: order.id,
+          handler: (res) => {
+            handlePaymentResponse(res);
+          },
+          prefill: {
+            name: userDetails.name,
+            email: userDetails.email,
+            contact: userDetails.phone,
+          },
+          notes: {
+            EMAIL: userDetails.email,
+            REFERENCE: order.reference,
+          },
+          theme: {
+            color: "#CC7755",
+          },
+        };
+      }
+
+      const rzpay = new Razorpay(options);
+      rzpay.open();
+    } catch (error) {
+      console.error("Donation payment could not be started", error);
+      setIsSuccess(false);
+      setPaymentMessage(
+        "We couldn't start the payment. Please check your connection and try again."
+      );
+      setIsOpen(true);
+    } finally {
+      setIsProcessing(false);
     }
-
-    const rzpay = new Razorpay(options);
-    rzpay.open();
   };
 
   const handlePaymentResponse = (res) => {
     if (res.razorpay_payment_id) {
       setIsSuccess(true);
+      setPaymentMessage("Thank you for supporting Internet freedom.");
       setIsOpen(true);
       setCurrentStep(1);
     } else {
       setIsSuccess(false);
+      setPaymentMessage(
+        "Your payment could not be completed. No money has been taken. Please try again."
+      );
       setIsOpen(true);
     }
   };
@@ -133,7 +157,14 @@ const DonateWidget = () => {
 
   const [currentStep, setCurrentStep] = useState(1);
   const [currentMembership, setCurrentMembership] = useState(
-    donationData.monthly[0]
+    {
+      type: "Monthly Membership",
+      title: donationData.monthly[0].name,
+      amount: donationData.monthly[0].amount,
+      frequency: donationData.monthly[0].frequency,
+      perks: donationData.monthly[0].perks,
+      plan_id: donationData.monthly[0].plan_id,
+    }
   );
   const [userDetails, setUserDetails] = useState({
     name: "",
@@ -183,6 +214,7 @@ const DonateWidget = () => {
                   currentMembership={currentMembership}
                   userDetails={userDetails}
                   handlePayment={handlePayment}
+                  isProcessing={isProcessing}
                 />
               )}
             </div>
@@ -226,10 +258,8 @@ const DonateWidget = () => {
                     {isSuccess ? "Donation Successful" : "Donation Failed"}
                   </Dialog.Title>
                   <div className="mt-2">
-                    <p className="text-sm text-gray-500">
-                      {isSuccess
-                        ? "Thanks for making the donation!"
-                        : "There was an error while completing the payment."}
+                    <p className="text-sm text-gray-500" aria-live="polite">
+                      {paymentMessage}
                     </p>
                   </div>
 
@@ -239,7 +269,7 @@ const DonateWidget = () => {
                       className="btn-secondary"
                       onClick={closeModal}
                     >
-                      Got it, Thanks!
+                      {isSuccess ? "Continue" : "Close"}
                     </button>
                   </div>
                 </Dialog.Panel>
@@ -257,6 +287,8 @@ const TierSelection = ({
   currentMembership,
   setCurrentMembership,
 }) => {
+  const [amountError, setAmountError] = useState("");
+
   return (
     <div className="flex sm:flex-row flex-col">
       <Tabs setCurrentMembership={setCurrentMembership} />
@@ -273,16 +305,24 @@ const TierSelection = ({
           </span>
           <button
             className="btn mt-4"
+            type="button"
             onClick={() => {
-              if (currentMembership.amount < 1) {
-                alert("Please enter valid donation amount");
+              const amount = Number(currentMembership.amount);
+              if (!Number.isInteger(amount) || amount < 100) {
+                setAmountError("Please choose or enter a donation of at least ₹100.");
                 return;
               }
+              setAmountError("");
               setCurrentStep(2);
             }}
           >
             Next
           </button>
+          {amountError && (
+            <p className="text-center text-sm text-red-300" role="alert">
+              {amountError}
+            </p>
+          )}
         </div>
       </div>
     </div>
@@ -295,73 +335,42 @@ const PersonalInfo = ({
   userDetails,
   setUserDetails,
 }) => {
-  const [name, setName] = useState(userDetails.name);
-  const [pan, setPan] = useState(userDetails.pan);
-  const [email, setEmail] = useState(userDetails.email);
-  const [phone, setPhone] = useState(userDetails.phone);
-  const [address, setAddress] = useState(userDetails.address);
-  const [pincode, setPincode] = useState(userDetails.pincode);
+  const [errors, setErrors] = useState({});
 
-  const handleNameChange = (e) => {
-    setName(e.target.value);
-  };
-
-  const handlePanChange = (e) => {
-    setPan(e.target.value.toUpperCase());
-  };
-
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const handlePhoneChange = (e) => {
-    setPhone(e.target.value);
-  };
-
-  const handleAddressChange = (e) => {
-    setAddress(e.target.value);
-  };
-
-  const handlePincodeChange = (e) => {
-    setPincode(e.target.value);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUserDetails((details) => ({
+      ...details,
+      [name]: name === "pan" ? value.toUpperCase() : value,
+    }));
+    setErrors((currentErrors) => ({ ...currentErrors, [name]: "" }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!name || !pan || !email || !phone || !address) {
-      alert("Please fill all the fields");
-      return;
+    const nextErrors = {};
+    const { name, pan, email, phone, address, pincode } = userDetails;
+    if (!name.trim()) nextErrors.name = "Please enter your full name.";
+    if (!/^[A-Za-z]{5}[0-9]{4}[A-Za-z]$/.test(pan)) {
+      nextErrors.pan = "Please enter a valid 10-character PAN.";
     }
-    if (pan.length !== 10 || !pan.match(/^[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}$/)) {
-      alert("Please enter a valid PAN number");
-      return;
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+      nextErrors.email = "Please enter a valid email address.";
     }
-    if (!phone.match(/^[0-9]{10}$/)) {
-      alert("Please enter a valid phone number");
-      return;
+    if (!/^[0-9]{10}$/.test(phone)) {
+      nextErrors.phone = "Please enter a 10-digit phone number.";
     }
-    if (!email.match(/^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$/)) {
-      alert("Please enter a valid email");
-      return;
+    if (!address.trim()) nextErrors.address = "Please enter your address.";
+    if (!/^[0-9]{6}$/.test(pincode)) {
+      nextErrors.pincode = "Please enter a 6-digit pincode.";
     }
-    if (!pincode.match(/^[0-9]{6}$/)) {
-      alert("Please enter a valid pincode");
-      return;
-    }
-
-    setUserDetails({
-      name,
-      pan,
-      email,
-      phone,
-      address,
-      pincode,
-    });
+    setErrors(nextErrors);
+    if (Object.keys(nextErrors).length > 0) return;
     setCurrentStep(3);
   };
 
   return (
-    <form className="flex sm:flex-row flex-col">
+    <form className="flex sm:flex-row flex-col" onSubmit={handleSubmit} noValidate>
       <div className="sm:w-3/4 w-full p-4">
         <div className="sm:grid w-full sm:grid-cols-2 space-y-5 sm:space-y-0 gap-x-6 gap-y-8">
           <div className="col-span-1">
@@ -374,13 +383,16 @@ const PersonalInfo = ({
             <div className="mt-2">
               <input
                 type="text"
-                onChange={handleNameChange}
+                onChange={handleChange}
+                value={userDetails.name}
+                required
                 name="name"
                 id="name"
                 autoComplete="given-name"
                 placeholder="Enter Your Full Name"
                 className="block w-full rounded border-0 py-1.5 pl-4 text-white placeholder:text-gray-400 bg-[#2E2E2E] focus:bg-[#3E3E3E] focus:outline-none sm:text-sm sm:leading-6"
               />
+              {errors.name && <FieldError message={errors.name} />}
             </div>
           </div>
           <div className="col-span-1">
@@ -393,12 +405,16 @@ const PersonalInfo = ({
             <div className="mt-2">
               <input
                 type="text"
-                onChange={handlePanChange}
+                onChange={handleChange}
+                value={userDetails.pan}
+                maxLength={10}
+                required
                 name="pan"
                 id="pan"
                 placeholder="ABCDE1234F"
                 className="block w-full rounded border-0 py-1.5 pl-4 text-white placeholder:text-gray-400 bg-[#2E2E2E] focus:bg-[#3E3E3E] focus:outline-none sm:text-sm sm:leading-6"
               />
+              {errors.pan && <FieldError message={errors.pan} />}
             </div>
           </div>
           <div className="col-span-1">
@@ -411,13 +427,16 @@ const PersonalInfo = ({
             <div className="mt-2">
               <input
                 type="email"
-                onChange={handleEmailChange}
+                onChange={handleChange}
+                value={userDetails.email}
+                required
                 name="email"
                 id="email"
                 autoComplete="email"
                 placeholder="test@example.com"
                 className="block w-full rounded border-0 py-1.5 pl-4 text-white placeholder:text-gray-400 bg-[#2E2E2E] focus:bg-[#3E3E3E] focus:outline-none sm:text-sm sm:leading-6"
               />
+              {errors.email && <FieldError message={errors.email} />}
             </div>
           </div>
           <div className="col-span-1">
@@ -429,14 +448,19 @@ const PersonalInfo = ({
             </label>
             <div className="mt-2">
               <input
-                type="text"
-                onChange={handlePhoneChange}
+                type="tel"
+                onChange={handleChange}
+                value={userDetails.phone}
+                inputMode="numeric"
+                maxLength={10}
+                required
                 name="phone"
                 id="phone"
                 autoComplete="tel"
                 placeholder="9876543210"
                 className="block w-full rounded border-0 py-1.5 pl-4 text-white placeholder:text-gray-400 bg-[#2E2E2E] focus:bg-[#3E3E3E] focus:outline-none sm:text-sm sm:leading-6"
               />
+              {errors.phone && <FieldError message={errors.phone} />}
             </div>
           </div>
           <div className="col-span-1">
@@ -449,12 +473,15 @@ const PersonalInfo = ({
             <div className="mt-2">
               <input
                 type="text"
-                onChange={handleAddressChange}
+                onChange={handleChange}
+                value={userDetails.address}
+                required
                 name="address"
                 id="address"
                 autoComplete="street-address"
                 className="block w-full rounded border-0 py-1.5 pl-4 text-white placeholder:text-gray-400 bg-[#2E2E2E] focus:bg-[#3E3E3E] focus:outline-none sm:text-sm sm:leading-6"
               />
+              {errors.address && <FieldError message={errors.address} />}
             </div>
           </div>
           <div className="col-span-1">
@@ -466,12 +493,17 @@ const PersonalInfo = ({
             </label>
             <div className="mt-2">
               <input
-                type="number"
-                onChange={handlePincodeChange}
+                type="text"
+                onChange={handleChange}
+                value={userDetails.pincode}
+                inputMode="numeric"
+                maxLength={6}
+                required
                 name="pincode"
                 id="pincode"
                 className="block w-full rounded border-0 py-1.5 pl-4 text-white placeholder:text-gray-400 bg-[#2E2E2E] focus:bg-[#3E3E3E] focus:outline-none sm:text-sm sm:leading-6"
               />
+              {errors.pincode && <FieldError message={errors.pincode} />}
             </div>
           </div>
         </div>
@@ -488,12 +520,12 @@ const PersonalInfo = ({
           <button
             className="btn mt-4"
             type="submit"
-            onClick={(e) => handleSubmit(e)}
           >
             Next
           </button>
           <button
             className="text-iff-orange mt-4"
+            type="button"
             onClick={() => setCurrentStep(1)}
           >
             Back
@@ -509,6 +541,7 @@ const Confirmation = ({
   currentMembership,
   userDetails,
   handlePayment,
+  isProcessing,
 }) => {
   return (
     <div className="flex sm:flex-row flex-col">
@@ -527,7 +560,7 @@ const Confirmation = ({
           </p>
           <ul>
             {currentMembership.perks.map((perk) => (
-              <ul className="my-4 text-left text-gray-400">
+              <li key={perk} className="my-4 text-left text-gray-400">
                 <li className="flex items-center space-x-3">
                   <svg
                     className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
@@ -536,14 +569,14 @@ const Confirmation = ({
                     xmlns="http://www.w3.org/2000/svg"
                   >
                     <path
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                       d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clip-rule="evenodd"
+                      clipRule="evenodd"
                     ></path>
                   </svg>
                   <span>{perk}</span>
                 </li>
-              </ul>
+              </li>
             ))}
           </ul>
         </div>}
@@ -554,11 +587,12 @@ const Confirmation = ({
             {userDetails.name}, would you like to proceed with making the
             donation?
           </span>
-          <button className="btn mt-4" onClick={handlePayment}>
-            Next
+          <button className="btn mt-4" onClick={handlePayment} disabled={isProcessing}>
+            {isProcessing ? "Starting payment..." : `Pay ₹${currentMembership.amount}`}
           </button>
           <button
             className="text-iff-orange mt-4"
+            type="button"
             onClick={() => {
               setCurrentStep(2);
             }}
@@ -774,6 +808,7 @@ function OneTimeOptions({ setCurrentMembership }) {
           min="100"
           step="50"
           onChange={(e) => {
+            setAmountError("");
             setCurrentMembership({
               type: "One Time Donation",
               title: "Custom Amount",
@@ -799,6 +834,7 @@ const Card = ({ tiers, type, setCurrentMembership }) => {
             {tiers.map(function (d, idx) {
               return (
                 <div
+                  key={d.plan_id || `${type}-${idx}`}
                   className="lg:w-1/3 my-3"
                   onClick={(e) => {
                     setCurrentMembership({
@@ -823,7 +859,7 @@ const Card = ({ tiers, type, setCurrentMembership }) => {
                   />
                   <label
                     className="relative cursor-pointer items-center rounded-full p-3"
-                    for={type + "-" + idx}
+                    htmlFor={type + "-" + idx}
                     data-ripple-dark="true"
                   >
                     {d["name"]}
@@ -840,7 +876,7 @@ const Card = ({ tiers, type, setCurrentMembership }) => {
             <ul>
               {tiers[tier] != undefined &&
                 tiers[tier].perks.map((perk) => (
-                  <ul className="my-4 text-left text-gray-400">
+                  <li key={perk} className="my-4 text-left text-gray-400">
                     <li className="flex items-center space-x-3">
                       <svg
                         className="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400"
@@ -849,14 +885,14 @@ const Card = ({ tiers, type, setCurrentMembership }) => {
                         xmlns="http://www.w3.org/2000/svg"
                       >
                         <path
-                          fill-rule="evenodd"
+                          fillRule="evenodd"
                           d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                          clip-rule="evenodd"
+                          clipRule="evenodd"
                         ></path>
                       </svg>
                       <span>{perk}</span>
                     </li>
-                  </ul>
+                  </li>
                 ))}
             </ul>
           </div>
@@ -913,6 +949,14 @@ function Steps({ steps, currentStep, setCurrentStep }) {
         </div>
       ))}
     </div>
+  );
+}
+
+function FieldError({ message }) {
+  return (
+    <p className="mt-1 text-sm text-red-300" role="alert">
+      {message}
+    </p>
   );
 }
 
