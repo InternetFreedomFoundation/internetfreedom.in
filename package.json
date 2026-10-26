@@ -22,7 +22,7 @@
   "main": "n/a",
   "scripts": {
     "serve": "gatsby build && NODE_ENV=production gatsby serve",
-    "build": "gatsby build",
+    "build": "NODE_OPTIONS= gatsby build",
     "postbuild": "rm -rf public/pagefind && pagefind --site public",
     "dev": "gatsby develop",
     "lint": "eslint . --ext .js --cache",
