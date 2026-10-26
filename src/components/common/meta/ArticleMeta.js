@@ -3,7 +3,6 @@ import { Helmet } from "react-helmet";
 import { useStaticQuery, graphql } from "gatsby";
 import PropTypes from "prop-types";
 import _ from "lodash";
-import url from "url";
 
 import getAuthorProperties from "./getAuthorProperties";
 import ImageMeta from "./ImageMeta";
@@ -25,7 +24,7 @@ const ArticleMetaGhost = ({ data, settings, canonical }) => {
 
   const publisherLogo =
     settings.logo || config.siteIcon
-      ? url.resolve(config.siteUrl, settings.logo || config.siteIcon)
+      ? new URL(settings.logo || config.siteIcon, config.siteUrl).toString()
       : null;
 
   const jsonLd = {

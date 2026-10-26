@@ -179,11 +179,3 @@ exports.createPages = async ({ graphql, actions }) => {
     },
   });
 };
-
-exports.onCreateWebpackConfig = ({ stage, actions }) => {
-  actions.setWebpackConfig({
-    resolve: {
-      fallback: { url: require.resolve("url/") },
-    },
-  });
-};

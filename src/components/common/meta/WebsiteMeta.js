@@ -3,7 +3,6 @@ import { Helmet } from "react-helmet";
 import PropTypes from "prop-types";
 import _ from "lodash";
 import { useStaticQuery, graphql } from "gatsby";
-import url from "url";
 
 import ImageMeta from "./ImageMeta";
 import config from "../../../utils/siteConfig";
@@ -19,14 +18,16 @@ const WebsiteMeta = ({
 }) => {
   settings = settings.allGhostSettings.edges[0].node;
 
-  const publisherLogo = url.resolve(
-    config.siteUrl,
-    settings.logo || config.siteIcon
-  );
+  const publisherLogo = new URL(
+    settings.logo || config.siteIcon,
+    config.siteUrl
+  ).toString();
   let shareImage =
     image || data.feature_image || _.get(settings, `cover_image`, null);
 
-  shareImage = shareImage ? url.resolve(config.siteUrl, shareImage) : null;
+  shareImage = shareImage
+    ? new URL(shareImage, config.siteUrl).toString()
+    : null;
 
   description =
     description ||

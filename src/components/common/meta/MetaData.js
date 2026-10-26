@@ -1,7 +1,6 @@
 import * as React from "react";
 import PropTypes from "prop-types";
 import { useStaticQuery, graphql } from "gatsby";
-import url from "url";
 
 import config from "../../../utils/siteConfig";
 import ArticleMeta from "./ArticleMeta";
@@ -14,7 +13,7 @@ import AuthorMeta from "./AuthorMeta";
  *
  */
 const MetaData = ({ data, settings, title, description, image, location }) => {
-  const canonical = url.resolve(config.siteUrl, location.pathname);
+  const canonical = new URL(location.pathname, config.siteUrl).toString();
   const { ghostPost, ghostTag, ghostAuthor, ghostPage } = data;
   settings = settings.allGhostSettings.edges[0].node;
 
@@ -34,7 +33,7 @@ const MetaData = ({ data, settings, title, description, image, location }) => {
       description || config.siteDescriptionMeta || settings.description;
     image = image || settings.cover_image || null;
 
-    image = image ? url.resolve(config.siteUrl, image) : null;
+    image = image ? new URL(image, config.siteUrl).toString() : null;
 
     return (
       <WebsiteMeta

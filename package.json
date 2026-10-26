@@ -51,14 +51,10 @@
     "typescript": "^7.0.2"
   },
   "dependencies": {
-    "@gatsbyjs/reach-router": "^2.0.1",
     "@headlessui/react": "^2.2.10",
     "@tryghost/helpers": "1.1.109",
-    "@tryghost/helpers-gatsby": "2.1.8",
-    "cheerio": "1.2.0",
     "gatsby": "^5.16.1",
     "gatsby-awesome-pagination": "0.3.8",
-    "gatsby-link": "^5.16.0",
     "gatsby-plugin-catch-links": "5.16.0",
     "gatsby-plugin-feed": "5.16.0",
     "gatsby-plugin-image": "3.16.0",
@@ -76,7 +72,6 @@
     "react-dom": "19.3.1",
     "react-helmet": "6.1.0",
     "react-paginate": "^8.3.0",
-    "react-razorpay": "^3.0.1",
-    "url": "0.11.4"
+    "react-razorpay": "^3.0.1"
   }
 }
