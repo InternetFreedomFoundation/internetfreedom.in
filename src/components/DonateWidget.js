@@ -5,7 +5,7 @@ import { Dialog, RadioGroup, Transition } from "@headlessui/react";
 import { useRazorpay } from "react-razorpay";
 
 const DonateWidget = () => {
-  const Razorpay = useRazorpay();
+  const { Razorpay } = useRazorpay();
   const [isOpen, setIsOpen] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [paymentMessage, setPaymentMessage] = useState("");
@@ -808,7 +808,6 @@ function OneTimeOptions({ setCurrentMembership }) {
           min="100"
           step="50"
           onChange={(e) => {
-            setAmountError("");
             setCurrentMembership({
               type: "One Time Donation",
               title: "Custom Amount",
